@@ -87,3 +87,117 @@ userdetails-form{
    border: #711717
 }
    
+
+.mt-4{
+   margin-top: 4px;
+}
+.mt-10{
+   margin-top: 10px;
+}
+.content-panel-body{
+   border: 2px solid red;
+   height: 80vh;
+}
+.text-right {
+   text-align: right;
+}
+.mr-3{
+   margin-right: 3px;
+}
+.column-header{
+   font-size: 25px;
+   font-weight: 500;
+}
+.p-5{
+   padding: 5px
+}
+.data-area{
+   font-size: 20px;
+   font-weight: 20300
+}
+
+.subject-table tr td, th{
+   border: 1px solid black;
+   width: 14% !important;
+}
+.college-name{
+   font-size: 24px;
+   font-weight: 600;
+}
+.font-icon-style{
+   --bs-bg-opacity: 1;
+   color: rgba(var(--bs-primary-rgb),var(--bs-bg-opacity))!important;
+}
+.p-button{
+   margin-right: 10px;
+}
+
+.exam-form label::after {
+   content: "  :  ";
+}
+
+.exam-form .row {
+   margin-top: 3px;
+}
+.mt-16{
+   margin-top: 16px !important;
+}
+.mt-25{
+   margin-top: 25px !important;
+}
+.text-justify{
+   text-align: justify;
+}
+#form-print-area .page .row {
+   margin-top: 10px;
+}
+.header-row {
+   font-size: 25px;
+   font-weight: 400;
+ }
+ .left-header {
+   display: table-cell;
+   vertical-align: middle;
+   font-size: 25px;
+   font-weight: 400;
+ }
+ .m-20{
+   margin: 20px;
+ }
+ .admit-card-text {
+   font-size: 20px;
+   font-weight: 700;
+ }
+ .admin-card-area-table .table-bordered th{
+   border: 3px solid gray;
+ }
+ .m-30{
+   margin: 30px;
+ }
+ :host::ng-deep .p-button{
+   margin: 20px;
+ }
+ .mt-20 {
+   margin-top: 20px;
+ }
+ .p-inputtext {
+   padding: 0.2rem 0.2rem !important;
+ }
+ .form-control {
+   padding: 0.2rem 0.2rem !important;
+ }
+ .p-button {
+   padding: 0.4rem 0.4rem !important;
+ }
+ .mr-10 {
+   margin-right: 10px !important;
+ }
+ .form-label {
+   margin-bottom: 0.3rem;
+}
+.form-submitted .ng-invalid {
+ border: 1px solid red !important;
+}
+.w-80 {
+ width: 80vw !important;
+}
