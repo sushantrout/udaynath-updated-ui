@@ -1,0 +1,94 @@
+<div class="bg-login">
+    <!-- login component -->
+    <div class="md:col-offset-3 lg:col-offset-4 sm:col-12 md:col-6 lg:col-4 mt-v-20" *ngIf="showLogin">
+        <p-card>
+            <h3 class="text-center">
+                {{'usermanagement.login' | translate}}
+            </h3>
+            <div class="grid p-fluid">
+                <div class="sm:col-12 md:col-12 lg:col-12">
+                    <bip-input-text [(ngModel)]="user.username" placeholder="usermanagement.username"
+                        [iconClass]="'pi pi-user'" [iconPosition]="'p-input-icon-left'" [inputType]="'text'">
+                    </bip-input-text>
+                </div>
+                <div class="sm:col-12 md:col-12 lg:col-12">
+                    <bip-input-text [(ngModel)]="user.password" placeholder="usermanagement.password"
+                        [iconClass]="'pi pi-lock'" [iconPosition]="'p-input-icon-left'" [inputType]="'password'">
+                    </bip-input-text>
+                </div>
+                <div class="sm:col-12 md:col-12 lg:col-12">
+                    <button pButton type="button" label="{{'usermanagement.login' | translate}}"
+                        class="p-button-raised p-button-success" (click)="login()"></button>
+                </div>
+                <!-- <div class="sm:col-6 md:col-6 lg:col-6">
+                    <button pButton type="button" label="{{'usermanagement.signup' | translate}}" class="p-bt"
+                        (click)="loadSignUp()"></button>
+                </div> -->
+            </div>
+        </p-card>
+    </div>
+
+    <!-- sign-up component -->
+    <!-- <div class="md:col-offset-3 lg:col-offset-4 sm:col-12 md:col-6 lg:col-4 mt-v-20" *ngIf="showSignup">
+        <p-card>
+            <h3 class="text-center">
+                Sign-up
+            </h3>
+            <div class="grid">
+                <div class="sm:col-12 md:col-12 lg:col-12">
+                    <div class="p-inputgroup">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <input type="text" pInputText placeholder="{{'usermanagement.fullname' | translate}}"
+                                class="p-inputtext">
+                        </div>
+                    </div>
+                </div>
+                <div class="sm:col-12 md:col-12 lg:col-12">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-at"></i>
+                        </span>
+                        <input type="text" id="inputgroup" placeholder="{{'usermanagement.email' | translate}}"
+                            pInputText class="p-inputtext">
+                    </div>
+                </div>
+                <div class="sm:col-12 md:col-12 lg:col-12">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-phone"></i>
+                        </span>
+                        <input type="text" id="inputgroup" placeholder="{{'usermanagement.mobile' | translate}}"
+                            pInputText class="p-inputtext">
+                    </div>
+                </div>
+                <div class="sm:col-12 md:col-12 lg:col-12">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-lock"></i>
+                        </span>
+                        <input type="password" id="inputgroup" placeholder="{{'usermanagement.password' | translate}}"
+                            pInputText class="p-inputtext">
+                    </div>
+                </div>
+
+                <div class="sm:col-12 md:col-12 lg:col-12">
+                    <div class="p-inputgroup">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                            <input type="password" pInputText
+                                placeholder="{{'usermanagement.confirmpassword' | translate}}" class="p-inputtext">
+                        </div>
+                    </div>
+                </div>
+                <div class="sm:col-6 md:col-6 lg:col-6">
+                    <button pButton type="button" label="{{'usermanagement.signin' | translate}}" class="p-bt"></button>
+                </div>
+                <div class="sm:col-6 md:col-6 lg:col-6">
+                    <button pButton type="button" label="{{'usermanagement.login' | translate}}" class="p-bt"
+                        (click)="loadLogin()"></button>
+                </div>
+            </div>
+        </p-card>
+    </div> -->
+</div>

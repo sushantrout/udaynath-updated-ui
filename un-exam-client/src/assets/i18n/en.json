@@ -1,0 +1,87 @@
+{
+  "usermanagement": {
+    "user": "User",
+    "username": "User ID",
+    "password": "Password",
+    "fullname": "Full Name",
+    "confirmpassword": "Confirm Password",
+    "email": "Email",
+    "login": "Login",
+    "signup": "Sign-up",
+    "signin": "Sign-In",
+    "mobile": "Phone No.",
+    "placeholder": "Placeholder",
+    "emailid": "Email id",
+    "name": "Name",
+    "phone": "Phone",
+    "priority": "Priority",
+    "plant": "Plant",
+    "department": "Department",
+    "role": "Role",
+    "userDetails": "User Details",
+    "location": "Location",
+    "designation": "Designation",
+    "applicationUser": "Application User",
+    "masterData": "Master Data",
+    "status": "Status",
+    "category": "Category",
+    "uploadUsers": "Upload Users",
+    "succeful": " Successful",
+    "userActivation":"User Activation"
+  },
+  "message": {
+    "1001": {
+      "header": "User",
+      "body": "Created"
+    },
+    "1002": {
+      "header": "User",
+      "body": "Updated"
+    },
+    "1003": {
+      "header": "User",
+      "body": "Deleted"
+    }
+  },
+  "masterData": {
+    "name": "Name",
+    "action": "Action",
+    "create": "Create",
+    "reset": "Reset",
+    "update": "Update",
+    "upload": "Upload",
+    "save": "Save"
+  },
+  "genericMessage": {
+    "dropdownPlaceholder": "--Please Select--",
+    "noRecordFound": "--No Record Found--",
+    "allMandatory": "All fields are mandatory.",
+    "datePickerPlaceholder": "Select Date"
+  },
+  "incident": {
+    "incident": "Incident",
+    "incidentid": "Incident ID",
+    "plant": "Plant",
+    "category": "Category",
+    "date": "Date/Time",
+    "location": "Location/Area",
+    "nameOfTheEmployee": "Name Of the Employee",
+    "name&TokennoOfEmployee": "Name & Token No of Employee",
+    "nameOfTheContractor&Workmen": "Name of the Contractor & workmen",
+    "ownerOfArea": "Owner of Area/HOD",
+    "descriptionOfAccident": "Description of Accident/incident",
+    "investigationStatus": "Investigation Status",
+    "investigationDate": "Investigation Date/Time",
+    "dateOfFormationOfInvestigationTeam": "Date of formation of Investigation Team",
+    "dateComplted": "Date Completed",
+    "tapRootExpert": "Tap root Expert ",
+    "contributionFactros": "Contribution factors / Root Causes",
+    "correctiveActions": "Corrective Actions & Preventive Actions",
+    "status": "Status",
+    "taprootRootCause": "Taproot Root Causes",
+    "pictureCaptured": "Picture Captured",
+    "tokenNoOfEmployee": "Token number of Employee",
+    "nameOftheContracter": "Name of The Contracter",
+    "correctiveActionss": "Corrective Actions"
+  }
+}

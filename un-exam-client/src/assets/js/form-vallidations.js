@@ -1,0 +1,1 @@
+!function(){"use strict";var t=document.querySelectorAll(".needs-validation");Array.prototype.slice.call(t).forEach((function(t){t.addEventListener("submit",(function(e){t.checkValidity()||(e.preventDefault(),e.stopPropagation()),t.classList.add("was-validated")}),!1)}))}();

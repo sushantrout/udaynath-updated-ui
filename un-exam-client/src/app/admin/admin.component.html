@@ -1,0 +1,363 @@
+<!--aside open-->
+<aside class="app-sidebar">
+    <div class="app-sidebar__logo">
+        <a class="header-brand" href="javascript:void(0);">
+            <img src="assets/images/brand/logo.png" class="header-brand-img desktop-lgo" alt="Azea logo">
+            <img src="assets/images/brand/logo1.png" class="header-brand-img dark-logo" alt="Azea logo">
+            <img src="assets/images/brand/favicon.png" class="header-brand-img mobile-logo" alt="Azea logo">
+            <img src="assets/images/brand/favicon1.png" class="header-brand-img darkmobile-logo" alt="Azea logo">
+        </a>
+    </div>
+    <ul class="side-menu app-sidebar3">
+        <li class="side-item side-item-category">Main</li>
+        <li class="slide">
+            <a class="side-menu__item" href="javascript:void(0);" routerLink="dashboard">
+                <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24" height="24"
+                    viewBox="0 0 24 24">
+                    <path
+                        d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586 6 6V15l.001 5H16v-5c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H6v-9.586l6-6z" />
+                </svg>
+                <span class="side-menu__label">Dashboard</span></a>
+        </li>
+        <li class="side-item side-item-category">Components</li>
+        <li class="slide">
+            <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
+                <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24" height="24"
+                    viewBox="0 0 24 24">
+                    <path
+                        d="M12 22c4.879 0 9-4.121 9-9s-4.121-9-9-9-9 4.121-9 9 4.121 9 9 9zm0-16c3.794 0 7 3.206 7 7s-3.206 7-7 7-7-3.206-7-7 3.206-7 7-7zm5.284-2.293 1.412-1.416 3.01 3-1.413 1.417zM5.282 2.294 6.7 3.706l-2.99 3-1.417-1.413z" />
+                    <path d="M11 9h2v5h-2zm0 6h2v2h-2z" />
+                </svg>
+                <span class="side-menu__label">Admin</span><i
+                    class="angle fe fe-chevron-right"></i></a>
+            <ul class="slide-menu">
+                <li><a routerLink="master-data/session" class="slide-item"> Session</a></li>
+                <li><a routerLink="master-data/stream" class="slide-item"> Stream</a></li>
+                <li><a routerLink="master-data/department" class="slide-item"> Department</a></li>
+                <li><a routerLink="master-data/paper" class="slide-item"> Paper</a></li>
+                
+            </ul>
+        </li>
+        <li class="slide">
+            <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
+                <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24" height="24"
+                    viewBox="0 0 24 24">
+                    <path
+                        d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+                </svg>
+                <span class="side-menu__label">Elements</span><i class="angle fe fe-chevron-right"></i></a>
+            <ul class="slide-menu">
+                <li><a routerLink="incident/form" class="slide-item"> Incident Form</a></li>
+                <li><a routerLink="incident/view" class="slide-item"> Incident Details</a></li>
+            </ul>
+        </li>
+        <li class="slide">
+            <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
+                <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24" height="24"
+                    viewBox="0 0 24 24">
+                    <path
+                        d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+                </svg>
+                <span class="side-menu__label">Apps</span><i class="angle fe fe-chevron-right"></i></a>
+            <ul class="slide-menu ">
+                <li class="sub-slide">
+                    <a class="sub-side-menu__item" data-bs-toggle="sub-slide" href="javascript:void(0);"><span
+                            class="sub-side-menu__label">Chat</span><i class="sub-angle fe fe-chevron-right"></i></a>
+                    <ul class="sub-slide-menu">
+                        <li><a class="sub-slide-item" href="chat.html">Chat 01</a></li>
+                        <li><a class="sub-slide-item" href="chat2.html">Chat 02</a></li>
+
+                    </ul>
+                </li>
+                <li class="sub-slide">
+                    <a class="sub-side-menu__item" data-bs-toggle="sub-slide" href="javascript:void(0);"><span
+                            class="sub-side-menu__label">Contact</span><i class="sub-angle fe fe-chevron-right"></i></a>
+                    <ul class="sub-slide-menu">
+                        <li><a class="sub-slide-item" href="contact-list.html">Contact list 01</a></li>
+                        <li><a class="sub-slide-item" href="contact-list2.html">Contact list 02</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</aside>
+<div class="app-header header main-header1">
+    <div class="container-fluid">
+        <div class="d-flex">
+            <a class="header-brand" href="index.html">
+                <img src="assets/images/brand/logo.png" class="header-brand-img desktop-lgo" alt="Azea logo">
+                <img src="assets/images/brand/logo1.png" class="header-brand-img dark-logo" alt="Azea logo">
+                <img src="assets/images/brand/favicon.png" class="header-brand-img mobile-logo" alt="Azea logo">
+                <img src="assets/images/brand/favicon1.png" class="header-brand-img darkmobile-logo" alt="Azea logo">
+            </a>
+            <div class="app-sidebar__toggle d-flex" data-bs-toggle="sidebar">
+                <a class="open-toggle" href="javascript:void(0);">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="feather feather-align-left header-icon" width="24"
+                        height="24" viewBox="0 0 24 24">
+                        <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="d-flex order-lg-2 ms-auto main-header-end">
+                <button class="navbar-toggler navresponsive-toggler d-md-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4"
+                    aria-expanded="true" aria-label="Toggle navigation">
+                    <i class="fe fe-more-vertical header-icons navbar-toggler-icon"></i>
+                </button>
+                <div class="navbar navbar-expand-lg navbar-collapse responsive-navbar p-0">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                        <div class="d-flex order-lg-2">
+                            <div class="dropdown header-message d-flex">
+                                <a class="nav-link icon" data-bs-toggle="dropdown">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="header-icon" width="24" height="24"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z" />
+                                    </svg>
+                                    <span class="badge bg-success side-badge">5</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow  animated">
+                                    <div class="dropdown-header">
+                                        <h6 class="mb-0">Messages</h6>
+                                        <span class="badge fs-10 bg-secondary br-7 ms-auto">New</span>
+                                    </div>
+                                    <div class="header-dropdown-list message-menu">
+                                        <a class="dropdown-item border-bottom" href="chat.html">
+                                            <div class="d-flex align-items-center">
+                                                <div class="">
+                                                    <span class="avatar avatar-md brround align-self-center cover-image"
+                                                        data-image-src="assets/images/users/1.jpg"></span>
+                                                </div>
+                                                <div class="d-flex mt-1 mb-1">
+                                                    <div class="ps-3">
+                                                        <span class="mb-1 fs-13">Joan Powell</span>
+                                                        <p class="fs-12 mb-1">All the best your template awesome</p>
+                                                        <div class="fs-11 text-muted">
+                                                            3 hours ago
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item border-bottom" href="chat.html">
+                                            <div class="d-flex align-items-center">
+                                                <div class="">
+                                                    <span class="avatar avatar-md brround align-self-center cover-image"
+                                                        data-image-src="assets/images/users/2.jpg"></span>
+                                                </div>
+                                                <div class="d-flex mt-1 mb-1">
+                                                    <div class="ps-3">
+                                                        <span class="mb-1 s-13">Gavin Sibson</span>
+                                                        <p class="fs-12 mb-1">Hey! there I'm available</p>
+                                                        <div class="fs-11 text-muted">
+                                                            5 hour ago
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item border-bottom" href="chat.html">
+                                            <div class="d-flex align-items-center">
+                                                <div class="">
+                                                    <span class="avatar avatar-md brround align-self-center cover-image"
+                                                        data-image-src="assets/images/users/3.jpg"></span>
+                                                </div>
+                                                <div class="d-flex mt-1 mb-1">
+                                                    <div class="ps-3">
+                                                        <span class="mb-1">Julian Kerr</span>
+                                                        <p class="fs-12 mb-1">Just created a new blog post</p>
+                                                        <div class="fs-11 text-muted">
+                                                            45 mintues ago
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item border-bottom" href="chat.html">
+                                            <div class="d-flex align-items-center">
+                                                <div class="">
+                                                    <span class="avatar avatar-md brround align-self-center cover-image"
+                                                        data-image-src="assets/images/users/4.jpg"></span>
+                                                </div>
+                                                <div class="d-flex mt-1 mb-1">
+                                                    <div class="ps-3">
+                                                        <span class=" fs-13 mb-1">Cedric Kelly</span>
+                                                        <p class="fs-12 mb-1">Added new comment on your photo</p>
+                                                        <div class="fs-11 text-muted">
+                                                            2 days ago
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item border-bottom" href="chat.html">
+                                            <div class="d-flex align-items-center">
+                                                <div class="">
+                                                    <span class="avatar avatar-md brround align-self-center cover-image"
+                                                        data-image-src="assets/images/users/6.jpg"></span>
+                                                </div>
+                                                <div class="d-flex mt-1 mb-1">
+                                                    <div class="ps-3">
+                                                        <span class="mb-1 fs-13">Julian Kerr</span>
+                                                        <p class="fs-12 mb-1">Your payment invoice is generated</p>
+                                                        <div class="fs-11 text-muted">
+                                                            3 days ago
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item" href="chat.html">
+                                            <div class="d-flex align-items-center">
+                                                <div class="">
+                                                    <span class="avatar avatar-md brround align-self-center cover-image"
+                                                        data-image-src="assets/images/users/7.jpg"></span>
+                                                </div>
+                                                <div class="d-flex mt-1 mb-1">
+                                                    <div class="ps-3">
+                                                        <span class="mb-1 fs-13">Faith Dickens</span>
+                                                        <p class="fs-12 mb-1">Please check your mail....</p>
+                                                        <div class="fs-11 text-muted">
+                                                            4 days ago
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class=" text-center p-2 pt-3 border-top">
+                                        <a href="chat.html" class="fs-13 btn btn-primary btn-md btn-block">See More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown header-notify d-flex">
+                                <a class="nav-link icon" data-bs-toggle="dropdown">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="header-icon" width="24" height="24"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z" />
+                                    </svg><span class="pulse "></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow  animated">
+                                    <div class="dropdown-header">
+                                        <h6 class="mb-0">Notifications</h6>
+                                        <span class="badge fs-10 bg-secondary br-7 ms-auto">New</span>
+                                    </div>
+                                    <div class="notify-menu">
+                                        <a href="email-inbox.html" class="dropdown-item border-bottom d-flex ps-4">
+                                            <div class="notifyimg  text-primary bg-primary-transparent border-primary">
+                                                <i class="fa fa-envelope"></i>
+                                            </div>
+                                            <div>
+                                                <span class="fs-13">Message Sent.</span>
+                                                <div class="small text-muted">3 hours ago</div>
+                                            </div>
+                                        </a>
+                                        <a href="email-inbox.html" class="dropdown-item border-bottom d-flex ps-4">
+                                            <div
+                                                class="notifyimg  text-secondary bg-secondary-transparent border-secondary">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </div>
+                                            <div>
+                                                <span class="fs-13">Order Placed</span>
+                                                <div class="small text-muted">5 hour ago</div>
+                                            </div>
+                                        </a>
+                                        <a href="email-inbox.html" class="dropdown-item border-bottom d-flex ps-4">
+                                            <div class="notifyimg  text-danger bg-danger-transparent border-danger"> <i
+                                                    class="fa fa-gift"></i> </div>
+                                            <div>
+                                                <span class="fs-13">Event Started</span>
+                                                <div class="small text-muted">45 mintues ago</div>
+                                            </div>
+                                        </a>
+                                        <a href="email-inbox.html" class="dropdown-item border-bottom d-flex ps-4 mb-2">
+                                            <div class="notifyimg  text-success  bg-success-transparent border-success">
+                                                <i class="fa fa-windows"></i>
+                                            </div>
+                                            <div>
+                                                <span class="fs-13">Your Admin lanuched</span>
+                                                <div class="small text-muted">1 daya ago</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class=" text-center p-2">
+                                        <a href="email-inbox.html" class="btn btn-primary btn-md fs-13 btn-block">View
+                                            All</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dropdown profile-dropdown d-flex">
+                                <a href="javascript:void(0);" class="nav-link pe-0 leading-none"
+                                    data-bs-toggle="dropdown">
+                                    <span class="header-avatar1">
+                                        <img [src]="userImage | async" alt="img" class="avatar avatar-md brround">
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated">
+                                    <div class="text-center">
+                                        <div class="text-center user pb-0 font-weight-bold">
+                                            {{user?user.username:'New User'}}
+                                        </div>
+                                        <div class="dropdown-divider"></div>
+                                    </div>
+                                    <a class="dropdown-item d-flex" href="profile1.html">
+                                        <svg class="header-icon me-2" xmlns="http://www.w3.org/2000/svg" height="24"
+                                            viewBox="0 0 24 24" width="24">
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path
+                                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.51.88 4.93 1.78C15.57 19.36 13.86 20 12 20s-3.57-.64-4.93-1.72zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z" />
+                                        </svg>
+                                        <div class="fs-13">Profile</div>
+                                    </a>
+                                    <a class="dropdown-item d-flex" href="search.html">
+                                        <svg class="header-icon me-2" xmlns="http://www.w3.org/2000/svg" height="24"
+                                            viewBox="0 0 24 24" width="24">
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path
+                                                d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.09-.16-.26-.25-.44-.25-.06 0-.12.01-.17.03l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.06-.02-.12-.03-.18-.03-.17 0-.34.09-.43.25l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.09.16.26.25.44.25.06 0 .12-.01.17-.03l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.06.02.12.03.18.03.17 0 .34-.09.43-.25l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-1.98-1.71c.04.31.05.52.05.73 0 .21-.02.43-.05.73l-.14 1.13.89.7 1.08.84-.7 1.21-1.27-.51-1.04-.42-.9.68c-.43.32-.84.56-1.25.73l-1.06.43-.16 1.13-.2 1.35h-1.4l-.19-1.35-.16-1.13-1.06-.43c-.43-.18-.83-.41-1.23-.71l-.91-.7-1.06.43-1.27.51-.7-1.21 1.08-.84.89-.7-.14-1.13c-.03-.31-.05-.54-.05-.74s.02-.43.05-.73l.14-1.13-.89-.7-1.08-.84.7-1.21 1.27.51 1.04.42.9-.68c.43-.32.84-.56 1.25-.73l1.06-.43.16-1.13.2-1.35h1.39l.19 1.35.16 1.13 1.06.43c.43.18.83.41 1.23.71l.91.7 1.06-.43 1.27-.51.7 1.21-1.07.85-.89.7.14 1.13zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
+                                        </svg>
+                                        <div class="fs-13">Settings</div>
+                                    </a>
+                                    <a class="dropdown-item d-flex" href="chat.html">
+                                        <svg class="header-icon me-2" xmlns="http://www.w3.org/2000/svg" height="24"
+                                            viewBox="0 0 24 24" width="24">
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path
+                                                d="M4 4h16v12H5.17L4 17.17V4m0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 10h12v2H6v-2zm0-3h12v2H6V9zm0-3h12v2H6V6z" />
+                                        </svg>
+                                        <div class="fs-13">Messages</div>
+                                    </a>
+                                    <a class="dropdown-item d-flex" routerLink="login">
+                                        <svg class="header-icon me-2" xmlns="http://www.w3.org/2000/svg"
+                                            enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24"
+                                            width="24">
+                                            <g>
+                                                <rect fill="none" height="24" width="24" />
+                                            </g>
+                                            <g>
+                                                <path
+                                                    d="M11,7L9.6,8.4l2.6,2.6H2v2h10.2l-2.6,2.6L11,17l5-5L11,7z M20,19h-8v2h8c1.1,0,2-0.9,2-2V5c0-1.1-0.9-2-2-2h-8v2h8V19z" />
+                                            </g>
+                                        </svg>
+                                        <div class="fs-13">Sign Out</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="app-content main-content">
+    <div class="side-app">
+        <div class="master-container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,89 @@
+.p-my-1 {
+   margin-top: 1rem;
+}
+
+.master-container {
+   margin-top: 0.2rem;
+}
+
+.p-mx-1 {
+   margin-right: 1rem !important;
+}
+
+.p-mx-05 {
+   margin-right: 0.5rem !important;
+}
+
+.mt-2 {
+   margin-top: 2vh !important;
+}
+
+.selected {
+   background-color: rgb(149, 173, 195) !important;
+}
+
+.w-100 {
+   width: 100%;
+}
+
+.application-form label::after {
+   content: " :";
+}
+
+.view-icon:hover {
+   color: blue;
+}
+
+.delete-icon:hover {
+   color: red;
+}
+
+.edit-icon:hover {
+   color: green;
+}
+
+ .Viewdetails-form{
+   background-color:whitesmoke;
+ }
+.p-dialog-mask {
+   z-index: 9999999 !important;
+ }
+
+.p-inputtextarea {
+   width: 100%;
+}
+userdetails-form{
+   background-color: whitesmoke;
+}
+.p-datatable .p-datatable-tbody > tr > td {
+   padding: 0.2rem 0.2rem !important;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+   padding: 0.3rem 0.3rem !important;
+}
+
+.p-inputtext {
+   padding: 0.3rem !important;
+}
+
+.p-button {
+   padding: 0.3rem 1rem !important;
+}
+
+.dark-menu .p-datatable .p-datatable-thead > tr > th {
+   background: #2a2e3f !important;
+   color: #ffffff !important;
+}
+
+.dark-menu .p-datatable .p-datatable-tbody > tr > td {
+   color: #000 !important;
+}
+
+.master-container-body {
+   height: 80vh;
+}
+.p-datatable .p-datatable{
+   border: #711717
+}
+   

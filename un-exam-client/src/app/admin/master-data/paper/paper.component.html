@@ -1,0 +1,106 @@
+<p-card>
+    <div class="grid">
+        <div class="col-2">
+            <bip-dropdown [option]="sessions"  [(ngModel)]="paperModel.sessionId" optionLabel="name" optionValue="id">
+            </bip-dropdown>
+        </div>
+        <div class="col-2">
+            <bip-dropdown [option]="courseTypes"  [(ngModel)]="paperModel.courseType" (ngModelChange)="findStreamByCourseType()">
+            </bip-dropdown>
+        </div>
+        <div class="col-2">
+            <bip-dropdown [option]="streams"  [(ngModel)]="paperModel.streamId" optionLabel="name" optionValue="id" (ngModelChange)="getDepartmentsByStreamId()">
+            </bip-dropdown>
+        </div>
+        <div class="col-2">
+            <bip-dropdown [option]="departmentList"  [(ngModel)]="paperModel.honersId" optionLabel="name" optionValue="id">
+            </bip-dropdown>
+        </div>
+        <div class="col-2">
+            <bip-dropdown [option]="semistarList"  [(ngModel)]="paperModel.semistar">
+            </bip-dropdown>
+        </div>
+        <div class="col-2">
+            <bip-dropdown [option]="paperTypeList"  [(ngModel)]="paperModel.paperType">
+            </bip-dropdown>
+        </div>
+        <div class="col-2">
+            <bip-input-text placeholder="Paper Name" class="p-mx-1" [(ngModel)]="paperModel.name">
+            </bip-input-text>
+        </div>
+        <div class="col-2">
+            <bip-input-text placeholder="Paper Code" class="p-mx-1" [(ngModel)]="paperModel.code">
+            </bip-input-text>
+        </div>
+        <div class="col-1">
+            <bip-input-text placeholder="Int mark" class="p-mx-1" [(ngModel)]="paperModel.intMark">
+            </bip-input-text>
+        </div>
+        <div class="col-1">
+            <bip-input-text placeholder="Sem Mark" class="p-mx-1" [(ngModel)]="paperModel.semMark">
+            </bip-input-text>
+        </div>
+        <div class="col-1">
+            <bip-input-text placeholder="Prac mark" class="p-mx-1" [(ngModel)]="paperModel.pracMark">
+            </bip-input-text>
+        </div>
+        <div class="col-1">
+            <bip-input-text placeholder="CP" class="p-mx-1" [(ngModel)]="paperModel.cp">
+            </bip-input-text>
+        </div>
+        <div class="col-4">
+            <button pButton pRipple type="button" label="Save" (click)="save()"
+                class="p-mx-05" *ngIf="!paperModel.id"></button>
+            <button pButton pRipple type="button" label="Update" (click)="save()"
+                class="p-mx-05" *ngIf="paperModel.id"></button>
+            <button pButton pRipple type="button" label="Reset" (click)="reset()"></button>
+        </div>
+    </div>
+    <p-table [value]="paperList" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10,25,50]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th class="text-center">Session</th>
+                <th class="text-center">Course Type</th>
+                <th class="text-center">Stream</th>
+                <th class="text-center">Department</th>
+                <th class="text-center">Semister</th>
+                <th class="text-center">Paper</th>
+                <th class="text-center">Paper Name</th>
+                <th class="text-center">Paper Code</th>
+                <th class="text-center">Int</th>
+                <th class="text-center">Sem</th>
+                <th class="text-center">Prac</th>
+                <th class="text-center">CP</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cdepartment>
+            <tr [class.selected]="cdepartment.id == paperModel.id">
+                <td class="text-center">{{cdepartment.sessionText}}</td>
+                <td class="text-center">{{cdepartment.courseType}}</td>
+                <td class="text-center">{{cdepartment.streamText}}</td>
+                <td class="text-center">{{cdepartment.honersText}}</td>
+                <td class="text-center">{{cdepartment.semistar}}</td>
+                <td class="text-center">{{cdepartment.paperType}}</td>
+                <td class="text-center">{{cdepartment.name}}</td>
+                <td class="text-center">{{cdepartment.code}}</td>
+                <td class="text-center">{{cdepartment.intMark}}</td>
+                <td class="text-center">{{cdepartment.semMark}}</td>
+                <td class="text-center">{{cdepartment.pracMark}}</td>
+                <td class="text-center">{{cdepartment.cp}}</td>
+                <td class="text-center">
+                    <bip-icon iconClass="pi pi-pencil p-mx-05 edit-icon" (click)="edit(cdepartment)"></bip-icon>
+                    <bip-icon iconClass="pi pi-trash delete-icon" (click)="delete(cdepartment)"></bip-icon>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</p-card>

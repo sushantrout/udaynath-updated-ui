@@ -1,0 +1,40 @@
+<p-card>
+    <div class="grid">
+        <div class="col-4">
+            <bip-input-text placeholder="Admission Batch" class="p-mx-1" [(ngModel)]="session.name">
+            </bip-input-text>
+        </div>
+        <div class="col-6">
+            <button pButton pRipple type="button" label="Save" (click)="save()"
+                class="p-mx-05" *ngIf="!session.id"></button>
+            <button pButton pRipple type="button" label="Update" (click)="save()"
+                class="p-mx-05" *ngIf="session.id"></button>
+            <button pButton pRipple type="button" label="Reset" (click)="reset()"></button>
+        </div>
+    </div>
+    <p-table [value]="sessionList" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10,25,50]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cdepartment>
+            <tr [class.selected]="cdepartment.id == session.id">
+                <td class="text-center">{{cdepartment.name}}</td>
+                <td class="text-center">
+                    <bip-icon iconClass="pi pi-pencil p-mx-05 edit-icon" (click)="edit(cdepartment)"></bip-icon>
+                    <bip-icon iconClass="pi pi-trash delete-icon" (click)="delete(cdepartment)"></bip-icon>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</p-card>
