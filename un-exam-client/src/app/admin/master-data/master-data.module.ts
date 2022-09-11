@@ -15,6 +15,7 @@ import { DownloadAdmitCardComponent } from './download-admit-card/download-admit
 import { DownloadByDepartmentComponent } from './download-by-department/download-by-department.component';
 import { DownloadMyResultComponent } from './download-my-result/download-my-result.component';
 import { ManageDepartmentResultComponent } from './manage-department-result/manage-department-result.component';
+import { FormFillupComponent } from './form-fillup/form-fillup.component';
 
 const routes: Routes = [
   {
@@ -60,7 +61,10 @@ const routes: Routes = [
   {
     path: 'manage-result',
     component: ManageDepartmentResultComponent,
-  },
+  },{
+    path:'form-fillup',
+    component: FormFillupComponent
+  }
 ];
 
 @NgModule({
@@ -76,6 +80,7 @@ const routes: Routes = [
     DownloadAdmitCardComponent,
     DownloadByDepartmentComponent,
     DownloadMyResultComponent,
+    FormFillupComponent,
   ],
   imports: [
     CommonModule,
