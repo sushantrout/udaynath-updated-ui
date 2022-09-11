@@ -8,6 +8,13 @@ import { MasterDataComponent } from './master-data.component';
 import { SessionComponent } from './session/session.component';
 import { StreamComponent } from './stream/stream.component';
 import { PaperComponent } from './paper/paper.component';
+import { InsertHonourseComponent } from './insert-honourse/insert-honourse.component';
+import { InsertElectiveComponent } from './insert-elective/insert-elective.component';
+import { ManageAdmitCardComponent } from './manage-admit-card/manage-admit-card.component';
+import { DownloadAdmitCardComponent } from './download-admit-card/download-admit-card.component';
+import { DownloadByDepartmentComponent } from './download-by-department/download-by-department.component';
+import { DownloadMyResultComponent } from './download-my-result/download-my-result.component';
+import { ManageDepartmentResultComponent } from './manage-department-result/manage-department-result.component';
 
 const routes: Routes = [
   {
@@ -17,17 +24,59 @@ const routes: Routes = [
   {
     path: 'session',
     component: SessionComponent,
-  },{
+  },
+  {
     path: 'stream',
-    component: StreamComponent
-  },{
-    path:'paper',
-    component: PaperComponent
-  }
+    component: StreamComponent,
+  },
+  {
+    path: 'paper',
+    component: PaperComponent,
+  },
+  {
+    path: 'insert-honourse',
+    component: InsertHonourseComponent,
+  },
+  {
+    path: 'insert-elective',
+    component: InsertElectiveComponent,
+  },
+  {
+    path: 'mac',
+    component: ManageAdmitCardComponent,
+  },
+  {
+    path: 'dac',
+    component: DownloadAdmitCardComponent,
+  },
+  {
+    path: 'ddr',
+    component: DownloadByDepartmentComponent,
+  },
+  {
+    path: 'dmyr',
+    component: DownloadMyResultComponent,
+  },
+  {
+    path: 'manage-result',
+    component: ManageDepartmentResultComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [DepartmentComponent, MasterDataComponent, SessionComponent, StreamComponent, PaperComponent],
+  declarations: [
+    DepartmentComponent,
+    MasterDataComponent,
+    SessionComponent,
+    StreamComponent,
+    PaperComponent,
+    InsertHonourseComponent,
+    InsertElectiveComponent,
+    ManageAdmitCardComponent,
+    DownloadAdmitCardComponent,
+    DownloadByDepartmentComponent,
+    DownloadMyResultComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
