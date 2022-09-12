@@ -1,0 +1,96 @@
+<p-card>
+    <div class="grid">
+        <div class="col-3">
+            <bip-dropdown [option]="sessions" [(ngModel)]="studentModel.session" optionLabel="name">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="courseTypes" [(ngModel)]="studentModel.courseType"
+                (ngModelChange)="findStreamByCourseType()">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="streams" [(ngModel)]="studentModel.stream" optionLabel="name"
+                (ngModelChange)="getDepartmentsByStreamId()">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="departmentList" [(ngModel)]="studentModel.department" optionLabel="name">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <input type="file" class="w-100 form-control" title="Upload" (change)="fileDataLoader($event)"
+                style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap" />
+        </div>
+        <div class="col-4" *ngIf="this.fileList && this.fileList.length">
+            <button pButton type="button" label="Upload" (click)="upload()" class="mr-10"></button>
+            <button pButton type="button" label="Save" (click)="save()"
+                *ngIf="studentDatas && studentDatas.length != 0"></button>
+        </div>
+    </div>
+    <div class="p-grid" *ngIf="studentDatas">
+        <p-table [value]="studentDatas" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
+        scrollHeight="60vh"
+        [rowsPerPageOptions]="[10,25,50]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Full Name</th>
+                    <th>Exam Rool NO.</th>
+                    <th>Roll NO.</th>
+                    <th>DOB</th>
+                    <th>Sex</th>
+                    <th>Cast</th>
+                    <th>F. Name</th>
+                    <th>M. Name</th>
+                    <th>Email</th>
+                    <th>Reg.</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-student>
+                <tr>
+                    <td>
+                        <bip-input-text placeholder="Full Name" class="p-mx-1" [(ngModel)]="student.fullName">
+                        </bip-input-text>
+                    </td>
+                    <td>
+                        <bip-input-text placeholder="Exam Rool NO." class="p-mx-1" [(ngModel)]="student.examRoolNumber">
+                        </bip-input-text>
+                    </td>
+                    <td>
+                        <bip-input-text placeholder="Roll NO." class="p-mx-1" [(ngModel)]="student.rollNumber">
+                        </bip-input-text>
+                    </td>
+                    <td>
+                        <bip-input-text placeholder="DOB" class="p-mx-1" [(ngModel)]="student.dob">
+                        </bip-input-text>
+                    </td>
+                    <td>
+                        <bip-input-text placeholder="Sex" class="p-mx-1" [(ngModel)]="student.gender">
+                        </bip-input-text>
+                    </td>
+                    <td>
+                        <bip-input-text placeholder="Cast" class="p-mx-1" [(ngModel)]="student.caste">
+                        </bip-input-text>
+                    </td>
+                    <td>
+                        <bip-input-text placeholder="F. Name" class="p-mx-1" [(ngModel)]="student.fathersName">
+                        </bip-input-text>
+                    </td>
+                    <td>
+                        <bip-input-text placeholder="M. Name" class="p-mx-1" [(ngModel)]="student.mothersName">
+                        </bip-input-text>
+                    </td>
+                    <td>
+                        <bip-input-text placeholder="Email" class="p-mx-1" [(ngModel)]="student.emailId">
+                        </bip-input-text>
+                    </td>
+                    <td>
+                        <bip-input-text placeholder="Reg." class="p-mx-1" [(ngModel)]="student.reg">
+                        </bip-input-text>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</p-card>

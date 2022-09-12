@@ -16,6 +16,8 @@ import { DownloadByDepartmentComponent } from './download-by-department/download
 import { DownloadMyResultComponent } from './download-my-result/download-my-result.component';
 import { ManageDepartmentResultComponent } from './manage-department-result/manage-department-result.component';
 import { FormFillupComponent } from './form-fillup/form-fillup.component';
+import { ManageStudentComponent } from './manage-student/manage-student.component';
+import { CreateStudentComponent } from './create-student/create-student.component';
 
 const routes: Routes = [
   {
@@ -64,6 +66,12 @@ const routes: Routes = [
   },{
     path:'form-fillup',
     component: FormFillupComponent
+  }, {
+    path:'manage-student',
+    component: ManageStudentComponent
+  }, {
+    path: 'create-student',
+    component: CreateStudentComponent
   }
 ];
 
@@ -81,6 +89,8 @@ const routes: Routes = [
     DownloadByDepartmentComponent,
     DownloadMyResultComponent,
     FormFillupComponent,
+    ManageStudentComponent,
+    CreateStudentComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,14 @@
+.student-form-table tr th{
+    width: 24% !important;
+    text-align: center;
+    font-weight: 500;
+}
+.student-form-table tr td{
+    width: 24% !important;
+    font-weight: 500;
+}
+
+.student-form-table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }

@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 
@@ -24,5 +24,18 @@ export class ApiService {
 
   delete(deleteIdURL: string) : any{
     return this.http.delete(`${this.common_url}${deleteIdURL}`);
+  }
+
+  upload(url: string, fileList: any) {
+    return this.postFile(url, fileList);
+  }
+
+  postFile(path: string, fileList: any) {
+    let file: File = fileList[0];
+    let formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    let headers = new HttpHeaders();
+    return this.http.post(`${environment.api_url}${path}`, formData,
+      { headers: headers, observe: 'response' });
   }
 }
