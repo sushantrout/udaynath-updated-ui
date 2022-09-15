@@ -1,1 +1,22 @@
-<p>manage-department-result works!</p>
+<p-card>
+    <div class="grid">
+        <div class="col-3">
+            <bip-dropdown [option]="sessions" [(ngModel)]="studentModel.session" optionLabel="name">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="courseTypes" [(ngModel)]="studentModel.courseType"
+                (ngModelChange)="findStreamByCourseType()">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="streams" [(ngModel)]="studentModel.stream" optionLabel="name"
+                (ngModelChange)="getDepartmentsByStreamId()">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="departmentList" [(ngModel)]="studentModel.department" optionLabel="name">
+            </bip-dropdown>
+        </div>
+    </div>
+</p-card>

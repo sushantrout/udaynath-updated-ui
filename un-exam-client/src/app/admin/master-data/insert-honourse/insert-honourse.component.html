@@ -1,1 +1,34 @@
-<p>insert-honourse works!</p>
+<p-card>
+    <div class="grid">
+        <div class="col-3">
+            <bip-dropdown [option]="sessions" [(ngModel)]="studentModel.session" optionLabel="name">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="courseTypes" [(ngModel)]="studentModel.courseType"
+                (ngModelChange)="findStreamByCourseType()">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="streams" [(ngModel)]="studentModel.stream" optionLabel="name"
+                (ngModelChange)="getDepartmentsByStreamId()">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="departmentList" [(ngModel)]="studentModel.department" optionLabel="name" (ngModelChange)="getPapers()">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="semistarList" [(ngModel)]="studentModel.semistar" (ngModelChange)="getPapers()">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="examTypes" [(ngModel)]="studentModel.examType">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="papers" [(ngModel)]="studentModel.paper" optionLabel="name">
+            </bip-dropdown>
+        </div>
+    </div>
+</p-card>

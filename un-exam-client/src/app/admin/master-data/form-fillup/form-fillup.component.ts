@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CourseType } from 'src/app/shared/constants/course.constant';
+import { StudenModel } from 'src/app/shared/model/student.model';
 import { DepartmentService } from 'src/app/shared/services/department.service';
 import { FormFillupService } from 'src/app/shared/services/form-fillup.service';
 import { PaperService } from 'src/app/shared/services/paper.service';
 import { SessionService } from 'src/app/shared/services/session.service';
 import { StreamService } from 'src/app/shared/services/stream.service';
+import { StudentService } from 'src/app/shared/services/student.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
@@ -46,7 +48,8 @@ export class FormFillupComponent implements OnInit {
     private formService: FormFillupService,
     private honourseService: DepartmentService,
     private paperService: PaperService,
-    private messageService : ToastService
+    private messageService : ToastService,
+    private studentService : StudentService
     
   ) {}
 
@@ -87,7 +90,7 @@ export class FormFillupComponent implements OnInit {
       this.student.semistar &&
       this.student.examType &&
       this.student.examYear &&
-      this.student.examRollNumber &&
+      this.student.examRoolNumber &&
       this.student.stream &&
       this.student.department &&
       this.student.fullName &&
@@ -200,6 +203,14 @@ export class FormFillupComponent implements OnInit {
         this.isOldRegistration = false;
         this.showForm = true;
         this.getDepartments();
+      }
+    });
+  }
+
+  getStudentDetails() {
+    this.studentService.findStudentByRollnumber(this.student.examRoolNumber).subscribe((res : any) => {
+      if(res) {
+        this.student = res;
       }
     });
   }

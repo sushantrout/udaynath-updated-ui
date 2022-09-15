@@ -1,6 +1,8 @@
 import { Department } from './department.model';
 import { SessionModel } from './session-model';
 import { StreamModel } from './stream.model';
+import { PaperModel } from './paper.model';
+import { ElectiveModel } from './elective.model';
 
 export class StudenModel {
   caste!: string;
@@ -18,4 +20,8 @@ export class StudenModel {
   rollNumber!: string;
   session!: SessionModel;
   stream!: StreamModel;
+  semistar!: string;
+  examType!: string;
+  paper!: PaperModel;
+  elective!: ElectiveModel;
 }

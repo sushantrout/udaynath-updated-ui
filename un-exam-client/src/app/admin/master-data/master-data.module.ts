@@ -91,6 +91,7 @@ const routes: Routes = [
     FormFillupComponent,
     ManageStudentComponent,
     CreateStudentComponent,
+    ManageDepartmentResultComponent
   ],
   imports: [
     CommonModule,
