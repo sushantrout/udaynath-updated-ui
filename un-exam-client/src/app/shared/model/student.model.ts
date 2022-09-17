@@ -24,4 +24,5 @@ export class StudenModel {
   examType!: string;
   paper!: PaperModel;
   elective!: ElectiveModel;
+  contactNumber!:string;
 }

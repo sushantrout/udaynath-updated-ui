@@ -16,7 +16,11 @@
             <bip-input-text placeholder="Department Name" class="p-mx-1" [(ngModel)]="department.name">
             </bip-input-text>
         </div>
-        <div class="col-4">
+        <div class="col-2">
+            <bip-input-text placeholder="Department Code" class="p-mx-1" [(ngModel)]="department.code">
+            </bip-input-text>
+        </div>
+        <div class="col-2">
             <button pButton pRipple type="button" label="Save" (click)="save()"
                 class="p-mx-05" *ngIf="!department.id"></button>
             <button pButton pRipple type="button" label="Update" (click)="save()"
@@ -33,6 +37,7 @@
                 <th class="text-center">Course Type</th>
                 <th class="text-center">Stream</th>
                 <th class="text-center">Name</th>
+                <th class="text-center">Code</th>
                 <th class="text-center">Action</th>
             </tr>
         </ng-template>
@@ -42,6 +47,7 @@
                 <td class="text-center">{{cdepartment.courseType}}</td>
                 <td class="text-center">{{cdepartment.streamText}}</td>
                 <td class="text-center">{{cdepartment.name}}</td>
+                <td class="text-center">{{cdepartment.code}}</td>
                 <td class="text-center">
                     <bip-icon iconClass="pi pi-pencil p-mx-05 edit-icon" (click)="edit(cdepartment)"></bip-icon>
                     <bip-icon iconClass="pi pi-trash delete-icon" (click)="delete(cdepartment)"></bip-icon>

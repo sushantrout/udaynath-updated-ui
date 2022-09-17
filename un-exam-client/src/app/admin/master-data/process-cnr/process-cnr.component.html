@@ -1,0 +1,19 @@
+<p-card>
+    <div class="grid">
+        <div class="col-2">
+            <bip-dropdown [option]="courseTypes"  [(ngModel)]="courseType">
+            </bip-dropdown>
+        </div>
+        <div class="col-2">
+            <bip-dropdown [option]="sessions"  [(ngModel)]="sessionId" optionLabel="name" optionValue="id">
+            </bip-dropdown>
+        </div>
+        <div class="col-5">
+            <input type="file" class="form-control" title="Upload" (change)="fileDataLoader($event)"
+                style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap" />
+        </div>
+        <div class="col-2">
+            <button pButton type="button" label="Save" (click)="upload()" class="p-mx-05"></button>
+        </div>
+    </div>
+</p-card>

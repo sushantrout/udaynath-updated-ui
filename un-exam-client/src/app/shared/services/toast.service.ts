@@ -16,13 +16,10 @@ export class ToastService {
       this.messageService.add({ severity: "success", summary, detail });
     } else if (summary) {
       let header = head;
-      let message = this.translateService.instant(
-        "message." + [summary] + ".body"
-      );
       this.messageService.add({
         severity: "success",
         summary: header,
-        detail: message,
+        detail: summary,
       });
     }
   }

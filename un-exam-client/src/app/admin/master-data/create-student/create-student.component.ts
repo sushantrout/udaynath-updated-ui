@@ -131,5 +131,8 @@ export class CreateStudentComponent implements OnInit {
     });
   }
 
-  
+  delete(i:number) {
+    this.studentDatas.splice(i, 1);
+    this.studentDatas = JSON.parse(JSON.stringify(this.studentDatas))
+  }
 }

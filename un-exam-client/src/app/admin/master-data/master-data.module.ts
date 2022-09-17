@@ -18,6 +18,7 @@ import { ManageDepartmentResultComponent } from './manage-department-result/mana
 import { FormFillupComponent } from './form-fillup/form-fillup.component';
 import { ManageStudentComponent } from './manage-student/manage-student.component';
 import { CreateStudentComponent } from './create-student/create-student.component';
+import { ProcessCnrComponent } from './process-cnr/process-cnr.component';
 
 const routes: Routes = [
   {
@@ -63,16 +64,23 @@ const routes: Routes = [
   {
     path: 'manage-result',
     component: ManageDepartmentResultComponent,
-  },{
-    path:'form-fillup',
-    component: FormFillupComponent
-  }, {
-    path:'manage-student',
-    component: ManageStudentComponent
-  }, {
+  },
+  {
+    path: 'form-fillup',
+    component: FormFillupComponent,
+  },
+  {
+    path: 'manage-student',
+    component: ManageStudentComponent,
+  },
+  {
     path: 'create-student',
-    component: CreateStudentComponent
-  }
+    component: CreateStudentComponent,
+  },
+  {
+    path: 'process-cnr',
+    component: ProcessCnrComponent,
+  },
 ];
 
 @NgModule({
@@ -91,7 +99,8 @@ const routes: Routes = [
     FormFillupComponent,
     ManageStudentComponent,
     CreateStudentComponent,
-    ManageDepartmentResultComponent
+    ManageDepartmentResultComponent,
+    ProcessCnrComponent,
   ],
   imports: [
     CommonModule,

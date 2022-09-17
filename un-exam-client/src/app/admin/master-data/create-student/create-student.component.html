@@ -22,16 +22,16 @@
             <input type="file" class="w-100 form-control" title="Upload" (change)="fileDataLoader($event)"
                 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap" />
         </div>
-        <div class="col-4" *ngIf="this.fileList && this.fileList.length">
-            <button pButton type="button" label="Upload" (click)="upload()" class="mr-10"></button>
+        <div class="col-4">
+            <button pButton type="button" label="Upload" (click)="upload()" class="mr-10" *ngIf="this.fileList && this.fileList.length"></button>
             <button pButton type="button" label="Save" (click)="save()"
                 *ngIf="studentDatas && studentDatas.length != 0"></button>
         </div>
     </div>
-    <div class="p-grid" *ngIf="studentDatas">
+    <div class="p-grid student-form-table" *ngIf="studentDatas">
         <p-table [value]="studentDatas" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
-        scrollHeight="60vh"
+        scrollHeight="60vh" [scrollable]='true'
         [rowsPerPageOptions]="[10,25,50]">
             <ng-template pTemplate="header">
                 <tr>
@@ -44,10 +44,12 @@
                     <th>F. Name</th>
                     <th>M. Name</th>
                     <th>Email</th>
+                    <th>Phone Number</th>
                     <th>Reg.</th>
+                    <th style="width: 20px !important">Action</th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-student>
+            <ng-template pTemplate="body" let-student let-i="rowIndex">
                 <tr>
                     <td>
                         <bip-input-text placeholder="Full Name" class="p-mx-1" [(ngModel)]="student.fullName">
@@ -86,8 +88,15 @@
                         </bip-input-text>
                     </td>
                     <td>
+                        <bip-input-text placeholder="Phone" class="p-mx-1" [(ngModel)]="student.contactNumber">
+                        </bip-input-text>
+                    </td>
+                    <td>
                         <bip-input-text placeholder="Reg." class="p-mx-1" [(ngModel)]="student.reg">
                         </bip-input-text>
+                    </td>
+                    <td style="width: 20px !important">
+                        <bip-icon iconClass="pi pi-trash delete-icon" (click)="delete(i)"></bip-icon>
                     </td>
                 </tr>
             </ng-template>

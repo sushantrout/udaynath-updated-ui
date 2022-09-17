@@ -90,7 +90,7 @@ export class DepartmentComponent implements OnInit {
 
   confirmDelete(dept:any) {
     this.departmentService.delete(dept.id).subscribe((res: ApiResponse) => {
-      this.toastService.sucess("DEPT","SUCESS DELETE");
+      this.toastService.sucess("Department","SUCESS DELETE");
       this.findAll();
     });
   }
