@@ -1,1 +1,128 @@
-<p>download-admit-card works!</p>
+<p-card>
+    <div class="grid">
+        <div class="col-3">
+            <bip-input-text placeholder="Please input exam rollnumber" class="p-mx-1" [(ngModel)]="rollNumber">
+            </bip-input-text>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="semistarList" [(ngModel)]="semistar">
+            </bip-dropdown>
+        </div>
+        <div class="col-2">
+            <button pButton type="button" label="Get Admit Card" (click)="getAdmitCard()"
+                *ngIf="rollNumber && semistar"></button>
+        </div>
+    </div>
+</p-card>
+<p-card>
+    <div id="admin-card-area" class="container" *ngIf="admitCardDetails" style="border: 2px solid black">
+        <div class="m-30">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row page-header">
+                        <div class="col-2">
+                            <img src="assets/images/logo.png" alt="UN LOGO" />
+                        </div>
+                        <div class="col-8 text-center">
+                            <p class="college-name">
+                                UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASHPUR
+                            </p>
+                            <p class="college-name"><u>ADMIT CARD</u></p>
+                        </div>
+                        <div class="col-2" style="border: 1px solid black">
+                            <p class="text-center" style="margin-top: 50%">Attach Photo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-20">
+            <div class="row admit-card-text">
+                <div class="col-12">
+                    ROLL NO. &nbsp;: &nbsp;&nbsp;&nbsp;{{
+                    admitCardDetails?.student?.examRoolNumber | uppercase
+                    }}
+                </div>
+                <div class="col-12">
+                    REGD NO. &nbsp;: &nbsp;&nbsp;&nbsp;{{
+                    admitCardDetails?.student?.registrationNumber
+                    }}
+                </div>
+            </div>
+        </div>
+        <div class="m-20 admin-card-area-table">
+            <div class="row admit-card-text">
+                <div class="col-12">
+                    <table class="table text-left table-bordered">
+                        <tbody>
+                            <tr>
+                                <th scope="row">STREAM:</th>
+                                <th scope="row">
+                                    {{ admitCardDetails?.student?.stream?.name}}
+                                </th>
+                                <th scope="row">SEMESTER:</th>
+                                <th scope="row" colspan="3">
+                                    {{ admitCardDetails?.form?.semister | uppercase }}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="row" colspan="2">CANDIDATE'S NAME:</th>
+                                <th scope="row" colspan="4">
+                                    {{ admitCardDetails?.student?.fullName | uppercase }}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="row">SUBJECT:</th>
+                                <th scope="row">{{admitCardDetails?.form?.fcorePaper?.code | uppercase}}({{admitCardDetails?.form?.fcorePaper?.name | uppercase}})</th>
+                                <th scope="row">{{admitCardDetails?.form?.scorePaper?.code | uppercase}}({{admitCardDetails?.form?.scorePaper?.name | uppercase}})</th>
+                                <th scope="row">{{admitCardDetails?.form?.ge?.code | uppercase}}({{admitCardDetails?.form?.ge?.name | uppercase}})</th>
+                                <th scope="row">{{admitCardDetails?.form?.compPaper?.code | uppercase}}({{admitCardDetails?.form?.compPaper?.name | uppercase}})</th>
+                                <th scope="row">{{admitCardDetails?.form?.ae?.code | uppercase}}({{admitCardDetails?.form?.ae?.name | uppercase}})</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="m-20">
+            <div class="row">
+                <div class="col-12 admit-card-text text-center">
+                    I UNDERTAKE TO ABIDE BY THE RULES PRINTED OVERLEAF.
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="admit-card-text">
+                        <br /><br />CANDIDATE'S SIGNATURE<br />
+                    </div>
+                </div>
+                <div class="col-6 admit-card-text">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="assets/images/psi.jpg" alt="UN LOGO" /><!-- exam-controller.jpg -->
+                        </div>
+                        <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
+                    </div>
+                </div>
+                <div class="col-6 admit-card-text">
+                    <div class="row text-right">
+                        <div class="col-12">
+                            <img src="assets/images/exam-controller.jpg" alt="UN LOGO" /><!-- exam-controller.jpg -->
+                        </div>
+                        <div class="col-12">CONTROLLER OF EXAMINATION</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="admitCardDetails && admitCardDetails.student && admitCardDetails.student.examRoolNumber">
+        <div class="col-12">
+            <div class="text-right">
+                <button styleSheetFile="assets/css/print/bootstrap.min.css,assets/css/print/style.css,assets/css/print/primeng.min.css"
+                    printSectionId="admin-card-area" ngxPrint class="btn btn-primary">
+                    Print
+                </button>
+            </div>
+        </div>
+    </div>
+</p-card>

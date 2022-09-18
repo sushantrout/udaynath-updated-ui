@@ -19,6 +19,8 @@ export class ProcessCnrComponent implements OnInit {
   sessionId: number = 0;
   courseType:string = "UG";
   courseTypes = CourseType.types
+  semisters = CourseType.semistars;
+  semister : any= null;
 
   constructor(
     private processExcelService: ProcessExcelService,
@@ -42,7 +44,7 @@ export class ProcessCnrComponent implements OnInit {
   upload() {
     this.headers = [];
     this.excelBodydatas = [];
-    this.processExcelService.processCNR(this.fileList, this.sessionId, this.courseType).subscribe((res: any) => {
+    this.processExcelService.processCNR(this.fileList, this.sessionId, this.courseType, this.semister).subscribe((res: any) => {
       console.log(res);
     });
   }

@@ -19,6 +19,7 @@ import { FormFillupComponent } from './form-fillup/form-fillup.component';
 import { ManageStudentComponent } from './manage-student/manage-student.component';
 import { CreateStudentComponent } from './create-student/create-student.component';
 import { ProcessCnrComponent } from './process-cnr/process-cnr.component';
+import { NgxPrintModule } from 'ngx-print';
 
 const routes: Routes = [
   {
@@ -107,6 +108,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     BipSharedModule,
     AppSharedModule,
+    NgxPrintModule
+
   ],
   exports: [RouterModule],
 })

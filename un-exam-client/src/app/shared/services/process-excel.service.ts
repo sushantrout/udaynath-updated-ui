@@ -14,7 +14,7 @@ export class ProcessExcelService {
     return this.apiService.upload(this.URL, arg0);
   }
 
-  processCNR(arg0: any, sessionId : number, courseType : string) {
-    return this.apiService.upload('process-cnr/by-session/'+sessionId+"/"+courseType, arg0);
+  processCNR(arg0: any, sessionId : number, courseType : string, semister : string) {
+    return this.apiService.upload('process-cnr/by-session/'+sessionId+"/"+courseType+"/"+semister, arg0);
   }
 }

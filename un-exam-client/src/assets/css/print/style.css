@@ -1,0 +1,148 @@
+.mt-4{
+    margin-top: 4px;
+}
+.mt-10{
+    margin-top: 10px;
+}
+.content-panel-body{
+    border: 2px solid red;
+    height: 80vh;
+}
+.text-right {
+    text-align: right;
+}
+.mr-3{
+    margin-right: 3px;
+}
+.column-header{
+    font-size: 25px;
+    font-weight: 500;
+}
+.p-5{
+    padding: 5px
+}
+.data-area{
+    font-size: 20px;
+    font-weight: 20300
+}
+
+.subject-table tr td, th{
+    border: 1px solid black;
+    width: 14% !important;
+}
+.college-name{
+    font-size: 24px;
+    font-weight: 600;
+}
+.font-icon-style{
+    --bs-bg-opacity: 1;
+    color: rgba(var(--bs-primary-rgb),var(--bs-bg-opacity))!important;
+}
+.p-button{
+    margin-right: 10px;
+}
+
+.exam-form label::after {
+    content: "  :  ";
+}
+
+.exam-form .row {
+    margin-top: 3px;
+}
+
+.page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    margin: 10mm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.subpage {
+    padding: 1cm;
+    border: 5px red solid;
+    height: 257mm;
+    outline: 2cm #FFEAEA solid;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+@media print {
+    html, body {
+        width: 210mm;
+        height: 297mm;        
+    }
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+
+.exam-form-gap label{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-weight: 400;
+    font-size: 14px;
+}
+.preview-style {
+    font-weight: 400;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    padding-left: inherit;
+}
+
+.mt-16{
+    margin-top: 16px !important;
+}
+.mt-25{
+    margin-top: 25px !important;
+}
+.text-justify{
+    text-align: justify;
+}
+#form-print-area .page .row {
+    margin-top: 10px;
+}
+.header-row {
+    font-size: 25px;
+    font-weight: 400;
+  }
+  .left-header {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 25px;
+    font-weight: 400;
+  }
+  .m-20{
+    margin: 20px;
+  }
+  .m-30{
+    margin: 30px;
+  }
+  .admit-card-text {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .admin-card-area-table .table-bordered th{
+    border: 3px solid gray;
+  }
+  .p-button{
+    margin: 20px;
+  }
+  .mt-20 {
+    margin-top: 20px;
+  }
+  .w-80 {
+    width: 80vw !important;
+  }
