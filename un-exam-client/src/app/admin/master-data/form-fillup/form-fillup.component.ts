@@ -50,7 +50,7 @@ export class FormFillupComponent implements OnInit {
     private paperService: PaperService,
     private messageService : ToastService,
     private studentService : StudentService
-    
+
   ) {}
 
   ngOnInit(): void {
@@ -99,16 +99,9 @@ export class FormFillupComponent implements OnInit {
       this.student.fathersName &&
       this.student.mothersName;
     if (status) {
-      /* this.preview = !this.preview; */
       return true;
     } else {
-      /* if(!this.student.sex) {
-        this.t.showError("Please provide your sex!" , "");
-      }
-      if(!this.student.caste) {
-        this.messageService.showError("Please provide your caste!" , "");
-      }
-      this.messageService.showError("Please fill all the required details!" , "Submission Error");*/
+
       return false;
     }
   }

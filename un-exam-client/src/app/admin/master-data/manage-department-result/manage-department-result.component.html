@@ -18,5 +18,16 @@
             <bip-dropdown [option]="departmentList" [(ngModel)]="studentModel.department" optionLabel="name">
             </bip-dropdown>
         </div>
+        <div class="col-3">
+            <bip-dropdown [option]="semistarList" [(ngModel)]="studentModel.semistar">
+            </bip-dropdown>
+        </div>
+        <div class="col-3">
+            <button pButton type="button" label="Get Result" (click)="manageResult()"></button>
+        </div>
     </div>
+</p-card>
+
+<p-card>
+    <app-manage-department-result-grid [results]="downloadDetails"></app-manage-department-result-grid>
 </p-card>

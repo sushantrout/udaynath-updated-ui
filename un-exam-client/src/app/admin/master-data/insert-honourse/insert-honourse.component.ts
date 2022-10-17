@@ -16,6 +16,8 @@ import {
   ResultModel,
 } from 'src/app/shared/model/result.input.model';
 import { ResultService } from 'src/app/shared/services/result.service';
+import { DownloadUTIL } from 'src/app/shared/download-util';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-insert-honourse',
@@ -37,7 +39,8 @@ export class InsertHonourseComponent implements OnInit {
     private streamService: StreamService,
     private paperService: PaperService,
     private processExcelService: ProcessExcelService,
-    private resultService: ResultService
+    private resultService: ResultService,
+    private toastService : ToastService
   ) {}
 
   ngOnInit(): void {
@@ -97,10 +100,11 @@ export class InsertHonourseComponent implements OnInit {
       this.headers = resBody[0];
       let resBodyForShow = resBody.slice(1, resBody.length);
       resBodyForShow.forEach((element: any[]) => {
-        let elem : any = {} ;
-        elem.roll = element[0];
-        elem.mark = element[1];
-        
+        let elem: any = {};
+        elem.slNo = element[0];
+        elem.roll = element[1];
+        elem.mark = element[2];
+
         this.excelBodydatas.push(elem);
       });
     });
@@ -113,29 +117,31 @@ export class InsertHonourseComponent implements OnInit {
     requestBody.sessionId = this.studentModel.session.id;
     requestBody.semistar = this.studentModel.semistar;
     requestBody.streamId = this.studentModel.stream.id;
-    requestBody.honoursId = this.studentModel.department.id;
+    requestBody.departmentId = this.studentModel.department.id;
     requestBody.paperId = this.studentModel.paper.id;
     requestBody.examType = this.studentModel.examType;
-    let results: ResultModel[] = [];
-    this.excelBodydatas.forEach((e) => {
-      if (e.length == 2) {
-        let result = new ResultModel();
-
-        result.roll = e[0].value;
-        result.mark = e[1].value;
-        results.push(result);
-      }
-    });
-    requestBody.results = results;
+    requestBody.results = this.excelBodydatas;
     this.resultService.save(requestBody).subscribe(
       (res: any) => {
-        if (res.id) {
-        } else {
-        }
+        this.toastService.sucess("Result", "Saved sucessfully");
       },
       (err: any) => {
         console.log('Plese save it again');
       }
     );
+  }
+
+  downLoadtemplate() {
+    let requestBody = new ResultInputModel();
+    requestBody.subjectType = this.studentModel.courseType;
+    requestBody.educationType = this.studentModel.courseType;
+    requestBody.sessionId = this.studentModel.session.id;
+    requestBody.semistar = this.studentModel.semistar;
+    requestBody.streamId = this.studentModel.stream.id;
+    requestBody.departmentId = this.studentModel.department.id;
+    this.resultService.getResultTemplate(requestBody).subscribe((res : any) => {
+      let du = new DownloadUTIL();
+      du.download(res);
+    });
   }
 }

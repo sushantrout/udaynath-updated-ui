@@ -1,1 +1,97 @@
-<p>download-my-result works!</p>
+<p-card>
+    <div class="grid">
+        <div class="col-3">
+            <bip-input-text placeholder="Please input exam rollnumber" class="p-mx-1" [(ngModel)]="rollNumber">
+            </bip-input-text>
+        </div>
+        <div class="col-3">
+            <bip-dropdown [option]="semistarList" [(ngModel)]="semistar">
+            </bip-dropdown>
+        </div>
+        <div class="col-2">
+            <button pButton type="button" label="Download" (click)="downloadMyResult()"
+                *ngIf="rollNumber && semistar"></button>
+        </div>
+    </div>
+</p-card>
+<p-card>
+    <div class="grid" id="studentResult">
+        <div class="col-12">
+            <div class="grid" id="studentresultId" *ngIf="results && results.length != 0">
+                <div class="col-12">
+                    <div class="grid page-header">
+                        <div class="col-2">
+                            <img src="assets/images/logo.png" alt="UN LOGO" />
+                        </div>
+                        <div class="col-10 text-center" style="font-size: 14px;">
+                            <p>
+                                <b>UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASHPUR</b>
+                            </p>
+                            <p><u>SEMESTER EXAMINATION REPORT</u></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="grid mt-20" *ngFor="let result of results">
+                        <div class="col-6 text-center">
+                            <b>NAME: </b>{{result.fullName}}
+                        </div>
+                        <div class="col-6 text-center">
+                            <b>ROLL NO: </b>{{result.examRoolNumber}}
+                        </div>
+                        <div class="col-12">
+                            <div class="grid">
+                                <div class="col-3">
+                                    <b>Cource</b>
+                                </div>
+                                <div class="col">
+                                    <b>FM</b>
+                                </div>
+                                <div class="col">
+                                    <b>INT</b>
+                                </div>
+                                <div class="col">
+                                    <b>SEM</b>
+                                </div>
+                                <!-- <div class="col">
+                                    <b>BK1</b>
+                                </div>
+                                <div class="col">
+                                    <b>BK2</b>
+                                </div> -->
+                                <div class="col">
+                                    <b>PRAC</b>
+                                </div>
+                                <div class="col">
+                                    <b>TOTAL</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="grid" *ngFor="let paperResult of result.uiResult">
+                                <div class="col-3">
+                                    {{paperResult.paperText}}
+                                </div>
+                                <div class="col" *ngFor="let pr of paperResult.examMarkList">
+                                    {{pr}}
+                                </div>
+                                <div class="col">
+                                    {{paperResult.examMarkList[1] + paperResult.examMarkList[2]}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="text-right">
+            <button
+                styleSheetFile="assets/css/print/bootstrap.min.css,assets/css/print/style.css,assets/css/print/primeng.min.css,assets/css/print/primeflex.css"
+                printSectionId="studentResult" ngxPrint class="btn btn-primary">
+                Print
+            </button>
+        </div>
+    </div>
+</p-card>

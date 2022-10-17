@@ -30,7 +30,7 @@
     </div>
     <div class="p-grid student-form-table" *ngIf="studentDatas">
         <p-table [value]="studentDatas" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         scrollHeight="60vh" [scrollable]='true'
         [rowsPerPageOptions]="[10,25,50]">
             <ng-template pTemplate="header">
@@ -44,7 +44,7 @@
                     <th>F. Name</th>
                     <th>M. Name</th>
                     <th>Email</th>
-                    <th>Phone Number</th>
+                    <!-- <th>Phone Number</th> -->
                     <th>Reg.</th>
                     <th style="width: 20px !important">Action</th>
                 </tr>
@@ -87,10 +87,10 @@
                         <bip-input-text placeholder="Email" class="p-mx-1" [(ngModel)]="student.emailId">
                         </bip-input-text>
                     </td>
-                    <td>
+                    <!-- <td>
                         <bip-input-text placeholder="Phone" class="p-mx-1" [(ngModel)]="student.contactNumber">
                         </bip-input-text>
-                    </td>
+                    </td> -->
                     <td>
                         <bip-input-text placeholder="Reg." class="p-mx-1" [(ngModel)]="student.reg">
                         </bip-input-text>

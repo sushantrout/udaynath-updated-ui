@@ -35,6 +35,10 @@
             <input type="file" class="form-control" title="Upload" (change)="fileDataLoader($event)"
                 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap" />
         </div>
+        <div class="col-3">
+            <button pButton type="button" label="Download Template" (click)="downLoadtemplate()" class="p-mx-05"></button>
+
+        </div>
         <div class="col-2">
             <button pButton type="button" label="Upload" (click)="upload()" class="p-mx-05"></button>
             <button pButton type="button" label="Save" (click)="save()"
@@ -47,12 +51,14 @@
             scrollHeight="60vh" [rowsPerPageOptions]="[10,25,50]">
             <ng-template pTemplate="header">
                 <tr>
+                    <th>SL NO.</th>
                     <th>Exam Rool NO.</th>
                     <th>Mark</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-studentResult>
                 <tr>
+                    <td>{{studentResult.slNo}}</td>
                     <td>
                         <bip-input-text [(ngModel)]="studentResult.roll" disabled>
                         </bip-input-text>

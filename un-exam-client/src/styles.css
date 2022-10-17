@@ -86,7 +86,7 @@ userdetails-form{
 .p-datatable .p-datatable{
    border: #711717
 }
-   
+
 
 .mt-4{
    margin-top: 4px;
@@ -200,4 +200,16 @@ userdetails-form{
 }
 .w-80 {
  width: 80vw !important;
+}
+
+.mt-20 {
+   margin-top: 20px;
+}
+
+.p-inputtext {
+  width: 100% !important;
+}
+
+.changes-text {
+  border: 1px solid red;
 }

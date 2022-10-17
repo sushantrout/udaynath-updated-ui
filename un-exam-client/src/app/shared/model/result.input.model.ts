@@ -5,7 +5,7 @@ export class ResultInputModel {
   paperId!: number;
   semistar!: string;
   electiveId!: number;
-  honoursId!: number;
+  departmentId!: number;
   streamId!: number;
   results: ResultModel[] = [];
   rollNumber!:string;

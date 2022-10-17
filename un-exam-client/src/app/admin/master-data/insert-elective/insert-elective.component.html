@@ -45,12 +45,14 @@
             scrollHeight="60vh" [rowsPerPageOptions]="[10,25,50]">
             <ng-template pTemplate="header">
                 <tr>
+                    <th>SL NO.</th>
                     <th>Exam Rool NO.</th>
                     <th>Mark</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-studentResult>
                 <tr>
+                    <td>{{studentResult.slNo}}</td>
                     <td>
                         <bip-input-text [(ngModel)]="studentResult.roll" disabled>
                         </bip-input-text>

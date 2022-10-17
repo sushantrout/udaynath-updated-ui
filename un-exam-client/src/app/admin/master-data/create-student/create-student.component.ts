@@ -84,7 +84,7 @@ export class CreateStudentComponent implements OnInit {
           skipFirstRow = false;
           continue;
         }
-        if (row.length == 10) {
+        if (row.length == 11) {
           let student = new StudenModel();
           student.fullName = row[0];
           student.examRoolNumber = row[1];
@@ -96,6 +96,7 @@ export class CreateStudentComponent implements OnInit {
           student.mothersName = row[7];
           student.emailId = row[8];
           student.reg = row[9];
+          /* student.contactNumber = row[10] */
           this.studentDatas.push(student);
         }
       }

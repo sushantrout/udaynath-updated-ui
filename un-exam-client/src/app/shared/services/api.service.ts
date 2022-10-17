@@ -1,28 +1,27 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { environment } from "src/environments/environment";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class ApiService {
-
   common_url: string = environment.api_url;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  get(url: string) : any{
+  get(url: string): any {
     return this.http.get(`${this.common_url}${url}`);
   }
-  post(url: string, body: any) : any{
+  post(url: string, body: any): any {
     return this.http.post(`${this.common_url}${url}`, body);
   }
 
-  put(url: string, body: any) : any{
+  put(url: string, body: any): any {
     return this.http.put(`${this.common_url}${url}`, body);
   }
 
-  delete(deleteIdURL: string) : any{
+  delete(deleteIdURL: string): any {
     return this.http.delete(`${this.common_url}${deleteIdURL}`);
   }
 
@@ -35,7 +34,20 @@ export class ApiService {
     let formData: FormData = new FormData();
     formData.append('file', file, file.name);
     let headers = new HttpHeaders();
-    return this.http.post(`${environment.api_url}${path}`, formData,
-      { headers: headers, observe: 'response' });
+    return this.http.post(`${environment.api_url}${path}`, formData, {
+      headers: headers,
+      observe: 'response',
+    });
+  }
+
+  downloadFile(url: string, data: any) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(`${environment.api_url}${url}`, data, {
+      headers,
+      observe: 'response',
+      responseType: 'blob',
+    });
   }
 }

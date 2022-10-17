@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { BipSharedModule } from '../shared/components/bip-shared/bip-shared.module';
 import { AppSharedModule } from '../shared/shared.module';
-import { DownloadAdmitCardComponent } from './download-admit-card/download-admit-card.component';
 
 const route: Routes = [
   {
@@ -21,7 +20,7 @@ const route: Routes = [
 ];
 
 @NgModule({
-  declarations: [AdminComponent, FooterComponent, DownloadAdmitCardComponent],
+  declarations: [AdminComponent, FooterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(route),

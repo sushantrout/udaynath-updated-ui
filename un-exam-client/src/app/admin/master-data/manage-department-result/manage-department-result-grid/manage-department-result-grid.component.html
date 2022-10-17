@@ -1,0 +1,55 @@
+<div class="col-12 text-center">
+  <div class="grid mt-20 border-2" *ngFor="let result of results; let upperIndex = index">
+    <div class="col-3">
+
+    </div>
+    <div class="col-9">
+      <div class="grid">
+        <div class="col-2">
+          <b>Cource</b>
+        </div>
+        <div class="col">
+          <b>FM</b>
+        </div>
+        <div class="col">
+          <b>INT</b>
+        </div>
+        <div class="col">
+          <b>SEM</b>
+        </div>
+        <div class="col">
+          <b>BK1</b>
+        </div>
+        <div class="col">
+          <b>BK2</b>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="grid">
+        <div class="col">
+          <b>NAME: </b>{{result.fullName}}
+        </div>
+      </div>
+      <div class="grid">
+        <div class="col">
+          <b>ROLL NO: </b>{{result.examRoolNumber}}
+        </div>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="grid" *ngFor="let paperResult of result.uiResult; let paperIndex = index">
+        <div class="col-2">
+          {{paperResult.paperText}}
+        </div>
+        <ng-template ngFor [ngForOf]="paperResult.examMarkList" let-pr let-index="index">
+          <div class="col-2" *ngIf="index != 5">
+            <p-inputNumber [(ngModel)]="paperResult.examMarkList[index]" styleClass="w-100"
+              [class.changes-text]="(inresult[upperIndex].uiResult)[paperIndex][index] == paperResult.examMarkList[index]">
+            </p-inputNumber>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

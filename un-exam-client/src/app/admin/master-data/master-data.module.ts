@@ -20,6 +20,8 @@ import { ManageStudentComponent } from './manage-student/manage-student.componen
 import { CreateStudentComponent } from './create-student/create-student.component';
 import { ProcessCnrComponent } from './process-cnr/process-cnr.component';
 import { NgxPrintModule } from 'ngx-print';
+import { DownloadDataByDepartmentComponent } from './download-by-department/download-data-by-department/download-data-by-department.component';
+import { ManageDepartmentResultGridComponent } from './manage-department-result/manage-department-result-grid/manage-department-result-grid.component';
 
 const routes: Routes = [
   {
@@ -69,6 +71,9 @@ const routes: Routes = [
   {
     path: 'form-fillup',
     component: FormFillupComponent,
+  },{
+    path: 'existing-form-fillup',
+    component: FormFillupComponent,
   },
   {
     path: 'manage-student',
@@ -102,6 +107,8 @@ const routes: Routes = [
     CreateStudentComponent,
     ManageDepartmentResultComponent,
     ProcessCnrComponent,
+    DownloadDataByDepartmentComponent,
+    ManageDepartmentResultGridComponent,
   ],
   imports: [
     CommonModule,

@@ -8,6 +8,8 @@ import { SessionModel } from 'src/app/shared/model/session-model';
 import { StreamModel } from 'src/app/shared/model/stream.model';
 import { Department } from 'src/app/shared/model/department.model';
 import { CourseType } from 'src/app/shared/constants/course.constant';
+import { ResultInputModel } from 'src/app/shared/model/result.input.model';
+import { ResultService } from 'src/app/shared/services/result.service';
 
 @Component({
   selector: 'app-manage-department-result',
@@ -26,7 +28,8 @@ export class ManageDepartmentResultComponent implements OnInit {
   constructor(
     private departmentService: DepartmentService,
     private sessionService: SessionService,
-    private streamService: StreamService
+    private streamService: StreamService,
+    private resultService : ResultService
   ) {}
 
   ngOnInit(): void {
@@ -54,4 +57,20 @@ export class ManageDepartmentResultComponent implements OnInit {
       });
   }
 
+  downloadDetails = [];
+  manageResult() {
+    let requestBody = new ResultInputModel();
+    requestBody.subjectType = this.studentModel.courseType;
+    requestBody.educationType = this.studentModel.courseType;
+    requestBody.sessionId = this.studentModel.session?.id;
+    requestBody.semistar = this.studentModel.semistar;
+    requestBody.streamId = this.studentModel.stream?.id;
+    requestBody.departmentId = this.studentModel.department?.id;
+
+    this.resultService
+      .getResultByDepartment(requestBody)
+      .subscribe((res: any) => {
+        this.downloadDetails = res;
+      });
+  }
 }

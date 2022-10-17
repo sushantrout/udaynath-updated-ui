@@ -12,6 +12,7 @@ import { ElectiveService } from 'src/app/shared/services/elective.service';
 import { ProcessExcelService } from 'src/app/shared/services/process-excel.service';
 import { ResultService } from 'src/app/shared/services/result.service';
 import { ResultInputModel, ResultModel } from 'src/app/shared/model/result.input.model';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-insert-elective',
@@ -35,7 +36,8 @@ export class InsertElectiveComponent implements OnInit {
     private streamService: StreamService,
     private electiveService : ElectiveService,
     private processExcelService: ProcessExcelService,
-    private resultService: ResultService
+    private resultService: ResultService,
+    private toastService : ToastService
   ) {}
 
   ngOnInit(): void {this.findAllSessions();}
@@ -90,14 +92,11 @@ export class InsertElectiveComponent implements OnInit {
       this.headers = resBody[0];
       let resBodyForShow = resBody.slice(1, resBody.length);
       resBodyForShow.forEach((element: any[]) => {
-        let innerList: any[] = [];
-        element.forEach((innerElement: string) => {
-          let elem : any = {} ;
-          elem.roll = element[0];
-          elem.mark = element[1];
-          
-          this.excelBodydatas.push(elem);
-        })
+        let elem: any = {};
+        elem.slNo = element[0];
+        elem.roll = element[1];
+        elem.mark = element[2];
+        this.excelBodydatas.push(elem);
       });
     });
   }
@@ -109,17 +108,13 @@ export class InsertElectiveComponent implements OnInit {
     requestBody.sessionId = this.studentModel.session.id;
     requestBody.semistar = this.studentModel.semistar;
     requestBody.streamId = this.studentModel.stream.id;
-    requestBody.honoursId = this.studentModel.department.id;
-    requestBody.paperId = this.studentModel.paper.id;
+    requestBody.paperId = this.studentModel.paper?.id;
     requestBody.examType = this.studentModel.examType;
-    let results: ResultModel[] = [];
-    
     requestBody.results = this.excelBodydatas;
+    requestBody.electiveId = this.studentModel.elective?.id;
     this.resultService.save(requestBody).subscribe(
       (res: any) => {
-        if (res.id) {
-        } else {
-        }
+        this.toastService.sucess("Result", "Saved sucessfully");
       },
       (err: any) => {
         console.log('Plese save it again');

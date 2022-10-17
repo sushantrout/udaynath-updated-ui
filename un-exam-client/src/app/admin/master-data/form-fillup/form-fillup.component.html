@@ -1,41 +1,4 @@
-<p-dialog header="Exam Form" [(visible)]="display" [closable]="false">
-  <ng-template pTemplate="footer">
-    <button class="btn btn-primary mr-10" (click)="newRegister()">
-      New Application Form
-    </button>
-    <button class="btn btn-primary" (click)="getExisting()">
-      Existing Application
-    </button>
-  </ng-template>
-</p-dialog>
-
-<p-dialog header="Exam Form" [(visible)]="isOldRegistration" [closable]="false" styleClass="w-80">
-  <div class="row">
-    <div class="col-sm-12 col-md-3 col-xs-12">
-      <label class="form-label">Examination Roll Number</label>
-      <input type="text" class="form-control" [(ngModel)]="student.examRoolNumber" [required]="true" />
-    </div>
-    <div class="col-sm-12 col-md-3 col-xs-12">
-      <label class="form-label">Date of birth (as in HSC)</label>
-      <input type="date" class="form-control" [(ngModel)]="student.dob" required />
-    </div>
-    <div class="col-sm-12 col-md-4 col-xs-12">
-      <label class="form-label">Email</label>
-      <input type="text" class="form-control" [required]="true" [(ngModel)]="student.emailId" />
-    </div>
-  </div>
-  <ng-template pTemplate="footer">
-    <button class="btn btn-primary mr-10" (click)="getApplicationForm()"
-      [disabled]="!(student.dob && student.emailId && student.examRollNumber)">
-      Get Application Form
-    </button>
-    <button class="btn btn-primary" (click)="cancelApplicationForm()">
-      Cancel
-    </button>
-  </ng-template>
-</p-dialog>
-
-<div class="container" style="border: 1px solid black" [ngClass]="isSubmit ? 'form-submitted' : ''" *ngIf="showForm">
+<div class="container" style="border: 1px solid black" [ngClass]="isSubmit ? 'form-submitted' : ''">
   <div class="row" *ngIf="!preview">
     <div class="col-12">
       <p class="college-address-text">Application form for</p>
@@ -94,7 +57,8 @@
         </div>
         <div class="col-sm-12 col-md-3 col-xs-12">
           <label class="form-label">Date of birth (as in HSC)</label>
-          <input type="date" class="form-control" [(ngModel)]="student.dob" required />
+          <!-- <input type="date" class="form-control" [(ngModel)]="student.dob" required /> -->
+          <p-calendar [(ngModel)]="student.dob" required></p-calendar>
         </div>
       </div>
       <div class="row">
@@ -178,7 +142,7 @@
       </div>
     </div>
   </div>
-  <div class="book form-print-area" id="form-print-area" *ngIf="preview && isRegistered">
+  <div class="book form-print-area" id="form-print-area" *ngIf="preview">
     <div [ngClass]="preview ? 'page' : ''">
       <ng-template [ngIf]="preview">
         <div class="row">
@@ -418,7 +382,7 @@
 
   <div class="row">
     <div class="col-12 text-center">
-      <button *ngIf="preview"
+      <button
         styleSheetFile="assets/css/bootstrap.min.css,assets/css/style.css,assets/css/primeng.min.css"
         printSectionId="form-print-area" ngxPrint class="btn btn-primary">
         Print
