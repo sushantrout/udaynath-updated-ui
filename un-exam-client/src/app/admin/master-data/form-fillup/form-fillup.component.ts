@@ -12,14 +12,14 @@ import { ToastService } from 'src/app/shared/services/toast.service';
 @Component({
   selector: 'app-form-fillup',
   templateUrl: './form-fillup.component.html',
-  styleUrls: ['./form-fillup.component.css']
+  styleUrls: ['./form-fillup.component.css'],
 })
 export class FormFillupComponent implements OnInit {
   selectedGender!: string;
 
   streams = [];
   years = [];
-  semistar = CourseType.semistars;
+  semistars = CourseType.semistars;
   examTypes = CourseType.examTypesIntORSEm;
   courseTypes = CourseType.types;
   genders = CourseType.genders;
@@ -33,7 +33,7 @@ export class FormFillupComponent implements OnInit {
   dse: any[] = [];
 
   student: any = {};
-  isSubmit : boolean = false;
+  isSubmit: boolean = false;
   isRegistered: boolean = false;
   display = true;
   isOldRegistration = false;
@@ -48,9 +48,8 @@ export class FormFillupComponent implements OnInit {
     private formService: FormFillupService,
     private honourseService: DepartmentService,
     private paperService: PaperService,
-    private messageService : ToastService,
-    private studentService : StudentService
-
+    private messageService: ToastService,
+    private studentService: StudentService
   ) {}
 
   ngOnInit(): void {
@@ -101,7 +100,6 @@ export class FormFillupComponent implements OnInit {
     if (status) {
       return true;
     } else {
-
       return false;
     }
   }
@@ -109,7 +107,7 @@ export class FormFillupComponent implements OnInit {
     window.print();
   }
   register() {
-    if(!this.togglePreviewButton()) {
+    if (!this.togglePreviewButton()) {
       return;
     }
     this.isRegistered = true;
@@ -130,7 +128,10 @@ export class FormFillupComponent implements OnInit {
     }
 
     this.formService.save(this.student).subscribe((res: any) => {
-      this.messageService.sucess("Your form is submitted successfully!", "Success");
+      this.messageService.sucess(
+        'Your form is submitted successfully!',
+        'Success'
+      );
       this.showForm = true;
       this.preview = true;
     });
@@ -140,15 +141,16 @@ export class FormFillupComponent implements OnInit {
     if (this.student.stream) {
       this.honourseService
         .findByStreamId(this.student.stream.id)
-        .subscribe((res:any) => {
+        .subscribe((res: any) => {
           this.departments = res;
+          this.getPaperByDepartment();
         });
     }
   }
 
   getPaperByDepartment() {
     this.corepapers = [];
-    if (this.student.department) {
+    if (this.student.department && this.student.semistar) {
       this.paperService
         .findByHonoursAndSemistar(
           this.student.department.id,
@@ -156,19 +158,16 @@ export class FormFillupComponent implements OnInit {
         )
         .subscribe((responses: any) => {
           this.corepapers = responses
-            .filter((res: any) => res.paperType == ('CORE'))
-            .map((test: any) => test.label);
+            .filter((res: any) => res.paperType == 'CORE')
+            .map((test: any) => test.name);
           this.sec = responses
-            .filter((res: any) => res.paperType == ('SEC'))
-            .map((test: any) => test.label);
-          this.compulsorys = responses
-            .filter((res: any) => res.paperType == ('COMPULSORY'));
-          this.ges = responses.filter((res: any) =>
-            res.paperType == ('GE')
+            .filter((res: any) => res.paperType == 'SEC')
+            .map((test: any) => test.name);
+          this.compulsorys = responses.filter(
+            (res: any) => res.paperType == 'COMPULSORY'
           );
-          this.dse = responses.filter((res: any) =>
-            res.paperType ==  ('DSE')
-          );
+          this.ges = responses.filter((res: any) => res.paperType == 'GE');
+          this.dse = responses.filter((res: any) => res.paperType == 'DSE');
         });
     }
   }
@@ -183,29 +182,35 @@ export class FormFillupComponent implements OnInit {
     /* this.showForm = true; */
   }
 
-  cancelApplicationForm () {
+  cancelApplicationForm() {
     this.display = true;
     this.isOldRegistration = false;
   }
 
   getApplicationForm() {
-    this.formService.findByStudentDetails(this.student).subscribe((res:any) => {
-      if(res && res.id) {
-        this.student = res;
-        this.display = false;
-        this.isOldRegistration = false;
-        this.showForm = true;
-        this.getDepartments();
-      }
-    });
+    this.formService
+      .findByStudentDetails(this.student)
+      .subscribe((res: any) => {
+        if (res && res.id) {
+          this.student = res;
+          this.display = false;
+          this.isOldRegistration = false;
+          this.showForm = true;
+          this.getDepartments();
+        }
+      });
   }
 
   getStudentDetails() {
-    this.studentService.findStudentByRollnumber(this.student.examRoolNumber).subscribe((res : any) => {
-      if(res) {
-        this.student = res;
-        this.getDepartments();
-      }
-    });
+    this.studentService
+      .findStudentByRollnumber(this.student.examRoolNumber)
+      .subscribe((res: any) => {
+        if (res) {
+          let sem = this.student.semistar;
+          this.student = res;
+          this.student.semistar = sem;
+          this.getDepartments();
+        }
+      });
   }
 }

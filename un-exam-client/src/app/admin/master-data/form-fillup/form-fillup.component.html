@@ -10,7 +10,9 @@
     </div>
     <div class="col-sm-12 col-md-3 col-xs-12">
       <label for="semistarType" class="form-label">Semester</label>
-      <bip-dropdown styleClass="w-100" id="semistarType" [option]="semistar" [(ngModel)]="student.semistar"
+      <bip-dropdown styleClass="w-100" id="semistarType" [option]="semistars"
+      [(ngModel)]="student.semistar"
+      (ngModelChange)="getPaperByDepartment()"
         [required]="true"></bip-dropdown>
     </div>
     <div class="col-sm-12 col-md-3 col-xs-12">
@@ -112,7 +114,7 @@
               <tr>
                 <th>Compulsory</th>
                 <!-- <td>{{ compulsorys }}</td> -->
-                <bip-dropdown [option]="compulsorys" [(ngModel)]="student.comp" styleClass="w-100" optionLabel="label">
+                <bip-dropdown [option]="compulsorys" [(ngModel)]="student.comp" styleClass="w-100" optionLabel="name">
                 </bip-dropdown>
               </tr>
               <tr *ngIf="sec && sec.length != 0">
@@ -124,7 +126,7 @@
               <tr>
                 <th>GE</th>
                 <td>
-                  <bip-dropdown [option]="ges" [(ngModel)]="student.ges" styleClass="w-100" optionLabel="label">
+                  <bip-dropdown [option]="ges" [(ngModel)]="student.ges" styleClass="w-100" optionLabel="name">
                   </bip-dropdown>
                 </td>
               </tr>
@@ -132,7 +134,7 @@
               <tr *ngIf="dse && dse.length != 0">
                 <th>DSE</th>
                 <td>
-                  <bip-dropdown [option]="dse" [(ngModel)]="student.dse" styleClass="w-100" optionLabel="label">
+                  <bip-dropdown [option]="dse" [(ngModel)]="student.dse" styleClass="w-100" optionLabel="name">
                   </bip-dropdown>
                 </td>
               </tr>
@@ -178,7 +180,7 @@
           </div>
         </div>
         <div class="col-2">
-          <bip-dropdown [option]="semistar" [(ngModel)]="student.semistar"></bip-dropdown>
+          <bip-dropdown [option]="semistars" [(ngModel)]="student.semistar"></bip-dropdown>
         </div>
         <div class="col-2">semester</div>
         <div class="col-3">
@@ -209,18 +211,18 @@
               <label>Stream</label>
             </div>
             <div class="col-3">
-              <bip-dropdown *ngIf="!preview" [option]="streams" optionLabel="label" styleClass="w-100 "
+              <bip-dropdown *ngIf="!preview" [option]="streams" optionLabel="name" styleClass="w-100 "
                 [(ngModel)]="student.stream" (ngModelChange)="getDepartments()"></bip-dropdown>
-              <input type="text" class="form-control" [required]="true" [(ngModel)]="student.stream.label"
+              <input type="text" class="form-control" [required]="true" [(ngModel)]="student.stream.name"
                 readonly="true" *ngIf="preview" />
             </div>
             <div class="col-2 mt-md-0">
               <label>Department</label>
             </div>
             <div class="col-3">
-              <bip-dropdown *ngIf="!preview" [option]="departments" optionLabel="label" styleClass="w-100 "
+              <bip-dropdown *ngIf="!preview" [option]="departments" optionLabel="name" styleClass="w-100 "
                 [(ngModel)]="student.department" (ngModelChange)="getPaperByDepartment()"></bip-dropdown>
-              <input type="text" class="form-control" [required]="true" [(ngModel)]="student.department.label"
+              <input type="text" class="form-control" [required]="true" [(ngModel)]="student.department.name"
                 readonly="true" *ngIf="preview" />
             </div>
           </div>
@@ -309,17 +311,17 @@
                     <th>GE</th>
                     <td>
                       <bip-dropdown [option]="ges" [(ngModel)]="student.ges" styleClass="w-100" *ngIf="!preview"
-                        optionLabel="label"></bip-dropdown>
-                      <span *ngIf="preview">{{ student.ges?.label }}</span>
+                        optionLabel="name"></bip-dropdown>
+                      <span *ngIf="preview">{{ student.ges?.name }}</span>
                     </td>
                   </tr>
 
                   <tr *ngIf="dse && dse.length != 0">
                     <th>DSE</th>
                     <td>
-                      <bip-dropdown [option]="dse" [(ngModel)]="student.dse" styleClass="w-100" optionLabel="label"
+                      <bip-dropdown [option]="dse" [(ngModel)]="student.dse" styleClass="w-100" optionLabel="name"
                         *ngIf="!preview"></bip-dropdown>
-                      <span *ngIf="preview">{{ student.dse?.label }}</span>
+                      <span *ngIf="preview">{{ student.dse?.name }}</span>
                     </td>
                   </tr>
                 </tbody>
