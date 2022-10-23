@@ -6,6 +6,7 @@ import { SessionModel } from 'src/app/shared/model/session-model';
 import { StreamModel } from 'src/app/shared/model/stream.model';
 import { StudenModel } from 'src/app/shared/model/student.model';
 import { DepartmentService } from 'src/app/shared/services/department.service';
+import { FormFillupService } from 'src/app/shared/services/form-fillup.service';
 import { ProcessExcelService } from 'src/app/shared/services/process-excel.service';
 import { SessionService } from 'src/app/shared/services/session.service';
 import { StreamService } from 'src/app/shared/services/stream.service';
@@ -32,7 +33,8 @@ export class CreateStudentComponent implements OnInit {
     private sessionService: SessionService,
     private streamService: StreamService,
     private excelService: ProcessExcelService,
-    private studentService : StudentService
+    private studentService : StudentService,
+    private formService : FormFillupService
   ) {}
 
   ngOnInit(): void {
@@ -76,8 +78,8 @@ export class CreateStudentComponent implements OnInit {
 
   upload() {
     this.studentDatas = [];
-    this.excelService.process(this.fileList).subscribe((res: any) => {
-      let response = res.body;
+    this.formService.processStudentExcel(this.fileList).subscribe((res: any) => {
+      /* let response = res.body;
       let skipFirstRow = true;
       for (let row of response) {
         if (skipFirstRow) {
@@ -96,11 +98,10 @@ export class CreateStudentComponent implements OnInit {
           student.mothersName = row[7];
           student.emailId = row[8];
           student.reg = row[9];
-          /* student.contactNumber = row[10] */
           this.studentDatas.push(student);
         }
       }
-      this.studentDatas = JSON.parse(JSON.stringify(this.studentDatas));
+      this.studentDatas = JSON.parse(JSON.stringify(this.studentDatas)); */
     });
   }
   reset() {

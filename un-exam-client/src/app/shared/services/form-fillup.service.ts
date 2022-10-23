@@ -32,4 +32,8 @@ export class FormFillupService {
   findByStudentDetailsForAdmitCard(student: any) {
     return this.apiService.post(this.URL + '/get-admit-card', student);
   }
+
+  processStudentExcel(fileList: any) {
+    return this.apiService.postFile(this.URL+"/process-excel", fileList);
+  }
 }

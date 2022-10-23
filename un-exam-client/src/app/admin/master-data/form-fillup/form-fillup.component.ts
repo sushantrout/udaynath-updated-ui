@@ -204,6 +204,7 @@ export class FormFillupComponent implements OnInit {
     this.studentService.findStudentByRollnumber(this.student.examRoolNumber).subscribe((res : any) => {
       if(res) {
         this.student = res;
+        this.getDepartments();
       }
     });
   }
