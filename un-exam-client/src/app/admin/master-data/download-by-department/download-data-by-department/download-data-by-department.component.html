@@ -1,99 +1,112 @@
 <p-card>
-    <div class="grid" id="studentresultId" *ngIf="results && results.length != 0">
-        <div class="col-12">
-            <div class="grid page-header">
-                <div class="col-2">
-                    <img src="assets/images/logo.png" alt="UN LOGO" />
-                </div>
-                <div class="col-10 text-center" style="font-size: 14px;">
-                    <p>
-                        <b>UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASPUR</b>
-                    </p>
-                    <p><u>SEMESTER EXAMINATION REPORT</u></p>
-                </div>
-            </div>
+  <div class="grid" id="studentresultId" *ngIf="results && results.length != 0">
+    <div class="col-12">
+      <div class="grid page-header">
+        <div class="col-2">
+          <img src="assets/images/logo.png" alt="UN LOGO" />
         </div>
-        <div class="col-12">
-            <div class="grid mt-20" *ngFor="let result of results">
-                <div class="col-3">
-
-                </div>
-                <div class="col-9">
-                    <div class="grid">
-                        <div class="col-3">
-                            <b>Cource</b>
-                        </div>
-                        <div class="col">
-                            <b>FM</b>
-                        </div>
-                        <div class="col">
-                            <b>INT</b>
-                        </div>
-                        <div class="col">
-                            <b>SEM</b>
-                        </div>
-                        <div class="col">
-                            <b>BK1</b>
-                        </div>
-                        <div class="col">
-                            <b>BK2</b>
-                        </div>
-                        <div class="col">
-                            <b>PRAC</b>
-                        </div>
-                        <div class="col">
-                            <b>TOTAL</b>
-                        </div>
-                        <div class="col">
-                         <b> GRADE</b>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="grid">
-                        <div class="col">
-                            <b>NAME: </b>{{result.fullName}}
-                        </div>
-                    </div>
-                    <div class="grid">
-                        <div class="col">
-                            <b>ROLL NO: </b>{{result.examRoolNumber}}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-9">
-                    <div>
-                        <div class="grid" *ngFor="let paperResult of result.uiResult">
-                            <div class="col-3">
-                                {{paperResult.paperText}}
-                            </div>
-                            <div class="col" *ngFor="let pr of paperResult.examMarkList">
-                              <span *ngIf="pr && checkForNumber(pr)">
-                                {{pr | number : '1.0-0'}}
-                              </span>
-                              <span *ngIf="!(pr && checkForNumber(pr))">
-                                {{pr}}
-                              </span>
-                            </div>
-                            <div class="col">
-                                {{getFullResult(paperResult.examMarkList) | number : '1.0-0'}}
-                            </div>
-                            <div class="col">
-                              {{gradeService.getGradePoint(paperResult.examMarkList)}}
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-10 text-center" style="font-size: 14px;">
+          <p>
+            <b>UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASPUR</b>
+          </p>
+          <p><u>SEMESTER EXAMINATION REPORT</u></p>
         </div>
+      </div>
     </div>
     <div class="col-12">
-        <div class="text-right">
-            <button
-                styleSheetFile="assets/css/print/bootstrap.min.css,assets/css/print/style.css,assets/css/print/primeng.min.css,assets/css/print/primeflex.css"
-                printSectionId="studentresultId" ngxPrint class="btn btn-primary">
-                Print
-            </button>
+      <div class="grid mt-20" *ngFor="let result of results">
+        <div class="col-3">
+
         </div>
+        <div class="col-9">
+          <div class="grid">
+            <div class="col-3">
+              <b>Course</b>
+            </div>
+            <div class="col">
+              <b>FM</b>
+            </div>
+            <div class="col">
+              <b>INT</b>
+            </div>
+            <div class="col">
+              <b>SEM</b>
+            </div>
+            <div class="col">
+              <b>BK1</b>
+            </div>
+            <div class="col">
+              <b>BK2</b>
+            </div>
+            <div class="col">
+              <b>PRAC</b>
+            </div>
+            <div class="col">
+              <b>TOTAL</b>
+            </div>
+            <div class="col">
+              <b> GRADE</b>
+            </div>
+            <div class="col">
+              <b>CP</b>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="grid">
+            <div class="col">
+              <b>NAME: </b>{{result.fullName}}
+            </div>
+          </div>
+          <div class="grid">
+            <div class="col">
+              <b>ROLL NO: </b>{{result.examRoolNumber}}
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <div>
+            <div class="grid" *ngFor="let paperResult of result.uiResult">
+              <div class="col-3">
+                {{paperResult.paperText}}
+              </div>
+              <div class="col" *ngFor="let pr of paperResult.examMarkList">
+                <span *ngIf="pr && checkForNumber(pr)">
+                  {{pr | number : '1.0-0'}}
+                </span>
+                <span *ngIf="!(pr && checkForNumber(pr))">
+                  {{pr}}
+                </span>
+              </div>
+              <div class="col">
+                {{getFullResult(paperResult.examMarkList) | number : '1.0-0'}}
+              </div>
+              <div class="col">
+                {{gradeService.getGradePoint(paperResult.examMarkList)}}
+              </div>
+              <div class="col">
+                {{gradeService.creditPoint(paperResult, paperResult.examMarkList)}}
+              </div>
+            </div>
+            <div class="grid">
+              <div class="col text-right">
+                <b>TOTAL : {{gradeService.getTotal(result.uiResult) | number : '1.0-2'}}</b>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <b>SGPA : {{gradeService.sgpaDetail(result.uiResult) | number : '1.0-2'}}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="col-12">
+    <div class="text-right">
+      <button
+        styleSheetFile="assets/css/print/bootstrap.min.css,assets/css/print/style.css,assets/css/print/primeng.min.css,assets/css/print/primeflex.css"
+        printSectionId="studentresultId" ngxPrint class="btn btn-primary">
+        Print
+      </button>
+    </div>
+  </div>
 </p-card>

@@ -52,4 +52,49 @@ export class GradeUtil {
     }
     return GP;
   }
+
+  sgpaDetail(uiResult : any) {
+    let cpSum = 0;
+    for(let result of uiResult) {
+      let cp = +result.cp;
+      if(cp && +cp && !isNaN(cp)) {
+        cpSum = cpSum + cp;
+      }
+    }
+    let total = 0;
+    for(let resultdata of uiResult) {
+      total = total + this.creditPoint(resultdata, resultdata.examMarkList);
+    }
+    return total / cpSum;
+  }
+
+  getTotal(uiResult : any) {
+    let total = 0;
+    for(let resultdata of uiResult) {
+      total = total + this.getFullResult(resultdata.examMarkList);
+    }
+    return total;
+  }
+
+  getFullResult(examMarkList : any[]) : any{
+    let total = 0;
+    let f = true;
+    for(let pr of examMarkList) {
+      if(f) {
+        f = false;
+        continue;
+      }
+      if(this.checkForNumber(pr)) {
+        total = total + (+pr);
+      }
+    }
+    return total;
+  }
+  checkForNumber(num : any) {
+    if(isNaN(+num)) {
+      return false;
+    } else {
+      return typeof(+num) == 'number';
+    }
+  }
 }
