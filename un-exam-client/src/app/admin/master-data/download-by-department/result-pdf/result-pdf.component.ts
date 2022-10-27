@@ -13,9 +13,8 @@ import { GradeUtil } from 'src/app/shared/grade-util';
   styleUrls: ['./result-pdf.component.css']
 })
 export class ResultPdfComponent implements OnInit {
-
-
   @Input('results') results!: any;
+  @Input('studentModel') studentModel !: any;
 
   gradeService = new GradeUtil();
   constructor() {}

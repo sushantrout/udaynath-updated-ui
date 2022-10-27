@@ -9,7 +9,7 @@
           <p>
             <b>UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASPUR</b>
           </p>
-          <p><u>SEMESTER EXAMINATION REPORT</u></p>
+          <p><u>{{ studentModel?.semistar }} - SEMESTER EXAMINATION REPORT - {{studentModel?.session?.name}}</u></p>
         </div>
       </div>
     </div>
@@ -95,6 +95,26 @@
                 <b>SGPA : {{gradeService.sgpaDetail(result.uiResult) | number : '1.0-2'}}</b>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="m-20">
+      <div class="row">
+        <div class="col-6 admit-card-text">
+          <div class="row">
+            <div class="col-12">
+
+            </div>
+            <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
+          </div>
+        </div>
+        <div class="col-6 admit-card-text">
+          <div class="row text-right">
+            <div class="col-12">
+
+            </div>
+            <div class="col-12">CONTROLLER OF EXAMINATION</div>
           </div>
         </div>
       </div>

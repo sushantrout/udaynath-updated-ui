@@ -14,6 +14,7 @@ import { GradeUtil } from 'src/app/shared/grade-util';
 })
 export class DownloadDataByDepartmentComponent implements OnInit, OnChanges {
   @Input('results') results!: any;
+  @Input('studentModel') studentModel !: any;
 
   gradeService = new GradeUtil();
   constructor() {}
