@@ -25,7 +25,7 @@
                         </div>
                         <div class="col-8 text-center">
                             <p class="college-name">
-                                UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASHPUR
+                                UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASPUR
                             </p>
                             <p class="college-name"><u>ADMIT CARD</u></p>
                         </div>
@@ -71,13 +71,13 @@
                                     {{ admitCardDetails?.student?.fullName | uppercase }}
                                 </th>
                             </tr>
-                            <tr>
+                            <tr class="text-center">
                                 <th scope="row">SUBJECT:</th>
-                                <th scope="row">{{admitCardDetails?.form?.fcorePaper?.code | uppercase}}({{admitCardDetails?.form?.fcorePaper?.name | uppercase}})</th>
-                                <th scope="row">{{admitCardDetails?.form?.scorePaper?.code | uppercase}}({{admitCardDetails?.form?.scorePaper?.name | uppercase}})</th>
-                                <th scope="row">{{admitCardDetails?.form?.ge?.code | uppercase}}({{admitCardDetails?.form?.ge?.name | uppercase}})</th>
-                                <th scope="row">{{admitCardDetails?.form?.compPaper?.code | uppercase}}({{admitCardDetails?.form?.compPaper?.name | uppercase}})</th>
-                                <th scope="row">{{admitCardDetails?.form?.ae?.code | uppercase}}({{admitCardDetails?.form?.ae?.name | uppercase}})</th>
+                                <th scope="row">({{admitCardDetails?.form?.fcorePaper?.paperType | uppercase}}) - {{admitCardDetails?.form?.fcorePaper?.code | uppercase}}({{admitCardDetails?.form?.fcorePaper?.name | uppercase}})</th>
+                                <th scope="row">({{admitCardDetails?.form?.scorePaper?.paperType | uppercase}}) - {{admitCardDetails?.form?.scorePaper?.code | uppercase}}({{admitCardDetails?.form?.scorePaper?.name | uppercase}})</th>
+                                <th scope="row">({{admitCardDetails?.form?.ge?.paperType | uppercase}}) - {{admitCardDetails?.form?.ge?.code | uppercase}}({{admitCardDetails?.form?.ge?.name | uppercase}})</th>
+                                <th scope="row">({{admitCardDetails?.form?.compPaper?.paperType | uppercase}}) - {{admitCardDetails?.form?.compPaper?.code | uppercase}}({{admitCardDetails?.form?.compPaper?.name | uppercase}})</th>
+                                <th scope="row">({{admitCardDetails?.form?.ae?.paperType | uppercase}}) - {{admitCardDetails?.form?.ae?.code | uppercase}}({{admitCardDetails?.form?.ae?.name | uppercase}})</th>
                             </tr>
                         </tbody>
                     </table>

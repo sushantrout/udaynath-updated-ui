@@ -25,7 +25,7 @@
                         </div>
                         <div class="col-10 text-center" style="font-size: 14px;">
                             <p>
-                                <b>UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASHPUR</b>
+                                <b>UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASPUR</b>
                             </p>
                             <p><u>SEMESTER EXAMINATION REPORT</u></p>
                         </div>
@@ -73,10 +73,16 @@
                                     {{paperResult.paperText}}
                                 </div>
                                 <div class="col" *ngFor="let pr of paperResult.examMarkList">
+                                  <span *ngIf="pr && checkForNumber(pr)">
+                                    {{pr | number : '1.0-0'}}
+                                  </span>
+                                  <span *ngIf="!(pr && checkForNumber(pr))">
                                     {{pr}}
+                                  </span>
                                 </div>
                                 <div class="col">
-                                    {{paperResult.examMarkList[1] + paperResult.examMarkList[2]}}
+                                    <!-- {{paperResult.examMarkList[1] + paperResult.examMarkList[2]}} -->
+                                    {{getFullResult(paperResult.examMarkList) | number : '1.0-0'}}
                                 </div>
                             </div>
                         </div>

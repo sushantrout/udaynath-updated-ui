@@ -4,6 +4,7 @@ import { ApiResponse } from 'src/app/shared/model/api-response-model';
 import { SessionModel } from 'src/app/shared/model/session-model';
 import { ProcessExcelService } from 'src/app/shared/services/process-excel.service';
 import { SessionService } from 'src/app/shared/services/session.service';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-process-cnr',
@@ -24,7 +25,8 @@ export class ProcessCnrComponent implements OnInit {
 
   constructor(
     private processExcelService: ProcessExcelService,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private toastService : ToastService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +48,9 @@ export class ProcessCnrComponent implements OnInit {
     this.excelBodydatas = [];
     this.processExcelService.processCNR(this.fileList, this.sessionId, this.courseType, this.semister).subscribe((res: any) => {
       console.log(res);
+      this.toastService.sucess("CNR","CNR Process complete!");
+    }, err => {
+      this.toastService.sucess("CNR","Please check the file!");
     });
   }
 

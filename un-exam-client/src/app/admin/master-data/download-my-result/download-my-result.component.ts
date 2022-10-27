@@ -24,4 +24,16 @@ export class DownloadMyResultComponent implements OnInit {
       this.results = res;
     });
   }
+
+  getFullResult(examMarkList : any) : any{
+
+    return 0;
+  }
+  checkForNumber(num : any) {
+    if(isNaN(+num)) {
+      return false;
+    } else {
+      return typeof(+num) == 'number';
+    }
+  }
 }
