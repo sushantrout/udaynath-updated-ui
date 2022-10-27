@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseType } from 'src/app/shared/constants/course.constant';
+import { GradeUtil } from 'src/app/shared/grade-util';
 import { ResultService } from 'src/app/shared/services/result.service';
 
 @Component({
@@ -11,6 +12,8 @@ export class DownloadMyResultComponent implements OnInit {
   rollNumber: string = '';
   semistar: string = '';
   semistarList = CourseType.semistars;
+
+  gradeService = new GradeUtil();
 
   constructor(private resultService: ResultService) {}
 

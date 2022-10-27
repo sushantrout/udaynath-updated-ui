@@ -5,6 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
+import { GradeUtil } from 'src/app/shared/grade-util';
 
 @Component({
   selector: 'app-download-data-by-department',
@@ -14,6 +15,7 @@ import {
 export class DownloadDataByDepartmentComponent implements OnInit, OnChanges {
   @Input('results') results!: any;
 
+  gradeService = new GradeUtil();
   constructor() {}
 
   ngOnInit(): void {}

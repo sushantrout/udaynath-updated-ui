@@ -65,6 +65,12 @@
                                 <div class="col">
                                     <b>TOTAL</b>
                                 </div>
+                                <div class="col">
+                                  <b>GRADE</b>
+                              </div>
+                              <div class="col">
+                                <b>CP</b>
+                              </div>
                             </div>
                         </div>
                         <div class="col-12">
@@ -83,6 +89,12 @@
                                 <div class="col">
                                     <!-- {{paperResult.examMarkList[1] + paperResult.examMarkList[2]}} -->
                                     {{getFullResult(paperResult.examMarkList) | number : '1.0-0'}}
+                                </div>
+                                <div class="col">
+                                    {{gradeService.getGradePoint(paperResult.examMarkList)}}
+                                </div>
+                                <div class="col">
+                                  {{gradeService.creditPoint()}}
                                 </div>
                             </div>
                         </div>
