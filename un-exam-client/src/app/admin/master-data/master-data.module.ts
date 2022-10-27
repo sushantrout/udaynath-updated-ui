@@ -22,6 +22,7 @@ import { ProcessCnrComponent } from './process-cnr/process-cnr.component';
 import { NgxPrintModule } from 'ngx-print';
 import { DownloadDataByDepartmentComponent } from './download-by-department/download-data-by-department/download-data-by-department.component';
 import { ManageDepartmentResultGridComponent } from './manage-department-result/manage-department-result-grid/manage-department-result-grid.component';
+import { ResultPdfComponent } from './download-by-department/result-pdf/result-pdf.component';
 
 const routes: Routes = [
   {
@@ -109,6 +110,7 @@ const routes: Routes = [
     ProcessCnrComponent,
     DownloadDataByDepartmentComponent,
     ManageDepartmentResultGridComponent,
+    ResultPdfComponent,
   ],
   imports: [
     CommonModule,

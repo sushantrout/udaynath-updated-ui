@@ -23,8 +23,10 @@
             </bip-dropdown>
         </div>
         <div class="col-3">
-            <button pButton type="button" label="Get Result" (click)="getResult()"></button>
+            <button pButton type="button" label="Get Result" class="mr-10" (click)="getResult()"></button>
+            <button pButton type="button" label="Get PDF Result" (click)="getResult(true)"></button>
         </div>
     </div>
-    <app-download-data-by-department [results]="downloadDetails"></app-download-data-by-department>
+    <app-download-data-by-department [results]="downloadDetails" *ngIf="!resultPdf"></app-download-data-by-department>
+    <app-result-pdf [results]="downloadDetails" *ngIf="resultPdf"></app-result-pdf>
 </p-card>

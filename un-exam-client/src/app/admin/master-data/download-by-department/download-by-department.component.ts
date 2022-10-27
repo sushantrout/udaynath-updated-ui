@@ -24,6 +24,8 @@ export class DownloadByDepartmentComponent implements OnInit {
   semistarList = CourseType.semistars;
   studentModel: StudenModel = new StudenModel();
 
+  resultPdf = false;
+
   constructor(
     private departmentService: DepartmentService,
     private sessionService: SessionService,
@@ -58,7 +60,8 @@ export class DownloadByDepartmentComponent implements OnInit {
   }
 
   downloadDetails = [];
-  getResult() {
+  getResult(pdf = false) {
+    this.resultPdf = pdf;
     let requestBody = new ResultInputModel();
     requestBody.subjectType = this.studentModel.courseType;
     requestBody.educationType = this.studentModel.courseType;
