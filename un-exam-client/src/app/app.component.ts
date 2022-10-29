@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
+import { Spinkit } from 'ng-http-loader';
 
 @Component({
   selector: "app-root",
@@ -7,6 +8,7 @@ import { TranslateService } from "@ngx-translate/core";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit{
+  public spinkit = Spinkit;
   title = "sefty-client";
   selectedValue: any = ["ODIA"];
   selectedValue1: any;
@@ -24,7 +26,7 @@ export class AppComponent implements OnInit{
     }
   }
   ngOnInit(): void {
-    
+
   }
 
   changeLang(language: string) {

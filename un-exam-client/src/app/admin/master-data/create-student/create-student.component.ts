@@ -11,6 +11,7 @@ import { ProcessExcelService } from 'src/app/shared/services/process-excel.servi
 import { SessionService } from 'src/app/shared/services/session.service';
 import { StreamService } from 'src/app/shared/services/stream.service';
 import { StudentService } from 'src/app/shared/services/student.service';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-create-student',
@@ -34,7 +35,8 @@ export class CreateStudentComponent implements OnInit {
     private streamService: StreamService,
     private excelService: ProcessExcelService,
     private studentService : StudentService,
-    private formService : FormFillupService
+    private formService : FormFillupService,
+    private toastService : ToastService
   ) {}
 
   ngOnInit(): void {
@@ -66,6 +68,7 @@ export class CreateStudentComponent implements OnInit {
     this.studentService.saveAll(saveStudentDetails).subscribe(
       (res: any) => {
         this.studentDatas = res;
+        this.toastService.sucess("Student", "Uploaded !!!");
       },
       (err: any): void => {
         console.error(err);

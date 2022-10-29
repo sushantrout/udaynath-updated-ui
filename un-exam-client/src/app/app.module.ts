@@ -29,6 +29,7 @@ import {
 } from 'primeng/dynamicdialog';
 import { UserService } from './shared/services/user.service';
 import { NgxPrintModule } from 'ngx-print';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,6 +42,7 @@ import { NgxPrintModule } from 'ngx-print';
     BrowserAnimationsModule,
     ConfirmPopupModule,
     ConfirmDialogModule,
+    NgHttpLoaderModule.forRoot(),
     ToastModule,
     NgxPrintModule,
     TranslateModule.forRoot({
