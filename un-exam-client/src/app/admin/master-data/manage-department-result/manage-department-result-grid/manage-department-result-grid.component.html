@@ -5,11 +5,8 @@
     </div>
     <div class="col-9">
       <div class="grid">
-        <div class="col-2">
+        <div class="col-3">
           <b>Course</b>
-        </div>
-        <div class="col">
-          <b>FM</b>
         </div>
         <div class="col">
           <b>INT</b>
@@ -22,6 +19,12 @@
         </div>
         <div class="col">
           <b>BK2</b>
+        </div>
+        <div class="col">
+          <b>PRAC</b>
+        </div>
+        <div class="col">
+          <b>Total</b>
         </div>
       </div>
     </div>
@@ -38,17 +41,35 @@
       </div>
     </div>
     <div class="col-9">
-      <div class="grid" *ngFor="let paperResult of result.uiResult; let paperIndex = index">
-        <div class="col-2">
+      <div class="grid" *ngFor="let paperResult of result.uiResult; let paperIndex = index" [class.changes-for-update]="getTotalResult(paperResult) != paperResult.acqureTotalResult">
+        <div class="col-3">
           {{paperResult.paperText}}
         </div>
-        <ng-template ngFor [ngForOf]="paperResult.examMarkList" let-pr let-index="index">
+        <!-- <ng-template ngFor [ngForOf]="paperResult.examMarkList" let-pr let-index="index">
           <div class="col-2" *ngIf="index != 5">
             <p-inputNumber [(ngModel)]="paperResult.examMarkList[index]" styleClass="w-100"
               [class.changes-text]="(inresult[upperIndex].uiResult)[paperIndex][index] == paperResult.examMarkList[index]">
             </p-inputNumber>
           </div>
-        </ng-template>
+        </ng-template> -->
+        <div class="col">
+          <input type="text" pInputText [(ngModel)]="paperResult.intMark">
+        </div>
+        <div class="col">
+          <input type="text" pInputText [(ngModel)]="paperResult.semMark">
+        </div>
+        <div class="col">
+          <input type="text" pInputText [(ngModel)]="paperResult.bk1Mark">
+        </div>
+        <div class="col">
+          <input type="text" pInputText [(ngModel)]="paperResult.bk2Mark">
+        </div>
+        <div class="col">
+          <input type="text" pInputText [(ngModel)]="paperResult.pracMark">
+        </div>
+        <div class="col">
+          {{getTotalResult(paperResult)}}
+        </div>
       </div>
     </div>
   </div>

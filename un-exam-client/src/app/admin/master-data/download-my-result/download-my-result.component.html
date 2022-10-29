@@ -54,12 +54,12 @@
                   <div class="col">
                     <b>SEM</b>
                   </div>
-                  <!-- <div class="col">
-                                    <b>BK1</b>
-                                </div>
-                                <div class="col">
-                                    <b>BK2</b>
-                                </div> -->
+                  <div class="col">
+                    <b>BK1</b>
+                  </div>
+                  <div class="col">
+                    <b>BK2</b>
+                  </div>
                   <div class="col">
                     <b>PRAC</b>
                   </div>
@@ -79,23 +79,27 @@
                   <div class="col-3">
                     {{paperResult.paperText}}
                   </div>
-                  <div class="col" *ngFor="let pr of paperResult.examMarkList">
-                    <span *ngIf="pr && checkForNumber(pr)">
-                      {{pr | number : '1.0-0'}}
+                  <!-- <div class="col">
+                    <span *ngIf="paperResult && checkForNumber(paperResult)">
+                      {{paperResult | number : '1.0-0'}}
                     </span>
-                    <span *ngIf="!(pr && checkForNumber(pr))">
-                      {{pr}}
+                    <span *ngIf="!(paperResult && checkForNumber(paperResult))">
+                      {{paperResult}}
                     </span>
+                  </div> -->
+                  <div class="col"> {{gradeService.getFormatedResult(paperResult.fullMark)}}</div>
+                  <div class="col"> {{gradeService.getFormatedResult(paperResult.intMark)}}</div>
+                  <div class="col"> {{gradeService.getFormatedResult(paperResult.semMark)}}</div>
+                  <div class="col"> {{gradeService.getFormatedResult(paperResult.bk1Mark)}}</div>
+                  <div class="col"> {{gradeService.getFormatedResult(paperResult.bk2Mark)}}</div>
+                  <div class="col"> {{gradeService.getFormatedResult(paperResult.pracMark)}}</div>
+                  <div class="col"> {{gradeService.getFormatedResult(paperResult.acqureTotalResult)}}</div>
+
+                  <div class="col">
+                    {{gradeService.getGradePoint(paperResult)}}
                   </div>
                   <div class="col">
-                    <!-- {{paperResult.examMarkList[1] + paperResult.examMarkList[2]}} -->
-                    {{getFullResult(paperResult.examMarkList) | number : '1.0-0'}}
-                  </div>
-                  <div class="col">
-                    {{gradeService.getGradePoint(paperResult.examMarkList)}}
-                  </div>
-                  <div class="col">
-                    {{gradeService.creditPoint(paperResult, paperResult.examMarkList)}}
+                    {{gradeService.creditPoint(paperResult)}}
                   </div>
                 </div>
                 <div class="grid">
