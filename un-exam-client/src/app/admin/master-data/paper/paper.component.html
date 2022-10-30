@@ -45,7 +45,7 @@
             </bip-input-text>
         </div>
         <div class="col-1">
-            <bip-input-text placeholder="CP" class="p-mx-1" [(ngModel)]="paperModel.cp">
+            <bip-input-text placeholder="CP" class="p-mx-1" [(ngModel)]="paperModel.cp" *ngIf="paperModel.courseType == 'UG'">
             </bip-input-text>
         </div>
         <div class="col-4">
