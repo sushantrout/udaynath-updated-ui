@@ -78,17 +78,6 @@
                 <div class="col"> {{gradeService.getFormatedResult(paperResult.bk2Mark)}}</div>
                 <div class="col"> {{gradeService.getFormatedResult(paperResult.pracMark)}}</div>
                 <div class="col"> {{gradeService.getFormatedResult(paperResult.acqureTotalResult)}}</div>
-                <!-- <div class="col" *ngFor="let pr of paperResult.examMarkList">
-                  <span *ngIf="pr && checkForNumber(pr)">
-                    {{pr | number : '1.0-0'}}
-                  </span>
-                  <span *ngIf="!(pr && checkForNumber(pr))">
-                    {{pr}}
-                  </span>
-                </div> -->
-                <!--  <div class="col">
-                  {{getFullResult(paperResult.examMarkList) | number : '1.0-0'}}
-                </div> -->
                  <div class="col" *ngIf="studentModel && studentModel.courseType && studentModel.courseType == 'UG'">
                   {{gradeService.getGradePoint(paperResult)}}
                 </div>
