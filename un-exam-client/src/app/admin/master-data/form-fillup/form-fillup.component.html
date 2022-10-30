@@ -29,7 +29,7 @@
       <div class="row">
         <div class="col-sm-12 col-md-3 col-xs-12">
           <label class="form-label">College Roll Number</label>
-          <input type="text" class="form-control" [required]="true" [(ngModel)]="student.rollNumber" />
+          <input type="text" class="form-control" [required]="true" [(ngModel)]="student.rollNumber" disabled="true"/>
         </div>
         <div class="col-sm-12 col-md-3 col-xs-12">
           <label class="form-label">Examination Roll Number</label>
@@ -39,21 +39,21 @@
         </div>
         <div class="col-sm-12 col-md-3 col-xs-12">
           <label class="form-label">Reg. NO</label>
-          <input type="text" class="form-control" [(ngModel)]="student.registrationNumber" />
+          <input type="text" class="form-control" [(ngModel)]="student.registrationNumber" disabled="true"/>
         </div>
         <div class="col-sm-12 col-md-3 col-xs-12">
           <label class="form-label">Stream</label>
           <bip-dropdown styleClass="w-100" [option]="streams" optionLabel="name" optionValue="id" styleClass="w-100 " [required]="true"
-            [(ngModel)]="student.stream" (ngModelChange)="getDepartments()"></bip-dropdown>
+            [(ngModel)]="student.stream" (ngModelChange)="getDepartments()" disabled="true"></bip-dropdown>
         </div>
         <div class="col-sm-12 col-md-3 col-xs-12">
           <label class="form-label">Department</label>
           <bip-dropdown styleClass="w-100" [option]="departments" optionLabel="name" optionValue="id" styleClass="w-100 "
-            [required]="true" [(ngModel)]="student.department" (ngModelChange)="getPaperByDepartment()"></bip-dropdown>
+            [required]="true" [(ngModel)]="student.department" (ngModelChange)="getPaperByDepartment()" disabled="true"></bip-dropdown>
         </div>
         <div class="col-sm-12 col-md-6 col-xs-12">
           <label class="form-label">Full Name</label>
-          <input type="text" class="form-control" [required]="true" [(ngModel)]="student.fullName" />
+          <input type="text" class="form-control" [required]="true" [(ngModel)]="student.fullName" disabled="true"/>
         </div>
         <div class="col-sm-12 col-md-3 col-xs-12">
           <label class="form-label">Date of birth (as in HSC)</label>
@@ -64,7 +64,7 @@
       <div class="row">
         <div class="col-sm-12 col-md-4 col-xs-12">
           <label class="form-label">Sex</label>
-          <p-selectButton [options]="genders" [(ngModel)]="student.gender"></p-selectButton>
+          <p-selectButton [options]="genders" [(ngModel)]="student.gender" [disabled]="true"></p-selectButton>
         </div>
         <div class="col-sm-12 col-md-4 col-xs-12">
           <label class="form-label">Caste</label>
@@ -74,15 +74,15 @@
       <div class="row">
         <div class="col-sm-12 col-md-4 col-xs-12">
           <label class="form-label">Father's Name</label>
-          <input type="text" class="form-control" [required]="true" [(ngModel)]="student.fathersName" />
+          <input type="text" class="form-control" [required]="true" [(ngModel)]="student.fathersName" disabled="true"/>
         </div>
         <div class="col-sm-12 col-md-4 col-xs-12">
           <label class="form-label">Mother's Name</label>
-          <input type="text" class="form-control" [required]="true" [(ngModel)]="student.mothersName" />
+          <input type="text" class="form-control" [required]="true" [(ngModel)]="student.mothersName" disabled="true"/>
         </div>
         <div class="col-sm-12 col-md-4 col-xs-12">
           <label class="form-label">Email</label>
-          <input type="text" class="form-control" [required]="true" [(ngModel)]="student.emailId" />
+          <input type="text" class="form-control" [required]="true" [(ngModel)]="student.emailId" disabled="true"/>
         </div>
       </div>
       <div class="row">
@@ -106,12 +106,13 @@
               <tr>
                 <th>Core</th>
                 <td>
-                  {{ corepapers }}
+                  <span *ngFor="let paper of corepapers">
+                    {{ paper }}<br>
+                  </span>
                 </td>
               </tr>
               <tr>
                 <th>Compulsory</th>
-                <!-- <td>{{ compulsorys }}</td> -->
                 <bip-dropdown [option]="compulsorys" [(ngModel)]="student.comp" styleClass="w-100" optionLabel="name">
                 </bip-dropdown>
               </tr>
