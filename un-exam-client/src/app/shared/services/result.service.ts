@@ -6,7 +6,8 @@ import { ApiService } from './api.service';
   providedIn: 'root',
 })
 export class ResultService {
-  
+
+
   url = 'result';
   constructor(private apiService: ApiService) {}
 
@@ -28,5 +29,9 @@ export class ResultService {
 
   getMyResult(rollNumber: string, semistar : string) {
     return this.apiService.get(this.url+"/my-result/"+rollNumber+"/"+semistar);
+  }
+
+  updatestudentResult(req: { results: any; }) {
+    return this.apiService.post(this.url+"/update/by-department", req);
   }
 }

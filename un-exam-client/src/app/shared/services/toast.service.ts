@@ -43,13 +43,13 @@ export class ToastService {
       this.messageService.add({ severity: "error", summary, detail });
     } else if (summary) {
       let header = head;
-      let message = this.translateService.instant(
+      /* let message = this.translateService.instant(
         "message." + [summary] + ".body"
-      );
+      ); */
       this.messageService.add({
         severity: "error",
         summary: header,
-        detail: message,
+        detail: summary,
       });
     }
   }

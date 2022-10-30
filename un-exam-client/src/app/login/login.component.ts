@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.user) {
       this.userService.login(this.user).subscribe((res: ApiResponse) => {
-        this.tostService.sucess("Login", "Welcom to HCAPA", this.translateService.instant(
+        this.tostService.sucess("Login", "Welcom to uExam management system", this.translateService.instant(
           "usermanagement.succeful"));
         this.commonService.currentUser = JSON.parse(JSON.stringify(this.user));
         this.commonService.setProfilepic(res.data.profile?.profilePic);
@@ -45,4 +45,4 @@ export class LoginComponent implements OnInit {
       });
     }
   }
-} 
+}
