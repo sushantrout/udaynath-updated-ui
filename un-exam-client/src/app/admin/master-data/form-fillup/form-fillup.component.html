@@ -22,19 +22,19 @@
     </div>
     <div class="col-sm-12 col-md-3 col-xs-12">
       <label for="courseType" class="form-label">Session</label>
-      <bip-dropdown styleClass="w-100" [option]="years" optionLabel="name" [(ngModel)]="student.examYear"
+      <bip-dropdown styleClass="w-100" [option]="years" optionLabel="name" [(ngModel)]="student.session"
         [required]="true"></bip-dropdown>
     </div>
     <div class="col-12">
       <div class="row">
         <div class="col-sm-12 col-md-3 col-xs-12">
           <label class="form-label">College Roll Number</label>
-          <input type="text" class="form-control" [required]="true" [(ngModel)]="student.collegeRollNumber" />
+          <input type="text" class="form-control" [required]="true" [(ngModel)]="student.rollNumber" />
         </div>
         <div class="col-sm-12 col-md-3 col-xs-12">
           <label class="form-label">Examination Roll Number</label>
           <input type="text" class="form-control" [(ngModel)]="student.examRoolNumber"
-          (ngModelChange)="getStudentDetails()"
+          (ngModelChange)="this.userQuestionUpdate.next($event)"
           [required]="true" />
         </div>
         <div class="col-sm-12 col-md-3 col-xs-12">
@@ -43,18 +43,16 @@
         </div>
         <div class="col-sm-12 col-md-3 col-xs-12">
           <label class="form-label">Stream</label>
-          <bip-dropdown styleClass="w-100" [option]="streams" optionLabel="name" styleClass="w-100 " [required]="true"
+          <bip-dropdown styleClass="w-100" [option]="streams" optionLabel="name" optionValue="id" styleClass="w-100 " [required]="true"
             [(ngModel)]="student.stream" (ngModelChange)="getDepartments()"></bip-dropdown>
         </div>
         <div class="col-sm-12 col-md-3 col-xs-12">
           <label class="form-label">Department</label>
-          <bip-dropdown styleClass="w-100" [option]="departments" optionLabel="name" styleClass="w-100 "
+          <bip-dropdown styleClass="w-100" [option]="departments" optionLabel="name" optionValue="id" styleClass="w-100 "
             [required]="true" [(ngModel)]="student.department" (ngModelChange)="getPaperByDepartment()"></bip-dropdown>
         </div>
         <div class="col-sm-12 col-md-6 col-xs-12">
-          <label class="form-label">Full Name
-            <span style="color: red; font-size: 10px">(Name should be exactly as per the ID proof. ID proof should have
-              expansion of the initials)</span></label>
+          <label class="form-label">Full Name</label>
           <input type="text" class="form-control" [required]="true" [(ngModel)]="student.fullName" />
         </div>
         <div class="col-sm-12 col-md-3 col-xs-12">

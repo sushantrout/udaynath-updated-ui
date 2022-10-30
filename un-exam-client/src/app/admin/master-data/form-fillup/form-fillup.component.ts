@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
 import { CourseType } from 'src/app/shared/constants/course.constant';
 import { StudenModel } from 'src/app/shared/model/student.model';
 import { DepartmentService } from 'src/app/shared/services/department.service';
@@ -8,6 +9,7 @@ import { SessionService } from 'src/app/shared/services/session.service';
 import { StreamService } from 'src/app/shared/services/stream.service';
 import { StudentService } from 'src/app/shared/services/student.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form-fillup',
@@ -42,6 +44,7 @@ export class FormFillupComponent implements OnInit {
 
   @ViewChild('registerForm') registerForm: any;
 
+  userQuestionUpdate = new Subject<string>();
   constructor(
     private streamService: StreamService,
     private sessionService: SessionService,
@@ -50,7 +53,14 @@ export class FormFillupComponent implements OnInit {
     private paperService: PaperService,
     private messageService: ToastService,
     private studentService: StudentService
-  ) {}
+  ) {
+    this.userQuestionUpdate.pipe(
+      debounceTime(2000),
+      distinctUntilChanged())
+      .subscribe(value => {
+        this.getApplicationForm();
+      });
+  }
 
   ngOnInit(): void {
     this.isOldRegistration = false;
@@ -140,7 +150,7 @@ export class FormFillupComponent implements OnInit {
   getDepartments() {
     if (this.student.stream) {
       this.honourseService
-        .findByStreamId(this.student.stream.id)
+        .findByStreamId(this.student.stream)
         .subscribe((res: any) => {
           this.departments = res;
           this.getPaperByDepartment();
@@ -153,7 +163,7 @@ export class FormFillupComponent implements OnInit {
     if (this.student.department && this.student.semistar) {
       this.paperService
         .findByHonoursAndSemistar(
-          this.student.department.id,
+          this.student.department,
           this.student.semistar
         )
         .subscribe((responses: any) => {
@@ -188,11 +198,26 @@ export class FormFillupComponent implements OnInit {
   }
 
   getApplicationForm() {
+    if(this.student && this.student.stream) {
+      this.student.stream = {id : this.student.stream.id};
+    }
+
+    if(this.student && this.student.stream) {
+      this.student.stream = {id : this.student.stream.id};
+    }
+
+    if(this.student && this.student.examYear) {
+      this.student.examYear = { id : this.student.session.id};
+    }
+
     this.formService
       .findByStudentDetails(this.student)
       .subscribe((res: any) => {
         if (res && res.id) {
           this.student = res;
+          this.student.stream = this.student.stream.id;
+          this.student.department = this.student.department.id;
+          this.student.caste = this.toUpperCase(this.student.caste);
           this.display = false;
           this.isOldRegistration = false;
           this.showForm = true;
@@ -201,16 +226,11 @@ export class FormFillupComponent implements OnInit {
       });
   }
 
-  getStudentDetails() {
-    this.studentService
-      .findStudentByRollnumber(this.student.examRoolNumber)
-      .subscribe((res: any) => {
-        if (res) {
-          let sem = this.student.semistar;
-          this.student = res;
-          this.student.semistar = sem;
-          this.getDepartments();
-        }
-      });
+  toUpperCase(content : string) {
+    if(content) {
+      return (content+"").toUpperCase();
+    } else {
+      return content.toUpperCase();
+    }
   }
 }
