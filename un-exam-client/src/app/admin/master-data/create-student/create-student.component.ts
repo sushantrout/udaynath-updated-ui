@@ -81,7 +81,9 @@ export class CreateStudentComponent implements OnInit {
 
   upload() {
     this.studentDatas = [];
-    this.formService.processStudentExcel(this.fileList).subscribe((res: any) => {
+    this.formService.processStudentExcel(this.fileList,
+       this.studentModel.session?.id,
+       this.studentModel.courseType).subscribe((res: any) => {
       /* let response = res.body;
       let skipFirstRow = true;
       for (let row of response) {
@@ -105,6 +107,7 @@ export class CreateStudentComponent implements OnInit {
         }
       }
       this.studentDatas = JSON.parse(JSON.stringify(this.studentDatas)); */
+      this.getAllStudents();
     });
   }
   reset() {

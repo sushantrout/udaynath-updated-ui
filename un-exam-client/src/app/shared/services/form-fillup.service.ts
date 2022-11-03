@@ -33,7 +33,7 @@ export class FormFillupService {
     return this.apiService.post(this.URL + '/get-admit-card', student);
   }
 
-  processStudentExcel(fileList: any) {
-    return this.apiService.postFile(this.URL+"/process-excel", fileList);
+  processStudentExcel(fileList: any, sessionId : number, courseType : string) {
+    return this.apiService.postFile(this.URL+"/process-excel/"+sessionId+"/"+courseType, fileList);
   }
 }

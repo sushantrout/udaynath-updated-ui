@@ -61,23 +61,23 @@
                                     {{ admitCardDetails?.student?.stream?.name}}
                                 </th>
                                 <th scope="row">SEMESTER:</th>
-                                <th scope="row" colspan="3">
+                                <th scope="row" colspan="8">
                                     {{ admitCardDetails?.form?.semister | uppercase }}
                                 </th>
                             </tr>
                             <tr>
                                 <th scope="row" colspan="2">CANDIDATE'S NAME:</th>
-                                <th scope="row" colspan="4">
+                                <th scope="row" colspan="9">
                                     {{ admitCardDetails?.student?.fullName | uppercase }}
                                 </th>
                             </tr>
                             <tr class="text-center">
                                 <th scope="row">SUBJECT:</th>
-                                <th scope="row">({{admitCardDetails?.form?.fcorePaper?.paperType | uppercase}}) - {{admitCardDetails?.form?.fcorePaper?.code | uppercase}}({{admitCardDetails?.form?.fcorePaper?.name | uppercase}})</th>
-                                <th scope="row">({{admitCardDetails?.form?.scorePaper?.paperType | uppercase}}) - {{admitCardDetails?.form?.scorePaper?.code | uppercase}}({{admitCardDetails?.form?.scorePaper?.name | uppercase}})</th>
+                                <th scope="row" *ngFor="let paper of admitCardDetails?.form?.papers">({{paper.paperType | uppercase}}) - {{paper?.code | uppercase}}({{paper?.name | uppercase}})</th>
+                                <!-- <th scope="row">({{admitCardDetails?.form?.scorePaper?.paperType | uppercase}}) - {{admitCardDetails?.form?.scorePaper?.code | uppercase}}({{admitCardDetails?.form?.scorePaper?.name | uppercase}})</th>
                                 <th scope="row">({{admitCardDetails?.form?.ge?.paperType | uppercase}}) - {{admitCardDetails?.form?.ge?.code | uppercase}}({{admitCardDetails?.form?.ge?.name | uppercase}})</th>
                                 <th scope="row">({{admitCardDetails?.form?.compPaper?.paperType | uppercase}}) - {{admitCardDetails?.form?.compPaper?.code | uppercase}}({{admitCardDetails?.form?.compPaper?.name | uppercase}})</th>
-                                <th scope="row">({{admitCardDetails?.form?.ae?.paperType | uppercase}}) - {{admitCardDetails?.form?.ae?.code | uppercase}}({{admitCardDetails?.form?.ae?.name | uppercase}})</th>
+                                <th scope="row">({{admitCardDetails?.form?.ae?.paperType | uppercase}}) - {{admitCardDetails?.form?.ae?.code | uppercase}}({{admitCardDetails?.form?.ae?.name | uppercase}})</th> -->
                             </tr>
                         </tbody>
                     </table>

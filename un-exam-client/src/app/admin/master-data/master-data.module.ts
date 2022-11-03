@@ -23,6 +23,7 @@ import { NgxPrintModule } from 'ngx-print';
 import { DownloadDataByDepartmentComponent } from './download-by-department/download-data-by-department/download-data-by-department.component';
 import { ManageDepartmentResultGridComponent } from './manage-department-result/manage-department-result-grid/manage-department-result-grid.component';
 import { ResultPdfComponent } from './download-by-department/result-pdf/result-pdf.component';
+import { DownloadAdmitCardByDeptComponent } from './download-admit-card-by-dept/download-admit-card-by-dept.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,9 @@ const routes: Routes = [
   {
     path: 'dac',
     component: DownloadAdmitCardComponent,
+  },{
+    path: 'dac-by-dept',
+    component: DownloadAdmitCardByDeptComponent,
   },
   {
     path: 'ddr',
@@ -111,6 +115,7 @@ const routes: Routes = [
     DownloadDataByDepartmentComponent,
     ManageDepartmentResultGridComponent,
     ResultPdfComponent,
+    DownloadAdmitCardByDeptComponent,
   ],
   imports: [
     CommonModule,
