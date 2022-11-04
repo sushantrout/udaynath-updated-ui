@@ -1,1 +1,3 @@
-<p-calendar [(ngModel)]="value" [showTime]="showTime" styleClass="w-100" [touchUI]="false" appendTo="'body'" [placeholder]="placeholder | translate" [showSeconds]="true" inputId="time" dateFormat="dd.mm.yy" [showIcon]="showIcon" [appendTo]="appendTo"></p-calendar>
+<p-calendar [(ngModel)]="value" [showTime]="showTime" styleClass="w-100" [touchUI]="false" appendTo="'body'" [placeholder]="placeholder | translate" [showSeconds]="true" inputId="basic" dateFormat="dd-mm-yy" styleClass="sm"
+[disabled]="disabled"
+[readonlyInput]="true" [showIcon]="showIcon" [appendTo]="'body'"></p-calendar>

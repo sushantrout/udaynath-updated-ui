@@ -5,5 +5,5 @@ export class CourseType {
     public static examTypesIntORSEm = ['INT', 'SEM', 'BK1', 'BK2', 'PRAC'];
     public static examTypes = ["Reg","Back","Special"];
     public static genders = ["MALE", "FEMALE"];
-    public static casts =['OBC', 'SC', 'ST', 'GENERAL'];
+    public static casts =['OBC', 'SC', 'ST','SEBC', 'GENERAL'];
 }

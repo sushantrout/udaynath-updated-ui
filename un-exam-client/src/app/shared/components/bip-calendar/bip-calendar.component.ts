@@ -17,6 +17,7 @@ export class BipCalendarComponent extends ValueAccessor implements OnInit {
   @Input('showIcon') showIcon !: boolean;
   @Input('placeholder') placeholder !: string;
   @Input('appendTo') appendTo !:any;
+  @Input('disabled') disabled !:boolean;
   constructor() {
     super();
   }

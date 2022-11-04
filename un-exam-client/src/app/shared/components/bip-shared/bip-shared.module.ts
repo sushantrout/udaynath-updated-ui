@@ -37,7 +37,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     BipMultiselectComponent,
     BipIconComponent,
     BipCalendarComponent,
-    BipTextAreaComponent
+    BipTextAreaComponent,
   ],
   imports: [
     AppSharedModule,

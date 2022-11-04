@@ -134,8 +134,12 @@ export class CreateStudentComponent implements OnInit {
     filter.courseType = this.studentModel.courseType;
     filter.department = this.studentModel.department;
 
-    this.studentService.findStudentBySessionCourseTypeDepartmentHonourse(filter).subscribe((res :any)=> {
-      this.studentDatas = res;
+    this.studentService.findStudentBySessionCourseTypeDepartmentHonourse(filter).subscribe((resp :any)=> {
+      for(let res of resp) {
+        if(res.dob)
+        res.dob = new Date(res.dob);
+      }
+      this.studentDatas = resp;
     });
   }
 

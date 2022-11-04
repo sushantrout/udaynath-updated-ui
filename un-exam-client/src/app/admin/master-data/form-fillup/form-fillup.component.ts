@@ -210,6 +210,9 @@ export class FormFillupComponent implements OnInit {
       this.student.examYear = { id : this.student.session.id};
     }
 
+    let sem = this.student.semistar;
+    let examType = this.student.examType;
+
     this.formService
       .findByStudentDetails(this.student)
       .subscribe((res: any) => {
@@ -217,9 +220,14 @@ export class FormFillupComponent implements OnInit {
           this.student = res;
           this.student.stream = this.student.stream.id;
           this.student.department = this.student.department.id;
+          this.student.semistar = sem;
+          this.student.examType = examType;
           this.student.caste = this.toUpperCase(this.student.caste);
           this.display = false;
           this.isOldRegistration = false;
+          if(this.student.dob) {
+            this.student.dob = new Date(this.student.dob)
+          }
           this.showForm = true;
           this.getDepartments();
         }

@@ -18,6 +18,7 @@ export class BipDropdownComponent extends ValueAccessor implements OnInit {
   @Input('placeholder') placeholder!: string;
   @Input('inputType') inputType !: string;
   @Input('optionValue') optionValue !: string;
+  @Input('disabled') disabled !: boolean;
 
   constructor() {
     super();

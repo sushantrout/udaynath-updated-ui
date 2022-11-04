@@ -64,8 +64,9 @@
                         </bip-input-text>
                     </td>
                     <td>
-                        <bip-input-text placeholder="DOB" class="p-mx-1" [(ngModel)]="student.dob">
-                        </bip-input-text>
+                       <!--  <bip-input-text placeholder="DOB" class="p-mx-1" [(ngModel)]="student.dob">
+                        </bip-input-text> -->
+                        <bip-calendar [(ngModel)]="student.dob" dateFormat="dd-mm-yy" [showIcon]="true"></bip-calendar>
                     </td>
                     <td>
                         <bip-input-text placeholder="Sex" class="p-mx-1" [(ngModel)]="student.gender">
