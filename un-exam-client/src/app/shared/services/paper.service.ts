@@ -6,7 +6,6 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class PaperService {
-  
 
   url = 'paper';
   constructor(private apiService : ApiService) { }
@@ -17,6 +16,14 @@ export class PaperService {
 
   findByHonoursAndSemistar(honoursId : number, semistar: string) {
     return this.apiService.get(`${this.url}/${honoursId}/${semistar}`);
+  }
+
+  findByHonoursAndSemistarAndSession(honoursId: any, semistar: any, session: any) {
+    return this.apiService.get(`${this.url}/${honoursId}/${semistar}/${session}`);
+  }
+
+  findByHonoursAndSemistarAndSessionFormFillup(honoursId: any, semistar: any, session: any) {
+    return this.apiService.get(`${this.url}/form-fillup/${honoursId}/${semistar}/${session}`);
   }
 
   create(model: PaperModel) {

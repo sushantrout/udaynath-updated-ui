@@ -69,12 +69,13 @@ export class InsertHonourseComponent implements OnInit {
   }
 
   getPapers() {
-    if (this.studentModel.department && this.studentModel.semistar) {
+    if (this.studentModel.department && this.studentModel.semistar && this.studentModel.session.id) {
       setTimeout(() => {
         this.paperService
-          .findByHonoursAndSemistar(
+          .findByHonoursAndSemistarAndSession(
             this.studentModel.department.id,
-            this.studentModel.semistar
+            this.studentModel.semistar,
+            this.studentModel.session.id
           )
           .subscribe((res: any) => {
             this.papers = res.filter((p: any) => p.paperType != 'GE');

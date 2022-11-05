@@ -160,11 +160,12 @@ export class FormFillupComponent implements OnInit {
 
   getPaperByDepartment() {
     this.corepapers = [];
-    if (this.student.department && this.student.semistar) {
+    if (this.student.department && this.student.semistar && this.student.session && this.student.session.id) {
       this.paperService
-        .findByHonoursAndSemistar(
+        .findByHonoursAndSemistarAndSessionFormFillup(
           this.student.department,
-          this.student.semistar
+          this.student.semistar,
+          this.student.session.id
         )
         .subscribe((responses: any) => {
           this.corepapers = responses
