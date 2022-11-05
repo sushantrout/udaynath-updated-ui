@@ -14,7 +14,7 @@
 
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
       <label class="form-label">Examination Roll Number</label>
-      <input type="text" class="form-control" [(ngModel)]="student.examRoolNumber"
+      <input type="text" class="form-control w-100" [(ngModel)]="student.examRoolNumber"
         (ngModelChange)="this.userQuestionUpdate.next($event)" [required]="true" />
     </div>
 
@@ -44,42 +44,42 @@
     </div>
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
       <label class="form-label">College Roll Number</label>
-      <input type="text" class="form-control" [required]="true" [(ngModel)]="student.rollNumber" disabled="true" />
+      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.rollNumber" disabled="true" />
     </div>
 
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
       <label class="form-label">Reg. NO</label>
-      <input type="text" class="form-control" [(ngModel)]="student.registrationNumber" disabled="true" />
+      <input type="text" class="form-control w-100" [(ngModel)]="student.registrationNumber" disabled="true" />
     </div>
     <div class="col-sm-12 col-md-6 col-xs-12 my-2">
       <label class="form-label">Full Name</label>
-      <input type="text" class="form-control" [required]="true" [(ngModel)]="student.fullName" disabled="true" />
+      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.fullName" disabled="true" />
     </div>
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
       <label class="form-label">Date of birth (as in HSC)</label>
       <!-- <input type="date" class="form-control" [(ngModel)]="student.dob" required /> -->
-      <bip-calendar [(ngModel)]="student.dob" required [showIcon]="true" [disabled]="true"></bip-calendar>
+      <bip-calendar [(ngModel)]="student.dob" required [showIcon]="true" styleClass="w-100" [disabled]="true"></bip-calendar>
     </div>
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Sex</label>
-      <p-selectButton [options]="genders" [(ngModel)]="student.gender" [disabled]="true"></p-selectButton>
+      <p-selectButton [options]="genders" [(ngModel)]="student.gender" [disabled]="true" styleClass="w-100"></p-selectButton>
     </div>
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Caste</label>
-      <p-selectButton [options]="casts" [(ngModel)]="student.caste" [disabled]='true'></p-selectButton>
+      <p-selectButton [options]="casts" [(ngModel)]="student.caste" [disabled]='true' styleClass="w-100"></p-selectButton>
     </div>
 
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Father's Name</label>
-      <input type="text" class="form-control" [required]="true" [(ngModel)]="student.fathersName" disabled="true" />
+      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.fathersName" disabled="true" />
     </div>
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Mother's Name</label>
-      <input type="text" class="form-control" [required]="true" [(ngModel)]="student.mothersName" disabled="true" />
+      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.mothersName" disabled="true" />
     </div>
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Email</label>
-      <input type="text" class="form-control" [required]="true" [(ngModel)]="student.emailId" disabled="true" />
+      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.emailId" disabled="true" />
     </div>
 
     <div class="row">

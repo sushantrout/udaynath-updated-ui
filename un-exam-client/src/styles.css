@@ -218,3 +218,13 @@ userdetails-form{
 body {
   font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif, “Apple Color Emoji”, “Segoe UI Emoji”, “Segoe UI Symbol” !important;
 }
+
+.p-datepicker {
+  height: 250px !important;
+  width: 400px !important;
+  overflow: auto;
+}
+
+.p-datepicker table td {
+  padding: 0.0rem !important;
+}
