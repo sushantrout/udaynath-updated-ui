@@ -201,7 +201,117 @@
             <bip-dropdown [option]="years" optionLabel="label" [(ngModel)]="student.examYear"></bip-dropdown>
           </div>
         </div>
-        <div class="row exam-form-gap exam-form">
+
+        <div class="row">
+          <div class="col-4 mt-md-0">
+            <label>College Roll Number</label>
+            <input type="text" class="form-control" [required]="true" [(ngModel)]="student.rollNumber"
+              readonly="true" />
+          </div>
+          <div class="col-4 col mt-md-0">
+            <label>Examination Roll Number</label>
+            <input type="text" class="form-control" [(ngModel)]="student.examRoolNumber" [required]="true"
+              readonly="true" />
+          </div>
+          <div class="col-4 col mt-md-0">
+            <label>Reg. NO</label>
+            <input type="text" class="form-control" [required]="true" [(ngModel)]="student.registrationNumber"
+              readonly="true" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3 mt-md-0">
+            <label>Stream</label>
+            <input type="text" class="form-control" [required]="true" [value]="getStreamName()"
+              readonly="true" />
+          </div>
+          <div class="col-3 mt-md-0">
+            <label>Department</label>
+            <input type="text" class="form-control" [required]="true" [value]="getDepartmentName()"
+              readonly="true" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-8">
+            <label>Full Name</label>
+            <input type="text" class="form-control" [required]="true" [(ngModel)]="student.fullName" readonly="true" />
+          </div>
+          <div class="col-4">
+            <label>Date of birth (as in HSC)</label>
+            <input type="date" class="form-control" [required]="true" [(ngModel)]="student.dob" readonly="true" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <label>Father's Name</label>
+            <input type="text" class="form-control" [required]="true" [(ngModel)]="student.fathersName"
+              readonly="true" />
+          </div>
+          <div class="col-6">
+            <label>Mother's Name</label>
+            <input type="text" class="form-control" [required]="true" [(ngModel)]="student.mothersName"
+              readonly="true" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h3 class="text-center">
+              Papers Of Examination {{ student.semistar }} SEMESTER ({{
+              student.examType
+              }})
+            </h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row exam-paper-area" *ngIf="corepapers && corepapers.length != 0">
+            <div class="col-12">
+              <div class="row">
+                <div class="cell-content col-3 header-text">Paper Type</div>
+                <div class="cell-content col-9 header-text">Paper Name & Paper Code</div>
+              </div>
+
+              <div class="row">
+                <div class="cell-content col-3 header-text">Core</div>
+                <div class="cell-content col-9">{{corepapers}}</div>
+              </div>
+
+              <div class="row" *ngIf="compulsorys && compulsorys.length != 0">
+                <div class="cell-content col-3 header-text">Compulsory</div>
+                <div class="cell-content col-9">
+                  {{student.comp?.name}}
+                </div>
+              </div>
+
+              <div class="row" *ngIf="sec && sec.length != 0">
+                <div class="cell-content col-3 header-text">SEC</div>
+                <div class="cell-content col-9"> {{ sec }}</div>
+              </div>
+
+              <div class="row" *ngIf="ges && ges.length != 0">
+                <div class="cell-content col-3 header-text">GE</div>
+                <div class="cell-content col-9">
+                  {{student.ges?.name}}
+                </div>
+              </div>
+
+              <div class="row" *ngIf="dse && dse.length != 0">
+                <div class="cell-content col-3 header-text">
+                  DSE
+                </div>
+                <div class="cell-content col-9">
+                  {{student.dse?.name}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row exam-form-gap exam-form" style="page-break-after: always; margin-top: 40px;">
           <div class="col-12">
             <ng-template [ngIf]="preview">
               <div class="row mt-3">
@@ -254,6 +364,7 @@
             </ng-template>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -261,7 +372,7 @@
 
 <div class="row">
   <div class="col-12 text-center">
-    <button styleSheetFile="assets/css/bootstrap.min.css,assets/css/style.css,assets/css/primeng.min.css"
+    <button styleSheetFile="assets/css/print/bootstrap.min.css,assets/css/print/style.css,assets/css/print/primeng.min.css,assets/css/print/primeflex.css"
       printSectionId="student-form-print-area" ngxPrint class="btn btn-primary" style="margin-right: 10px;"
       *ngIf="isRegistered">
       Print

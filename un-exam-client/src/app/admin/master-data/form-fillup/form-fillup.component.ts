@@ -54,10 +54,9 @@ export class FormFillupComponent implements OnInit {
     private messageService: ToastService,
     private studentService: StudentService
   ) {
-    this.userQuestionUpdate.pipe(
-      debounceTime(2000),
-      distinctUntilChanged())
-      .subscribe(value => {
+    this.userQuestionUpdate
+      .pipe(debounceTime(2000), distinctUntilChanged())
+      .subscribe((value) => {
         this.getApplicationForm();
       });
   }
@@ -116,12 +115,27 @@ export class FormFillupComponent implements OnInit {
   printDoc() {
     window.print();
   }
+
+  getDepartmentName() {
+    if(this.departments && this.student.department) {
+      let dept : any = this.departments.find((e : any) => e.id == this.student.department);
+      return dept ? dept.name : '';
+    }
+    return "";
+  }
+  getStreamName() {
+    if(this.student.stream) {
+      let stream : any = this.streams.find((e : any) => e.id == this.student.stream);
+      return stream ? stream.name : '';
+    }
+  }
+
   register() {
     if (!this.togglePreviewButton()) {
       return;
     }
     this.isRegistered = true;
-    if (this.student.ges) {
+    /*  if (this.student.ges) {
       this.student.ges = { id: this.student.ges.id };
     }
 
@@ -135,10 +149,10 @@ export class FormFillupComponent implements OnInit {
 
     if (this.student.department) {
       this.student.department = { id: this.student.department.id };
-    }
+    } */
 
     this.showForm = true;
-      this.preview = true;
+    this.preview = true;
 
     /* this.formService.save(this.student).subscribe((res: any) => {
       this.messageService.sucess(
@@ -163,7 +177,12 @@ export class FormFillupComponent implements OnInit {
 
   getPaperByDepartment() {
     this.corepapers = [];
-    if (this.student.department && this.student.semistar && this.student.session && this.student.session.id) {
+    if (
+      this.student.department &&
+      this.student.semistar &&
+      this.student.session &&
+      this.student.session.id
+    ) {
       this.paperService
         .findByHonoursAndSemistarAndSessionFormFillup(
           this.student.department,
@@ -202,16 +221,16 @@ export class FormFillupComponent implements OnInit {
   }
 
   getApplicationForm() {
-    if(this.student && this.student.stream) {
-      this.student.stream = {id : this.student.stream.id};
+    if (this.student && this.student.stream) {
+      this.student.stream = { id: this.student.stream.id };
     }
 
-    if(this.student && this.student.stream) {
-      this.student.stream = {id : this.student.stream.id};
+    if (this.student && this.student.stream) {
+      this.student.stream = { id: this.student.stream.id };
     }
 
-    if(this.student && this.student.examYear) {
-      this.student.examYear = { id : this.student.session.id};
+    if (this.student && this.student.examYear) {
+      this.student.examYear = { id: this.student.session.id };
     }
 
     let sem = this.student.semistar;
@@ -229,8 +248,8 @@ export class FormFillupComponent implements OnInit {
           this.student.caste = this.toUpperCase(this.student.caste);
           this.display = false;
           this.isOldRegistration = false;
-          if(this.student.dob) {
-            this.student.dob = new Date(this.student.dob)
+          if (this.student.dob) {
+            this.student.dob = new Date(this.student.dob);
           }
           this.showForm = true;
           this.getDepartments();
@@ -238,9 +257,9 @@ export class FormFillupComponent implements OnInit {
       });
   }
 
-  toUpperCase(content : string) {
-    if(content) {
-      return (content+"").toUpperCase();
+  toUpperCase(content: string) {
+    if (content) {
+      return (content + '').toUpperCase();
     } else {
       return content.toUpperCase();
     }

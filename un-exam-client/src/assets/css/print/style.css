@@ -74,7 +74,7 @@
 @media print {
     html, body {
         width: 210mm;
-        height: 297mm;        
+        height: 297mm;
     }
     .page {
         margin: 0;
@@ -145,4 +145,13 @@
   }
   .w-80 {
     width: 80vw !important;
+  }
+
+  .form-page .header-text {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .exam-paper-area .cell-content {
+    border: 2px solid black;
   }
