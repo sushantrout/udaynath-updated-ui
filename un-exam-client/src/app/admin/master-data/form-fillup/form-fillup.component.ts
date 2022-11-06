@@ -6,7 +6,6 @@ import { FormFillupService } from 'src/app/shared/services/form-fillup.service';
 import { PaperService } from 'src/app/shared/services/paper.service';
 import { SessionService } from 'src/app/shared/services/session.service';
 import { StreamService } from 'src/app/shared/services/stream.service';
-import { StudentService } from 'src/app/shared/services/student.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { Location } from '@angular/common';
@@ -22,7 +21,7 @@ export class FormFillupComponent implements OnInit {
   streams = [];
   years = [];
   semistars = CourseType.semistars;
-  examTypes = CourseType.examTypesIntORSEm;
+  examTypes = CourseType.examTypes;
   courseTypes = CourseType.types;
   genders = CourseType.genders;
   casts = CourseType.casts;

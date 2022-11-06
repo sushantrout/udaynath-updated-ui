@@ -8,6 +8,10 @@ import { SessionModel } from 'src/app/shared/model/session-model';
 import { StreamModel } from 'src/app/shared/model/stream.model';
 import { Department } from 'src/app/shared/model/department.model';
 import { CourseType } from 'src/app/shared/constants/course.constant';
+import { FormFillupService } from 'src/app/shared/services/form-fillup.service';
+import { ResultInputModel } from 'src/app/shared/model/result.input.model';
+import { MenuItem, SelectItem } from 'primeng/api';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-manage-admit-card',
@@ -21,12 +25,22 @@ export class ManageAdmitCardComponent implements OnInit {
   departmentList: Department[] = [];
   courseTypes = CourseType.types;
   semistarList = CourseType.semistars;
+  examTypes = CourseType.examTypes;
+  eligibles : SelectItem [] = [{
+    label: 'NO',
+    value: false
+  }, {
+    label: 'YES',
+    value: true
+  }];
   studentModel: StudenModel = new StudenModel();
 
   constructor(
     private departmentService: DepartmentService,
     private sessionService: SessionService,
-    private streamService: StreamService
+    private streamService: StreamService,
+    private formService: FormFillupService,
+    private messageService: ToastService,
   ) {}
 
   ngOnInit(): void {this.findAllSessions();}
@@ -54,4 +68,27 @@ export class ManageAdmitCardComponent implements OnInit {
       });
   }
 
+  admitCarddatas = [];
+  getAdmitcardByDepartment() {
+    this.admitCarddatas = [];
+    let requestBody = new ResultInputModel();
+    requestBody.semistar = this.studentModel.semistar;
+    requestBody.departmentId = this.studentModel.department?.id;
+    requestBody.examType = this.studentModel.examType;
+
+    if(requestBody.semistar && requestBody.departmentId && requestBody.examType) {
+      this.formService.findAllFIlter(requestBody).subscribe((res : any) => {
+        this.admitCarddatas = res;
+      });
+    }
+  }
+
+  validate() {
+    this.formService.validate(this.admitCarddatas).subscribe((res : any ) => {
+      this.messageService.sucess(
+        'Form validated submitted successfully!',
+        'Success'
+      );
+    });
+  }
 }

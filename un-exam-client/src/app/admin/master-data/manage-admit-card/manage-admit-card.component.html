@@ -1,22 +1,78 @@
 <p-card>
-    <div class="grid">
-        <div class="col-3">
-            <bip-dropdown [option]="sessions" [(ngModel)]="studentModel.session" optionLabel="name">
-            </bip-dropdown>
-        </div>
-        <div class="col-3">
-            <bip-dropdown [option]="courseTypes" [(ngModel)]="studentModel.courseType"
-                (ngModelChange)="findStreamByCourseType()">
-            </bip-dropdown>
-        </div>
-        <div class="col-3">
-            <bip-dropdown [option]="streams" [(ngModel)]="studentModel.stream" optionLabel="name"
-                (ngModelChange)="getDepartmentsByStreamId()">
-            </bip-dropdown>
-        </div>
-        <div class="col-3">
-            <bip-dropdown [option]="departmentList" [(ngModel)]="studentModel.department" optionLabel="name">
-            </bip-dropdown>
-        </div>
+  <div class="grid">
+    <div class="col-3">
+      <bip-dropdown [option]="sessions" [(ngModel)]="studentModel.session" optionLabel="name">
+      </bip-dropdown>
     </div>
+    <div class="col-3">
+      <bip-dropdown [option]="courseTypes" [(ngModel)]="studentModel.courseType"
+        (ngModelChange)="findStreamByCourseType()">
+      </bip-dropdown>
+    </div>
+    <div class="col-3">
+      <bip-dropdown [option]="streams" [(ngModel)]="studentModel.stream" optionLabel="name"
+        (ngModelChange)="getDepartmentsByStreamId()">
+      </bip-dropdown>
+    </div>
+    <div class="col-3">
+      <bip-dropdown [option]="departmentList" [(ngModel)]="studentModel.department" optionLabel="name"
+        (click)="getAdmitcardByDepartment()">
+      </bip-dropdown>
+    </div>
+    <div class="col-3">
+      <bip-dropdown [option]="semistarList" [(ngModel)]="studentModel.semistar"
+        (ngModelChange)="getAdmitcardByDepartment()">
+      </bip-dropdown>
+    </div>
+    <div class="col-3">
+      <bip-dropdown [option]="examTypes" [(ngModel)]="studentModel.examType"
+        (ngModelChange)="getAdmitcardByDepartment()">
+      </bip-dropdown>
+    </div>
+  </div>
 </p-card>
+
+<div class="row" style="margin-top: 10px;">
+  <p-card>
+    <div class="col-12">
+      <div class="p-grid student-form-table" *ngIf="admitCarddatas">
+        <p-table [value]="admitCarddatas" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+          responsiveLayout="scroll" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          scrollHeight="60vh" [scrollable]='true' [rowsPerPageOptions]="[10,25,50]">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Exam Rool NO.</th>
+              <th>Full Name</th>
+              <th>Roll NO.</th>
+              <th>Eligable</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-student let-i="rowIndex">
+            <tr>
+              <td>
+                {{student.examRollNumber}}
+              </td>
+              <td>
+                {{student.fullName}}
+              </td>
+              <td>
+                {{student.collegeRollNumber}}
+              </td>
+              <td>
+                <p-selectButton [options]="eligibles" [(ngModel)]="student.isEligible" optionLabel="label" optionValue="value"></p-selectButton>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-right">
+          <button pButton type="button" label="Save" (click)="validate()"
+      *ngIf="admitCarddatas && admitCarddatas.length != 0"></button>
+        </div>
+      </div>
+
+    </div>
+  </p-card>
+</div>
