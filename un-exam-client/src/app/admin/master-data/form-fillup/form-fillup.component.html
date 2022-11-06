@@ -15,7 +15,8 @@
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
       <label class="form-label">Examination Roll Number</label>
       <input type="text" class="form-control w-100" [(ngModel)]="student.examRoolNumber"
-        (ngModelChange)="this.userQuestionUpdate.next($event)" [required]="true" />
+        (ngModelChange)="this.userQuestionUpdate.next($event)" [required]="true"
+        [disabled]="!(student.semistar && student.examType)" />
     </div>
 
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
@@ -44,7 +45,8 @@
     </div>
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
       <label class="form-label">College Roll Number</label>
-      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.rollNumber" disabled="true" />
+      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.rollNumber"
+        disabled="true" />
     </div>
 
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
@@ -58,24 +60,29 @@
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
       <label class="form-label">Date of birth (as in HSC)</label>
       <!-- <input type="date" class="form-control" [(ngModel)]="student.dob" required /> -->
-      <bip-calendar [(ngModel)]="student.dob" required [showIcon]="true" styleClass="w-100" [disabled]="true"></bip-calendar>
+      <bip-calendar [(ngModel)]="student.dob" required [showIcon]="true" styleClass="w-100" [disabled]="true">
+      </bip-calendar>
     </div>
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Sex</label>
-      <p-selectButton [options]="genders" [(ngModel)]="student.gender" [disabled]="true" styleClass="w-100"></p-selectButton>
+      <p-selectButton [options]="genders" [(ngModel)]="student.gender" [disabled]="true" styleClass="w-100">
+      </p-selectButton>
     </div>
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Caste</label>
-      <p-selectButton [options]="casts" [(ngModel)]="student.caste" [disabled]='true' styleClass="w-100"></p-selectButton>
+      <p-selectButton [options]="casts" [(ngModel)]="student.caste" [disabled]='true' styleClass="w-100">
+      </p-selectButton>
     </div>
 
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Father's Name</label>
-      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.fathersName" disabled="true" />
+      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.fathersName"
+        disabled="true" />
     </div>
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Mother's Name</label>
-      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.mothersName" disabled="true" />
+      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.mothersName"
+        disabled="true" />
     </div>
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Email</label>
@@ -90,50 +97,50 @@
           }})
         </span>
       </div>
+    </div>
 
+    <div class="row">
       <div class="col-12" *ngIf="corepapers && corepapers.length != 0">
-        <table style="width: 100%" class="table table-striped">
-          <thead>
-            <tr>
-              <th style="width: 25%">Paper Type</th>
-              <th style="width: 75%">Paper Name & Paper Code</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Core</th>
-              <td>
-                {{corepapers}}
-              </td>
-            </tr>
-            <tr *ngIf="compulsorys && compulsorys.length != 0">
-              <th>Compulsory</th>
-              <bip-dropdown [option]="compulsorys" [(ngModel)]="student.comp" styleClass="w-100" optionLabel="name">
-              </bip-dropdown>
-            </tr>
-            <tr *ngIf="sec && sec.length != 0">
-              <th>SEC</th>
-              <td>
-                {{ sec }}
-              </td>
-            </tr>
-            <tr *ngIf="ges && ges.length != 0">
-              <th>GE</th>
-              <td>
-                <bip-dropdown [option]="ges" [(ngModel)]="student.ges" styleClass="w-100" optionLabel="name">
-                </bip-dropdown>
-              </td>
-            </tr>
+        <div class="row">
+          <div class="col-3">Paper Type</div>
+          <div class="col-9">Paper Name & Paper Code</div>
+        </div>
 
-            <tr *ngIf="dse && dse.length != 0">
-              <th>DSE</th>
-              <td>
-                <bip-dropdown [option]="dse" [(ngModel)]="student.dse" styleClass="w-100" optionLabel="name">
-                </bip-dropdown>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="row">
+          <div class="col-3">Core</div>
+          <div class="col-9">{{corepapers}}</div>
+        </div>
+
+        <div class="row" *ngIf="compulsorys && compulsorys.length != 0">
+          <div class="col-3">Compulsory</div>
+          <div class="col-9">
+            <bip-dropdown [option]="compulsorys" [(ngModel)]="student.comp" styleClass="w-100" optionLabel="name">
+            </bip-dropdown>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="sec && sec.length != 0">
+          <div class="col-3">SEC</div>
+          <div class="col-9"> {{ sec }}</div>
+        </div>
+
+        <div class="row" *ngIf="ges && ges.length != 0">
+          <div class="col-3">GE</div>
+          <div class="col-9">
+            <bip-dropdown [option]="ges" [(ngModel)]="student.ges" styleClass="w-100" optionLabel="name">
+            </bip-dropdown>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="dse && dse.length != 0">
+          <div class="col-3">
+            DSE
+          </div>
+          <div class="col-9">
+            <bip-dropdown [option]="dse" [(ngModel)]="student.dse" styleClass="w-100" optionLabel="name">
+            </bip-dropdown>
+          </div>
+        </div>
       </div>
     </div>
   </div>
