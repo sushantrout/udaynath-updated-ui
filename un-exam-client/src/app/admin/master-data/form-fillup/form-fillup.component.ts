@@ -98,12 +98,12 @@ export class FormFillupComponent implements OnInit {
       this.student.courseType &&
       this.student.semistar &&
       this.student.examType &&
-      this.student.examYear &&
+      this.student.session &&
       this.student.examRoolNumber &&
       this.student.stream &&
       this.student.department &&
       this.student.fullName &&
-      this.student.sex &&
+      this.student.gender &&
       this.student.caste &&
       this.student.fathersName &&
       this.student.mothersName;
@@ -137,14 +137,17 @@ export class FormFillupComponent implements OnInit {
       this.student.department = { id: this.student.department.id };
     }
 
-    this.formService.save(this.student).subscribe((res: any) => {
+    this.showForm = true;
+      this.preview = true;
+
+    /* this.formService.save(this.student).subscribe((res: any) => {
       this.messageService.sucess(
         'Your form is submitted successfully!',
         'Success'
       );
       this.showForm = true;
       this.preview = true;
-    });
+    }); */
   }
 
   getDepartments() {

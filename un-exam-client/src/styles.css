@@ -228,3 +228,13 @@ body {
 .p-datepicker table td {
   padding: 0.0rem !important;
 }
+
+
+.form-page .header-text {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.exam-paper-area .cell-content {
+  border: 2px solid black;
+}

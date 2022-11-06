@@ -1,4 +1,5 @@
-<div class="container" style="border: 1px solid black" [ngClass]="isSubmit ? 'form-submitted' : ''">
+<div class="container form-page" style="border: 1px solid black; padding: 20px;"
+  [ngClass]="isSubmit ? 'form-submitted' : ''">
   <div class="row">
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
       <label for="semistarType" class="form-label">Semester</label>
@@ -89,59 +90,182 @@
       <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.emailId" disabled="true" />
     </div>
 
-    <div class="row">
-      <div class="col-12 text-center">
-        <span>
-          Papers Of Examination {{ student.semistar }} SEMESTER ({{
-          student.examType
-          }})
-        </span>
+    <div class="col-12" style="padding: 20px;">
+      <div class="row ">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-12 text-center header-text">
+              <span>
+                Papers Of Examination {{ student.semistar }} SEMESTER ({{
+                student.examType
+                }})
+              </span>
+            </div>
+          </div>
+
+          <div class="row exam-paper-area" *ngIf="corepapers && corepapers.length != 0">
+            <div class="col-12">
+              <div class="row">
+                <div class="cell-content col-3 header-text">Paper Type</div>
+                <div class="cell-content col-9 header-text">Paper Name & Paper Code</div>
+              </div>
+
+              <div class="row">
+                <div class="cell-content col-3 header-text">Core</div>
+                <div class="cell-content col-9">{{corepapers}}</div>
+              </div>
+
+              <div class="row" *ngIf="compulsorys && compulsorys.length != 0">
+                <div class="cell-content col-3 header-text">Compulsory</div>
+                <div class="cell-content col-9">
+                  <bip-dropdown [option]="compulsorys" [(ngModel)]="student.comp" styleClass="w-100" optionLabel="name">
+                  </bip-dropdown>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="sec && sec.length != 0">
+                <div class="cell-content col-3 header-text">SEC</div>
+                <div class="cell-content col-9"> {{ sec }}</div>
+              </div>
+
+              <div class="row" *ngIf="ges && ges.length != 0">
+                <div class="cell-content col-3 header-text">GE</div>
+                <div class="cell-content col-9">
+                  <bip-dropdown [option]="ges" [(ngModel)]="student.ges" styleClass="w-100" optionLabel="name">
+                  </bip-dropdown>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="dse && dse.length != 0">
+                <div class="cell-content col-3 header-text">
+                  DSE
+                </div>
+                <div class="cell-content col-9">
+                  <bip-dropdown [option]="dse" [(ngModel)]="student.dse" styleClass="w-100" optionLabel="name">
+                  </bip-dropdown>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="row">
-      <div class="col-12" *ngIf="corepapers && corepapers.length != 0">
-        <div class="row">
-          <div class="col-3">Paper Type</div>
-          <div class="col-9">Paper Name & Paper Code</div>
-        </div>
-
-        <div class="row">
-          <div class="col-3">Core</div>
-          <div class="col-9">{{corepapers}}</div>
-        </div>
-
-        <div class="row" *ngIf="compulsorys && compulsorys.length != 0">
-          <div class="col-3">Compulsory</div>
-          <div class="col-9">
-            <bip-dropdown [option]="compulsorys" [(ngModel)]="student.comp" styleClass="w-100" optionLabel="name">
-            </bip-dropdown>
+<div class="book form-print-area" id="student-form-print-area" *ngIf="preview">
+  <div class="row" style="padding: 20px;">
+    <div class="col-12">
+      <div [ngClass]="preview ? 'page' : ''">
+        <ng-template [ngIf]="preview">
+          <div class="row">
+            <div class="col-2" style="height: 150px">
+              <img src="assets/images/logo.png" alt="UN LOGO" />
+            </div>
+            <div class="col-8 text-center">
+              <p class="college-name">
+                UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH.
+              </p>
+              <p class="college-address-text">ADASPUR, CUTTACK</p>
+              <p class="college-address-text">
+                Application form for
+                <b>
+                  {{ student.courseType }} {{ student.semistar }} SEMESTER ({{
+                  student.examType
+                  }}) Examination {{ student.examYear?.label }}</b>
+              </p>
+            </div>
+            <div class="col-2" style="border: 1px solid black">
+              <p class="text-center" style="margin-top: 50%">Attach Photo</p>
+            </div>
           </div>
-        </div>
+        </ng-template>
 
-        <div class="row" *ngIf="sec && sec.length != 0">
-          <div class="col-3">SEC</div>
-          <div class="col-9"> {{ sec }}</div>
-        </div>
-
-        <div class="row" *ngIf="ges && ges.length != 0">
-          <div class="col-3">GE</div>
-          <div class="col-9">
-            <bip-dropdown [option]="ges" [(ngModel)]="student.ges" styleClass="w-100" optionLabel="name">
-            </bip-dropdown>
+        <div class="row mt-2" *ngIf="!preview">
+          <div class="col-2">
+            <p class="college-address-text">Application form for</p>
           </div>
-        </div>
-
-        <div class="row" *ngIf="dse && dse.length != 0">
+          <div class="col-1">
+            <div class="col-2">
+              <bip-dropdown [option]="courseTypes" [(ngModel)]="student.courseType"></bip-dropdown>
+            </div>
+          </div>
+          <div class="col-2">
+            <bip-dropdown [option]="semistars" [(ngModel)]="student.semistar"></bip-dropdown>
+          </div>
+          <div class="col-2">semester</div>
           <div class="col-3">
-            DSE
+            <bip-dropdown [option]="examTypes" [(ngModel)]="student.examType"></bip-dropdown>
           </div>
-          <div class="col-9">
-            <bip-dropdown [option]="dse" [(ngModel)]="student.dse" styleClass="w-100" optionLabel="name">
-            </bip-dropdown>
+          <div class="col-2">
+            <bip-dropdown [option]="years" optionLabel="label" [(ngModel)]="student.examYear"></bip-dropdown>
+          </div>
+        </div>
+        <div class="row exam-form-gap exam-form">
+          <div class="col-12">
+            <ng-template [ngIf]="preview">
+              <div class="row mt-3">
+                <div class="col-12 mt-md-0">
+                  <label>Percentage Of Attendance(To be filled by the
+                    Department)</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  Examination fee paid :Rs____________________________<br />
+                  ____________________________
+                </div>
+                <div class="col-4 text-right mt-16">Signature of the HOD</div>
+              </div>
+              <div class="row text-right mt-25">
+                <p>
+                  Full Signature of the Candidate<br /><br />Address
+                  ____________________________<br />____________________________<br />
+                  ____________________________
+                </p>
+              </div>
+              <div class="row">
+                <div class="col-6">Signature of Collection Assistant</div>
+                <div class="col-6">
+                  <label>Pin</label>
+                  <br />
+                  <label>Phone</label>
+                </div>
+              </div>
+              <div class="row">
+                <p class="text-justify">
+                  Certified that the candidate sponsored for the above mentioned
+                  Examination fulfills the academic requirements as per the
+                  regulation of the Utkal University & U.N (Auto.) College of Sc.
+                  & Tech. Adaspur.
+                </p>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  Signature of the Verifying Officer<br />
+                  Date:_______________
+                </div>
+                <div class="col-6">
+                  <p style="text-align: center" id="bold">
+                    PRINCIPAL<br />U.N (Auto.) College of Sc. &amp; Tech.<br />Adaspur
+                  </p>
+                </div>
+              </div>
+            </ng-template>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 text-center">
+    <button styleSheetFile="assets/css/bootstrap.min.css,assets/css/style.css,assets/css/primeng.min.css"
+      printSectionId="student-form-print-area" ngxPrint class="btn btn-primary" style="margin-right: 10px;"
+      *ngIf="isRegistered">
+      Print
+    </button>
+    <button class="btn btn-primary" (click)="register()" *ngIf="!isRegistered">Submit</button>
   </div>
 </div>
