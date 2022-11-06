@@ -277,7 +277,11 @@
 
               <div class="row">
                 <div class="cell-content col-3 header-text">Core</div>
-                <div class="cell-content col-9">{{corepapers}}</div>
+                <div class="cell-content col-9">
+                  <div *ngFor="let core of corepapers" class="w-100">
+                    {{core}}
+                  </div>
+                </div>
               </div>
 
               <div class="row" *ngIf="compulsorys && compulsorys.length != 0">
@@ -378,6 +382,6 @@
       Print
     </button>
     <button class="btn btn-primary" (click)="register()" *ngIf="!isRegistered">Submit</button>
-    <button class="btn btn-primary" (click)="editForm()" *ngIf="isRegistered">Submit</button>
+    <button class="btn btn-primary" (click)="editForm()" *ngIf="isRegistered">Edit</button>
   </div>
 </div>

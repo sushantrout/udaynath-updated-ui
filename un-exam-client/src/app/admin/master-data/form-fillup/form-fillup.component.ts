@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CourseType } from 'src/app/shared/constants/course.constant';
-import { StudenModel } from 'src/app/shared/model/student.model';
 import { DepartmentService } from 'src/app/shared/services/department.service';
 import { FormFillupService } from 'src/app/shared/services/form-fillup.service';
 import { PaperService } from 'src/app/shared/services/paper.service';
@@ -176,8 +175,6 @@ export class FormFillupComponent implements OnInit {
       }
 
     }
-
-    this.student;
 
     this.formService
       .saveFormDetail(studentReq, papers, this.student.examType, this.student.semistar)
