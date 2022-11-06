@@ -1,5 +1,5 @@
 <div class="container form-page" style="border: 1px solid black; padding: 20px;"
-  [ngClass]="isSubmit ? 'form-submitted' : ''">
+  [ngClass]="isSubmit ? 'form-submitted' : ''" *ngIf="!preview">
   <div class="row">
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
       <label for="semistarType" class="form-label">Semester</label>
