@@ -38,6 +38,7 @@ export class ManageAdmitCardComponent implements OnInit {
   }
 
   findStreamByCourseType() {
+    if(!this.studentModel.courseType) return;
     this.streamService
       .findByCourseType(this.studentModel.courseType)
       .subscribe((res: any) => {
@@ -45,6 +46,7 @@ export class ManageAdmitCardComponent implements OnInit {
       });
   }
   getDepartmentsByStreamId() {
+    if(!this.studentModel.stream) return;
     this.departmentService
       .findByStreamId(this.studentModel.stream?.id)
       .subscribe((res: any) => {

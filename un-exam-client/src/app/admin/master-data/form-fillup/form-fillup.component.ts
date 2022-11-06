@@ -9,6 +9,7 @@ import { StreamService } from 'src/app/shared/services/stream.service';
 import { StudentService } from 'src/app/shared/services/student.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-form-fillup',
@@ -51,7 +52,7 @@ export class FormFillupComponent implements OnInit {
     private honourseService: DepartmentService,
     private paperService: PaperService,
     private messageService: ToastService,
-    private studentService: StudentService
+    private location : Location
   ) {
     this.userQuestionUpdate
       .pipe(debounceTime(2000), distinctUntilChanged())
@@ -302,5 +303,9 @@ export class FormFillupComponent implements OnInit {
   editForm() {
     this.preview = false;
     this.isRegistered = false;
+  }
+
+  back() {
+    this.location.back();
   }
 }
