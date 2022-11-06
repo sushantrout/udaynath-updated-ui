@@ -117,15 +117,19 @@ export class FormFillupComponent implements OnInit {
   }
 
   getDepartmentName() {
-    if(this.departments && this.student.department) {
-      let dept : any = this.departments.find((e : any) => e.id == this.student.department);
+    if (this.departments && this.student.department) {
+      let dept: any = this.departments.find(
+        (e: any) => e.id == this.student.department
+      );
       return dept ? dept.name : '';
     }
-    return "";
+    return '';
   }
   getStreamName() {
-    if(this.student.stream) {
-      let stream : any = this.streams.find((e : any) => e.id == this.student.stream);
+    if (this.student.stream) {
+      let stream: any = this.streams.find(
+        (e: any) => e.id == this.student.stream
+      );
       return stream ? stream.name : '';
     }
   }
@@ -135,33 +139,56 @@ export class FormFillupComponent implements OnInit {
       return;
     }
     this.isRegistered = true;
-    /*  if (this.student.ges) {
-      this.student.ges = { id: this.student.ges.id };
-    }
-
-    if (this.student.dse) {
-      this.student.dse = { id: this.student.dse.id };
-    }
-
-    if (this.student.comp) {
-      this.student.comp = { id: this.student.comp.id };
-    }
-
-    if (this.student.department) {
-      this.student.department = { id: this.student.department.id };
-    } */
-
     this.showForm = true;
     this.preview = true;
 
-    /* this.formService.save(this.student).subscribe((res: any) => {
-      this.messageService.sucess(
-        'Your form is submitted successfully!',
-        'Success'
+    let studentReq = {
+      id: this.student.id,
+      semistar: this.student.semistar,
+    };
+
+    let papers: any = [];
+
+    if (this.papers) {
+      let corepapers = this.getPaperByType(this.papers, 'CORE');
+      let sec = this.getPaperByType(this.papers, 'SEC').map(
+        (test: any) => test.name
       );
-      this.showForm = true;
-      this.preview = true;
-    }); */
+
+      corepapers.forEach((element : any ) => {
+        papers.push({id: element.id});
+      });
+
+      sec.forEach((element : any ) => {
+        papers.push({id: element.id});
+      });
+
+      if(this.student.comp) {
+        papers.push({id: this.student.comp.id});
+      }
+
+      if(this.student.ges) {
+        papers.push({id: this.student.ges.id});
+      }
+
+      if(this.student.dse) {
+        papers.push({id: this.student.dse.id});
+      }
+
+    }
+
+    this.student;
+
+    this.formService
+      .saveFormDetail(studentReq, papers, this.student.examType, this.student.semistar)
+      .subscribe((res: any) => {
+        this.messageService.sucess(
+          'Your form is submitted successfully!',
+          'Success'
+        );
+        this.showForm = true;
+        this.preview = true;
+      });
   }
 
   getDepartments() {
@@ -175,8 +202,15 @@ export class FormFillupComponent implements OnInit {
     }
   }
 
+  papers = [];
   getPaperByDepartment() {
+    this.papers = [];
     this.corepapers = [];
+    this.ges = [];
+    this.sec = [];
+    this.compulsorys = [];
+    this.dse = [];
+
     if (
       this.student.department &&
       this.student.semistar &&
@@ -190,19 +224,22 @@ export class FormFillupComponent implements OnInit {
           this.student.session.id
         )
         .subscribe((responses: any) => {
-          this.corepapers = responses
-            .filter((res: any) => res.paperType == 'CORE')
-            .map((test: any) => test.name);
-          this.sec = responses
-            .filter((res: any) => res.paperType == 'SEC')
-            .map((test: any) => test.name);
-          this.compulsorys = responses.filter(
-            (res: any) => res.paperType == 'COMPULSORY'
+          this.papers = responses;
+          this.corepapers = this.getPaperByType(responses, 'CORE').map(
+            (test: any) => test.name
           );
-          this.ges = responses.filter((res: any) => res.paperType == 'GE');
-          this.dse = responses.filter((res: any) => res.paperType == 'DSE');
+          this.sec = this.getPaperByType(responses, 'SEC').map(
+            (test: any) => test.name
+          );
+          this.compulsorys = this.getPaperByType(responses, 'COMPULSORY');
+          this.ges = this.getPaperByType(responses, 'GE');
+          this.dse = this.getPaperByType(responses, 'DSE');
         });
     }
+  }
+
+  getPaperByType(responses: any, type: string) {
+    return responses.filter((res: any) => res.paperType == type);
   }
 
   newRegister() {
@@ -263,5 +300,10 @@ export class FormFillupComponent implements OnInit {
     } else {
       return content.toUpperCase();
     }
+  }
+
+  editForm() {
+    this.preview = false;
+    this.isRegistered = false;
   }
 }

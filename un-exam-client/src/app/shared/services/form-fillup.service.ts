@@ -8,6 +8,17 @@ export class FormFillupService {
   constructor(private apiService: ApiService) {}
 
   URL = 'student-form';
+
+  saveFormDetail(student : any, papers : any, examType : string, semistar : string) {
+    let req = {
+      student,
+      papers,
+      examType,
+      semistar
+    }
+    return this.apiService.post(this.URL+"/save", req);
+  }
+
   save(student: any) {
     return this.apiService.post(this.URL, student);
   }
