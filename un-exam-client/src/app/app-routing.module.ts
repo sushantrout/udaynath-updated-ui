@@ -14,7 +14,6 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    canActivate: [AuthGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   {
@@ -25,7 +24,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,{
-    useHash:true
+    useHash:true, enableTracing: true
   })],
   exports: [RouterModule]
 })

@@ -12,8 +12,9 @@ export class AdminComponent implements OnInit {
 
   user: User = new User();
   userImage!:any;
+  loginsucess = false;
   constructor(private userService: UserService,
-    private commonService  : CommonService) { 
+    private commonService  : CommonService) {
       this.userImage = this.commonService.profilePic.asObservable();
   }
 
@@ -21,6 +22,9 @@ export class AdminComponent implements OnInit {
     console.log("App init()");
     this.loadScript();
     this.user = this.commonService.currentUser;
+    setTimeout(() => {
+      this.loginsucess = this.user && this.userService.loginSucess;
+    }, 10);
   }
 
   public loadScript() {

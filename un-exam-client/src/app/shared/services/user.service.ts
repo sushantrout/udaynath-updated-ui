@@ -10,6 +10,7 @@ import { CommonService } from './common.service';
 export class UserService {
 
   loggedInUser = new BehaviorSubject<User>(new User());
+  loginSucess = false;
 
   constructor(private apiService: ApiService,
     private commonService : CommonService) { }

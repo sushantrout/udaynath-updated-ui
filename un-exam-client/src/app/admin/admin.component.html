@@ -20,7 +20,7 @@
                 <span class="side-menu__label">Dashboard</span></a>
         </li>
         <li class="side-item side-item-category">Components</li>
-        <li class="slide">
+        <li class="slide"  *ngIf="loginsucess">
             <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
                 <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24" height="24"
                     viewBox="0 0 24 24">
@@ -38,7 +38,7 @@
 
             </ul>
         </li>
-        <li class="slide">
+        <li class="slide"  *ngIf="loginsucess">
             <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
 
                 <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24" height="24"
@@ -56,7 +56,7 @@
                 <li><a routerLink="master-data/manage-result" class="slide-item"> Manage Result</a></li>
             </ul>
         </li>
-        <li class="slide">
+        <li class="slide"  *ngIf="loginsucess">
             <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
 
                 <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24" height="24"
@@ -87,7 +87,7 @@
                 <!-- <li><a routerLink="master-data/existing-form-fillup" class="slide-item">Exam Form</a></li> -->
             </ul>
         </li>
-        <li class="slide">
+        <li class="slide"  *ngIf="loginsucess">
             <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
 
                 <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24" height="24"

@@ -24,54 +24,67 @@ import { DownloadDataByDepartmentComponent } from './download-by-department/down
 import { ManageDepartmentResultGridComponent } from './manage-department-result/manage-department-result-grid/manage-department-result-grid.component';
 import { ResultPdfComponent } from './download-by-department/result-pdf/result-pdf.component';
 import { DownloadAdmitCardByDeptComponent } from './download-admit-card-by-dept/download-admit-card-by-dept.component';
+import { GuestGuardService } from 'src/app/shared/services/guest-guard.service';
 
 const routes: Routes = [
   {
     path: 'department',
     component: DepartmentComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'session',
     component: SessionComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'stream',
     component: StreamComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'paper',
     component: PaperComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'insert-honourse',
     component: InsertHonourseComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'insert-elective',
     component: InsertElectiveComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'mac',
     component: ManageAdmitCardComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'dac',
     component: DownloadAdmitCardComponent,
+    canActivate: [GuestGuardService]
   },{
     path: 'dac-by-dept',
     component: DownloadAdmitCardByDeptComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'ddr',
     component: DownloadByDepartmentComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'dmyr',
     component: DownloadMyResultComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'manage-result',
     component: ManageDepartmentResultComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'form-fillup',
@@ -79,18 +92,22 @@ const routes: Routes = [
   },{
     path: 'existing-form-fillup',
     component: FormFillupComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'manage-student',
     component: ManageStudentComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'create-student',
     component: CreateStudentComponent,
+    canActivate: [GuestGuardService]
   },
   {
     path: 'process-cnr',
     component: ProcessCnrComponent,
+    canActivate: [GuestGuardService]
   },
 ];
 

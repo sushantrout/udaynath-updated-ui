@@ -11,38 +11,50 @@ import { ApiResponse } from '../shared/model/api-response-model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   showLogin: boolean = true;
   showSignup: boolean = false;
 
   user: User = new User();
-  constructor(private userService: UserService,
+  constructor(
+    private userService: UserService,
     private router: Router,
     private tostService: ToastService,
-    private commonService  : CommonService,
-    private translateService: TranslateService) { }
+    private commonService: CommonService,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.showLogin = true;
-    this.user.username = "admin";
+    /* this.user.username = "admin";
     this.user.password = "Admin";
-    this.login();
+    this.login(); */
   }
 
   login() {
     if (this.user) {
-      this.userService.login(this.user).subscribe((res: ApiResponse) => {
-        this.tostService.sucess("Login", "Welcom to uExam management system", this.translateService.instant(
-          "usermanagement.succeful"));
-        this.commonService.currentUser = JSON.parse(JSON.stringify(this.user));
-        this.commonService.setProfilepic(res.data.profile?.profilePic);
-        this.router.navigateByUrl('admin');
-      }, (err : any) => {
-        this.tostService.error("Login", "Login fails");
-        this.router.navigateByUrl('login');
-      });
+      this.userService.login(this.user).subscribe(
+        (res: ApiResponse) => {
+          this.tostService.sucess(
+            'Login',
+            'Welcom to Exam management system',
+            this.translateService.instant('usermanagement.succeful')
+          );
+          this.userService.loggedInUser.next(this.user);
+          this.userService.loginSucess = true;
+          this.commonService.currentUser = JSON.parse(
+            JSON.stringify(this.user)
+          );
+          this.commonService.setProfilepic(res.data.profile?.profilePic);
+          this.router.navigateByUrl('admin');
+        },
+        (err: any) => {
+          this.tostService.error('Login', 'Login fails');
+          this.router.navigateByUrl('login');
+        }
+      );
     }
   }
 }
