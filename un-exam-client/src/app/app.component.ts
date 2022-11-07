@@ -26,7 +26,7 @@ export class AppComponent implements OnInit{
     }
   }
   ngOnInit(): void {
-
+    localStorage.clear();
   }
 
   changeLang(language: string) {

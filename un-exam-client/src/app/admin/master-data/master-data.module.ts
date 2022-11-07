@@ -65,7 +65,6 @@ const routes: Routes = [
   {
     path: 'dac',
     component: DownloadAdmitCardComponent,
-    canActivate: [GuestGuardService]
   },{
     path: 'dac-by-dept',
     component: DownloadAdmitCardByDeptComponent,

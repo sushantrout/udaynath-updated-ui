@@ -89,6 +89,11 @@ export class ManageAdmitCardComponent implements OnInit {
         'Form validated submitted successfully!',
         'Success'
       );
+    }, (error : any) => {
+      this.messageService.error(
+        'Please check with admin!',
+        'Fail'
+      );
     });
   }
 }

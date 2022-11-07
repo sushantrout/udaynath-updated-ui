@@ -56,7 +56,7 @@
                 <li><a routerLink="master-data/manage-result" class="slide-item"> Manage Result</a></li>
             </ul>
         </li>
-        <li class="slide"  *ngIf="loginsucess">
+        <li class="slide" >
             <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);">
 
                 <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="24" height="24"
@@ -67,9 +67,9 @@
                 </svg>
                 <span class="side-menu__label">Admit Card</span><i class="angle fe fe-chevron-right"></i></a>
             <ul class="slide-menu">
-                <li><a routerLink="master-data/mac" class="slide-item">Manage Admit Card</a></li>
+                <li><a routerLink="master-data/mac" class="slide-item" *ngIf="loginsucess">Manage Admit Card</a></li>
                 <li><a routerLink="master-data/dac" class="slide-item">Download Admit Card</a></li>
-                <li><a routerLink="master-data/dac-by-dept" class="slide-item">Download Admit Card By Department</a></li>
+                <li><a routerLink="master-data/dac-by-dept" class="slide-item" *ngIf="loginsucess">Download Admit Card By Department</a></li>
             </ul>
         </li>
         <li class="slide">

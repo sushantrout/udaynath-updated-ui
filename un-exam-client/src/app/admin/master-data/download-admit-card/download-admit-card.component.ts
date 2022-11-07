@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CourseType } from 'src/app/shared/constants/course.constant';
 import { AdmitService } from 'src/app/shared/services/admit.service';
 import { StudentService } from 'src/app/shared/services/student.service';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-download-admit-card',
@@ -13,15 +14,19 @@ export class DownloadAdmitCardComponent implements OnInit {
   semistar: string = '';
   semistarList = CourseType.semistars;
   admitCardDetails:any;
-  constructor(private admitService : AdmitService) {}
+  constructor(private admitService : AdmitService,
+    private toastService : ToastService) {}
 
   ngOnInit(): void {
     this.admitCardDetails = null;
   }
 
   getAdmitCard() {
+    this.admitCardDetails = null;
     this.admitService.download(this.rollNumber, this.semistar).subscribe((res : any) => {
       this.admitCardDetails = res;
+    }, (error  : any)=> {
+      this.toastService.error("Please contect to your HOD.", "Fail");
     });
   }
 }
