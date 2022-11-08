@@ -81,9 +81,9 @@ export class CreateStudentComponent implements OnInit {
 
   upload() {
     this.studentDatas = [];
-    this.formService.processStudentExcel(this.fileList,
+    this.studentService.processStudentExcel(this.fileList,
        this.studentModel.session?.id,
-       this.studentModel.courseType).subscribe((res: any) => {
+       this.studentModel.courseType, this.studentModel.department?.id).subscribe((res: any) => {
       /* let response = res.body;
       let skipFirstRow = true;
       for (let row of response) {

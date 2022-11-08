@@ -22,4 +22,8 @@ export class StudentService {
   findStudentBySessionCourseTypeDepartmentHonourse(filter: any) {
     return this.apiService.post(this.STUDENT_URL + '/filter', filter);
   }
+
+  processStudentExcel(fileList: any, sessionId : number, courseType : string, departmentId : any) {
+    return this.apiService.postFile(this.STUDENT_URL+"/process-excel/"+sessionId+"/"+courseType, fileList);
+  }
 }
