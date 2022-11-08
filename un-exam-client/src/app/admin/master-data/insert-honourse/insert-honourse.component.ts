@@ -122,6 +122,50 @@ export class InsertHonourseComponent implements OnInit {
     requestBody.paperId = this.studentModel.paper.id;
     requestBody.examType = this.studentModel.examType;
     requestBody.results = this.excelBodydatas;
+
+    let currentFullMrk = 0;
+    let paper = this.studentModel.paper;
+    if(requestBody.examType == 'INT') {
+      currentFullMrk = paper.intMark;
+      if(!paper.intMark) {
+        this.toastService.error("Paper result is not inserted", "Check");
+        return;
+      }
+    } else if(requestBody.examType == 'PRAC') {
+      currentFullMrk = paper.pracMark;
+      if(!paper.pracMark) {
+        this.toastService.error("Paper result is not inserted", "Check");
+        return;
+      }
+    } else {
+      currentFullMrk = paper.semMark;
+      if(!paper.semMark) {
+        this.toastService.error("Paper result is not inserted", "Check");
+        return;
+      }
+    }
+
+    currentFullMrk = +(currentFullMrk)
+
+    let present = false;
+    if(this.excelBodydatas) {
+      for(let result of this.excelBodydatas) {
+        result.invalid = false;
+        let mark = +(result.mark);
+        if(!isNaN(mark) && !isNaN(currentFullMrk)) {
+          if(mark > currentFullMrk) {
+            result.invalid = true;
+            present = true;
+          }
+        }
+      }
+    }
+
+    if(present) {
+      this.toastService.error("Please validate", "Student Result");
+      return;
+    }
+
     this.resultService.save(requestBody).subscribe(
       (res: any) => {
         this.toastService.sucess("Result", "Saved sucessfully");

@@ -55,6 +55,7 @@ export class CreateStudentComponent implements OnInit {
       .subscribe((res: any) => {
         this.streams = res;
       });
+      this.getAllStudents();
   }
 
   save() {
@@ -120,6 +121,7 @@ export class CreateStudentComponent implements OnInit {
       .subscribe((res: any) => {
         this.departmentList = res;
       });
+      this.getAllStudents();
   }
 
   fileDataLoader(event: any) {
@@ -134,17 +136,21 @@ export class CreateStudentComponent implements OnInit {
     filter.courseType = this.studentModel.courseType;
     filter.department = this.studentModel.department;
 
-    this.studentService.findStudentBySessionCourseTypeDepartmentHonourse(filter).subscribe((resp :any)=> {
-      for(let res of resp) {
-        if(res.dob)
-        res.dob = new Date(res.dob);
-      }
-      this.studentDatas = resp;
-    });
+    if(filter.stream && filter.session && filter.courseType && filter.department) {
+      this.studentService.findStudentBySessionCourseTypeDepartmentHonourse(filter).subscribe((resp :any)=> {
+        for(let res of resp) {
+          if(res.dob)
+          res.dob = new Date(res.dob);
+        }
+        this.studentDatas = resp;
+      });
+    }
   }
 
   delete(i:number) {
-    this.studentDatas.splice(i, 1);
-    this.studentDatas = JSON.parse(JSON.stringify(this.studentDatas))
+    let selectedId = this.studentDatas[i].id;
+    this.studentService.delete(selectedId).subscribe((res : any) => {
+      this.getAllStudents();
+    });
   }
 }

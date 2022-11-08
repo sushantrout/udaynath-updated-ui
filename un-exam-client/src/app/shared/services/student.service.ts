@@ -5,6 +5,7 @@ import { ApiService } from './api.service';
   providedIn: 'root',
 })
 export class StudentService {
+
   STUDENT_URL = 'student';
   constructor(private apiService: ApiService) {}
 
@@ -25,5 +26,9 @@ export class StudentService {
 
   processStudentExcel(fileList: any, sessionId : number, courseType : string, departmentId : any) {
     return this.apiService.postFile(this.STUDENT_URL+"/process-excel/"+sessionId+"/"+courseType, fileList);
+  }
+
+  delete(selectedId: number) {
+    return this.apiService.delete(`${this.STUDENT_URL}/${selectedId}`);
   }
 }
