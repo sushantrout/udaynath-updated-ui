@@ -31,6 +31,7 @@ export class FormFillupComponent implements OnInit {
   ges: any[] = [];
   sec: any[] = [];
   compulsorys: any[] = [];
+  defaultPaper: any[] = [];
   dse: any[] = [];
 
   student: any = {};
@@ -51,7 +52,7 @@ export class FormFillupComponent implements OnInit {
     private honourseService: DepartmentService,
     private paperService: PaperService,
     private messageService: ToastService,
-    private location : Location
+    private location: Location
   ) {
     this.userQuestionUpdate
       .pipe(debounceTime(2000), distinctUntilChanged())
@@ -99,6 +100,20 @@ export class FormFillupComponent implements OnInit {
       this.student.session &&
       this.student.examRoolNumber &&
       this.student.stream &&
+      this.student.department;
+    if (status) {
+      return true;
+    } else {
+      return false;
+    }
+
+    /*  let status =
+      this.student.courseType &&
+      this.student.semistar &&
+      this.student.examType &&
+      this.student.session &&
+      this.student.examRoolNumber &&
+      this.student.stream &&
       this.student.department &&
       this.student.fullName &&
       this.student.gender &&
@@ -109,7 +124,7 @@ export class FormFillupComponent implements OnInit {
       return true;
     } else {
       return false;
-    }
+    } */
   }
   printDoc() {
     window.print();
@@ -150,34 +165,41 @@ export class FormFillupComponent implements OnInit {
 
     if (this.papers) {
       let corepapers = this.getPaperByType(this.papers, 'CORE');
-      let sec = this.getPaperByType(this.papers, 'SEC').map(
-        (test: any) => test.name
-      );
+      let defaultPorepapers = this.getPaperByType(this.papers, 'PAPER');
+      let sec = this.getPaperByType(this.papers, 'SEC');
 
-      corepapers.forEach((element : any ) => {
-        papers.push({id: element.id});
+      corepapers.forEach((element: any) => {
+        papers.push({ id: element.id });
       });
 
-      sec.forEach((element : any ) => {
-        papers.push({id: element.id});
+      defaultPorepapers.forEach((element: any) => {
+        papers.push({ id: element.id });
       });
 
-      if(this.student.comp) {
-        papers.push({id: this.student.comp.id});
+      sec.forEach((element: any) => {
+        papers.push({ id: element.id });
+      });
+
+      if (this.student.comp) {
+        papers.push({ id: this.student.comp.id });
       }
 
-      if(this.student.ges) {
-        papers.push({id: this.student.ges.id});
+      if (this.student.ges) {
+        papers.push({ id: this.student.ges.id });
       }
 
-      if(this.student.dse) {
-        papers.push({id: this.student.dse.id});
+      if (this.student.dse) {
+        papers.push({ id: this.student.dse.id });
       }
-
     }
 
     this.formService
-      .saveFormDetail(studentReq, papers, this.student.examType, this.student.semistar)
+      .saveFormDetail(
+        studentReq,
+        papers,
+        this.student.examType,
+        this.student.semistar
+      )
       .subscribe((res: any) => {
         this.messageService.sucess(
           'Your form is submitted successfully!',
@@ -231,12 +253,17 @@ export class FormFillupComponent implements OnInit {
           this.compulsorys = this.getPaperByType(responses, 'COMPULSORY');
           this.ges = this.getPaperByType(responses, 'GE');
           this.dse = this.getPaperByType(responses, 'DSE');
+          this.defaultPaper = this.getPaperByType(responses, 'PAPER').map(
+            (test: any) => test.name
+          );
         });
     }
   }
 
   getPaperByType(responses: any, type: string) {
-    return responses.filter((res: any) => res.paperType == type);
+    return responses
+      .filter((paper: any) => paper.paperType)
+      .filter((res: any) => res.paperType.toUpperCase() == type);
   }
 
   newRegister() {

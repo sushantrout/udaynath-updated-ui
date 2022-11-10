@@ -61,8 +61,12 @@
         [rowsPerPageOptions]="[10,25,50]">
         <ng-template pTemplate="header">
             <tr>
-                <th class="text-center">Session</th>
-                <th class="text-center">Course Type</th>
+                <th class="text-center">Session
+                  <p-columnFilter type="text" field="sessionText" display="menu"></p-columnFilter>
+                </th>
+                <th class="text-center">Course Type
+                  <p-columnFilter type="text" field="courseType" display="menu"></p-columnFilter>
+                </th>
                 <th class="text-center">Stream
                   <p-columnFilter type="text" field="streamText" display="menu"></p-columnFilter>
                 </th>

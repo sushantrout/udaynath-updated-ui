@@ -12,6 +12,10 @@
             <bip-dropdown [option]="semisters"  [(ngModel)]="semister">
             </bip-dropdown>
         </div>
+        <div class="col-3">
+          <bip-dropdown [option]="examTypes"  [(ngModel)]="examType">
+          </bip-dropdown>
+      </div>
         <div class="col-5">
             <input type="file" class="form-control" title="Upload" (change)="fileDataLoader($event)"
                 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap" />

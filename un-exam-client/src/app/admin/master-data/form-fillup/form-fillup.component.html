@@ -103,14 +103,14 @@
             </div>
           </div>
 
-          <div class="row exam-paper-area" *ngIf="corepapers && corepapers.length != 0">
+          <div class="row exam-paper-area">
             <div class="col-12">
               <div class="row">
                 <div class="cell-content col-3 header-text">Paper Type</div>
                 <div class="cell-content col-9 header-text">Paper Name & Paper Code</div>
               </div>
 
-              <div class="row">
+              <div class="row" *ngIf="corepapers && corepapers.length != 0">
                 <div class="cell-content col-3 header-text">Core</div>
                 <div class="cell-content col-9">{{corepapers}}</div>
               </div>
@@ -145,6 +145,18 @@
                   </bip-dropdown>
                 </div>
               </div>
+
+              <div class="row" *ngIf="defaultPaper && defaultPaper.length != 0">
+                <div class="cell-content col-3 header-text">
+                  PAPAER
+                </div>
+                <div class="cell-content col-9">
+                  <div *ngFor="let paper of defaultPaper" class="w-100">
+                    {{paper}}
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -221,12 +233,12 @@
         </div>
 
         <div class="row">
-          <div class="col-3 mt-md-0">
+          <div class="col-4 mt-md-0">
             <label>Stream</label>
             <input type="text" class="form-control" [required]="true" [value]="getStreamName()"
               readonly="true" />
           </div>
-          <div class="col-3 mt-md-0">
+          <div class="col-4 mt-md-0">
             <label>Department</label>
             <input type="text" class="form-control" [required]="true" [value]="getDepartmentName()"
               readonly="true" />
@@ -268,14 +280,14 @@
         </div>
 
         <div class="row">
-          <div class="row exam-paper-area" *ngIf="corepapers && corepapers.length != 0">
+          <div class="row exam-paper-area">
             <div class="col-12">
               <div class="row">
                 <div class="cell-content col-3 header-text">Paper Type</div>
                 <div class="cell-content col-9 header-text">Paper Name & Paper Code</div>
               </div>
 
-              <div class="row">
+              <div class="row" *ngIf="corepapers && corepapers.length != 0">
                 <div class="cell-content col-3 header-text">Core</div>
                 <div class="cell-content col-9">
                   <div *ngFor="let core of corepapers" class="w-100">
@@ -311,6 +323,18 @@
                   {{student.dse?.name}}
                 </div>
               </div>
+
+              <div class="row" *ngIf="defaultPaper && defaultPaper.length != 0">
+                <div class="cell-content col-3 header-text">
+                  PAPAER
+                </div>
+                <div class="cell-content col-9">
+                  <div *ngFor="let paper of defaultPaper" class="w-100">
+                    {{paper}}
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

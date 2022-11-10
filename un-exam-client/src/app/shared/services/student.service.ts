@@ -25,7 +25,7 @@ export class StudentService {
   }
 
   processStudentExcel(fileList: any, sessionId : number, courseType : string, departmentId : any) {
-    return this.apiService.postFile(this.STUDENT_URL+"/process-excel/"+sessionId+"/"+courseType, fileList);
+    return this.apiService.postFile(this.STUDENT_URL+"/process-excel/"+sessionId+"/"+courseType+"/"+departmentId, fileList);
   }
 
   delete(selectedId: number) {

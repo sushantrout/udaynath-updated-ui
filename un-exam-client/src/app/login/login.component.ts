@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadScript();
     this.showLogin = true;
     /* this.user.username = "admin";
     this.user.password = "Admin";
@@ -56,5 +57,15 @@ export class LoginComponent implements OnInit {
         }
       );
     }
+  }
+
+  public loadScript() {
+    let body = <HTMLDivElement>document.body;
+    let script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = 'assets/plugins/sidemenu/sidemenu.js';
+    script.async = true;
+    script.defer = true;
+    body.appendChild(script);
   }
 }

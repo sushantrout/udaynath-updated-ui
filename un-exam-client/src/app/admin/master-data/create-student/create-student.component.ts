@@ -85,29 +85,6 @@ export class CreateStudentComponent implements OnInit {
     this.studentService.processStudentExcel(this.fileList,
        this.studentModel.session?.id,
        this.studentModel.courseType, this.studentModel.department?.id).subscribe((res: any) => {
-      /* let response = res.body;
-      let skipFirstRow = true;
-      for (let row of response) {
-        if (skipFirstRow) {
-          skipFirstRow = false;
-          continue;
-        }
-        if (row.length == 11) {
-          let student = new StudenModel();
-          student.fullName = row[0];
-          student.examRoolNumber = row[1];
-          student.rollNumber = row[2];
-          student.dob = this.getDate(row[3]);
-          student.gender = row[4];
-          student.caste = row[5];
-          student.fathersName = row[6];
-          student.mothersName = row[7];
-          student.emailId = row[8];
-          student.reg = row[9];
-          this.studentDatas.push(student);
-        }
-      }
-      this.studentDatas = JSON.parse(JSON.stringify(this.studentDatas)); */
       this.getAllStudents();
     });
   }
