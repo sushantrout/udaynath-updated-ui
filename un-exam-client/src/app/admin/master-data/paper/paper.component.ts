@@ -60,6 +60,7 @@ export class PaperComponent implements OnInit {
   edit(paperModel: Department) {
     this.paperModel = JSON.parse(JSON.stringify(paperModel));
     this.findStreamByCourseType();
+    this.getDepartmentsByStreamId();
   }
 
   save() {
@@ -106,10 +107,12 @@ export class PaperComponent implements OnInit {
   }
 
   getDepartmentsByStreamId() {
-    this.departmentService
-      .findByStreamId(this.paperModel.streamId)
-      .subscribe((res: any) => {
-        this.departmentList = res;
-      });
+    if(this.paperModel && this.paperModel.streamId) {
+      this.departmentService
+        .findByStreamId(this.paperModel.streamId)
+        .subscribe((res: any) => {
+          this.departmentList = res;
+        });
+    }
   }
 }
