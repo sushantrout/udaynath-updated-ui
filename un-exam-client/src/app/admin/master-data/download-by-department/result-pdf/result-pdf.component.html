@@ -80,17 +80,17 @@
                   <div class="col"> {{gradeService.getFormatedResult(paperResult.pracMark)}}</div>
                   <div class="col"> {{gradeService.getFormatedResult(paperResult.acqureTotalResult)}}</div>
                   <div class="col">
-                    {{gradeService.getGradePoint(paperResult)}}
+                    {{gradeService.getGradePoint(paperResult, courseType)}}
                   </div>
                   <div class="col">
-                    {{gradeService.creditPoint(paperResult)}}
+                    {{gradeService.creditPoint(paperResult, courseType)}}
                   </div>
                 </div>
                 <div class="grid">
                   <div class="col text-right">
                     <b>TOTAL : {{gradeService.getTotal(result.uiResult) | number : '1.0-2'}}</b>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <b>SGPA : {{gradeService.sgpaDetail(result.uiResult) | number : '1.0-2'}}</b>
+                    <b>SGPA : {{gradeService.sgpaDetail(result.uiResult, courseType) | number : '1.0-2'}}</b>
                   </div>
                 </div>
               </div>

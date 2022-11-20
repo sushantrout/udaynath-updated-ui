@@ -1,11 +1,17 @@
 export class GradeUtil {
-  getGradePoint(paperResult : any): string {
+  getGradePoint(paperResult : any, courseType : string): string {
+
+    let practiaclPaper = false;
+    if(!paperResult.intMarkId && !paperResult.semMarkId && paperResult.pracMarkId && paperResult.practicalPresent) {
+      practiaclPaper = true;
+    }
+
     let totalMark = paperResult.acqureTotalResult;
     let internalMark = +paperResult.intMark;
     let semMark = +paperResult.semMark;
-    if (paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < 18)) {
+    if ((paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < 18)) && !practiaclPaper) {
       return 'F';
-    } else if (!paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < 24)) {
+    } else if ((!paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || ((semMark < 24 && courseType == 'UG') || (semMark < 21 && courseType == 'PG')))) && !practiaclPaper) {
       return 'F';
     } else {
       if (totalMark >= 90) {
@@ -27,15 +33,20 @@ export class GradeUtil {
     }
   }
 
-  creditPoint(paperResult: any) {
+  creditPoint(paperResult: any, courseType : string) {
+    let practiaclPaper = false;
+    if(!paperResult.intMarkId && !paperResult.semMarkId && paperResult.pracMarkId && paperResult.practicalPresent) {
+      practiaclPaper = true;
+    }
+
     let totalMark = paperResult.acqureTotalResult;
     let internalMark = +paperResult.intMark;
     let semMark = +paperResult.semMark;
     let GP = 0;
     let cp = paperResult.cp;
-    if (paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < 18)) {
+    if ((paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < 18)) && !practiaclPaper) {
       return 0;
-    } else if (!paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < 24)) {
+    } else if ((!paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || ((semMark < 24 && courseType == 'UG') || (semMark < 21 && courseType == 'PG')))) && !practiaclPaper) {
       return 0;
     } else {
       if (totalMark >= 90) {
@@ -57,7 +68,7 @@ export class GradeUtil {
     return GP;
   }
 
-  sgpaDetail(uiResult: any) {
+  sgpaDetail(uiResult: any, courseType : string) {
     let cpSum = 0;
     for (let result of uiResult) {
       let cp = +result.cp;
@@ -67,7 +78,7 @@ export class GradeUtil {
     }
     let total = 0;
     for (let resultdata of uiResult) {
-      total = total + this.creditPoint(resultdata);
+      total = total + this.creditPoint(resultdata, courseType);
     }
     return total / cpSum;
   }

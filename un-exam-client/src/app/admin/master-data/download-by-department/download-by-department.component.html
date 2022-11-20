@@ -27,6 +27,6 @@
             <button pButton type="button" label="Get PDF Result" (click)="getResult(true)"></button>
         </div>
     </div>
-    <app-download-data-by-department [results]="downloadDetails" [studentModel]="studentModel" *ngIf="!resultPdf"></app-download-data-by-department>
-    <app-result-pdf [results]="downloadDetails" *ngIf="resultPdf" [studentModel]="studentModel"></app-result-pdf>
+    <app-download-data-by-department [results]="downloadDetails" [courseType]="studentModel.courseType" [studentModel]="studentModel" *ngIf="!resultPdf"></app-download-data-by-department>
+    <app-result-pdf [results]="downloadDetails" *ngIf="resultPdf" [courseType]="studentModel.courseType" [studentModel]="studentModel"></app-result-pdf>
 </p-card>

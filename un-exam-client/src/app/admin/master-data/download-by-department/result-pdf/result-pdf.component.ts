@@ -15,6 +15,7 @@ import { GradeUtil } from 'src/app/shared/grade-util';
 export class ResultPdfComponent implements OnInit {
   @Input('results') results!: any;
   @Input('studentModel') studentModel !: any;
+  @Input('courseType') courseType !:string;
 
   gradeService = new GradeUtil();
   constructor() {}

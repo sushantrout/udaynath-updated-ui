@@ -20,7 +20,9 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("App init()");
-    this.loadScript();
+    setTimeout(() => {
+      this.loadScript();
+    }, 10);
     this.user = this.commonService.currentUser;
     setTimeout(() => {
       this.loginsucess = this.user && this.userService.loginSucess;
