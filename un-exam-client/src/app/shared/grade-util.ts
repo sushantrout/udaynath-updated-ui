@@ -21,13 +21,13 @@ export class GradeUtil {
       } else if (totalMark >= 70) {
         return 'A';
       } else if (totalMark >= 60) {
-        return 'B+';
+        return courseType == 'UG' ? 'B+' : 'B';
       } else if (totalMark >= 50) {
-        return 'B';
+        return courseType == 'UG' ? 'B' : 'C';
       } else if (totalMark >= 45) {
-        return 'C';
+        return courseType == 'UG' ? 'C' : 'D';
       } else if (totalMark >= 40) {
-        return 'D';
+        return courseType == 'UG' ? 'D' : 'E';
       }
       return 'F';
     }

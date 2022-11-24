@@ -7,6 +7,7 @@ import {
   SimpleChanges,
   EventEmitter
 } from '@angular/core';
+import { ResultInputModel } from 'src/app/shared/model/result.input.model';
 import { ResultService } from 'src/app/shared/services/result.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 
@@ -18,6 +19,8 @@ import { ToastService } from 'src/app/shared/services/toast.service';
 export class ManageDepartmentResultGridComponent implements OnInit, OnChanges {
   @Input('results') inresult!: any;
   results!: any;
+
+  @Input('studentModel') studentModel !: any;
 
   @Output("refreshResult") refreshResult = new EventEmitter
 
@@ -49,8 +52,16 @@ export class ManageDepartmentResultGridComponent implements OnInit, OnChanges {
   }
 
   updatestudentResult() {
+    let requestBody = new ResultInputModel();
+    requestBody.subjectType = this.studentModel.courseType;
+    requestBody.educationType = this.studentModel.courseType;
+    requestBody.sessionId = this.studentModel.session?.id;
+    requestBody.semistar = this.studentModel.semistar;
+    requestBody.streamId = this.studentModel.stream?.id;
+    requestBody.departmentId = this.studentModel.department?.id;
     let req = {
-      "results":this.results
+      "results":this.results,
+      "studentModel": requestBody
     }
     this.resultService.updatestudentResult(req).subscribe((res : any) => {
       this.refreshResult.emit(true);
