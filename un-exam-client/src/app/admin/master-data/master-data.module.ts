@@ -25,6 +25,7 @@ import { ManageDepartmentResultGridComponent } from './manage-department-result/
 import { ResultPdfComponent } from './download-by-department/result-pdf/result-pdf.component';
 import { DownloadAdmitCardByDeptComponent } from './download-admit-card-by-dept/download-admit-card-by-dept.component';
 import { GuestGuardService } from 'src/app/shared/services/guest-guard.service';
+import { ResultPdfPgComponent } from './download-by-department/result-pdf-pg/result-pdf-pg.component';
 
 const routes: Routes = [
   {
@@ -132,6 +133,7 @@ const routes: Routes = [
     ManageDepartmentResultGridComponent,
     ResultPdfComponent,
     DownloadAdmitCardByDeptComponent,
+    ResultPdfPgComponent,
   ],
   imports: [
     CommonModule,

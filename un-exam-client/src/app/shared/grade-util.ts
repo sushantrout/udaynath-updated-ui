@@ -107,4 +107,37 @@ export class GradeUtil {
     }
     return total;
   }
+
+  creditPointValue(paperResult: any, courseType : string) {
+    let practiaclPaper = false;
+    if(!paperResult.intMarkId && !paperResult.semMarkId && paperResult.pracMarkId && paperResult.practicalPresent) {
+      practiaclPaper = true;
+    }
+
+    let totalMark = paperResult.acqureTotalResult;
+    let internalMark = +paperResult.intMark;
+    let semMark = +paperResult.semMark;
+    if ((paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < 18)) && !practiaclPaper) {
+      return 0;
+    } else if ((!paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || ((semMark < 24 && courseType == 'UG') || (semMark < 21 && courseType == 'PG')))) && !practiaclPaper) {
+      return 0;
+    } else {
+      if (totalMark >= 90) {
+        return 10;
+      } else if (totalMark >= 80) {
+        return 9;
+      } else if (totalMark >= 70) {
+        return 8;
+      } else if (totalMark >= 60) {
+        return 7;
+      } else if (totalMark >= 50) {
+        return 6;
+      } else if (totalMark >= 45) {
+        return 5;
+      } else if (totalMark >= 40) {
+        return 4;
+      }
+    }
+    return 0;
+  }
 }

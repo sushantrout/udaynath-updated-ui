@@ -1,0 +1,167 @@
+<p-card>
+  <div class="grid" id="studentresultId" *ngIf="results && results.length != 0">
+    <div style="padding: 30px;">
+      <div *ngFor="let result of results" style="page-break-after: always; margin-top: 20px;">
+        <div class="col-12">
+          <div class="grid page-header">
+            <div class="col-2"></div>
+            <div class="col-2">
+              <img src="assets/images/logo.png" alt="UN LOGO" />
+            </div>
+            <div class="col-6 text-center" style="font-size: 18px; font-weight: 800">
+              <span>UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH.</span><br>
+              <span>ADASPUR, CUTTACK, ODISHA</span><br>
+              <span>MARK SHEET</span>
+            </div>
+            <div class="col-2"></div>
+          </div>
+        </div>
+        <div class="col-12 text-center" style="border: 2px solid black;">
+          <div class="grid">
+            <div class="col-1"></div>
+            <div class="col-10">
+              <div class="grid mt-10">
+                <div class="col text-center" style="font-size: 16px;">
+                  <p><u>{{ studentModel?.semistar }} - SEMESTER EXAMINATION REPORT - {{studentModel?.session?.name}}</u>
+                  </p>
+                </div>
+              </div>
+              <div class="grid text-left">
+                <div class="col-8">
+                  <b>NAME: </b>{{result.fullName}}
+                </div>
+                <div class="col-4">
+                  <b>ROLL NO: </b>{{result.examRoolNumber}}
+                </div>
+              </div>
+              <div class="grid  text-left">
+                <div class="col-8">
+                  <b>College/Dept. : </b>{{(studentModel.courseType).split("").join(".")}}
+                  DEPT OF
+                  {{studentModel.department?.name}}
+                  , UDAYANATH COLLEGE
+                </div>
+                <div class="col-4">
+                  <b>REGD NO: </b>
+                </div>
+              </div>
+              <br>
+              <div class="grid mt-20" style="border: 2px solid black;">
+                <div class="col-12" style="padding-bottom: unset;">
+                  <div class="grid subject-header-grid">
+                    <div class="col-3">
+                      <b>Paper & Subjects</b>
+                    </div>
+                    <div class="col">
+                      <b> Grade</b>
+                    </div>
+
+                    <div class="col">
+                      <b> Grade Point</b>
+                    </div>
+
+                    <div class="col">
+                      <b>Credit Point</b>
+                    </div>
+                    <div class="col">
+                      <b>Maximum Mark</b>
+                    </div>
+                    <div class="col" style="border-right: unset;">
+                      <b>Marks Secured</b>
+                    </div>
+
+                  </div>
+
+                  <div class="grid blank-border-2" style="margin-top: auto" *ngFor="let paperResult of result.uiResult">
+                    <div class="col-3">
+                      {{paperResult.paperText}}
+                    </div>
+                    <div class="col">
+                      {{gradeService.getGradePoint(paperResult, courseType)}}
+                    </div>
+                    <div class="col">
+                      {{gradeService.creditPointValue(paperResult, courseType)}}
+                    </div>
+                    <div class="col">
+                      {{gradeService.creditPoint(paperResult, courseType)}}
+                    </div>
+                    <div class="col b-l-r-2">
+                      {{getFullMarkCalculation(paperResult)}}
+                    </div>
+                    <div class="col" style="border-right: unset;">
+                      {{getSecuredMarkCalculation(paperResult)}}
+                    </div>
+                  </div>
+                  <div class="grid" style="margin-top: auto">
+                    <div class="col-12 border-t-b-2" *ngIf="courseType != 'UG'">
+                      GRADE : - O: 100%-90%, A+:89%-80%, A:79%-70%, B:69%-60%, C:59%-50%, D:49%-40%, E:39%-30%, F: &lt;
+                      30 %
+                    </div>
+                    <div class="col-12 border-t-b-2" *ngIf="courseType == 'UG'">
+                      GRADE : - O: 100%-90%, A+:89%-80%, A:79%-70%, B+:69%-60%, B:59%-50%, C:49%-40%, D:39%-30%, F: &lt;
+                      30 %
+                    </div>
+                  </div>
+                  <div class="grid" style="margin-top: auto;">
+                    <div class="col-3">
+                      RESULT:
+                    </div>
+                    <div class="col">
+                      <b>SGPA : <b>{{gradeService.sgpaDetail(result.uiResult, courseType) | number : '1.0-2'}}</b></b>
+                    </div>
+
+                    <div class="col"></div>
+                    <div class="col">
+                      <b>TOTAL :</b>
+                    </div>
+                    <div class="col" style="border-left: 2px solid black;">
+                      <b>{{this.gradeService.getFormatedResult(result.examFullMark)}}</b>
+                    </div>
+                    <div class="col" style="border-left: 2px solid black;">
+                      <b>{{gradeService.getTotal(result.uiResult) | number : '1.0-2'}}</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-1"></div>
+            <div class="col-10">
+              <div class="m-20">
+                <div class="grid">
+                  <div class="col-6 admit-card-text">
+                    <div class="grid">
+                      <div class="col-12">
+                        <img src="assets/images/psi.jpg" alt="UN LOGO" height="45px" /><!-- exam-controller.jpg -->
+                      </div>
+                      <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
+                    </div>
+                  </div>
+                  <div class="col-6 admit-card-text">
+                    <div class="grid text-right">
+                      <div class="col-12">
+                        <img src="assets/images/exam-controller.jpg" alt="UN LOGO" height="40px" />
+                        <!-- exam-controller.jpg -->
+                      </div>
+                      <div class="col-12">CONTROLLER OF EXAMINATION</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="text-right">
+      <button
+        styleSheetFile="assets/css/print/bootstrap.min.css,assets/css/print/style.css,assets/css/print/primeng.min.css,assets/css/print/primeflex.css"
+        printSectionId="studentresultId" ngxPrint class="btn btn-primary">
+        Print
+      </button>
+    </div>
+  </div>
+</p-card>

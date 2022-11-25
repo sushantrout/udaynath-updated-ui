@@ -155,3 +155,31 @@
   .exam-paper-area .cell-content {
     border: 2px solid black;
   }
+
+
+  .subject-header-grid {
+  }
+
+  .subject-header-grid div {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+  .blank-border-2 div{
+    border-right: 2px solid #ff000000;
+  }
+  .b-l-r-2 {
+    border-left: 2px solid black !important;
+    border-right: 2px solid black !important;
+  }
+  .border-t-b-2 {
+    border-top: 2px solid black !important;
+    border-bottom: 2px solid black !important;
+  }
+
+  .border-t-2 {
+    border-top: 2px solid black !important;
+  }
+
+  .mt-20 {
+    margin-top: 20px;
+  }
