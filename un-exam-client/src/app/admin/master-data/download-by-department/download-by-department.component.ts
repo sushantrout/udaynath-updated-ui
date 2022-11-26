@@ -45,18 +45,22 @@ export class DownloadByDepartmentComponent implements OnInit {
   }
 
   findStreamByCourseType() {
-    this.streamService
-      .findByCourseType(this.studentModel.courseType)
-      .subscribe((res: any) => {
-        this.streams = res;
-      });
+    if(this.studentModel.courseType) {
+      this.streamService
+        .findByCourseType(this.studentModel.courseType)
+        .subscribe((res: any) => {
+          this.streams = res;
+        });
+    }
   }
   getDepartmentsByStreamId() {
-    this.departmentService
-      .findByStreamId(this.studentModel.stream?.id)
-      .subscribe((res: any) => {
-        this.departmentList = res;
-      });
+    if(this.studentModel.courseType && this.studentModel.stream?.id) {
+      this.departmentService
+        .findByStreamId(this.studentModel.stream?.id)
+        .subscribe((res: any) => {
+          this.departmentList = res;
+        });
+    }
   }
 
   downloadDetails = [];
