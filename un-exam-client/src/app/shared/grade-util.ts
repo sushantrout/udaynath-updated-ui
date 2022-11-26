@@ -24,9 +24,9 @@ export class GradeUtil {
         return courseType == 'UG' ? 'B+' : 'B';
       } else if (totalMark >= 50) {
         return courseType == 'UG' ? 'B' : 'C';
-      } else if (totalMark >= 45) {
+      } else if ((totalMark >= 45 && courseType == 'UG') || (totalMark >= 40 && courseType != 'UG')) {
         return courseType == 'UG' ? 'C' : 'D';
-      } else if (totalMark >= 40) {
+      } else if ((totalMark >= 40 && courseType == 'UG') || (totalMark >= 30 && courseType != 'UG')) {
         return courseType == 'UG' ? 'D' : 'E';
       }
       return 'F';
@@ -59,9 +59,9 @@ export class GradeUtil {
         GP = 7 * cp;
       } else if (totalMark >= 50) {
         GP = 6 * cp;
-      } else if (totalMark >= 45) {
+      } else if ((totalMark >= 45 && courseType == 'UG') || (totalMark >= 40 && courseType != 'UG')) {
         GP = 5 * cp;
-      } else if (totalMark >= 40) {
+      } else if ((totalMark >= 40 && courseType == 'UG') || (totalMark >= 30 && courseType != 'UG')) {
         GP = 4 * cp;
       }
     }
@@ -132,9 +132,9 @@ export class GradeUtil {
         return 7;
       } else if (totalMark >= 50) {
         return 6;
-      } else if (totalMark >= 45) {
+      } else if ((totalMark >= 45 && courseType == 'UG') || (totalMark >= 40 && courseType != 'UG')) {
         return 5;
-      } else if (totalMark >= 40) {
+      } else if ((totalMark >= 40 && courseType == 'UG') || (totalMark >= 30 && courseType != 'UG')) {
         return 4;
       }
     }

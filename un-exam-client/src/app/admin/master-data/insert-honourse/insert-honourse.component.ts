@@ -61,11 +61,13 @@ export class InsertHonourseComponent implements OnInit {
       });
   }
   getDepartmentsByStreamId() {
-    this.departmentService
-      .findByStreamId(this.studentModel.stream?.id)
-      .subscribe((res: any) => {
-        this.departmentList = res;
-      });
+    if(this.studentModel.stream?.id) {
+      this.departmentService
+        .findByStreamId(this.studentModel.stream?.id)
+        .subscribe((res: any) => {
+          this.departmentList = res;
+        });
+    }
   }
 
   getPapers() {

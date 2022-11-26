@@ -56,13 +56,14 @@ export class InsertElectiveComponent implements OnInit {
       });
   }
   getDepartmentsByStreamId() {
-    this.departmentService
-      .findByStreamId(this.studentModel.stream?.id)
-      .subscribe((res: any) => {
-        this.departmentList = res;
-      });
-
-      this.getElectives();
+    if(this.studentModel.stream?.id) {
+      this.departmentService
+        .findByStreamId(this.studentModel.stream?.id)
+        .subscribe((res: any) => {
+          this.departmentList = res;
+        });
+        this.getElectives();
+    }
   }
 
   getElectives() {
@@ -114,7 +115,10 @@ export class InsertElectiveComponent implements OnInit {
     requestBody.electiveId = this.studentModel.elective?.id;
 
     let currentFullMrk = 0;
-    let paper = this.studentModel.paper;
+    let paper : any = this.studentModel.paper;
+    if(!paper) {
+      paper = this.studentModel.elective;
+    }
     if(requestBody.examType == 'INT') {
       currentFullMrk = paper.intMark;
       if(!paper.intMark) {
