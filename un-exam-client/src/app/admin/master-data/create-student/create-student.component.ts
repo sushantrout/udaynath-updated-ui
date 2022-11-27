@@ -130,4 +130,11 @@ export class CreateStudentComponent implements OnInit {
       this.getAllStudents();
     });
   }
+
+  addNew() {
+    if(this.studentDatas) {
+      let student  : any = {};
+      this.studentDatas.unshift(student);
+    }
+  }
 }

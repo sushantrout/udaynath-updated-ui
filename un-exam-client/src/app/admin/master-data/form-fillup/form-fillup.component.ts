@@ -322,7 +322,7 @@ export class FormFillupComponent implements OnInit {
     if (content) {
       return (content + '').toUpperCase();
     } else {
-      return content.toUpperCase();
+      return "";
     }
   }
 

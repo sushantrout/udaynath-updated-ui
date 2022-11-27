@@ -1,17 +1,29 @@
 export class GradeUtil {
   getGradePoint(paperResult : any, courseType : string): string {
-
+    console.log(paperResult);
     let practiaclPaper = false;
     if(!paperResult.intMarkId && !paperResult.semMarkId && paperResult.pracMarkId && paperResult.practicalPresent) {
       practiaclPaper = true;
     }
 
-    let totalMark = paperResult.acqureTotalResult;
+    let semFullMark = +paperResult.semFullMark;
+    let intFullMark = +paperResult.intFullMark;
+    let totalMarkR = paperResult.acqureTotalResult;
     let internalMark = +paperResult.intMark;
     let semMark = +paperResult.semMark;
+
+    let semPassMark = 0;
+    if(courseType == 'UG') {
+      semPassMark = (35 / 100) * semFullMark;
+    } else {
+      semPassMark = (30 / 100) * semFullMark;
+    }
+
+    let totalMark = (totalMarkR / (semFullMark + intFullMark)) * 100;
+
     if ((paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < 18)) && !practiaclPaper) {
       return 'F';
-    } else if ((!paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || ((semMark < 24 && courseType == 'UG') || (semMark < 21 && courseType == 'PG')))) && !practiaclPaper) {
+    } else if ((!paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < semPassMark)) && !practiaclPaper) {
       return 'F';
     } else {
       if (totalMark >= 90) {
@@ -39,14 +51,25 @@ export class GradeUtil {
       practiaclPaper = true;
     }
 
-    let totalMark = paperResult.acqureTotalResult;
+    let semFullMark = +paperResult.semFullMark;
+    let intFullMark = +paperResult.intFullMark;
+    let totalMarkR = paperResult.acqureTotalResult;
     let internalMark = +paperResult.intMark;
     let semMark = +paperResult.semMark;
     let GP = 0;
     let cp = paperResult.cp;
+    let totalMark = (totalMarkR / (semFullMark + intFullMark)) * 100;
+
+    let semPassMark = 0;
+    if(courseType == 'UG') {
+      semPassMark = (35 / 100) * semFullMark;
+    } else {
+      semPassMark = (30 / 100) * semFullMark;
+    }
+
     if ((paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < 18)) && !practiaclPaper) {
       return 0;
-    } else if ((!paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || ((semMark < 24 && courseType == 'UG') || (semMark < 21 && courseType == 'PG')))) && !practiaclPaper) {
+    } else if ((!paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < semPassMark)) && !practiaclPaper) {
       return 0;
     } else {
       if (totalMark >= 90) {
@@ -114,12 +137,25 @@ export class GradeUtil {
       practiaclPaper = true;
     }
 
-    let totalMark = paperResult.acqureTotalResult;
+    let semFullMark = +paperResult.semFullMark;
+    let intFullMark = +paperResult.intFullMark;
+    let totalMarkR = paperResult.acqureTotalResult;
     let internalMark = +paperResult.intMark;
     let semMark = +paperResult.semMark;
+    let GP = 0;
+    let cp = paperResult.cp;
+    let totalMark = (totalMarkR / (semFullMark + intFullMark)) * 100;
+
+    let semPassMark = 0;
+    if(courseType == 'UG') {
+      semPassMark = (35 / 100) * semFullMark;
+    } else {
+      semPassMark = (30 / 100) * semFullMark;
+    }
+
     if ((paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < 18)) && !practiaclPaper) {
       return 0;
-    } else if ((!paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || ((semMark < 24 && courseType == 'UG') || (semMark < 21 && courseType == 'PG')))) && !practiaclPaper) {
+    } else if ((!paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < semPassMark)) && !practiaclPaper) {
       return 0;
     } else {
       if (totalMark >= 90) {

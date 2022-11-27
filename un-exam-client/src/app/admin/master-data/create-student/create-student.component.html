@@ -27,6 +27,9 @@
             <button pButton type="button" label="Save" (click)="save()"
                 *ngIf="studentDatas && studentDatas.length != 0"></button>
         </div>
+        <div class="col" *ngIf="studentDatas">
+          <button pButton type="button" label="Add New" (click)="addNew()" class="mr-10"></button>
+        </div>
     </div>
     <div class="p-grid student-form-table" *ngIf="studentDatas">
         <p-table [value]="studentDatas" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
