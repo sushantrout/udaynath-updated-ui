@@ -19,7 +19,7 @@ export class GradeUtil {
       semPassMark = (30 / 100) * semFullMark;
     }
 
-    let totalMark = (totalMarkR / (semFullMark + intFullMark)) * 100;
+    let totalMark = (totalMarkR / (+paperResult.fullMark)) * 100;
 
     if ((paperResult.practicalPresent && (isNaN(internalMark) || isNaN(semMark) || semMark < 18)) && !practiaclPaper) {
       return 'F';
@@ -58,7 +58,7 @@ export class GradeUtil {
     let semMark = +paperResult.semMark;
     let GP = 0;
     let cp = paperResult.cp;
-    let totalMark = (totalMarkR / (semFullMark + intFullMark)) * 100;
+    let totalMark = (totalMarkR / (+paperResult.fullMark)) * 100;
 
     let semPassMark = 0;
     if(courseType == 'UG') {
@@ -144,7 +144,7 @@ export class GradeUtil {
     let semMark = +paperResult.semMark;
     let GP = 0;
     let cp = paperResult.cp;
-    let totalMark = (totalMarkR / (semFullMark + intFullMark)) * 100;
+    let totalMark = (totalMarkR /  (+paperResult.fullMark)) * 100;
 
     let semPassMark = 0;
     if(courseType == 'UG') {
