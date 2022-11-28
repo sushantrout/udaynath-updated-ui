@@ -34,4 +34,8 @@ export class ResultService {
   updatestudentResult(req: { results: any; }) {
     return this.apiService.post(this.url+"/update/by-department", req);
   }
+
+  delete(body: any) {
+    return this.apiService.post(this.url+'/delete', body);
+  }
 }

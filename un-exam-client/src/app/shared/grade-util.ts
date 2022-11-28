@@ -176,4 +176,14 @@ export class GradeUtil {
     }
     return 0;
   }
+
+  getResult(result : any, courseType : string) {
+    let uiResults = result.uiResult;
+    for(let ui of uiResults) {
+      if(this.creditPoint(ui, courseType) == 0) {
+        return 'FAIL';
+      }
+    }
+    return 'PASS';
+  }
 }

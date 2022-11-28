@@ -7,6 +7,7 @@ import {
   SimpleChanges,
   EventEmitter
 } from '@angular/core';
+import { ConfirmationService } from 'primeng/api';
 import { ResultInputModel } from 'src/app/shared/model/result.input.model';
 import { ResultService } from 'src/app/shared/services/result.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
@@ -25,7 +26,8 @@ export class ManageDepartmentResultGridComponent implements OnInit, OnChanges {
   @Output("refreshResult") refreshResult = new EventEmitter
 
   constructor(private resultService : ResultService,
-    private toastService: ToastService,) {}
+    private toastService: ToastService,
+    private confirmationService : ConfirmationService) {}
 
   ngOnInit(): void {}
 
@@ -68,6 +70,22 @@ export class ManageDepartmentResultGridComponent implements OnInit, OnChanges {
       this.toastService.sucess("Result", "Result updated!");
     }, (error : any) => {
       this.toastService.error("Result", "Please process again!");
+    });
+  }
+
+  deleteResultConfirm(paperResult : any) {
+    this.confirmationService.confirm({
+      header: 'Delete',
+      message: `Do you want to delete ${paperResult.paperText} result?`,
+      accept: () =>{
+        this.deleteResult(paperResult);
+      }
+    });
+  }
+
+  deleteResult(paperResult : any) {
+    this.resultService.delete(paperResult).subscribe((res : any) => {
+      this.toastService.sucess("Result", `${paperResult.paperText} result deleted sucessfuly.`);
     });
   }
 }
