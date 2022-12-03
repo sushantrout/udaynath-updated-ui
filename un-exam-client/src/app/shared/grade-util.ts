@@ -14,7 +14,7 @@ export class GradeUtil {
 
     let semPassMark = 0;
     if(courseType == 'UG') {
-      semPassMark = (35 / 100) * semFullMark;
+      semPassMark = (30 / 100) * semFullMark;
     } else {
       semPassMark = (30 / 100) * semFullMark;
     }
@@ -62,7 +62,7 @@ export class GradeUtil {
 
     let semPassMark = 0;
     if(courseType == 'UG') {
-      semPassMark = (35 / 100) * semFullMark;
+      semPassMark = (30 / 100) * semFullMark;
     } else {
       semPassMark = (30 / 100) * semFullMark;
     }
@@ -148,7 +148,7 @@ export class GradeUtil {
 
     let semPassMark = 0;
     if(courseType == 'UG') {
-      semPassMark = (35 / 100) * semFullMark;
+      semPassMark = (30 / 100) * semFullMark;
     } else {
       semPassMark = (30 / 100) * semFullMark;
     }
