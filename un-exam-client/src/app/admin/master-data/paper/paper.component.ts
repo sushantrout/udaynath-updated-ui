@@ -115,4 +115,20 @@ export class PaperComponent implements OnInit {
         });
     }
   }
+
+  resetValueForVE() {
+    if('VALUES AND ETHICS' == this.paperModel.paperType) {
+      let newPapaerModel = new PaperModel();
+      newPapaerModel.sessionId = this.paperModel.sessionId;
+      newPapaerModel.courseType = this.paperModel.courseType;
+      newPapaerModel.paperType = this.paperModel.paperType;
+      newPapaerModel.name = this.paperModel.name;
+      newPapaerModel.code = this.paperModel.code;
+      newPapaerModel.intMark = this.paperModel.intMark;
+      newPapaerModel.semMark = this.paperModel.semMark;
+      newPapaerModel.pracMark = this.paperModel.pracMark;
+      newPapaerModel.cp = this.paperModel.cp;
+      this.paperModel = newPapaerModel;
+    }
+  }
 }

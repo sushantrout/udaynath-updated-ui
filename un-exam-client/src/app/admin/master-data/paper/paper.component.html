@@ -21,7 +21,7 @@
             </bip-dropdown>
         </div>
         <div class="col-2">
-            <bip-dropdown [option]="paperTypeList"  [(ngModel)]="paperModel.paperType">
+            <bip-dropdown [option]="paperTypeList"  [(ngModel)]="paperModel.paperType" (ngModelChange)="resetValueForVE()">
             </bip-dropdown>
         </div>
         <div class="col-2">
