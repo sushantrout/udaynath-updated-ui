@@ -85,11 +85,17 @@
                     <div class="col">
                       {{gradeService.creditPoint(paperResult, courseType)}}
                     </div>
-                    <div class="col b-l-r-2">
+                    <div class="col b-l-r-2" *ngIf="paperResult.paperType != 'VALUES AND ETHICS'">
                       {{getFullMarkCalculation(paperResult)}}
                     </div>
-                    <div class="col" style="border-right: unset;">
+                    <div class="col b-l-r-2" *ngIf="paperResult.paperType == 'VALUES AND ETHICS'">
+                      &nbsp;&nbsp;
+                    </div>
+                    <div class="col" style="border-right: unset;" *ngIf="paperResult.paperType != 'VALUES AND ETHICS'">
                       {{getSecuredMarkCalculation(paperResult)}}
+                    </div>
+                    <div class="col" style="border-right: unset;" *ngIf="paperResult.paperType == 'VALUES AND ETHICS'">
+                      &nbsp;&nbsp;
                     </div>
                   </div>
                   <div class="grid" style="margin-top: auto; font-size: 15px;">

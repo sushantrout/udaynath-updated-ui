@@ -26,4 +26,5 @@ export class StudenModel {
   elective!: ElectiveModel;
   contactNumber!:string;
   phoneNumber!:string;
+  vAndE!:PaperModel;
 }

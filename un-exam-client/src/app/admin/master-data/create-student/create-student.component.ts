@@ -93,12 +93,14 @@ export class CreateStudentComponent implements OnInit {
   }
 
   getDepartmentsByStreamId() {
-    this.departmentService
-      .findByStreamId(this.studentModel.stream?.id)
-      .subscribe((res: any) => {
-        this.departmentList = res;
-      });
-      this.getAllStudents();
+    if(this.studentModel.stream) {
+      this.departmentService
+        .findByStreamId(this.studentModel.stream?.id)
+        .subscribe((res: any) => {
+          this.departmentList = res;
+        });
+        this.getAllStudents();
+    }
   }
 
   fileDataLoader(event: any) {

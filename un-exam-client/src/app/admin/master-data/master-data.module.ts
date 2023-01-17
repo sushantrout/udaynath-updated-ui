@@ -26,6 +26,7 @@ import { ResultPdfComponent } from './download-by-department/result-pdf/result-p
 import { DownloadAdmitCardByDeptComponent } from './download-admit-card-by-dept/download-admit-card-by-dept.component';
 import { GuestGuardService } from 'src/app/shared/services/guest-guard.service';
 import { ResultPdfPgComponent } from './download-by-department/result-pdf-pg/result-pdf-pg.component';
+import { InsertValueEthComponent } from './insert-value-eth/insert-value-eth.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,11 @@ const routes: Routes = [
   {
     path: 'insert-elective',
     component: InsertElectiveComponent,
+    canActivate: [GuestGuardService]
+  },
+  {
+    path: 'insert-value-eth',
+    component: InsertValueEthComponent,
     canActivate: [GuestGuardService]
   },
   {
@@ -134,6 +140,7 @@ const routes: Routes = [
     ResultPdfComponent,
     DownloadAdmitCardByDeptComponent,
     ResultPdfPgComponent,
+    InsertValueEthComponent,
   ],
   imports: [
     CommonModule,

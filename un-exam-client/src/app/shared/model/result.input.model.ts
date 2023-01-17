@@ -10,6 +10,7 @@ export class ResultInputModel {
   results: ResultModel[] = [];
   rollNumber!:string;
   examType!:string;
+  veId!:number;
 }
 
 export class ResultModel {

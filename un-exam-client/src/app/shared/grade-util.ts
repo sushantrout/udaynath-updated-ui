@@ -1,6 +1,5 @@
 export class GradeUtil {
   getGradePoint(paperResult : any, courseType : string): string {
-    console.log(paperResult);
     let practiaclPaper = false;
     if(!paperResult.intMarkId && !paperResult.semMarkId && paperResult.pracMarkId && paperResult.practicalPresent) {
       practiaclPaper = true;
@@ -46,6 +45,9 @@ export class GradeUtil {
   }
 
   creditPoint(paperResult: any, courseType : string) {
+    if(paperResult.paperType && paperResult.paperType == 'VALUES AND ETHICS') {
+      return "";
+    }
     let practiaclPaper = false;
     if(!paperResult.intMarkId && !paperResult.semMarkId && paperResult.pracMarkId && paperResult.practicalPresent) {
       practiaclPaper = true;
@@ -94,14 +96,21 @@ export class GradeUtil {
   sgpaDetail(uiResult: any, courseType : string) {
     let cpSum = 0;
     for (let result of uiResult) {
-      let cp = +result.cp;
-      if (cp && +cp && !isNaN(cp)) {
-        cpSum = cpSum + cp;
+      if(!(result.paperType && result.paperType == 'VALUES AND ETHICS')) {
+        let cp = +result.cp;
+        if (cp && +cp && !isNaN(cp)) {
+          cpSum = cpSum + cp;
+        }
       }
     }
     let total = 0;
     for (let resultdata of uiResult) {
-      total = total + this.creditPoint(resultdata, courseType);
+      if(!(resultdata.paperType && resultdata.paperType == 'VALUES AND ETHICS')) {
+        let cp = this.creditPoint(resultdata, courseType);
+        if(cp && (cp+"").length != 0) {
+          total = total + (+(cp));
+        }
+      }
     }
     return total / cpSum;
   }
@@ -126,12 +135,17 @@ export class GradeUtil {
   getTotal(results : any) {
     let total = 0;
     for(let result of results) {
-      total = total + result.acqureTotalResult;
+      if(!(result.paperType && result.paperType == 'VALUES AND ETHICS')) {
+        total = total + result.acqureTotalResult;
+      }
     }
     return total;
   }
 
   creditPointValue(paperResult: any, courseType : string) {
+    if(paperResult.paperType && paperResult.paperType == 'VALUES AND ETHICS') {
+      return "";
+    }
     let practiaclPaper = false;
     if(!paperResult.intMarkId && !paperResult.semMarkId && paperResult.pracMarkId && paperResult.practicalPresent) {
       practiaclPaper = true;
