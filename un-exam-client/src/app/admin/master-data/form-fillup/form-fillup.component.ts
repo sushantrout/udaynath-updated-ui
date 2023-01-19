@@ -156,9 +156,32 @@ export class FormFillupComponent implements OnInit {
     this.showForm = true;
     this.preview = true;
 
+    let rollNumber = this.student.rollNumber;
+    let examRoolNumber = this.student.examRoolNumber;
+    let reg = this.student.registrationNumber;
+    let fullName = this.student.fullName;
+    let fathersName = this.student.fathersName;
+    let mothersName = this.student.mothersName;
+    let dob = this.student.dob;
+    let gender = this.student.gender;
+    let caste = this.student.caste;
+    let emailId = this.student.emailId;
+    let contactNumber = this.student.contactNumber;
+
     let studentReq = {
       id: this.student.id,
       semistar: this.student.semistar,
+      rollNumber,
+      examRoolNumber,
+      reg,
+      fullName,
+      fathersName,
+      mothersName,
+      dob,
+      gender,
+      caste,
+      emailId,
+      contactNumber
     };
 
     let papers: any = [];
@@ -296,6 +319,7 @@ export class FormFillupComponent implements OnInit {
 
     let sem = this.student.semistar;
     let examType = this.student.examType;
+    let examRoolNumber = this.student.examRoolNumber;
 
     this.formService
       .findByStudentDetails(this.student)
@@ -310,10 +334,15 @@ export class FormFillupComponent implements OnInit {
           this.display = false;
           this.isOldRegistration = false;
           if (this.student.dob) {
-            this.student.dob = new Date(this.student.dob);
+            this.student.dob = this.student.dob
           }
           this.showForm = true;
           this.getDepartments();
+        } else {
+          this.student = {};
+          this.student.semistar = sem;
+          this.student.examType = examType;
+          this.student.examRoolNumber = examRoolNumber;
         }
       });
   }
