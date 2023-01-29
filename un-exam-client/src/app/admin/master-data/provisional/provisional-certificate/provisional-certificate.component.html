@@ -1,7 +1,7 @@
 <p-card>
   <div id="admin-card-area" class="container" *ngIf="downloadDetails && downloadDetails.length != 0">
     <ng-template [ngForOf]="downloadDetails" ngFor let-provisionalDetail>
-      <div style="page-break-after: always; margin: 20px;">
+      <div style="page-break-after: always; margin: 120px;">
         <div class="m-30">
           This is to certify that <b>{{provisionalDetail.fullName}}</b> bearing Roll No
           <b>{{provisionalDetail.examRoolNumber}}</b>
