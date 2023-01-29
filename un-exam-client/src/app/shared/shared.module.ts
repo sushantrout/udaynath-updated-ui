@@ -11,8 +11,9 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { DialogModule } from 'primeng/dialog';
 import { ImageModule } from 'primeng/image';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { TooltipModule } from 'primeng/tooltip';
 
-const dModules = [ImageModule, CommonModule, FormsModule, ReactiveFormsModule, CardModule, ButtonModule, TranslateModule, ChartModule, TableModule, InputTextModule, SelectButtonModule, DialogModule, DynamicDialogModule]
+const dModules = [ImageModule, CommonModule, FormsModule, ReactiveFormsModule, CardModule, ButtonModule, TranslateModule, ChartModule, TableModule, InputTextModule, SelectButtonModule, DialogModule, DynamicDialogModule, TooltipModule]
 @NgModule({
   declarations:[],
   imports: dModules,

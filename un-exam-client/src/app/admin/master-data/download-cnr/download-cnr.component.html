@@ -1,0 +1,24 @@
+<p-card>
+  <div class="grid">
+    <div class="col-3">
+      <bip-dropdown [option]="sessions" [(ngModel)]="studentModel.session" optionLabel="name">
+      </bip-dropdown>
+    </div>
+    <div class="col-3">
+      <bip-dropdown [option]="courseTypes" [(ngModel)]="studentModel.courseType"
+        (ngModelChange)="findStreamByCourseType()">
+      </bip-dropdown>
+    </div>
+    <div class="col-2">
+      <bip-dropdown [option]="streams" [(ngModel)]="studentModel.stream" optionLabel="name">
+      </bip-dropdown>
+    </div>
+    <div class="col-2">
+      <bip-dropdown [option]="semistarList" [(ngModel)]="studentModel.semistar" >
+      </bip-dropdown>
+    </div>
+    <div class="col-2">
+      <button pButton type="button" label="Get Result" class="mr-10" (click)="getCNRReport()"></button>
+    </div>
+  </div>
+</p-card>

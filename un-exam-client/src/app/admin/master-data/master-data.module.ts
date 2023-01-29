@@ -27,6 +27,8 @@ import { DownloadAdmitCardByDeptComponent } from './download-admit-card-by-dept/
 import { GuestGuardService } from 'src/app/shared/services/guest-guard.service';
 import { ResultPdfPgComponent } from './download-by-department/result-pdf-pg/result-pdf-pg.component';
 import { InsertValueEthComponent } from './insert-value-eth/insert-value-eth.component';
+import { DownloadCnrComponent } from './download-cnr/download-cnr.component';
+import { ProvisionalComponent } from './provisional/provisional.component';
 
 const routes: Routes = [
   {
@@ -114,7 +116,11 @@ const routes: Routes = [
     path: 'process-cnr',
     component: ProcessCnrComponent,
     canActivate: [GuestGuardService]
-  },
+  }, {
+    path: 'download-cnr',
+    component: DownloadCnrComponent,
+    canActivate: [GuestGuardService]
+  }
 ];
 
 @NgModule({
@@ -141,6 +147,8 @@ const routes: Routes = [
     DownloadAdmitCardByDeptComponent,
     ResultPdfPgComponent,
     InsertValueEthComponent,
+    DownloadCnrComponent,
+    ProvisionalComponent,
   ],
   imports: [
     CommonModule,
