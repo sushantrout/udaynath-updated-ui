@@ -43,7 +43,14 @@
     <div class="col-9">
       <div class="grid" *ngFor="let paperResult of result.uiResult; let paperIndex = index" [class.changes-for-update]="getTotalResult(paperResult) != paperResult.acqureTotalResult">
         <div class="col-3">
-          {{paperResult.paperText}}
+          <div class="row">
+            <div class="col-1">
+              <bip-checkbox pTooltip="Grace" [binary]="true" [(ngModel)]="paperResult.grace" [optionValue]="true" ngDefaultControl ></bip-checkbox>
+            </div>
+            <div class="col-10">
+              {{paperResult.paperText}}
+            </div>
+          </div>
         </div>
         <!-- <ng-template ngFor [ngForOf]="paperResult.examMarkList" let-pr let-index="index">
           <div class="col-2" *ngIf="index != 5">

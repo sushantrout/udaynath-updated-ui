@@ -157,6 +157,17 @@
                 </div>
               </div>
 
+              <div class="row" *ngIf="valuesAndEthics && valuesAndEthics.length != 0">
+                <div class="cell-content col-3 header-text">
+                  VALUES AND ETHICS
+                </div>
+                <div class="cell-content col-9">
+                  <div *ngFor="let paper of valuesAndEthics" class="w-100">
+                    {{paper.name}}
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

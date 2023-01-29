@@ -14,6 +14,7 @@ export class BipCheckboxComponent extends ValueAccessor implements OnInit {
 
   @Input('optionValue') optionValue !: any;
   @Input('optionLabel') optionLabel !: any;
+  @Input('binary') binary !: boolean;
 
   constructor() {
     super();

@@ -32,6 +32,7 @@ export class FormFillupComponent implements OnInit {
   sec: any[] = [];
   compulsorys: any[] = [];
   defaultPaper: any[] = [];
+  valuesAndEthics: any =[];
   dse: any[] = [];
 
   student: any = {};
@@ -70,6 +71,7 @@ export class FormFillupComponent implements OnInit {
     this.corepapers = [];
     this.dse = [];
     this.compulsorys = [];
+    this.valuesAndEthics = [];
     this.ges = [];
     this.sec = [];
     this.preview = false;
@@ -214,6 +216,12 @@ export class FormFillupComponent implements OnInit {
       if (this.student.dse) {
         papers.push({ id: this.student.dse.id });
       }
+
+      if(this.valuesAndEthics) {
+        this.valuesAndEthics.forEach((element : any) => {
+          papers.push({ id: element.id });
+        });
+      }
     }
 
     this.formService
@@ -251,6 +259,7 @@ export class FormFillupComponent implements OnInit {
     this.ges = [];
     this.sec = [];
     this.compulsorys = [];
+    this.valuesAndEthics = [];
     this.dse = [];
 
     if (
@@ -279,6 +288,7 @@ export class FormFillupComponent implements OnInit {
           this.defaultPaper = this.getPaperByType(responses, 'PAPER').map(
             (test: any) => test.name
           );
+          this.valuesAndEthics = this.getPaperByType(responses, "VALUES AND ETHICS");
         });
     }
   }
