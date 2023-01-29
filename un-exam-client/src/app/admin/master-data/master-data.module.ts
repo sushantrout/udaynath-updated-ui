@@ -29,6 +29,7 @@ import { ResultPdfPgComponent } from './download-by-department/result-pdf-pg/res
 import { InsertValueEthComponent } from './insert-value-eth/insert-value-eth.component';
 import { DownloadCnrComponent } from './download-cnr/download-cnr.component';
 import { ProvisionalComponent } from './provisional/provisional.component';
+import { ProvisionalCertificateComponent } from './provisional/provisional-certificate/provisional-certificate.component';
 
 const routes: Routes = [
   {
@@ -120,6 +121,10 @@ const routes: Routes = [
     path: 'download-cnr',
     component: DownloadCnrComponent,
     canActivate: [GuestGuardService]
+  }, {
+    path: 'download-provisional',
+    component : ProvisionalComponent,
+    canActivate: [GuestGuardService]
   }
 ];
 
@@ -149,6 +154,7 @@ const routes: Routes = [
     InsertValueEthComponent,
     DownloadCnrComponent,
     ProvisionalComponent,
+    ProvisionalCertificateComponent,
   ],
   imports: [
     CommonModule,
