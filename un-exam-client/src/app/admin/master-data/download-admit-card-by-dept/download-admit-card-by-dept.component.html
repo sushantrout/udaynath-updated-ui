@@ -32,27 +32,27 @@
   <div id="admin-card-area" class="container" *ngIf="downloadDetails && downloadDetails.length != 0">
     <ng-template [ngForOf]="downloadDetails" ngFor let-admitCardDetails>
       <div style="page-break-after: always; margin: 20px;border: 2px solid black">
-        <div class="m-30">
+        <div class="m-20">
           <div class="row">
             <div class="col-12">
               <div class="row page-header">
                 <div class="col-2">
-                  <img src="assets/images/logo.png" alt="UN LOGO" />
+                  <img src="assets/images/logo.png" alt="UN LOGO" style="height : 100px"/>
                 </div>
                 <div class="col-8 text-center">
-                  <p class="college-name">
+                  <p class="college-name" style="font-size: 20px;">
                     UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASPUR
                   </p>
-                  <p class="college-name"><u>ADMIT CARD</u></p>
+                  <p class="college-name" style="font-size: 20px;"><u>ADMIT CARD</u></p>
                 </div>
-                <div class="col-2" style="border: 1px solid black">
-                  <p class="text-center" style="margin-top: 50%">Attach Photo</p>
+                <div class="col-2" style="border: 1px solid black; height: 120px;">
+                  <p class="text-center" style="margin-top: 50%" style="font-size: 20px;">Attach Photo</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="m-20">
+        <div style="margin-left: 20px;">
           <div class="row admit-card-text">
             <div class="col-12">
               ROLL NO. &nbsp;: &nbsp;&nbsp;&nbsp;{{
@@ -66,32 +66,32 @@
             </div>
           </div>
         </div>
-        <div class="m-20 admin-card-area-table">
+        <div class="admin-card-area-table" style="margin-left: 20px; margin-right: 20px;">
           <div class="row admit-card-text">
             <div class="col-12">
               <table class="table text-left table-bordered">
                 <tbody>
                   <tr>
                     <th scope="row">STREAM:</th>
-                    <th scope="row">
+                    <th scope="row" style="font-weight: 400 !important;">
                       {{ admitCardDetails?.student?.stream?.name}}
                     </th>
                     <th scope="row">SEMESTER:</th>
-                    <th scope="row" colspan="8">
+                    <th scope="row" colspan="8" style="font-weight: 400 !important;">
                       {{ admitCardDetails?.form?.semister | uppercase }}
                     </th>
                   </tr>
                   <tr>
                     <th scope="row" colspan="2">CANDIDATE'S NAME:</th>
-                    <th scope="row" colspan="9">
+                    <th scope="row" colspan="9" style="font-weight: 400 !important;">
                       {{ admitCardDetails?.student?.fullName | uppercase }}
                     </th>
                   </tr>
                   <tr class="text-center">
                     <th scope="row">SUBJECT:</th>
-                    <th scope="row" *ngFor="let paper of admitCardDetails?.form?.papers">({{paper.paperType | uppercase}})
+                    <th scope="row" *ngFor="let paper of admitCardDetails?.form?.papers" style="font-size: 10px !important;">({{paper.paperType | uppercase}})
                       -
-                      {{paper?.code | uppercase}}({{paper?.name | uppercase}})</th>
+                      <!-- {{paper?.code | uppercase}}( -->{{paper?.name | uppercase}}<!-- ) --></th>
                     <!-- <th scope="row">({{admitCardDetails?.form?.scorePaper?.paperType | uppercase}}) - {{admitCardDetails?.form?.scorePaper?.code | uppercase}}({{admitCardDetails?.form?.scorePaper?.name | uppercase}})</th>
                                 <th scope="row">({{admitCardDetails?.form?.ge?.paperType | uppercase}}) - {{admitCardDetails?.form?.ge?.code | uppercase}}({{admitCardDetails?.form?.ge?.name | uppercase}})</th>
                                 <th scope="row">({{admitCardDetails?.form?.compPaper?.paperType | uppercase}}) - {{admitCardDetails?.form?.compPaper?.code | uppercase}}({{admitCardDetails?.form?.compPaper?.name | uppercase}})</th>
@@ -102,7 +102,7 @@
             </div>
           </div>
         </div>
-        <div class="m-20">
+        <div style="margin-left: 20px; margin-right: 20px;">
           <div class="row">
             <div class="col-12 admit-card-text text-center">
               I UNDERTAKE TO ABIDE BY THE RULES PRINTED OVERLEAF.
@@ -117,7 +117,7 @@
             <div class="col-6 admit-card-text">
               <div class="row">
                 <div class="col-12">
-                  <img src="assets/images/psi.jpg" alt="UN LOGO" /><!-- exam-controller.jpg -->
+                  <img src="assets/images/psi.jpg" alt="UN LOGO" style="height: 50px;"/><!-- exam-controller.jpg -->
                 </div>
                 <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
               </div>
@@ -125,7 +125,7 @@
             <div class="col-6 admit-card-text">
               <div class="row text-right">
                 <div class="col-11">
-                  <img src="assets/images/exam-controller.jpg" alt="UN LOGO" /><!-- exam-controller.jpg -->
+                  <img src="assets/images/exam-controller.jpg" alt="UN LOGO" style="height: 50px;"/><!-- exam-controller.jpg -->
                 </div>
                 <div class="col-11">CONTROLLER OF EXAMINATION</div>
               </div>
