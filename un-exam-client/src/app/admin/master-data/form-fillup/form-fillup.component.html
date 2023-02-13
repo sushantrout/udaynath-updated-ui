@@ -179,7 +179,7 @@
       <div [ngClass]="preview ? 'page' : ''">
         <ng-template [ngIf]="preview">
           <div class="row">
-            <div class="col-2" style="height: 150px">
+            <div class="col-2" style="height: 110px">
               <img src="assets/images/logo.png" alt="UN LOGO" />
             </div>
             <div class="col-8 text-center">
@@ -201,7 +201,7 @@
           </div>
         </ng-template>
 
-        <div class="row mt-2" *ngIf="!preview">
+        <div class="row" *ngIf="!preview" style="margin-top: 20px;">
           <div class="col-2">
             <p class="college-address-text">Application form for</p>
           </div>
@@ -338,7 +338,7 @@
           </div>
         </div>
 
-        <div class="row exam-form-gap exam-form">
+        <div class="row exam-form-gap exam-form" style="margin-top: 10px;">
           <div class="col-12">
             <ng-template [ngIf]="preview">
               <div class="row">
