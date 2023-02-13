@@ -31,7 +31,7 @@
     width: 14% !important;
 }
 .college-name{
-    font-size: 24px;
+    font-size: 12px;
     font-weight: 600;
 }
 .font-icon-style{
@@ -135,7 +135,7 @@
     font-weight: 500;
   }
   .admin-card-area-table .table-bordered th{
-    border: 3px solid gray;
+    border: 2px solid black;
   }
   .p-button{
     margin: 20px;
@@ -183,3 +183,13 @@
   .mt-20 {
     margin-top: 20px;
   }
+
+
+  .admin-card-area-table .table>:not(caption)>*>* {
+    padding-right: 0.10rem !important;
+    padding-left: 0.10rem !important;
+}
+
+.college-address-text {
+  font-size: 10px;
+}

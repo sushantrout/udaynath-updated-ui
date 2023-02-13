@@ -169,7 +169,7 @@ userdetails-form{
    font-weight: 700;
  }
  .admin-card-area-table .table-bordered th{
-   border: 3px solid gray;
+   border: 2px solid black;
  }
  .m-30{
    margin: 30px;
@@ -291,4 +291,10 @@ body {
 
 .mt-20 {
   margin-top: 20px;
+}
+
+
+.admin-card-area-table .table>:not(caption)>*>* {
+  padding-right: 0.10rem !important;
+  padding-left: 0.10rem !important;
 }

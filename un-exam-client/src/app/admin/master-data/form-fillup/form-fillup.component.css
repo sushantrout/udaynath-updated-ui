@@ -1,7 +1,7 @@
 .page {
     width: 210mm;
     min-height: 297mm;
-    padding: 20mm;
+    padding: 5mm;
     margin: 10mm auto;
     border: 1px #D3D3D3 solid;
     border-radius: 5px;
@@ -22,7 +22,7 @@
 @media print {
     html, body {
         width: 210mm;
-        height: 297mm;        
+        height: 297mm;
     }
     .page {
         margin: 0;

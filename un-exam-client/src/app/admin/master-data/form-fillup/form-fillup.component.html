@@ -46,13 +46,12 @@
     </div>
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
       <label class="form-label">College Roll Number</label>
-      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.rollNumber"
-        />
+      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.rollNumber" />
     </div>
 
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
       <label class="form-label">Reg. NO</label>
-      <input type="text" class="form-control w-100" [(ngModel)]="student.registrationNumber"/>
+      <input type="text" class="form-control w-100" [(ngModel)]="student.registrationNumber" />
     </div>
     <div class="col-sm-12 col-md-6 col-xs-12 my-2">
       <label class="form-label">Full Name</label>
@@ -60,7 +59,7 @@
     </div>
     <div class="col-sm-12 col-md-3 col-xs-12 my-2">
       <label class="form-label">Date of birth (as in HSC)</label>
-      <input type="text" class="form-control w-100" [(ngModel)]="student.dob" required placeholder="DD-MM-YYYY"/>
+      <input type="text" class="form-control w-100" [(ngModel)]="student.dob" required placeholder="DD-MM-YYYY" />
       <!-- <bip-calendar [(ngModel)]="student.dob" required [showIcon]="true" styleClass="w-100" [disabled]="true">
       </bip-calendar> -->
     </div>
@@ -77,20 +76,18 @@
 
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Father's Name</label>
-      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.fathersName"
-       />
+      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.fathersName" />
     </div>
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Mother's Name</label>
-      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.mothersName"
-         />
+      <input type="text" class="form-control w-100" [required]="true" [(ngModel)]="student.mothersName" />
     </div>
     <div class="col-sm-12 col-md-4 col-xs-12 my-2">
       <label class="form-label">Email</label>
-      <input type="text" class="form-control w-100"  [(ngModel)]="student.emailId" />
+      <input type="text" class="form-control w-100" [(ngModel)]="student.emailId" />
     </div>
 
-    <div class="col-12" style="padding: 20px;">
+    <div class="col-12" style="padding-left: 20px;padding-right: 20px;">
       <div class="row ">
         <div class="col-12">
           <div class="row">
@@ -177,7 +174,7 @@
 </div>
 
 <div class="book form-print-area" id="student-form-print-area" *ngIf="preview">
-  <div class="row" style="padding: 20px;">
+  <div class="row" style="padding: 5px;font-size: 10px;">
     <div class="col-12">
       <div [ngClass]="preview ? 'page' : ''">
         <ng-template [ngIf]="preview">
@@ -246,20 +243,11 @@
         <div class="row">
           <div class="col-4 mt-md-0">
             <label>Stream</label>
-            <input type="text" class="form-control" [required]="true" [value]="getStreamName()"
-              readonly="true" />
+            <input type="text" class="form-control" [required]="true" [value]="getStreamName()" readonly="true" />
           </div>
           <div class="col-4 mt-md-0">
             <label>Department</label>
-            <input type="text" class="form-control" [required]="true" [value]="getDepartmentName()"
-              readonly="true" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-8">
-            <label>Full Name</label>
-            <input type="text" class="form-control" [required]="true" [(ngModel)]="student.fullName" readonly="true" />
+            <input type="text" class="form-control" [required]="true" [value]="getDepartmentName()" readonly="true" />
           </div>
           <div class="col-4">
             <label>Date of birth (as in HSC)</label>
@@ -268,12 +256,16 @@
         </div>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
+            <label>Full Name</label>
+            <input type="text" class="form-control" [required]="true" [(ngModel)]="student.fullName" readonly="true" />
+          </div>
+          <div class="col-4">
             <label>Father's Name</label>
             <input type="text" class="form-control" [required]="true" [(ngModel)]="student.fathersName"
               readonly="true" />
           </div>
-          <div class="col-6">
+          <div class="col-4">
             <label>Mother's Name</label>
             <input type="text" class="form-control" [required]="true" [(ngModel)]="student.mothersName"
               readonly="true" />
@@ -282,112 +274,109 @@
 
         <div class="row">
           <div class="col-12">
-            <h3 class="text-center">
+            <p class="text-center">
               Papers Of Examination {{ student.semistar }} SEMESTER ({{
               student.examType
               }})
-            </h3>
+            </p>
           </div>
         </div>
+        <div class="row exam-paper-area">
+          <div class="col-12">
+            <div class="row">
+              <div class="cell-content col-3 header-text">Paper Type</div>
+              <div class="cell-content col-9 header-text">Paper Name & Paper Code</div>
+            </div>
 
-        <div class="row">
-          <div class="row exam-paper-area">
-            <div class="col-12">
-              <div class="row">
-                <div class="cell-content col-3 header-text">Paper Type</div>
-                <div class="cell-content col-9 header-text">Paper Name & Paper Code</div>
-              </div>
-
-              <div class="row" *ngIf="corepapers && corepapers.length != 0">
-                <div class="cell-content col-3 header-text">Core</div>
-                <div class="cell-content col-9">
-                  <div *ngFor="let core of corepapers" class="w-100">
-                    {{core}}
-                  </div>
+            <div class="row" *ngIf="corepapers && corepapers.length != 0">
+              <div class="cell-content col-3 header-text">Core</div>
+              <div class="cell-content col-9">
+                <div *ngFor="let core of corepapers" class="w-100">
+                  {{core}}
                 </div>
               </div>
+            </div>
 
-              <div class="row" *ngIf="compulsorys && compulsorys.length != 0">
-                <div class="cell-content col-3 header-text">Compulsory</div>
-                <div class="cell-content col-9">
-                  {{student.comp?.name}}
+            <div class="row" *ngIf="compulsorys && compulsorys.length != 0">
+              <div class="cell-content col-3 header-text">Compulsory</div>
+              <div class="cell-content col-9">
+                {{student.comp?.name}}
+              </div>
+            </div>
+
+            <div class="row" *ngIf="sec && sec.length != 0">
+              <div class="cell-content col-3 header-text">SEC</div>
+              <div class="cell-content col-9"> {{ sec }}</div>
+            </div>
+
+            <div class="row" *ngIf="ges && ges.length != 0">
+              <div class="cell-content col-3 header-text">GE</div>
+              <div class="cell-content col-9">
+                {{student.ges?.name}}
+              </div>
+            </div>
+
+            <div class="row" *ngIf="dse && dse.length != 0">
+              <div class="cell-content col-3 header-text">
+                DSE
+              </div>
+              <div class="cell-content col-9">
+                {{student.dse?.name}}
+              </div>
+            </div>
+
+            <div class="row" *ngIf="defaultPaper && defaultPaper.length != 0">
+              <div class="cell-content col-3 header-text">
+                PAPAER
+              </div>
+              <div class="cell-content col-9">
+                <div *ngFor="let paper of defaultPaper" class="w-100">
+                  {{paper}}
                 </div>
               </div>
-
-              <div class="row" *ngIf="sec && sec.length != 0">
-                <div class="cell-content col-3 header-text">SEC</div>
-                <div class="cell-content col-9"> {{ sec }}</div>
-              </div>
-
-              <div class="row" *ngIf="ges && ges.length != 0">
-                <div class="cell-content col-3 header-text">GE</div>
-                <div class="cell-content col-9">
-                  {{student.ges?.name}}
-                </div>
-              </div>
-
-              <div class="row" *ngIf="dse && dse.length != 0">
-                <div class="cell-content col-3 header-text">
-                  DSE
-                </div>
-                <div class="cell-content col-9">
-                  {{student.dse?.name}}
-                </div>
-              </div>
-
-              <div class="row" *ngIf="defaultPaper && defaultPaper.length != 0">
-                <div class="cell-content col-3 header-text">
-                  PAPAER
-                </div>
-                <div class="cell-content col-9">
-                  <div *ngFor="let paper of defaultPaper" class="w-100">
-                    {{paper}}
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
         </div>
 
-        <div class="row exam-form-gap exam-form" style="page-break-after: always; margin-top: 40px;">
+        <div class="row exam-form-gap exam-form">
           <div class="col-12">
             <ng-template [ngIf]="preview">
-              <div class="row mt-3">
-                <div class="col-12 mt-md-0">
+              <div class="row">
+                <div class="col-7 mt-md-0">
                   <label>Percentage Of Attendance(To be filled by the
                     Department)</label>
                 </div>
+                <div class="col-5 text-right mt-10">Signature of the HOD</div>
               </div>
               <div class="row">
-                <div class="col-8">
-                  Examination fee paid :Rs____________________________<br />
-                  ____________________________
+                <div class="col-7">
+                  Examination fee paid :Rs ______________________
                 </div>
-                <div class="col-4 text-right mt-16">Signature of the HOD</div>
+                <div class="col-5 text-right mt-10">Full Signature of the Candidate</div>
               </div>
-              <div class="row text-right mt-25">
-                <p>
-                  Full Signature of the Candidate<br /><br />Address
-                  ____________________________<br />____________________________<br />
-                  ____________________________
-                </p>
+              <div class="row" style="margin-top: 2px;">
+                <div class="col-12">
+                  <p>Address: _________________________________________________
+                  </p>
+                </div>
               </div>
               <div class="row">
                 <div class="col-6">Signature of Collection Assistant</div>
                 <div class="col-6">
-                  <label>Pin</label>
-                  <br />
+                  <!--  <label>Pin</label>
+                  <br /> -->
                   <label>Phone</label>
                 </div>
               </div>
               <div class="row">
-                <p class="text-justify">
-                  Certified that the candidate sponsored for the above mentioned
-                  Examination fulfills the academic requirements as per the
-                  regulation of the Utkal University & U.N (Auto.) College of Sc.
-                  & Tech. Adaspur.
-                </p>
+                <div class="col-12">
+                  <p class="text-justify" style="font-size: 10px;">
+                    Certified that the candidate sponsored for the above mentioned
+                    Examination fulfills the academic requirements as per the
+                    regulation of the Utkal University & U.N (Auto.) College of Sc.
+                    & Tech. Adaspur.
+                  </p>
+                </div>
               </div>
               <div class="row">
                 <div class="col-6">
@@ -411,12 +400,14 @@
 
 <div class="row">
   <div class="col-12 text-center">
-    <button styleSheetFile="assets/css/print/bootstrap.min.css,assets/css/print/style.css,assets/css/print/primeng.min.css,assets/css/print/primeflex.css"
+    <button
+      styleSheetFile="assets/css/print/bootstrap.min.css,assets/css/print/style.css,assets/css/print/primeng.min.css,assets/css/print/primeflex.css"
       printSectionId="student-form-print-area" ngxPrint class="btn btn-primary" style="margin-right: 10px;"
       *ngIf="isRegistered">
       Print
     </button>
-    <button class="btn btn-primary" (click)="register()" *ngIf="!isRegistered" style="margin-right: 10px;">Submit</button>
+    <button class="btn btn-primary" (click)="register()" *ngIf="!isRegistered"
+      style="margin-right: 10px;">Submit</button>
     <button class="btn btn-primary" (click)="editForm()" *ngIf="isRegistered" style="margin-right: 10px;">Edit</button>
     <button class="btn btn-primary" (click)="back()">Back</button>
   </div>
