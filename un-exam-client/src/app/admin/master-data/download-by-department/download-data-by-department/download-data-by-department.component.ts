@@ -13,9 +13,11 @@ import { GradeUtil } from 'src/app/shared/grade-util';
   styleUrls: ['./download-data-by-department.component.css'],
 })
 export class DownloadDataByDepartmentComponent implements OnInit, OnChanges {
-  @Input('results') results!: any;
+  @Input('results') allResult!: any;
   @Input('studentModel') studentModel !: any;
   @Input('courseType') courseType !:string;
+
+  resultsAfterSplit : any = [];
 
   gradeService = new GradeUtil();
   constructor() {}
@@ -23,6 +25,16 @@ export class DownloadDataByDepartmentComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.results)
+    if(this.allResult && this.allResult.length != 0) {
+      let index = -1;
+      for(let i = 0; i< this.allResult.length; i++) {
+        let rem = i % 5;
+        if(rem  == 0) {
+          index = index + 1;
+          this.resultsAfterSplit[index] = [];
+        }
+        this.resultsAfterSplit[index].push(this.allResult[i]);
+      }
+    }
   }
 }

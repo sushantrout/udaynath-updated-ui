@@ -25,6 +25,7 @@ export class DownloadByDepartmentComponent implements OnInit {
   studentModel: StudenModel = new StudenModel();
 
   resultPdf = false;
+  resultPdfMarkSheet = false;
 
   constructor(
     private departmentService: DepartmentService,
@@ -64,8 +65,9 @@ export class DownloadByDepartmentComponent implements OnInit {
   }
 
   downloadDetails = [];
-  getResult(pdf = false) {
+  getResult(pdf = false, resultPdfMarkSheet = false) {
     this.resultPdf = pdf;
+    this.resultPdfMarkSheet = resultPdfMarkSheet;
     let requestBody = new ResultInputModel();
     requestBody.subjectType = this.studentModel.courseType;
     requestBody.educationType = this.studentModel.courseType;
@@ -80,4 +82,6 @@ export class DownloadByDepartmentComponent implements OnInit {
         this.downloadDetails = res;
       });
   }
+
+
 }

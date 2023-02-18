@@ -201,3 +201,12 @@
 label {
   margin-bottom: 0.1rem !important;
 }
+
+.b-2-b {
+  border: 2px solid black !important;
+}
+
+.pt-100 {
+  padding-top: 240px;
+  padding-left: 240px;
+}

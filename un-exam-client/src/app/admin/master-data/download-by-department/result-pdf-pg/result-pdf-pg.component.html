@@ -2,7 +2,7 @@
   <div class="grid" id="studentresultId" *ngIf="results && results.length != 0">
     <div style="padding: 15px;">
       <div *ngFor="let result of results" style="page-break-after: always; margin-top: 8px;">
-        <div class="col-12">
+        <div class="col-12" *ngIf="!resultPdfMarkSheet">
           <div class="grid page-header">
             <div class="col-2"></div>
             <div class="col-2">
@@ -16,17 +16,19 @@
             <div class="col-2"></div>
           </div>
         </div>
-        <div class="col-12 text-center" style="border: 2px solid black;">
-          <div class="grid">
-            <div class="col-1"></div>
-            <div class="col-10">
-              <div class="grid" style="margin-top: 8px;">
-                <div class="col text-center" style="font-size: 16px;">
-                  <p><u>{{ studentModel?.semistar }} - SEMESTER EXAMINATION REPORT - {{studentModel?.session?.name}}</u>
+        <div class="col-12 text-center" [class.b-2-b]="!resultPdfMarkSheet">
+          <div class="grid" [class.pt-100]="resultPdfMarkSheet">
+            <div class="col-12">
+              <div class="grid">
+                <div class="col text-center" style="font-size: 12px !important;">
+                  <p>
+                    <b>
+                      <u>{{ studentModel?.semistar }} - SEMESTER EXAMINATION REPORT - {{studentModel?.session?.name}}</u>
+                    </b>
                   </p>
                 </div>
               </div>
-              <div class="grid text-left">
+              <div class="grid text-left" style="font-size: 10px !important;">
                 <div class="col-7">
                   <b>NAME: </b>{{result.fullName}}
                 </div>
@@ -34,9 +36,9 @@
                   <b>ROLL NO: </b>{{result.examRoolNumber}}
                 </div>
               </div>
-              <div class="grid  text-left">
+              <div class="grid  text-left" style="font-size: 10px !important;">
                 <div class="col-7">
-                  <b>College/Dept. : </b>{{(studentModel.courseType).split("").join(".")}}
+                  <b>Department : </b>{{(studentModel.courseType).split("").join(".")}}
                   DEPT OF
                   {{studentModel.department?.name}}
                  <!--  , UDAYANATH COLLEGE -->
@@ -72,7 +74,7 @@
 
                   </div>
 
-                  <div class="grid blank-border-2" style="margin-top: auto" *ngFor="let paperResult of result.uiResult">
+                  <div class="grid blank-border-2" style="margin-top: auto" *ngFor="let paperResult of result.uiResult" style="font-size: 10px !important;">
                     <div class="col-4">
                       {{paperResult.pappaerName}}
                     </div>
@@ -137,32 +139,33 @@
                 </div>
               </div>
             </div>
-            <div class="col-1"></div>
-            <div class="col-1"></div>
-            <div class="col-10">
+            <div class="col-12">
               <div style="margin: 10px;">
                 <div class="grid">
                   <div class="col-6 admit-card-text">
                     <div class="grid">
-                      <div class="col-12">
+                      <div class="col-12" *ngIf="!resultPdfMarkSheet">
                         <img src="assets/images/psi.jpg" alt="UN LOGO" height="40px" /><!-- exam-controller.jpg -->
                       </div>
-                      <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
+                      <div class="col-12">
+                        <b>PRINCIPAL</b>
+                      </div>
                     </div>
                   </div>
                   <div class="col-6 admit-card-text">
                     <div class="grid text-right">
-                      <div class="col-12">
+                      <div class="col-12" *ngIf="!resultPdfMarkSheet">
                         <img src="assets/images/exam-controller.jpg" alt="UN LOGO" height="40px" />
                         <!-- exam-controller.jpg -->
                       </div>
-                      <div class="col-12">CONTROLLER OF EXAMINATION</div>
+                      <div class="col-12">
+                        <b>CONTROLLER OF EXAMINATION</b>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-1"></div>
           </div>
         </div>
       </div>

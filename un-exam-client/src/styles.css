@@ -298,3 +298,6 @@ body {
   padding-right: 0.10rem !important;
   padding-left: 0.10rem !important;
 }
+.b-2-b {
+  border: 2px solid black !important;
+}

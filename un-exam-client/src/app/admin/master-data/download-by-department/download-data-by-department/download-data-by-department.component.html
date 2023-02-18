@@ -1,12 +1,12 @@
 <p-card>
-  <div class="grid" id="studentresultId" *ngIf="results && results.length != 0">
+  <div class="grid" id="studentresultId" *ngIf="resultsAfterSplit && resultsAfterSplit.length != 0">
     <div style="padding: 30px;">
       <div class="col-12">
         <div class="grid page-header">
           <div class="col-2">
-            <img src="assets/images/logo.png" alt="UN LOGO" />
+            <img src="assets/images/logo.png" alt="UN LOGO" style="height:100px; width:auto" />
           </div>
-          <div class="col-10 text-center" style="font-size: 14px;">
+          <div class="col-10 text-center" style="font-size: 12px;">
             <p>
               <b>UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASPUR</b>
             </p>
@@ -14,8 +14,9 @@
           </div>
         </div>
       </div>
-      <div class="col-12">
-        <div class="grid mt-20" *ngFor="let result of results">
+      <div class="col-12" style="font-size: 10px !important; page-break-after: always; margin-top: 30px !important;"
+        *ngFor="let results of resultsAfterSplit">
+        <div class="grid mt-10" *ngFor="let result of results">
           <div class="col-2">
 
           </div>
@@ -45,10 +46,10 @@
               <div class="col">
                 <b>TOTAL</b>
               </div>
-              <div class="col" >
+              <div class="col">
                 <b> GRADE</b>
               </div>
-              <div class="col" >
+              <div class="col">
                 <b>CP</b>
               </div>
             </div>
@@ -78,43 +79,39 @@
                 <div class="col"> {{gradeService.getFormatedResult(paperResult.bk2Mark)}}</div>
                 <div class="col"> {{gradeService.getFormatedResult(paperResult.pracMark)}}</div>
                 <div class="col"> {{gradeService.getFormatedResult(paperResult.acqureTotalResult)}}</div>
-                 <div class="col" >
+                <div class="col">
                   {{gradeService.getGradePoint(paperResult, courseType)}}
                 </div>
-                <div class="col" >
+                <div class="col">
                   {{gradeService.creditPoint(paperResult, courseType)}}
                 </div>
               </div>
               <div class="grid">
                 <div class="col text-right">
-                  <b style="margin-right: 20px;">TOTAL : {{gradeService.getTotal(result.uiResult) | number : '1.0-2'}}</b>
-                  <b >SGPA : {{gradeService.sgpaDetail(result.uiResult, courseType) | number : '1.0-2'}}</b>
+                  <b style="margin-right: 20px;">TOTAL : {{gradeService.getTotal(result.uiResult) | number :
+                    '1.0-2'}}</b>
+                  <b>SGPA : {{gradeService.sgpaDetail(result.uiResult, courseType) | number : '1.0-2'}}</b>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="m-20">
-        <div class="row">
-          <div class="col-6 admit-card-text">
-            <div class="row">
-              <div class="col-12">
-
+        <div class="m-20">
+          <div class="row" style="margin-top: 20px;">
+            <div class="col-6 admit-card-text">
+              <div class="row">
+                <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
               </div>
-              <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
             </div>
-          </div>
-          <div class="col-6 admit-card-text">
-            <div class="row text-right">
-              <div class="col-12">
-
+            <div class="col-6 admit-card-text">
+              <div class="row text-right">
+                <div class="col-12">CONTROLLER OF EXAMINATION</div>
               </div>
-              <div class="col-12">CONTROLLER OF EXAMINATION</div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
   <div class="col-12">

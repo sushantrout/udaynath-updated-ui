@@ -10,6 +10,7 @@ export class ResultPdfPgComponent implements OnInit {
   @Input('results') results!: any;
   @Input('studentModel') studentModel!: any;
   @Input('courseType') courseType!: string;
+  @Input('resultPdfMarkSheet') resultPdfMarkSheet!:boolean;
 
   gradeService = new GradeUtil();
   constructor() {}
