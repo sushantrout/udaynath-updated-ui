@@ -218,9 +218,8 @@ label {
 
 
 .rotate-for-print {
-  padding-top: 140px !important;
-  margin-left: 165px;
-  margin-right: 155px;
+  padding-top: 150px !important;
+  padding-left: 165px !important;
 }
 
 .student-form-table tr th{
@@ -246,4 +245,8 @@ label {
 
 .w-40 {
   width: 40%;
+}
+
+.w-140 {
+  width: 130% !important;
 }

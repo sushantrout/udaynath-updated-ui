@@ -1,7 +1,8 @@
 <p-card styleClass="w-100">
   <div class="grid" id="studentresultId" *ngIf="results && results.length != 0">
     <div *ngFor="let result of results" style="page-break-after: always; margin-top: 8px;" class="col-12">
-      <div class="grid" style="padding: 50px;">
+      <br>
+      <div class="grid" style="padding: 50px;" [class.rotate-for-print]="resultPdfMarkSheet">
         <div class="col-12" *ngIf="!resultPdfMarkSheet">
           <div class="grid page-header">
             <div class="col-2"></div>
@@ -16,11 +17,11 @@
             <div class="col-2"></div>
           </div>
         </div>
-        <div class="col-12 text-center" style="font-size: 10px;">
+        <div class="col-12 text-center" style="font-size: 14px;">
           <div class="grid">
             <div class="col-12">
               <div class="grid">
-                <div class="col text-center" style="font-size: 14px;font-weight: 800">
+                <div class="col text-center" style="font-size: 15px;font-weight: 800">
                   <b>
                     <u>{{ studentModel?.semistar }} - SEMESTER EXAMINATION - {{examYearInput}}
                     </u>
@@ -54,7 +55,7 @@
               </div>
               <div class="grid">
                 <div class="col-12">
-                  <table style="font-size: 14px !important;width:100%;">
+                  <table style="font-size: 14px !important;" [class.w-140]="resultPdfMarkSheet">
                     <thead>
                       <tr>
                         <th class="w-40">
@@ -119,7 +120,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td colspan="6">
+                        <td colspan="4">
                           <div class="grid">
                             <div class="col" *ngIf="courseType == 'PG'">
                               <b>RESULT:</b>
@@ -139,13 +140,13 @@
                             <div class="col">
                               <b>TOTAL :</b>
                             </div>
-                            <div class="col">
-                              <b>{{this.gradeService.getFormatedResult(result.examFullMark)}}</b>
-                            </div>
-                            <div class="col">
-                              <b>{{gradeService.getTotal(result.uiResult) | number : '1.0-2'}}</b>
-                            </div>
                           </div>
+                        </td>
+                        <td>
+                            <b>{{this.gradeService.getFormatedResult(result.examFullMark)}}</b>
+                        </td>
+                        <td>
+                            <b>{{gradeService.getTotal(result.uiResult) | number : '1.0-2'}}</b>
                         </td>
                       </tr>
                     </tbody>
@@ -239,8 +240,7 @@
                 </div>
               </div>
             </div>
-            <br>
-            <div class="col-12" style="margin-top: 25px;text-align: left;">
+            <div class="col-12" style="margin-top: 40px;text-align: left;">
               <div class="grid">
                 <div class="col-6 admit-card-text">
                   <div class="grid">
