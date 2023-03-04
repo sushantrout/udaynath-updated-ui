@@ -158,11 +158,8 @@
 
 
   .subject-header-grid {
-  }
-
-  .subject-header-grid div {
     border-right: 2px solid black;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid black;;
   }
   .blank-border-2 div{
     border-right: 2px solid #ff000000;
@@ -224,4 +221,29 @@ label {
   padding-top: 140px !important;
   margin-left: 165px;
   margin-right: 155px;
+}
+
+.student-form-table tr th{
+  width: 250px !important;
+  text-align: center;
+  font-weight: 500;
+}
+.student-form-table tr td{
+  width: 250px !important;
+  font-weight: 500;
+}
+
+.student-form-table, th, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.unset-b-t-b {
+  border-bottom: unset !important;
+  border-top: unset !important;
+}
+
+.w-40 {
+  width: 40%;
 }

@@ -248,7 +248,7 @@ body {
 }
 
 .student-form-table, th, td {
-  border: 1px solid black;
+  border: 2px solid black;
   border-collapse: collapse;
 }
 
@@ -264,12 +264,10 @@ body {
 
 
 .subject-header-grid {
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;;
 }
 
-.subject-header-grid div {
-  border-right: 2px solid black;
-  border-bottom: 2px solid black;
-}
 .blank-border-2 div{
   border-right: 2px solid #ff000000;
 }
@@ -305,4 +303,13 @@ body {
 
 .mark-sheet-area table td, th {
   width: 16%;
+}
+
+
+.unset-b-t-b {
+  border-bottom: unset !important;
+  border-top: unset !important;
+}
+.w-40 {
+  width: 40%;
 }
