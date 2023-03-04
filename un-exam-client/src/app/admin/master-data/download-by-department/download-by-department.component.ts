@@ -26,6 +26,7 @@ export class DownloadByDepartmentComponent implements OnInit {
 
   resultPdf = false;
   resultPdfMarkSheet = false;
+  examYearInput!:number;
 
   constructor(
     private departmentService: DepartmentService,

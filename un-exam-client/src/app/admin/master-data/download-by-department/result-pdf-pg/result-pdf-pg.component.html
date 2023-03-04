@@ -1,7 +1,7 @@
-<p-card>
+<p-card styleClass="w-100">
   <div class="grid" id="studentresultId" *ngIf="results && results.length != 0">
-    <div style="padding: 15px;">
-      <div *ngFor="let result of results" style="page-break-after: always; margin-top: 8px;">
+    <div *ngFor="let result of results" style="page-break-after: always; margin-top: 8px;" class="col-12">
+      <div class="grid" style="padding: 50px;">
         <div class="col-12" *ngIf="!resultPdfMarkSheet">
           <div class="grid page-header">
             <div class="col-2"></div>
@@ -16,19 +16,18 @@
             <div class="col-2"></div>
           </div>
         </div>
-        <div class="col-12 text-center" [class.b-2-b]="!resultPdfMarkSheet">
-          <div class="grid" [class.pt-100]="resultPdfMarkSheet">
+        <div class="col-12 text-center" style="font-size: 10px;">
+          <div class="grid">
             <div class="col-12">
               <div class="grid">
-                <div class="col text-center" style="font-size: 12px !important;">
-                  <p>
-                    <b>
-                      <u>{{ studentModel?.semistar }} - SEMESTER EXAMINATION REPORT - {{studentModel?.session?.name}}</u>
-                    </b>
-                  </p>
+                <div class="col text-center" style="font-size: 14px;">
+                  <b>
+                    <u>{{ studentModel?.semistar }} - SEMESTER EXAMINATION - {{examYearInput}}
+                    </u>
+                  </b>
                 </div>
               </div>
-              <div class="grid text-left" style="font-size: 10px !important;">
+              <div class="grid text-left">
                 <div class="col-7">
                   <b>NAME: </b>{{result.fullName}}
                 </div>
@@ -36,23 +35,23 @@
                   <b>ROLL NO: </b>{{result.examRoolNumber}}
                 </div>
               </div>
-              <div class="grid  text-left" style="font-size: 10px !important;">
+              <br>
+              <div class="grid  text-left" style="padding-bottom: 15px;">
                 <div class="col-7">
-                  <b>Department : </b>{{(studentModel.courseType).split("").join(".")}}
+                  <b>DEPARTMENT : </b>{{(studentModel.courseType).split("").join(".")}}
                   DEPT OF
                   {{studentModel.department?.name}}
-                 <!--  , UDAYANATH COLLEGE -->
+                  <!--  , UDAYANATH COLLEGE -->
                 </div>
                 <div class="col-5">
                   <b>REGD NO: </b>
                 </div>
               </div>
-              <br>
-              <div class="grid" style="border: 2px solid black; margin-top: 5px;">
+              <div class="grid" style="border: 2px solid black;">
                 <div class="col-12" style="padding-bottom: unset;">
                   <div class="grid subject-header-grid">
                     <div class="col-4">
-                      <b>Paper & Subjects</b>
+                      <b>Paper and Subjects</b>
                     </div>
                     <div class="col">
                       <b> Grade</b>
@@ -74,7 +73,7 @@
 
                   </div>
 
-                  <div class="grid blank-border-2" style="margin-top: auto" *ngFor="let paperResult of result.uiResult" style="font-size: 10px !important;">
+                  <div class="grid blank-border-2" style="margin-top: auto" *ngFor="let paperResult of result.uiResult">
                     <div class="col-4">
                       {{paperResult.pappaerName}}
                     </div>
@@ -139,29 +138,25 @@
                 </div>
               </div>
             </div>
-            <div class="col-12">
-              <div style="margin: 10px;">
-                <div class="grid">
-                  <div class="col-6 admit-card-text">
-                    <div class="grid">
-                      <div class="col-12" *ngIf="!resultPdfMarkSheet">
-                        <img src="assets/images/psi.jpg" alt="UN LOGO" height="40px" /><!-- exam-controller.jpg -->
-                      </div>
-                      <div class="col-12">
-                        <b>PRINCIPAL</b>
-                      </div>
+            <div class="col-12" style="margin-top: 25px;text-align: left;">
+              <div class="grid">
+                <div class="col-6 admit-card-text">
+                  <div class="grid">
+                    <div class="col-12" *ngIf="!resultPdfMarkSheet">
+                      <img src="assets/images/psi.jpg" alt="UN LOGO" height="40px" /><!-- exam-controller.jpg -->
                     </div>
+                    <br *ngIf="resultPdfMarkSheet">
+                    <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
                   </div>
-                  <div class="col-6 admit-card-text">
-                    <div class="grid text-right">
-                      <div class="col-12" *ngIf="!resultPdfMarkSheet">
-                        <img src="assets/images/exam-controller.jpg" alt="UN LOGO" height="40px" />
-                        <!-- exam-controller.jpg -->
-                      </div>
-                      <div class="col-12">
-                        <b>CONTROLLER OF EXAMINATION</b>
-                      </div>
+                </div>
+                <div class="col-6 admit-card-text">
+                  <div class="grid text-right">
+                    <div class="col-12" *ngIf="!resultPdfMarkSheet">
+                      <img src="assets/images/exam-controller.jpg" alt="UN LOGO" height="40px" />
+                      <!-- exam-controller.jpg -->
                     </div>
+                    <br *ngIf="resultPdfMarkSheet">
+                    <div class="col-12">CONTROLLER OF EXAMINATION</div>
                   </div>
                 </div>
               </div>

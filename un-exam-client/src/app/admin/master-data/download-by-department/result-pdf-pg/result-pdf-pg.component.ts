@@ -11,6 +11,7 @@ export class ResultPdfPgComponent implements OnInit {
   @Input('studentModel') studentModel!: any;
   @Input('courseType') courseType!: string;
   @Input('resultPdfMarkSheet') resultPdfMarkSheet!:boolean;
+  @Input('examYearInput') examYearInput !:number;
 
   gradeService = new GradeUtil();
   constructor() {}

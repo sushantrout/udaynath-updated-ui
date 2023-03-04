@@ -16,7 +16,7 @@ export class DownloadDataByDepartmentComponent implements OnInit, OnChanges {
   @Input('results') allResult!: any;
   @Input('studentModel') studentModel !: any;
   @Input('courseType') courseType !:string;
-
+  @Input('examYearInput') examYearInput !:number;
   resultsAfterSplit : any = [];
 
   gradeService = new GradeUtil();
