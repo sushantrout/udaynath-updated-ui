@@ -83,7 +83,7 @@
                     <tbody>
                       <tr *ngFor="let paperResult of result.uiResult; let i = index">
                         <td style="border: unset; border-left: 2px solid black;text-align:left;">
-                          {{i + 1}}. {{paperResult.pappaerName}}
+                          {{i + 1}}. {{paperResult.pappaerName}} ({{paperResult.paperType != 'COMPULSORY'? paperResult.paperType : 'AECC'}})
                         </td>
                         <td style="border: unset;">
                           {{gradeService.getGradePoint(paperResult, courseType)}}
