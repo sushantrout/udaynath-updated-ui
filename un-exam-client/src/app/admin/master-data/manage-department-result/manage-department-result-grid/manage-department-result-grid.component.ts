@@ -73,19 +73,28 @@ export class ManageDepartmentResultGridComponent implements OnInit, OnChanges {
     });
   }
 
-  deleteResultConfirm(paperResult : any) {
+  deleteResultConfirm(result: any, paperResult : any) {
     this.confirmationService.confirm({
       header: 'Delete',
-      message: `Do you want to delete ${paperResult.paperText} result?`,
+      message: `Do you want to delete ${paperResult.paperText} result for ${result.examRoolNumber}?`,
       accept: () =>{
-        this.deleteResult(paperResult);
+        this.deleteResult(result.examRoolNumber, paperResult);
       }
     });
   }
 
-  deleteResult(paperResult : any) {
-    this.resultService.delete(paperResult).subscribe((res : any) => {
-      this.toastService.sucess("Result", `${paperResult.paperText} result deleted sucessfuly.`);
-    });
+  deleteResult(examRollNumber: any ,paperResult : any) {
+    if(paperResult) {
+      let resultArray = [paperResult.semMarkId,
+        paperResult.intMarkId,
+        paperResult.bk1MarkId,
+        paperResult.bk2MarkId,
+        paperResult.pracMarkId
+      ].filter(a => a);
+      this.resultService.delete(examRollNumber, resultArray).subscribe((res : any) => {
+        this.toastService.sucess("Result", `${paperResult.paperText} result deleted sucessfuly.`);
+        this.refreshResult.emit(true);
+      });
+    }
   }
 }

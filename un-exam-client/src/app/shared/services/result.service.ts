@@ -35,7 +35,7 @@ export class ResultService {
     return this.apiService.post(this.url+"/update/by-department", req);
   }
 
-  delete(body: any) {
-    return this.apiService.post(this.url+'/delete', body);
+  delete(examRollNumber:any, body: any) {
+    return this.apiService.post(this.url+'/delete/'+examRollNumber, body);
   }
 }

@@ -37,4 +37,16 @@ export class ResultPdfPgComponent implements OnInit {
     resultList.push(this.gradeService.getFormatedResult(paperResult.pracMark));
     return resultList.filter(d => d).join(" + ");
   }
+
+  getSelNoForMarksheet(result : any, examRoolNumber: string, semistar : any) {
+    if(examRoolNumber && semistar) {
+      if(examRoolNumber.length > 5) {
+        return examRoolNumber.substring(0, examRoolNumber.length-5) + "/" + semistar + "/" +
+        this.examYearInput
+        + "/"
+         + examRoolNumber.substring(examRoolNumber.length-3, examRoolNumber.length);
+      }
+    }
+    return "------------";
+  }
 }

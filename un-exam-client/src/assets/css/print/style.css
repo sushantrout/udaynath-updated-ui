@@ -158,11 +158,8 @@
 
 
   .subject-header-grid {
-  }
-
-  .subject-header-grid div {
     border-right: 2px solid black;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid black;;
   }
   .blank-border-2 div{
     border-right: 2px solid #ff000000;
@@ -221,7 +218,44 @@ label {
 
 
 .rotate-for-print {
-  padding-top: 140px !important;
-  margin-left: 165px;
-  margin-right: 155px;
+  padding-top: 120px !important;
+  padding-left: 165px !important;
+}
+
+.student-form-table tr th{
+  width: 250px !important;
+  text-align: center;
+  font-weight: 500;
+}
+.student-form-table tr td{
+  width: 250px !important;
+  font-weight: 500;
+}
+
+.student-form-table, th, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.unset-b-t-b {
+  border-bottom: unset !important;
+  border-top: unset !important;
+}
+
+.w-40 {
+  width: 40%;
+}
+
+.w-140 {
+  width: 130% !important;
+}
+
+.w-120 {
+  width: 100% !important;
+}
+
+.pw-12 {
+  width: 12% !important;
+  white-space: nowrap;
 }

@@ -26,6 +26,9 @@
         <div class="col">
           <b>Total</b>
         </div>
+        <div class="col">
+          <b>Action</b>
+        </div>
       </div>
     </div>
     <div class="col-3">
@@ -77,9 +80,9 @@
         <div class="col">
           {{getTotalResult(paperResult)}}
         </div>
-        <!-- <div class="col">
-          <i class="pi pi-trash" (click)="deleteResultConfirm(paperResult)"></i>
-        </div> -->
+        <div class="col">
+          <i class="pi pi-trash" (click)="deleteResultConfirm(result, paperResult)"></i>
+        </div>
       </div>
     </div>
   </div>
