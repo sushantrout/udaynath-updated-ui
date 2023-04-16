@@ -296,6 +296,12 @@ export class FormFillupComponent implements OnInit {
   getPaperByType(responses: any, type: string) {
     return responses
       .filter((paper: any) => paper.paperType)
+      .map((e : any) => {
+        if(!e.name || (e.name.length+"").length == 0) {
+          e.name = e.code;
+        }
+        return e;
+      })
       .filter((res: any) => res.paperType.toUpperCase() == type);
   }
 
