@@ -38,11 +38,13 @@ export class ResultPdfPgComponent implements OnInit {
     return resultList.filter(d => d).join(" + ");
   }
 
-  getSelNoForMarksheet(examRoolNumber: string, semistar : any) {
+  getSelNoForMarksheet(result : any, examRoolNumber: string, semistar : any) {
     if(examRoolNumber && semistar) {
       if(examRoolNumber.length > 5) {
         return examRoolNumber.substring(0, examRoolNumber.length-5) + "/" + semistar + "/" +
-         examRoolNumber.substring(examRoolNumber.length-5, examRoolNumber.length-3) + "/" + examRoolNumber.substring(examRoolNumber.length-3, examRoolNumber.length);
+        this.examYearInput
+        + "/"
+         + examRoolNumber.substring(examRoolNumber.length-3, examRoolNumber.length);
       }
     }
     return "------------";

@@ -313,3 +313,10 @@ body {
 .w-40 {
   width: 40%;
 }
+
+
+.pw-12 {
+  width: 12% !important;
+  white-space: nowrap;
+}
+

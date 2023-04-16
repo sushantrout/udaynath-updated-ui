@@ -75,6 +75,7 @@ export class ManageAdmitCardComponent implements OnInit {
     requestBody.semistar = this.studentModel.semistar;
     requestBody.departmentId = this.studentModel.department?.id;
     requestBody.examType = this.studentModel.examType;
+    requestBody.sessionId = this.studentModel.session?.id;
 
     if(requestBody.semistar && requestBody.departmentId && requestBody.examType) {
       this.formService.findAllFIlter(requestBody).subscribe((res : any) => {

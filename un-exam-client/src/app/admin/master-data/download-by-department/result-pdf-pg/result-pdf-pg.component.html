@@ -2,7 +2,7 @@
   <div class="grid" id="studentresultId" *ngIf="results && results.length != 0">
     <div *ngFor="let result of results" style="page-break-after: always; margin-top: 8px;" class="col-12">
       <br>
-      <div class="grid" style="padding: 50px;" [class.rotate-for-print]="resultPdfMarkSheet">
+      <div class="grid" [class.rotate-for-print]="resultPdfMarkSheet">
         <div class="col-12" *ngIf="!resultPdfMarkSheet">
           <div class="grid page-header">
             <div class="col-2"></div>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-12 text-center" style="font-size: 14px;">
           <div class="grid">
-            <div class="col-12">
+            <div class="col-12" >
               <div class="grid">
                 <div class="col text-center" style="font-size: 15px;font-weight: 800">
                   <b>
@@ -29,53 +29,53 @@
                 </div>
               </div>
               <div class="grid">
-                <div class="col" style="text-align: end;">
-                  <b> SL NO.</b> - {{getSelNoForMarksheet(result.examRoolNumber, studentModel?.semistar)}}
+                <div class="col-8 text-left"></div>
+                <div class="col-4 text-left">
+                  <b> SL NO. :</b> {{getSelNoForMarksheet(examYearInput, result.examRoolNumber, studentModel?.semistar)}}
                 </div>
               </div>
-              <div class="grid text-left">
-                <div class="col-7">
+              <div class="grid">
+                <div class="col-8 text-left">
                   <b>NAME: </b>{{result.fullName}}
                 </div>
-                <div class="col-5">
-                  <b>ROLL NO: </b>{{result.examRoolNumber}}
+                <div class="col-4 text-left">
+                  <b>ROLL NO: </b> {{result.examRoolNumber}}
                 </div>
               </div>
-              <br>
-              <div class="grid  text-left" style="padding-bottom: 15px;">
-                <div class="col-7">
+              <div class="grid " style="padding-bottom: 15px;">
+                <div class="col-8 text-left">
                   <b>DEPARTMENT : </b>{{(studentModel.courseType).split("").join(".")}}
                   DEPT OF
                   {{studentModel.department?.name}}
                   <!--  , UDAYANATH COLLEGE -->
                 </div>
-                <div class="col-5">
+                <div class="col-4 text-left">
                   <b>REGD NO: </b>
                 </div>
               </div>
               <div class="grid">
                 <div class="col-12">
-                  <table style="font-size: 14px !important;" [class.w-140]="resultPdfMarkSheet">
+                  <table style="font-size: 14px !important;">
                     <thead>
                       <tr>
-                        <th class="w-40">
+                        <th style="width: 65%;">
                           <b>Paper & Subjects</b>
                         </th>
-                        <th>
+                        <th class="pw-12">
                           <b> Grade</b>
                         </th>
 
-                        <th >
+                        <th class="pw-12">
                           <b> Grade Point</b>
                         </th>
 
-                        <th >
+                        <th class="pw-12">
                           <b>Credit Point</b>
                         </th>
-                        <th >
+                        <th class="pw-12">
                           <b>Maximum Mark</b>
                         </th>
-                        <th >
+                        <th class="pw-12">
                           <b>Marks Secured</b>
                         </th>
                       </tr>
@@ -86,11 +86,14 @@
                           {{i + 1}}. {{paperResult.pappaerName}}
                         </td>
                         <td style="border: unset; border-left: 2px solid black;text-align:left;" *ngIf="courseType != 'PG'">
-                          {{i + 1}}. {{paperResult.pappaerName}}
+                          <!-- {{i + 1}}. {{paperResult.pappaerName}}
                             {{paperResult.paperType != 'COMPULSORY'?
                              paperResult.paperType == 'VALUES AND ETHICS' ?
                              '' : '('+paperResult.paperType+')'
-                            : '(AECC)'}}
+                            : '(AECC)'}} -->
+                            {{i + 1}}. {{paperResult.pappaerName}}
+                           <span *ngIf="paperResult.paperType != 'GE' && paperResult.paperType != 'VALUES AND ETHICS'"> ({{paperResult.paperCode}})</span>
+                           <span *ngIf="paperResult.paperType == 'GE'"> {{paperResult.paperCode}}</span>
                         </td>
                         <td style="border: unset;">
                           {{gradeService.getGradePoint(paperResult, courseType)}}
@@ -112,18 +115,6 @@
                         </td>
                         <td  *ngIf="paperResult.paperType == 'VALUES AND ETHICS'" class="unset-b-t-b ">
                           &nbsp;&nbsp;
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="6">
-                          <span *ngIf="courseType != 'UG'">
-                            GRADE : - O: 100%-90%, A+:89%-80%, A:79%-70%, B:69%-60%, C:59%-50%, D:49%-40%, E:39%-30%, F: &lt;
-                            30 %
-                          </span>
-                          <span *ngIf="courseType == 'UG'">
-                            GRADE : - O: 100%-90%, A+:89%-80%, A:79%-70%, B+:69%-60%, B:59%-50%, C:49%-45%, D:44%-40%, F: &lt;
-                            40 %
-                          </span>
                         </td>
                       </tr>
                       <tr>
@@ -154,6 +145,18 @@
                         </td>
                         <td>
                             <b>{{gradeService.getTotal(result.uiResult) | number : '1.0-2'}}</b>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="6">
+                          <span *ngIf="courseType != 'UG'">
+                            GRADE- O:100%-90%,A+:89%-80%,A:79%-70%,B:69%-60%,C:59%-50%,D:49%-40%,E:39%-30%,F:&lt;
+                            30%
+                          </span>
+                          <span *ngIf="courseType == 'UG'">
+                            GRADE- O:100%-90%,A+:89%-80%,A:79%-70%,B+:69%-60%,B:59%-50%,C:49%-45%,D:44%-40%,F:&lt;
+                            40%
+                          </span>
                         </td>
                       </tr>
                     </tbody>
@@ -254,7 +257,12 @@
                     <div class="col-12" *ngIf="!resultPdfMarkSheet">
                       <img src="assets/images/psi.jpg" alt="UN LOGO" height="40px" /><!-- exam-controller.jpg -->
                     </div>
-                    <br *ngIf="resultPdfMarkSheet">
+                    <div class="col-12" *ngIf="resultPdfMarkSheet">
+                      <div style="height: 10px"></div>
+                    </div>
+                    <div *ngIf="result.uiResult && result.uiResult.length <= 5">
+                      <div style="height: 5px"></div>
+                    </div>
                     <div class="col-12">PRINCIPAL</div>
                   </div>
                 </div>
@@ -264,7 +272,12 @@
                       <img src="assets/images/exam-controller.jpg" alt="UN LOGO" height="40px" />
                       <!-- exam-controller.jpg -->
                     </div>
-                    <br *ngIf="resultPdfMarkSheet">
+                    <div class="col-12" *ngIf="resultPdfMarkSheet">
+                      <div style="height: 10px"></div>
+                    </div>
+                    <div *ngIf="result.uiResult && result.uiResult.length <= 5">
+                      <div style="height: 5px"></div>
+                    </div>
                     <div class="col-12">CONTROLLER OF EXAMINATION</div>
                   </div>
                 </div>

@@ -1,9 +1,9 @@
 <p-card>
     <div class="grid">
-        <div class="col-2">
+        <!-- <div class="col-2">
             <bip-dropdown [option]="sessions"  [(ngModel)]="department.sessionId" optionLabel="name" optionValue="id">
             </bip-dropdown>
-        </div>
+        </div> -->
         <div class="col-2">
             <bip-dropdown [option]="courseTypes"  [(ngModel)]="department.courseType" (ngModelChange)="findStreamByCourseType()">
             </bip-dropdown>
@@ -33,7 +33,7 @@
         [rowsPerPageOptions]="[10,25,50]">
         <ng-template pTemplate="header">
             <tr>
-                <th class="text-center">Session</th>
+                <!-- <th class="text-center">Session</th> -->
                 <th class="text-center">Course Type</th>
                 <th class="text-center">Stream</th>
                 <th class="text-center">Name</th>
@@ -43,7 +43,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-cdepartment>
             <tr [class.selected]="cdepartment.id == department.id">
-                <td class="text-center">{{cdepartment.sessionText}}</td>
+                <!-- <td class="text-center">{{cdepartment.sessionText}}</td> -->
                 <td class="text-center">{{cdepartment.courseType}}</td>
                 <td class="text-center">{{cdepartment.streamText}}</td>
                 <td class="text-center">{{cdepartment.name}}</td>

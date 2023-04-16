@@ -218,7 +218,7 @@ label {
 
 
 .rotate-for-print {
-  padding-top: 150px !important;
+  padding-top: 120px !important;
   padding-left: 165px !important;
 }
 
@@ -249,4 +249,13 @@ label {
 
 .w-140 {
   width: 130% !important;
+}
+
+.w-120 {
+  width: 100% !important;
+}
+
+.pw-12 {
+  width: 12% !important;
+  white-space: nowrap;
 }
