@@ -61,16 +61,39 @@ export class ManageDepartmentResultGridComponent implements OnInit, OnChanges {
     requestBody.semistar = this.studentModel.semistar;
     requestBody.streamId = this.studentModel.stream?.id;
     requestBody.departmentId = this.studentModel.department?.id;
-    let req = {
-      "results":this.results,
-      "studentModel": requestBody
+
+    let newReq = [];
+    for(let i=0; i< this.results.length; i++) {
+      newReq.push(this.results[i]);
+      if(i % 50 == 0) {
+        let req = {
+          "results":[...newReq],
+          "studentModel": requestBody
+        }
+        newReq = [];
+        this.resultService.updatestudentResult(req).subscribe((res : any) => {
+          if(i == this.results.length - 1) {
+            this.refreshResult.emit(true);
+            this.toastService.sucess("Result", "Result updated!");
+          }
+        }, (error : any) => {
+          this.toastService.error("Result", "Please process again!");
+        });
+      }
     }
-    this.resultService.updatestudentResult(req).subscribe((res : any) => {
-      this.refreshResult.emit(true);
-      this.toastService.sucess("Result", "Result updated!");
-    }, (error : any) => {
-      this.toastService.error("Result", "Please process again!");
-    });
+    if(newReq && newReq.length != 0) {
+      let req = {
+        "results":[...newReq],
+        "studentModel": requestBody
+      }
+      newReq = [];
+      this.resultService.updatestudentResult(req).subscribe((res : any) => {
+          this.refreshResult.emit(true);
+          this.toastService.sucess("Result", "Result updated!");
+      }, (error : any) => {
+        this.toastService.error("Result", "Please process again!");
+      });
+    }
   }
 
   deleteResultConfirm(result: any, paperResult : any) {

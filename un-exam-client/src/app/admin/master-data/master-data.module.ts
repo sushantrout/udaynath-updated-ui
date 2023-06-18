@@ -30,6 +30,7 @@ import { InsertValueEthComponent } from './insert-value-eth/insert-value-eth.com
 import { DownloadCnrComponent } from './download-cnr/download-cnr.component';
 import { ProvisionalComponent } from './provisional/provisional.component';
 import { ProvisionalCertificateComponent } from './provisional/provisional-certificate/provisional-certificate.component';
+import { BackFormFillupComponent } from './back-form-fillup/back-form-fillup.component';
 
 const routes: Routes = [
   {
@@ -102,6 +103,9 @@ const routes: Routes = [
     path: 'existing-form-fillup',
     component: FormFillupComponent,
     canActivate: [GuestGuardService]
+  },{
+    path:'back-from',
+    component: BackFormFillupComponent
   },
   {
     path: 'manage-student',
@@ -142,6 +146,7 @@ const routes: Routes = [
     DownloadByDepartmentComponent,
     DownloadMyResultComponent,
     FormFillupComponent,
+    BackFormFillupComponent,
     ManageStudentComponent,
     CreateStudentComponent,
     ManageDepartmentResultComponent,
@@ -155,6 +160,7 @@ const routes: Routes = [
     DownloadCnrComponent,
     ProvisionalComponent,
     ProvisionalCertificateComponent,
+    BackFormFillupComponent,
   ],
   imports: [
     CommonModule,

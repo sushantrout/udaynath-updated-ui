@@ -11,11 +11,11 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-form-fillup',
-  templateUrl: './form-fillup.component.html',
-  styleUrls: ['./form-fillup.component.css'],
+  selector: 'app-back-form-fillup',
+  templateUrl: './back-form-fillup.component.html',
+  styleUrls: ['./back-form-fillup.component.css']
 })
-export class FormFillupComponent implements OnInit {
+export class BackFormFillupComponent implements OnInit {
   selectedGender!: string;
 
   streams = [];
@@ -76,6 +76,7 @@ export class FormFillupComponent implements OnInit {
     this.sec = [];
     this.preview = false;
     this.student = {};
+    this.student.examType = 'Back'
     this.streams = [];
     this.getAllStream();
     this.getYears();
@@ -108,25 +109,6 @@ export class FormFillupComponent implements OnInit {
     } else {
       return false;
     }
-
-    /*  let status =
-      this.student.courseType &&
-      this.student.semistar &&
-      this.student.examType &&
-      this.student.session &&
-      this.student.examRoolNumber &&
-      this.student.stream &&
-      this.student.department &&
-      this.student.fullName &&
-      this.student.gender &&
-      this.student.caste &&
-      this.student.fathersName &&
-      this.student.mothersName;
-    if (status) {
-      return true;
-    } else {
-      return false;
-    } */
   }
   printDoc() {
     window.print();
@@ -224,7 +206,7 @@ export class FormFillupComponent implements OnInit {
       }
     }
 
-    this.formService
+   /*  this.formService
       .saveFormDetail(
         studentReq,
         papers,
@@ -238,7 +220,9 @@ export class FormFillupComponent implements OnInit {
         );
         this.showForm = true;
         this.preview = true;
-      });
+      }); */
+      this.showForm = true;
+        this.preview = true;
   }
 
   getDepartments() {
@@ -276,18 +260,12 @@ export class FormFillupComponent implements OnInit {
         )
         .subscribe((responses: any) => {
           this.papers = responses;
-          this.corepapers = this.getPaperByType(responses, 'CORE').map(
-            (test: any) => test.name
-          );
-          this.sec = this.getPaperByType(responses, 'SEC').map(
-            (test: any) => test.name
-          );
+          this.corepapers = this.getPaperByType(responses, 'CORE');
+          this.sec = this.getPaperByType(responses, 'SEC');
           this.compulsorys = this.getPaperByType(responses, 'COMPULSORY');
           this.ges = this.getPaperByType(responses, 'GE');
           this.dse = this.getPaperByType(responses, 'DSE');
-          this.defaultPaper = this.getPaperByType(responses, 'PAPER').map(
-            (test: any) => test.name
-          );
+          this.defaultPaper = this.getPaperByType(responses, 'PAPER');
           this.valuesAndEthics = this.getPaperByType(responses, "VALUES AND ETHICS");
         });
     }
@@ -296,6 +274,12 @@ export class FormFillupComponent implements OnInit {
   getPaperByType(responses: any, type: string) {
     return responses
       .filter((paper: any) => paper.paperType)
+      .map((e : any) => {
+        if(e.name == null || e.name == undefined || e.name=='') {
+          e.name = e.code;
+        }
+        return e;
+      })
       .filter((res: any) => res.paperType.toUpperCase() == type);
   }
 
