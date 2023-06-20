@@ -23,6 +23,10 @@
       </bip-dropdown>
     </div>
     <div class="col-3">
+      <bip-dropdown styleClass="w-100" [option]="examTypes" styleClass="w-100"
+        [(ngModel)]="studentModel.examType" [required]="true"></bip-dropdown>
+    </div>
+    <div class="col-3">
       <button pButton type="button" label="Get Admitcard" class="mr-10" (click)="getAdmitCards()"></button>
     </div>
   </div>
@@ -117,7 +121,7 @@
             <div class="col-6 admit-card-text">
               <div class="row">
                 <div class="col-12">
-                  <img src="assets/images/psi.jpg" alt="UN LOGO" style="height: 50px;"/><!-- exam-controller.jpg -->
+                  <img src="assets/images/psi.jpg" alt="UN LOGO" style="height: 50px;"/>
                 </div>
                 <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
               </div>
@@ -125,7 +129,7 @@
             <div class="col-6 admit-card-text">
               <div class="row text-right">
                 <div class="col-11">
-                  <img src="assets/images/exam-controller.jpg" alt="UN LOGO" style="height: 50px;"/><!-- exam-controller.jpg -->
+                  <img src="assets/images/exam-controller.jpg" alt="UN LOGO" style="height: 50px;"/>
                 </div>
                 <div class="col-11">CONTROLLER OF EXAMINATION</div>
               </div>

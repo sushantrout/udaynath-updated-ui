@@ -21,6 +21,7 @@ export class DownloadAdmitCardByDeptComponent implements OnInit {
   departmentList: Department[] = [];
   courseTypes = CourseType.types;
   semistarList = CourseType.semistars;
+  examTypes = CourseType.examTypes;
   studentModel: StudenModel = new StudenModel();
 
   resultPdf = false;

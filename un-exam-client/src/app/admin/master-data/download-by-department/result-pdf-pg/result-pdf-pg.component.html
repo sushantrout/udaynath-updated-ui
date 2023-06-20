@@ -254,12 +254,12 @@
               <div class="grid">
                 <div class="col-6 admit-card-text">
                   <div class="grid">
-                    <div class="col-12" *ngIf="!resultPdfMarkSheet">
-                      <img src="assets/images/psi.jpg" alt="UN LOGO" height="40px" /><!-- exam-controller.jpg -->
+                    <div class="col-12">
+                      <img src="assets/images/psi.jpg" alt="UN LOGO" height="40px" />
                     </div>
-                    <div class="col-12" *ngIf="resultPdfMarkSheet">
+                    <!-- <div class="col-12" *ngIf="resultPdfMarkSheet">
                       <div style="height: 10px"></div>
-                    </div>
+                    </div> -->
                     <div *ngIf="result.uiResult && result.uiResult.length <= 5">
                       <div style="height: 5px"></div>
                     </div>
@@ -268,13 +268,12 @@
                 </div>
                 <div class="col-6 admit-card-text">
                   <div class="grid text-right">
-                    <div class="col-12" *ngIf="!resultPdfMarkSheet">
+                    <div class="col-12">
                       <img src="assets/images/exam-controller.jpg" alt="UN LOGO" height="40px" />
-                      <!-- exam-controller.jpg -->
                     </div>
-                    <div class="col-12" *ngIf="resultPdfMarkSheet">
+                    <!-- <div class="col-12" *ngIf="resultPdfMarkSheet">
                       <div style="height: 10px"></div>
-                    </div>
+                    </div> -->
                     <div *ngIf="result.uiResult && result.uiResult.length <= 5">
                       <div style="height: 5px"></div>
                     </div>

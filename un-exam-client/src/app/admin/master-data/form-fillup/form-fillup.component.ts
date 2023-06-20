@@ -214,7 +214,10 @@ export class FormFillupComponent implements OnInit {
       }
 
       if (this.student.dse) {
-        papers.push({ id: this.student.dse.id });
+        /* papers.push({ id: this.student.dse.id }); */
+        this.student.dse.forEach((element: any) => {
+          papers.push({ id: element.id });
+        });
       }
 
       if(this.valuesAndEthics) {

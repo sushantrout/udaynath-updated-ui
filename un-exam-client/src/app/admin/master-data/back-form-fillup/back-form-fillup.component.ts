@@ -170,22 +170,24 @@ export class BackFormFillupComponent implements OnInit {
 
     let papers: any = [];
 
+    debugger;
     if (this.papers) {
-      let corepapers = this.getPaperByType(this.papers, 'CORE');
-      let defaultPorepapers = this.getPaperByType(this.papers, 'PAPER');
-      let sec = this.getPaperByType(this.papers, 'SEC');
 
-      corepapers.forEach((element: any) => {
-        papers.push({ id: element.id });
-      });
+      if(this.student.corepapers) {
+        this.student.corepapers.forEach((element: any) => {
+          papers.push({ id: element.id });
+        });
+      }
 
-      defaultPorepapers.forEach((element: any) => {
-        papers.push({ id: element.id });
-      });
+      if(this.student.paper) {
+        this.student.paper.forEach((element: any) => {
+          papers.push({ id: element.id });
+        });
+      }
 
-      sec.forEach((element: any) => {
-        papers.push({ id: element.id });
-      });
+      if(this.student.sec) {
+          papers.push({ id: this.student.sec.id });
+      }
 
       if (this.student.comp) {
         papers.push({ id: this.student.comp.id });
@@ -196,17 +198,18 @@ export class BackFormFillupComponent implements OnInit {
       }
 
       if (this.student.dse) {
-        papers.push({ id: this.student.dse.id });
-      }
-
-      if(this.valuesAndEthics) {
-        this.valuesAndEthics.forEach((element : any) => {
+        /* papers.push({ id: this.student.dse.id }); */
+        this.student.dse.forEach((element: any) => {
           papers.push({ id: element.id });
         });
       }
+
+      if(this.student.valuesAndEthics) {
+          papers.push({ id: this.student.valuesAndEthics.id});
+      }
     }
 
-   /*  this.formService
+    this.formService
       .saveFormDetail(
         studentReq,
         papers,
@@ -220,7 +223,7 @@ export class BackFormFillupComponent implements OnInit {
         );
         this.showForm = true;
         this.preview = true;
-      }); */
+      });
       this.showForm = true;
         this.preview = true;
   }

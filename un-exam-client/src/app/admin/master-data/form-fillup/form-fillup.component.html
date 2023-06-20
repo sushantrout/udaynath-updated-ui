@@ -138,8 +138,11 @@
                   DSE
                 </div>
                 <div class="cell-content col-9">
-                  <bip-dropdown [option]="dse" [(ngModel)]="student.dse" styleClass="w-100" optionLabel="name">
-                  </bip-dropdown>
+                  <!-- <bip-dropdown [option]="dse" [(ngModel)]="student.dse" styleClass="w-100" optionLabel="name">
+                  </bip-dropdown> -->
+                  <p-multiSelect styleClass="w-100" placeholder="--Please select--"
+                    [options]="dse"
+                    [(ngModel)]="student.dse" optionLabel="name"></p-multiSelect>
                 </div>
               </div>
 
@@ -321,7 +324,12 @@
                 DSE
               </div>
               <div class="cell-content col-9">
-                {{student.dse?.name}}
+                <!-- {{student.dse?.name}} -->
+                <ng-template [ngIf]="student.dse">
+                  <div *ngFor="let p of student.dse" class="w-100">
+                    {{p.name}}
+                  </div>
+                </ng-template>
               </div>
             </div>
 
