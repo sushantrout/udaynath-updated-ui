@@ -10,7 +10,7 @@
             <p>
               <b>UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASPUR</b>
             </p>
-            <p><u>{{ studentModel?.semistar }} - SEMESTER EXAMINATION REPORT - {{examYearInput}}</u></p>
+            <p><u>{{courseType}} - {{ studentModel?.semistar }} - SEMESTER EXAMINATION REPORT - {{examYearInput}}</u></p>
           </div>
         </div>
       </div>
@@ -57,12 +57,22 @@
           <div class="col-2">
             <div class="grid">
               <div class="col">
-                <b>NAME: </b>{{result.fullName}}
+                <b>NAME: </b>
               </div>
             </div>
             <div class="grid">
               <div class="col">
-                <b>ROLL NO: </b>{{result.examRoolNumber}}
+                {{result.fullName}}
+              </div>
+            </div>
+            <div class="grid">
+              <div class="col">
+                <b>ROLL NO: </b>
+              </div>
+            </div>
+            <div class="grid">
+              <div class="col">
+                {{result.examRoolNumber}}
               </div>
             </div>
           </div>

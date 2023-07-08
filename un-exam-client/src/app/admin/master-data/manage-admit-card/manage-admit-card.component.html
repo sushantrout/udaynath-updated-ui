@@ -29,6 +29,11 @@
         (ngModelChange)="getAdmitcardByDepartment()">
       </bip-dropdown>
     </div>
+    <div class="col-3">
+      <p-selectButton [options]="eligiblesSelectButtons" [(ngModel)]="selectAll"
+      (ngModelChange)="selectAllDataManage()"
+      optionLabel="label" optionValue="value"></p-selectButton>
+    </div>
   </div>
 </p-card>
 

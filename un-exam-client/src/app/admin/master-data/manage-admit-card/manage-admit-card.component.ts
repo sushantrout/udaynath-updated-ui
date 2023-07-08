@@ -26,6 +26,17 @@ export class ManageAdmitCardComponent implements OnInit {
   courseTypes = CourseType.types;
   semistarList = CourseType.semistars;
   examTypes = CourseType.examTypes;
+  selectAll:boolean = false;
+
+  eligiblesSelectButtons: SelectItem[] = [
+    {
+      label: 'Select All',
+      value: true
+    }, {
+      label: 'Deselect All',
+      value: false
+    }
+  ];
   eligibles : SelectItem [] = [{
     label: 'NO',
     value: false
@@ -96,5 +107,11 @@ export class ManageAdmitCardComponent implements OnInit {
         'Fail'
       );
     });
+  }
+
+  selectAllDataManage() {
+    if(this.admitCarddatas) {
+      this.admitCarddatas.forEach((e : any) => e.isEligible = this.selectAll);
+    }
   }
 }

@@ -14,7 +14,8 @@ export class BipInputNumberComponent extends ValueAccessor implements OnInit {
 
   @Input('value') type!: number;
   @Input('mode') mode!: string;
-  
+  @Input('placeholder') placeholder !:string;
+
   constructor() {
     super();
   }

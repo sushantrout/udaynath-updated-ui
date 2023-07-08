@@ -27,13 +27,19 @@
           [(ngModel)]="examYearInput"
           ></bip-input-number>
       </div>
+      <div class="col-2">
+        <bip-input-number
+        [(ngModel)]="itemPerpage"
+        placeholder="Item Per page"
+        ></bip-input-number>
+    </div>
         <div class="col-5">
             <button pButton type="button" label="Get Result" class="mr-10" (click)="getResult()"></button>
             <button pButton type="button" label="Get PDF Result" class="mr-10" (click)="getResult(true, false)"></button>
             <button pButton type="button" label="Print Marksheet"  (click)="getResult(true, true)"></button>
         </div>
     </div>
-    <app-download-data-by-department [examYearInput]="examYearInput" [results]="downloadDetails" [courseType]="studentModel.courseType" [studentModel]="studentModel" *ngIf="!resultPdf"></app-download-data-by-department>
+    <app-download-data-by-department [itemPerpage]="itemPerpage" [examYearInput]="examYearInput" [results]="downloadDetails" [courseType]="studentModel.courseType" [studentModel]="studentModel" *ngIf="!resultPdf"></app-download-data-by-department>
     <!-- <app-result-pdf [results]="downloadDetails" *ngIf="resultPdf && studentModel.courseType == 'UG'" [courseType]="studentModel.courseType" [studentModel]="studentModel"></app-result-pdf> -->
     <app-result-pdf-pg [results]="downloadDetails" [examYearInput]="examYearInput" *ngIf="resultPdf" [courseType]="studentModel.courseType" [resultPdfMarkSheet]="resultPdfMarkSheet" [studentModel]="studentModel"></app-result-pdf-pg>
 </p-card>

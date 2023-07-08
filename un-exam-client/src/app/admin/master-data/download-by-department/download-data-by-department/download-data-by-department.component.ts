@@ -18,6 +18,7 @@ export class DownloadDataByDepartmentComponent implements OnInit, OnChanges {
   @Input('courseType') courseType !:string;
   @Input('examYearInput') examYearInput !:number;
   resultsAfterSplit : any = [];
+  @Input('itemPerpage') itemPerpage !:number;
 
   gradeService = new GradeUtil();
   constructor() {}
@@ -28,7 +29,7 @@ export class DownloadDataByDepartmentComponent implements OnInit, OnChanges {
     if(this.allResult && this.allResult.length != 0) {
       let index = -1;
       for(let i = 0; i< this.allResult.length; i++) {
-        let rem = i % 5;
+        let rem = i % (this.itemPerpage || 5);
         if(rem  == 0) {
           index = index + 1;
           this.resultsAfterSplit[index] = [];
