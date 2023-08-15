@@ -200,4 +200,29 @@ export class GradeUtil {
     }
     return 'PASS';
   }
+
+  //2000, 1300
+  getTotalGradePoint(totalMaxMark : any, totalAccurdeMark : any, courseType : any) {
+    let percentage = this.getPercentage(totalMaxMark, totalAccurdeMark);
+    if (percentage >= 90) {
+      return 'O';
+    } else if (percentage >= 80) {
+      return 'A+';
+    } else if (percentage >= 70) {
+      return 'A';
+    } else if (percentage >= 60) {
+      return courseType == 'UG' ? 'B+' : 'B';
+    } else if (percentage >= 50) {
+      return courseType == 'UG' ? 'B' : 'C';
+    } else if ((percentage >= 45 && courseType == 'UG') || (percentage >= 40 && courseType != 'UG')) {
+      return courseType == 'UG' ? 'C' : 'D';
+    } else if ((percentage >= 40 && courseType == 'UG') || (percentage >= 30 && courseType != 'UG')) {
+      return courseType == 'UG' ? 'D' : 'E';
+    }
+    return 'F';
+  }
+
+  getPercentage(totalMark : any, securedMark : any) {
+    return  (securedMark / totalMark) * 100;
+  }
 }

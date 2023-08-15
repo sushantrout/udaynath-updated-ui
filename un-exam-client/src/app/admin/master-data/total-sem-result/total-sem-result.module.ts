@@ -17,8 +17,9 @@ import { NgxPrintModule } from 'ngx-print';
     NgxPrintModule,
     RouterModule.forChild([
       {
-        path: 'total',
-        component: DownloadAllSemTotalComponent,
+        path: '',
+        component: TotalSemResultComponent,
+        pathMatch:'full'
       },
     ]),
   ],

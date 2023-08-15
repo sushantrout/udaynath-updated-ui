@@ -1,54 +1,12 @@
 <p-card>
-  <div class="grid">
-    <div class="col-3">
-      <bip-dropdown [option]="sessions" [(ngModel)]="studentModel.session" optionLabel="name">
-      </bip-dropdown>
-    </div>
-    <div class="col-3">
-      <bip-dropdown [option]="courseTypes" [(ngModel)]="studentModel.courseType"
-        (ngModelChange)="findStreamByCourseType()">
-      </bip-dropdown>
-    </div>
-    <div class="col-3">
-      <bip-dropdown [option]="streams" [(ngModel)]="studentModel.stream" optionLabel="name"
-        (ngModelChange)="getDepartmentsByStreamId()">
-      </bip-dropdown>
-    </div>
-    <div class="col-3">
-      <bip-dropdown [option]="departmentList" [(ngModel)]="studentModel.department" optionLabel="name">
-      </bip-dropdown>
-    </div>
-    <div class="col-2">
-      <bip-input-number [(ngModel)]="examYearInput"></bip-input-number>
-    </div>
-    <div class="col-5">
-      <button pButton type="button" label="Get Total" class="mr-10" (click)="getResult()"></button>
-      <button pButton type="button" label="Get Detail" class="mr-10" (click)="getResult(true)"></button>
-    </div>
-  </div>
-</p-card>
-
-<p-card>
   <div class="grid" id="studentresultId" *ngIf="printResults && printResults.length != 0">
     <div style="padding: 30px;">
       <div *ngFor="let result of printResults" style="page-break-after: always; margin-top: 20px;">
-        <div class="col-12">
-          <div class="grid page-header">
-            <div class="col-2">
-              <img src="assets/images/logo.png" alt="UN LOGO" />
-            </div>
-            <div class="col-8 text-center" style="font-size: 14px;">
-              <p>
-                <b>UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASPUR</b>
-              </p>
-            </div>
-            <div class="col-2">
-              SL NO. : {{getSelNoForMarksheet(result.semisterResults[0]?.sresult)}}
-            </div>
-          </div>
-        </div>
         <div class="m-20">
           <div class="row">
+            <div class="col-12 text-right">
+                SL NO. : {{getSelNoForMarksheet(result.semisterResults[0]?.sresult)}}
+            </div>
             <div class="col-2 admit-card-text">
               Name:
             </div>
@@ -88,7 +46,7 @@
                     Mark</th>
                   <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2;">
                     Secured Mark</th>
-                  <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2;">SCPA
+                  <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2;">SGPA
                   </th>
                 </tr>
                 <tr *ngFor="let semisterResult of result.semisterResults">
@@ -108,13 +66,23 @@
                   <td style="border: 1px solid black; padding: 8px; text-align: left;">Grand Total</td>
                   <td style="border: 1px solid black; padding: 8px; text-align: left;">{{result.totalMark}}</td>
                   <td style="border: 1px solid black; padding: 8px; text-align: left;">{{result.totalSecuredmark}}</td>
-                  <td style="border: 1px solid black; padding: 8px; text-align: left;">{{result.cgpa}}</td>
+                  <td style="border: 1px solid black; padding: 8px; text-align: left;">CGPA - {{result.cgpa | number : '1.0-2'}}</td>
                 </tr>
               </table>
             </div>
           </div>
         </div>
         <div class="ml-20">
+          <div class="row">
+            <div class="col-12 admit-card-text">
+              Result: {{getDivision(result.totalMark, result.totalSecuredmark)}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 admit-card-text">
+             <b>Grade</b> : {{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}
+            </div>
+          </div>
           <div class="row">
             <div class="col-12 admit-card-text">
               Date of issue:______________________________
