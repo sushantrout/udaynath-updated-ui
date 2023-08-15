@@ -1,6 +1,6 @@
 <p-card>
   <div class="grid" id="studentresultId">
-    <div style="padding: 30px;margin:20px;">
+    <div style="padding: 35px;margin:35px;">
       <div class="col-12" style="font-size: 10px !important; page-break-after: always; margin-top: 30px !important;"
         *ngFor="let results of printResults">
         <div class="col-12">
@@ -12,46 +12,78 @@
               <p>
                 <b>UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASPUR</b>
               </p>
-              <p><u>{{studentModel.courseType}} ({{studentModel.department?.name}}) - ALL - SEMESTER EXAMINATION REPORT - {{examYearInput}}</u></p>
+              <p><u>{{studentModel.courseType}} ({{studentModel.department?.name}}) - ALL - SEMESTER EXAMINATION REPORT
+                  - {{examYearInput}}</u></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-2 admit-card-text" style="margin: 0px !important; padding: 0px !important;">
+              Name:
+            </div>
+            <div class="col-4 admit-card-text" style="margin: 0px !important; padding: 0px !important;">
+              {{results.semisterResults[0]?.sresult?.fullName}}
+            </div>
+            <div class="col-2 admit-card-text" style="margin: 0px !important; padding: 0px !important;">
+              Roll NO:
+            </div>
+            <div class="col-4 admit-card-text" style="margin: 0px !important; padding: 0px !important;">
+              {{results.rollNumber}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2 admit-card-text" style="margin: 0px !important; padding: 0px !important;">
+              Regd NO:
+            </div>
+            <div class="col-4 admit-card-text" style="margin: 0px !important; padding: 0px !important;">
+              {{results.reg}}
+            </div>
+            <div class="col-2 admit-card-text" style="margin: 0px !important; padding: 0px !important;">
+              Department:
+            </div>
+            <div class="col-4 admit-card-text" style="margin: 0px !important; padding: 0px !important;">
+              {{studentModel.department && studentModel.department.name}}
             </div>
           </div>
         </div>
         <ng-container *ngFor="let semisterResult of results.semisterResults">
           <ng-template [ngIf]="semisterResult.sresult.uiResult && semisterResult.sresult.uiResult.length">
             <div class="grid" style="margin-top: 2px;">
+              <div class="col-12" style="margin: 0px !important; padding: 0px !important;">
+                {{semisterResult.semister}} Semister
+              </div>
               <div class="col-12">
-                <div class="col-12">
-                  <div class="grid">
-                    <div class="col-3" style="margin: 0px !important; padding: 0px !important;">
-                      <b>Course</b>
-                    </div>
-                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
-                      <b>FM</b>
-                    </div>
-                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
-                      <b>INT</b>
-                    </div>
-                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
-                      <b>SEM</b>
-                    </div>
-                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
-                      <b>BK1</b>
-                    </div>
-                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
-                      <b>BK2</b>
-                    </div>
-                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
-                      <b>PRAC</b>
-                    </div>
-                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
-                      <b>TOTAL</b>
-                    </div>
-                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
-                      <b> GRADE</b>
-                    </div>
-                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
-                      <b>CP</b>
-                    </div>
+                <div class="grid" style="margin: 0px !important; padding: 0px !important;">
+                  <div class="col-3" style="margin: 0px !important; padding: 0px !important;">
+                    <b>Course</b>
+                  </div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    <b>FM</b>
+                  </div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    <b>INT</b>
+                  </div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    <b>SEM</b>
+                  </div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    <b>BK1</b>
+                  </div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    <b>BK2</b>
+                  </div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    <b>PRAC</b>
+                  </div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    <b>TOTAL</b>
+                  </div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    <b> GRADE</b>
+                  </div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    <b>CP</b>
                   </div>
                 </div>
                 <div class="grid" style="margin: 0px !important; padding: 0px !important;"
@@ -106,10 +138,11 @@
             {{results.cgpa | number : '1.0-2'}}
           </div>
           <div class="col">
-            Result: {{results.isFail ? "Fail" :  gradeService.getDivision(results.totalMark, results.totalSecuredmark)}}
+            Result: {{results.isFail ? "Fail" : gradeService.getDivision(results.totalMark, results.totalSecuredmark)}}
           </div>
           <div class="col">
-            Grade: {{gradeService.getTotalGradePoint(results.totalMark, results.totalSecuredmark, (studentModel.courseType || 'UG'))}}
+            Grade: {{gradeService.getTotalGradePoint(results.totalMark, results.totalSecuredmark,
+            (studentModel.courseType || 'UG'))}}
           </div>
         </div>
         <div class="row" style="margin-top: 5px;">

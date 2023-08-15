@@ -23,7 +23,7 @@ export class DownloadAllSemTotalComponent implements OnInit {
       if (examRoolNumber.length > 5) {
         return (
           examRoolNumber.substring(0, examRoolNumber.length - 5) +
-          '/1ST/' + this.examYearInput + '/' +
+          '/' + this.examYearInput + '/' +
           examRoolNumber.substring(
             examRoolNumber.length - 3,
             examRoolNumber.length

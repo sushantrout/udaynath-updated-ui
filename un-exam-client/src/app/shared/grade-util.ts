@@ -225,11 +225,11 @@ export class GradeUtil {
   getDivision(totalMark : any, securedMark : any) {
     let percentage = this.getPercentage(totalMark, securedMark);
       if (percentage >= 60) {
-          return 'First Class';
+          return 'FIRST  CLASS';
       } else if (percentage >= 50) {
-          return 'Second Class';
+          return 'SECOND CLASS';
       } else {
-          return 'Fail';
+          return 'FAIL';
       }
   }
 

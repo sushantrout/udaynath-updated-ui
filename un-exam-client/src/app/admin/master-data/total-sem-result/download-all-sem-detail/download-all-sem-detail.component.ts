@@ -19,4 +19,21 @@ export class DownloadAllSemDetailComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
   }
+
+  getSelNoForMarksheet(result: any) {
+    let examRoolNumber = result.examRoolNumber;
+    if (examRoolNumber) {
+      if (examRoolNumber.length > 5) {
+        return (
+          examRoolNumber.substring(0, examRoolNumber.length - 5) +
+          '/' + this.examYearInput + '/' +
+          examRoolNumber.substring(
+            examRoolNumber.length - 3,
+            examRoolNumber.length
+          )
+        );
+      }
+    }
+    return '------------';
+  }
 }
