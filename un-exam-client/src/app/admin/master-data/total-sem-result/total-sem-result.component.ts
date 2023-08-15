@@ -28,6 +28,8 @@ export class TotalSemResultComponent implements OnInit {
   streams: StreamModel[] = [];
   departmentList: Department[] = [];
   courseTypes = CourseType.types;
+  dateOfIssue !: string;
+  isDetail = false;
 
   constructor(private departmentService: DepartmentService,
     private sessionService: SessionService,
@@ -35,6 +37,7 @@ export class TotalSemResultComponent implements OnInit {
     private resultService: ResultService) { }
 
   ngOnInit(): void {
+    this.isDetail = false;
     this.findAllSessions();
     this.getResult();
   }
@@ -66,6 +69,7 @@ export class TotalSemResultComponent implements OnInit {
 
   downloadDetails = [];
   getResult(detail = false) {
+    this.isDetail = detail;
     let requestBody = new ResultInputModel();
     requestBody.subjectType = this.studentModel.courseType;
     requestBody.educationType = this.studentModel.courseType;

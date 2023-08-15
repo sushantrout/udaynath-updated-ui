@@ -21,6 +21,9 @@
     <div class="col-2">
       <bip-input-number [(ngModel)]="examYearInput"></bip-input-number>
     </div>
+    <div class="col-2">
+      <bip-input-text [(ngModel)]="dateOfIssue" placeholder="Issue date"></bip-input-text>
+    </div>
     <div class="col-5">
       <button pButton type="button" label="Get Total" class="mr-10" (click)="getResult()"></button>
       <button pButton type="button" label="Get Detail" class="mr-10" (click)="getResult(true)"></button>
@@ -28,5 +31,8 @@
   </div>
 </p-card>
 
-<app-download-all-sem-total [examYearInput]="examYearInput" [studentModel]="studentModel" [printResults]="printResults">
+<app-download-all-sem-total *ngIf="!isDetail" [dateOfIssue]="dateOfIssue" [examYearInput]="examYearInput"
+  [studentModel]="studentModel" [printResults]="printResults">
 </app-download-all-sem-total>
+<app-download-all-sem-detail *ngIf="isDetail" [dateOfIssue]="dateOfIssue" [examYearInput]="examYearInput"
+  [studentModel]="studentModel" [printResults]="printResults"></app-download-all-sem-detail>
