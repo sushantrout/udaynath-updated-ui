@@ -7,9 +7,10 @@ import { SharedModule } from 'primeng/api';
 import { BipSharedModule } from 'src/app/shared/components/bip-shared/bip-shared.module';
 import { AppSharedModule } from 'src/app/shared/shared.module';
 import { NgxPrintModule } from 'ngx-print';
+import { DownloadAllSemDetailComponent } from './download-all-sem-detail/download-all-sem-detail.component';
 
 @NgModule({
-  declarations: [TotalSemResultComponent, DownloadAllSemTotalComponent],
+  declarations: [TotalSemResultComponent, DownloadAllSemTotalComponent, DownloadAllSemDetailComponent],
   imports: [
     CommonModule,
     BipSharedModule,
