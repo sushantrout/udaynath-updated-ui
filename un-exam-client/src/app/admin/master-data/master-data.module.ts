@@ -36,100 +36,112 @@ const routes: Routes = [
   {
     path: 'department',
     component: DepartmentComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'session',
     component: SessionComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'stream',
     component: StreamComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'paper',
     component: PaperComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'insert-honourse',
     component: InsertHonourseComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'insert-elective',
     component: InsertElectiveComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'insert-value-eth',
     component: InsertValueEthComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'mac',
     component: ManageAdmitCardComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'dac',
     component: DownloadAdmitCardComponent,
-  },{
+  },
+  {
     path: 'dac-by-dept',
     component: DownloadAdmitCardByDeptComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'ddr',
     component: DownloadByDepartmentComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'dmyr',
     component: DownloadMyResultComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'manage-result',
     component: ManageDepartmentResultComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'form-fillup',
     component: FormFillupComponent,
-  },{
+  },
+  {
     path: 'existing-form-fillup',
     component: FormFillupComponent,
-    canActivate: [GuestGuardService]
-  },{
-    path:'back-from',
-    component: BackFormFillupComponent
+    canActivate: [GuestGuardService],
+  },
+  {
+    path: 'back-from',
+    component: BackFormFillupComponent,
   },
   {
     path: 'manage-student',
     component: ManageStudentComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'create-student',
     component: CreateStudentComponent,
-    canActivate: [GuestGuardService]
+    canActivate: [GuestGuardService],
   },
   {
     path: 'process-cnr',
     component: ProcessCnrComponent,
-    canActivate: [GuestGuardService]
-  }, {
+    canActivate: [GuestGuardService],
+  },
+  {
     path: 'download-cnr',
     component: DownloadCnrComponent,
-    canActivate: [GuestGuardService]
-  }, {
+    canActivate: [GuestGuardService],
+  },
+  {
     path: 'download-provisional',
-    component : ProvisionalComponent,
-    canActivate: [GuestGuardService]
-  }
+    component: ProvisionalComponent,
+    canActivate: [GuestGuardService],
+  },
+  {
+    path: 'total-result',
+    loadChildren: () =>
+      import('./total-sem-result/total-sem-result.module').then(
+        (m) => m.TotalSemResultModule
+      ),
+  },
 ];
 
 @NgModule({
@@ -167,8 +179,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     BipSharedModule,
     AppSharedModule,
-    NgxPrintModule
-
+    NgxPrintModule,
   ],
   exports: [RouterModule],
 })

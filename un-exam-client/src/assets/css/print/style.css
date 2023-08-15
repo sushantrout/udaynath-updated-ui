@@ -259,3 +259,6 @@ label {
   width: 12% !important;
   white-space: nowrap;
 }
+.ml-20 {
+  margin-left: 20px;
+}
