@@ -33,19 +33,4 @@ export class DownloadAllSemTotalComponent implements OnInit {
     }
     return '------------';
   }
-
-  getDivision(totalMark : any, securedMark : any) {
-    let percentage = this.getPercentage(totalMark, securedMark);
-      if (percentage >= 60) {
-          return 'First Class';
-      } else if (percentage >= 50) {
-          return 'Second Class';
-      } else {
-          return 'Fail';
-      }
-  }
-
-  getPercentage(totalMark : any, securedMark : any) {
-    return  (securedMark / totalMark) * 100;
-  }
 }

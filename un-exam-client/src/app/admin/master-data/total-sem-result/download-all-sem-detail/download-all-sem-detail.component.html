@@ -1,0 +1,145 @@
+<p-card>
+  <div class="grid" id="studentresultId">
+    <div style="padding: 30px;margin:20px;">
+      <div class="col-12" style="font-size: 10px !important; page-break-after: always; margin-top: 30px !important;"
+        *ngFor="let results of printResults">
+        <div class="col-12">
+          <div class="grid page-header">
+            <div class="col-2">
+              <img src="assets/images/logo.png" alt="UN LOGO" style="height:100px; width:auto" />
+            </div>
+            <div class="col-10 text-center" style="font-size: 13px;">
+              <p>
+                <b>UDAYANATH AUTONOMOUS COLLEGE OF SC. & TECH. ADASPUR</b>
+              </p>
+              <p><u>{{studentModel.courseType}} ({{studentModel.department?.name}}) - ALL - SEMESTER EXAMINATION REPORT - {{examYearInput}}</u></p>
+            </div>
+          </div>
+        </div>
+        <ng-container *ngFor="let semisterResult of results.semisterResults">
+          <ng-template [ngIf]="semisterResult.sresult.uiResult && semisterResult.sresult.uiResult.length">
+            <div class="grid" style="margin-top: 2px;">
+              <div class="col-12">
+                <div class="col-12">
+                  <div class="grid">
+                    <div class="col-3" style="margin: 0px !important; padding: 0px !important;">
+                      <b>Course</b>
+                    </div>
+                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                      <b>FM</b>
+                    </div>
+                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                      <b>INT</b>
+                    </div>
+                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                      <b>SEM</b>
+                    </div>
+                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                      <b>BK1</b>
+                    </div>
+                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                      <b>BK2</b>
+                    </div>
+                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                      <b>PRAC</b>
+                    </div>
+                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                      <b>TOTAL</b>
+                    </div>
+                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                      <b> GRADE</b>
+                    </div>
+                    <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                      <b>CP</b>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid" style="margin: 0px !important; padding: 0px !important;"
+                  *ngFor="let paperResult of semisterResult.sresult.uiResult">
+                  <div class="col-3" style="margin: 0px !important; padding: 0px !important;">
+                    {{paperResult.paperText}}
+                  </div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    {{gradeService.getFormatedResult(paperResult.fullMark)}}</div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    {{gradeService.getFormatedResult(paperResult.intMark)}}</div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    {{gradeService.getFormatedResult(paperResult.semMark)}}</div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    {{gradeService.getFormatedResult(paperResult.bk1Mark)}}</div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    {{gradeService.getFormatedResult(paperResult.bk2Mark)}}</div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    {{gradeService.getFormatedResult(paperResult.pracMark)}}</div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    {{gradeService.getFormatedResult(paperResult.acqureTotalResult)}}</div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    {{gradeService.getGradePoint(paperResult, studentModel.courseType)}}
+                  </div>
+                  <div class="col" style="margin: 0px !important; padding: 0px !important;">
+                    {{gradeService.creditPoint(paperResult, studentModel.courseType)}}
+                  </div>
+                </div>
+                <div class="w-100 text-right" style="margin: 0px !important; padding: 0px !important;">
+                  <b style="margin-right: 20px;">TOTAL : {{gradeService.getTotal(semisterResult.sresult.uiResult) |
+                    number :
+                    '1.0-2'}}</b>
+                  <b>SGPA : {{gradeService.sgpaDetail(semisterResult.sresult.uiResult, studentModel.courseType) |
+                    number :
+                    '1.0-2'}}</b>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+        <div class="grid">
+          <div class="col">
+            Total Result:
+            {{results.totalMark}}
+          </div>
+          <div class="col">
+            Total Secured Mark:
+            {{results.totalSecuredmark}}
+          </div>
+          <div class="col">
+            CGPA :
+            {{results.cgpa | number : '1.0-2'}}
+          </div>
+          <div class="col">
+            Result: {{results.isFail ? "Fail" :  gradeService.getDivision(results.totalMark, results.totalSecuredmark)}}
+          </div>
+          <div class="col">
+            Grade: {{gradeService.getTotalGradePoint(results.totalMark, results.totalSecuredmark, (studentModel.courseType || 'UG'))}}
+          </div>
+        </div>
+        <div class="row" style="margin-top: 5px;">
+          <div class="col-6 admit-card-text">
+            <div class="row">
+              <div class="col-12">
+                <img src="assets/images/psi.jpg" alt="UN LOGO" height="45px" />
+              </div>
+              <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
+            </div>
+          </div>
+          <div class="col-6 admit-card-text">
+            <div class="row text-right">
+              <div class="col-12">
+                <img src="assets/images/exam-controller.jpg" alt="UN LOGO" height="40px" />
+              </div>
+              <div class="col-12">CONTROLLER OF EXAMINATION</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="text-right">
+      <button
+        styleSheetFile="assets/css/print/bootstrap.min.css,assets/css/print/style.css,assets/css/print/primeng.min.css,assets/css/print/primeflex.css"
+        printSectionId="studentresultId" ngxPrint class="btn btn-primary">
+        Print
+      </button>
+    </div>
+  </div>
+</p-card>

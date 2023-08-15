@@ -39,7 +39,6 @@ export class TotalSemResultComponent implements OnInit {
   ngOnInit(): void {
     this.isDetail = false;
     this.findAllSessions();
-    this.getResult();
   }
 
   findAllSessions() {
@@ -103,6 +102,7 @@ export class TotalSemResultComponent implements OnInit {
       let totalSecuredmark = 0;
       let totalGP = 0;
       let totalCP = 0;
+      let isFail = false;
       for (let semister of semisters) {
         let sresult: any = currentStudent[semister][0] || {};
         let totalResult = 0;
@@ -128,6 +128,9 @@ export class TotalSemResultComponent implements OnInit {
             if(gp) {
               totalGP = totalGP + (+gp);
             }
+            if(gp == 0 || !gp) {
+              isFail = true;
+            }
           }
         }
       }
@@ -138,7 +141,8 @@ export class TotalSemResultComponent implements OnInit {
         semisterResults,
         totalMark,
         totalSecuredmark,
-        cgpa
+        cgpa,
+        isFail
       };
       this.printResults.push(currentStudentResult);
     }

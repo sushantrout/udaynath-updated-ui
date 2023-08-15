@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { GradeUtil } from 'src/app/shared/grade-util';
 
 @Component({
@@ -14,5 +14,9 @@ export class DownloadAllSemDetailComponent implements OnInit {
   @Input("dateOfIssue") dateOfIssue : any
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+  }
 }
