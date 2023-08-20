@@ -6,6 +6,7 @@ import { StreamModel } from 'src/app/shared/model/stream.model';
 import { StreamService } from 'src/app/shared/services/stream.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { CourseType } from 'src/app/shared/constants/course.constant';
+import { DownloadUTIL } from 'src/app/shared/download-util';
 
 @Component({
   selector: 'app-stream',
@@ -14,11 +15,11 @@ import { CourseType } from 'src/app/shared/constants/course.constant';
 })
 export class StreamComponent implements OnInit {
 
-  
+
   unstream: StreamModel = new StreamModel();
   streamList: StreamModel[] = [];
   courseTypes = CourseType.types;
-  
+
   constructor(
     private confirmationService: ConfirmationService,
     private toastService: ToastService,
@@ -73,5 +74,4 @@ export class StreamComponent implements OnInit {
       this.findAll();
     });
   }
-
 }

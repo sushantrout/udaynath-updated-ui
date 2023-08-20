@@ -1,0 +1,20 @@
+<p-card>
+  <div class="grid">
+    <div class="col-3">
+      <bip-dropdown [option]="sessions" [(ngModel)]="sessionId" optionLabel="name">
+      </bip-dropdown>
+    </div>
+    <div class="col-3">
+      <bip-dropdown [option]="courseTypes" [(ngModel)]="studentModel.courseType"
+        (ngModelChange)="findStreamByCourseType()">
+      </bip-dropdown>
+    </div>
+    <div class="col-2">
+      <bip-dropdown [option]="streams" [(ngModel)]="streamId" optionLabel="name">
+      </bip-dropdown>
+    </div>
+    <div class="col-2">
+      <button pButton type="button" label="Download" class="mr-10" (click)="downloadReport()"></button>
+    </div>
+  </div>
+</p-card>

@@ -6,7 +6,7 @@ import { ApiService } from './api.service';
   providedIn: 'root',
 })
 export class StreamService {
-  
+
   constructor(private api: ApiService) {}
 
   url = 'stream';
@@ -27,5 +27,9 @@ export class StreamService {
 
   findByCourseType(courseType: string) {
     return this.api.get(this.url+"/by-course/"+courseType);
+  }
+
+  downloadUniversityReport(id: any, sessionId : any) {
+    return this.api.downloadFile(`university/download/${id}/${sessionId}`, null);
   }
 }
