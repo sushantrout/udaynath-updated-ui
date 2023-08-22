@@ -7,8 +7,8 @@ import { ApiService } from './api.service';
 })
 export class ElectiveService {
 
- 
-  
+
+
 
   url = 'elective';
   constructor(private apiService : ApiService) { }
@@ -21,8 +21,8 @@ export class ElectiveService {
     return this.apiService.get(this.url);
   }
 
-  findElectivesByStreamId(selectedStream: any, sem : string) {
-    return this.apiService.get(`${this.url}/${selectedStream}/${sem}`);
+  findElectivesByStreamIdAnSessioId(sessionId : any, selectedStream: any, sem : string) {
+    return this.apiService.get(`${this.url}/${sessionId}/${selectedStream}/${sem}`);
   }
   save(model: ElectiveModel) {
     return this.apiService.post(this.url, model);

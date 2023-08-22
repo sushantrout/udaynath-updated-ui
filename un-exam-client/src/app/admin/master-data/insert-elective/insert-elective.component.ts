@@ -69,7 +69,7 @@ export class InsertElectiveComponent implements OnInit {
   getElectives() {
     if(this.studentModel.stream && this.studentModel.semistar) {
       this.electiveService
-        .findElectivesByStreamId(this.studentModel.stream.id, this.studentModel.semistar)
+        .findElectivesByStreamIdAnSessioId(this.studentModel.session?.id,this.studentModel.stream.id, this.studentModel.semistar)
         .subscribe((res: any) => {
           this.electives = res;
       });
