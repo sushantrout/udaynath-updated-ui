@@ -11,6 +11,7 @@ import { DepartmentService } from 'src/app/shared/services/department.service';
 import { ResultService } from 'src/app/shared/services/result.service';
 import { SessionService } from 'src/app/shared/services/session.service';
 import { StreamService } from 'src/app/shared/services/stream.service';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-total-sem-result',
@@ -34,7 +35,8 @@ export class TotalSemResultComponent implements OnInit {
   constructor(private departmentService: DepartmentService,
     private sessionService: SessionService,
     private streamService: StreamService,
-    private resultService: ResultService) { }
+    private resultService: ResultService,
+    private toastService: ToastService,) { }
 
   ngOnInit(): void {
     this.isDetail = false;
@@ -161,5 +163,24 @@ export class TotalSemResultComponent implements OnInit {
       (paperResult.semFullMark || 0) +
       (paperResult.pracFullMark || 0)
     );
+  }
+
+  publish() {
+    if(this.printResults) {
+      let request = [];
+      for(let result of this.printResults) {
+        let rollNumber = result.rollNumber;
+        let division = result.isFail ? "Fail" :  this.gradeService.getDivision(result.totalMark, result.totalSecuredmark);
+        let grade = this.gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (this.studentModel.courseType || 'UG'));
+        request.push({
+          examRoolNumber : rollNumber,
+          grade,
+          totalResult : division
+        });
+      }
+      this.resultService.publish(request).subscribe((res: any) => {
+        this.toastService.sucess("Result", "Published successfully")
+      });
+    }
   }
 }

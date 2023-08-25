@@ -7,8 +7,6 @@ import { of } from 'rxjs';
   providedIn: 'root',
 })
 export class ResultService {
-
-
   url = 'result';
   constructor(private apiService: ApiService) {}
 
@@ -45,5 +43,11 @@ export class ResultService {
   }
   getResultByDepartmentDetails(requestBody: ResultInputModel) {
     return this.apiService.post(`total-result/detail`, requestBody);
+  }
+  publish(request:any) {
+    let body = {
+      request : request
+    }
+    return this.apiService.post(`total-result/publish`, body);
   }
 }
