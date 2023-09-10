@@ -23,6 +23,8 @@ export class ProvisionalComponent implements OnInit {
   courseTypes = CourseType.types;
   semistarList = CourseType.semistars;
   studentModel: StudenModel = new StudenModel();
+  departmentPlaceHolder = "";
+  issueDate="";
 
   resultPdf = false;
   downloadDetails: any = [];

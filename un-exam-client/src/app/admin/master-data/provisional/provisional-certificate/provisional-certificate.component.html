@@ -1,28 +1,30 @@
 <p-card>
+
   <div id="admin-card-area" class="container" *ngIf="downloadDetails && downloadDetails.length != 0">
     <ng-template [ngForOf]="downloadDetails" ngFor let-provisionalDetail>
-      <div style="page-break-after: always; margin: 120px;">
-        <div class="m-30">
-          This is to certify that <b>{{provisionalDetail.fullName}}</b> bearing Roll No
-          <b>{{provisionalDetail.examRoolNumber}}</b>
-          regd.No. <b>{{provisionalDetail.reg}}</b> appearing from
-          <b>{{studentModel.department?.name}}</b> , <b>Udayanath College</b>
-          as a regular candidate has passed in MCA Examination held in <b>{{provisionalDetail.session?.name}}</b>.
-        </div>
+      <div style="page-break-after: always; margin-top: 20px;">
         <div class="m-20">
-          <div class="row">
-            <div class="col-6 admit-card-text">
-              <div class="row">
+          <div class="grid rotate-for-print">
+            This is to certify that <b>{{provisionalDetail.fullName}}</b> bearing Roll No
+            <b>{{provisionalDetail.examRoolNumber}}</b>
+            regd.No. <b>{{provisionalDetail.reg}}</b> appearing from
+            <b>{{departmentPlaceHolder}}</b> , <b>Udayanath College</b>
+            as a regular candidate has passed in MCA Examination held in <b>{{issueDate}}</b>.
+          </div>
+          <br>
+          <div class="row" style="margin-left: 165px">
+            <div class="col-6" >
+              <div class="grid">
                 <div class="col-12">
-                  <img src="assets/images/psi.jpg" alt="UN LOGO" style="height: 50px;"/>
+                  <img src="assets/images/psi.jpg" alt="UN LOGO" style="height: 50px;" />
                 </div>
                 <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
               </div>
             </div>
-            <div class="col-6 admit-card-text">
-              <div class="row text-right">
+            <div class="col-6">
+              <div class="grid text-right">
                 <div class="col-11">
-                  <img src="assets/images/exam-controller.jpg" alt="UN LOGO" style="height: 50px;"/>
+                  <img src="assets/images/exam-controller.jpg" alt="UN LOGO" style="height: 50px;" />
                 </div>
                 <div class="col-11">CONTROLLER OF EXAMINATION</div>
               </div>
@@ -32,7 +34,7 @@
       </div>
     </ng-template>
   </div>
-  <div class="row" *ngIf="downloadDetails && downloadDetails.length != 0">
+  <div class="grid" *ngIf="downloadDetails && downloadDetails.length != 0">
     <div class="col-12">
       <div class="text-right">
         <button

@@ -1,9 +1,10 @@
 <p-card>
   <div class="grid" id="studentresultId" *ngIf="printResults && printResults.length != 0">
     <div style="padding: 30px;">
+
       <div *ngFor="let result of printResults" style="page-break-after: always; margin-top: 20px;">
         <div class="m-20">
-          <div class="row">
+          <div class="grid rotate-for-print">
             <div class="col-12 text-right">
                 SL NO. : {{getSelNoForMarksheet(result.semisterResults[0]?.sresult)}}
             </div>

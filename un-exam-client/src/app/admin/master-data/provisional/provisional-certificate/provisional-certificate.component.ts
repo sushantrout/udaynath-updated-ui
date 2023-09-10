@@ -9,6 +9,9 @@ export class ProvisionalCertificateComponent implements OnInit {
 
   @Input() downloadDetails : any
   @Input() studentModel : any;
+  @Input() issueDate :any;
+  @Input() departmentPlaceHolder :any;
+
 
   constructor() { }
 

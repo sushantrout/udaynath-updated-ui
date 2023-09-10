@@ -105,8 +105,12 @@ export class TotalSemResultComponent implements OnInit {
       let totalGP = 0;
       let totalCP = 0;
       let isFail = false;
+      let reg = null;
       for (let semister of semisters) {
         let sresult: any = currentStudent[semister][0] || {};
+        if(!reg) {
+          reg = sresult.reg;
+        }
         let totalResult = 0;
         for (let r of sresult.uiResult) {
           totalResult = totalResult + this.getFullMarkCalculation(r);
@@ -144,7 +148,8 @@ export class TotalSemResultComponent implements OnInit {
         totalMark,
         totalSecuredmark,
         cgpa,
-        isFail
+        isFail,
+        reg
       };
       this.printResults.push(currentStudentResult);
     }
@@ -175,7 +180,8 @@ export class TotalSemResultComponent implements OnInit {
         request.push({
           examRoolNumber : rollNumber,
           grade,
-          totalResult : division
+          totalResult : division,
+          cgpa: result.cgpa
         });
       }
       this.resultService.publish(request).subscribe((res: any) => {
