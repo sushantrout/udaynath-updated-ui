@@ -18,4 +18,12 @@ export class ProvisionalCertificateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getSerialNo(provisionalDetail : any) {
+    let examRoolNumber = provisionalDetail.examRoolNumber;
+    if(examRoolNumber.length > 5) {
+      return examRoolNumber.substring(0, examRoolNumber.length-5) + "/" + this.issueDate + "/"
+       + examRoolNumber.substring(examRoolNumber.length-3, examRoolNumber.length);
+    }
+    return "-----------------"
+  }
 }

@@ -1,37 +1,39 @@
 <p-card>
   <div class="grid" id="studentresultId" *ngIf="printResults && printResults.length != 0">
-    <div style="padding: 30px;">
+    <div style="padding: 40px;">
 
-      <div *ngFor="let result of printResults" style="page-break-after: always; margin-top: 20px;">
+      <div *ngFor="let result of printResults" style="page-break-after: always; margin-top: 35px; font-size: 14px; font-family: 'Times New Roman', Times, serif;">
         <div class="m-20">
-          <div class="grid rotate-for-print">
-            <div class="col-12 text-right">
+          <div class="row rotate-for-print" style="text-align: start;">
+            <div class="col-12 text-right" style="margin-bottom: 10px; text-align: end !important;">
                 SL NO. : {{getSelNoForMarksheet(result.semisterResults[0]?.sresult)}}
             </div>
-            <div class="col-2 admit-card-text">
+          </div>
+          <div class="row">
+            <div class="col-2">
               Name:
             </div>
-            <div class="col-4 admit-card-text">
+            <div class="col-4 ">
               {{result.semisterResults[0]?.sresult?.fullName}}
             </div>
-            <div class="col-2 admit-card-text">
+            <div class="col-2 ">
               Roll NO:
             </div>
-            <div class="col-4 admit-card-text">
+            <div class="col-4 ">
               {{result.rollNumber}}
             </div>
           </div>
           <div class="row">
-            <div class="col-2 admit-card-text">
+            <div class="col-2 ">
               Regd NO:
             </div>
-            <div class="col-4 admit-card-text">
+            <div class="col-4 ">
               {{result.reg}}
             </div>
-            <div class="col-2 admit-card-text">
+            <div class="col-2 ">
               Department:
             </div>
-            <div class="col-4 admit-card-text">
+            <div class="col-4 ">
               {{studentModel.department && studentModel.department.name}}
             </div>
           </div>
@@ -39,60 +41,56 @@
         <div class="m-20">
           <div class="row">
             <div class="col-12">
-              <table style="border-collapse: collapse; width: 100%;">
+              <table style="border-collapse: collapse; width: 100%; text-align: center !important; font-size: 14px !important; font-family: 'Times New Roman', Times, serif;">
                 <tr>
-                  <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2;">
+                  <th style="border: 1px solid black; padding: 8px; text-align: center !important; background-color: #f2f2f2;">
                     Semester</th>
-                  <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2;">Full
+                  <th style="border: 1px solid black; padding: 8px; text-align: center !important; background-color: #f2f2f2;">Full
                     Mark</th>
-                  <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2;">
+                  <th style="border: 1px solid black; padding: 8px; text-align: center !important; background-color: #f2f2f2;">
                     Secured Mark</th>
-                  <th style="border: 1px solid black; padding: 8px; text-align: left; background-color: #f2f2f2;">SGPA
+                  <th style="border: 1px solid black; padding: 8px; text-align: center !important; background-color: #f2f2f2;">SGPA
                   </th>
                 </tr>
                 <tr *ngFor="let semisterResult of result.semisterResults">
                   <ng-template [ngIf]="semisterResult.sresult.uiResult && semisterResult.sresult.uiResult.length">
-                    <td style="border: 1px solid black; padding: 8px; text-align: left;">{{semisterResult.semister}}
+                    <td style="border: 1px solid black; padding: 8px; text-align: center !important;">{{semisterResult.semister}}
                     </td>
-                    <td style="border: 1px solid black; padding: 8px; text-align: left;">{{semisterResult.totalResult}}
+                    <td style="border: 1px solid black; padding: 8px; text-align: center !important;">{{semisterResult.totalResult}}
                     </td>
-                    <td style="border: 1px solid black; padding: 8px; text-align: left;">
+                    <td style="border: 1px solid black; padding: 8px; text-align: center !important;">
                       {{gradeService.getTotal(semisterResult.sresult.uiResult) | number : '1.0-2'}}</td>
-                    <td style="border: 1px solid black; padding: 8px; text-align: left;">
+                    <td style="border: 1px solid black; padding: 8px; text-align: center !important;">
                       {{gradeService.sgpaDetail(semisterResult.sresult.uiResult, (studentModel.courseType || 'UG')) |
                       number : '1.0-2'}}</td>
                   </ng-template>
                 </tr>
-                <tr>
-                  <td style="border: 1px solid black; padding: 8px; text-align: left;">Grand Total</td>
-                  <td style="border: 1px solid black; padding: 8px; text-align: left;">{{result.totalMark}}</td>
-                  <td style="border: 1px solid black; padding: 8px; text-align: left;">{{result.totalSecuredmark}}</td>
-                  <td style="border: 1px solid black; padding: 8px; text-align: left;">CGPA - {{result.cgpa | number : '1.0-2'}}</td>
+                <tr style="font-weight: 600 !important;">
+                  <td style="border: 1px solid black; padding: 8px; text-align: center !important;">Grand Total</td>
+                  <td style="border: 1px solid black; padding: 8px; text-align: center !important;">{{result.totalMark}}</td>
+                  <td style="border: 1px solid black; padding: 8px; text-align: center !important;">{{result.totalSecuredmark}}</td>
+                  <td style="border: 1px solid black; padding: 8px; text-align: center !important;">CGPA - {{result.cgpa | number : '1.0-2'}}</td>
                 </tr>
               </table>
             </div>
           </div>
         </div>
         <div class="ml-20">
-          <div class="row">
-            <div class="col-12 admit-card-text">
+          <div class="row" style="text-align: center;">
+            <div class="col-4 ">
               Result: {{result.isFail ? "Fail" :  gradeService.getDivision(result.totalMark, result.totalSecuredmark)}}
             </div>
-          </div>
-          <div class="row">
-            <div class="col-12 admit-card-text">
+            <div class="col-4 ">
              <b>Grade</b> : {{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}
             </div>
-          </div>
-          <div class="row">
-            <div class="col-12 admit-card-text">
+            <div class="col-4 ">
               Date of issue: {{dateOfIssue}}
             </div>
           </div>
         </div>
         <div class="m-20">
           <div class="row">
-            <div class="col-6 admit-card-text">
+            <div class="col-6 ">
               <div class="row">
                 <div class="col-12">
                   <img src="assets/images/psi.jpg" alt="UN LOGO" height="45px" />
@@ -100,7 +98,7 @@
                 <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
               </div>
             </div>
-            <div class="col-6 admit-card-text">
+            <div class="col-6 ">
               <div class="row text-right">
                 <div class="col-12">
                   <img src="assets/images/exam-controller.jpg" alt="UN LOGO" height="40px" />

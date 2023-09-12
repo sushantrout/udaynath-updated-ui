@@ -27,7 +27,7 @@ export class ResultPdfPgComponent implements OnInit {
     resultList.push(paperResult.intFullMark);
     resultList.push(paperResult.semFullMark);
     resultList.push(paperResult.pracFullMark);
-    return resultList.filter(d => d).join(" + ");
+    return resultList.filter(e => e).join(" + ");
   }
 
   getSecuredMarkCalculation(paperResult : any) {
@@ -35,7 +35,7 @@ export class ResultPdfPgComponent implements OnInit {
     resultList.push(this.gradeService.getFormatedResult(paperResult.intMark));
     resultList.push(this.gradeService.getFormatedResult(paperResult.semMark));
     resultList.push(this.gradeService.getFormatedResult(paperResult.pracMark));
-    return resultList.filter(d => d).join(" + ");
+    return resultList.filter(e => e !== '' && e !== undefined && e !== null).join(" + ");
   }
 
   getSelNoForMarksheet(result : any, examRoolNumber: string, semistar : any) {
