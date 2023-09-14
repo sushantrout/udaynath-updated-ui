@@ -2,43 +2,34 @@
   <div class="grid" id="studentresultId" *ngIf="printResults && printResults.length != 0">
     <div style="padding: 40px;">
 
-      <div *ngFor="let result of printResults" style="page-break-after: always; margin-top: 35px; font-size: 14px; font-family: 'Times New Roman', Times, serif;">
-        <div class="m-20">
-          <div class="row rotate-for-print" style="text-align: start;">
+      <div *ngFor="let result of printResults" class="rotate-for-print" style="page-break-after: always; margin-top: 35px; font-size: 14px; font-family: 'Times New Roman', Times, serif;">
+        <div class="m-30" style="font-weight: 600;margin-top:10px !important;margin-bottom:10px !important">
+          <div class="row" style="text-align: start;">
             <div class="col-12 text-right" style="margin-bottom: 10px; text-align: end !important;">
                 SL NO. : {{getSelNoForMarksheet(result.semisterResults[0]?.sresult)}}
             </div>
           </div>
           <div class="row">
-            <div class="col-2">
-              Name:
-            </div>
-            <div class="col-4 ">
-              {{result.semisterResults[0]?.sresult?.fullName}}
-            </div>
-            <div class="col-2 ">
-              Roll NO:
-            </div>
-            <div class="col-4 ">
-              {{result.rollNumber}}
+            <div class="col-12">
+              NAME: {{result.semisterResults[0]?.sresult?.fullName}}
             </div>
           </div>
           <div class="row">
-            <div class="col-2 ">
-              Regd NO:
+            <div class="col-6">
+              ROLL NO: {{result.rollNumber}}
             </div>
-            <div class="col-4 ">
-              {{result.reg}}
+            <div class="col-6 ">
+              REGD NO: {{result.reg}}
             </div>
-            <div class="col-2 ">
-              Department:
-            </div>
-            <div class="col-4 ">
+          </div>
+          <div class="row">
+            <div class="col-12 ">
+              DEPARTMENT:
               {{studentModel.department && studentModel.department.name}}
             </div>
           </div>
         </div>
-        <div class="m-20">
+        <div class="m-30" style="margin-top: 5px !important;margin-bottom:10px !important">
           <div class="row">
             <div class="col-12">
               <table style="border-collapse: collapse; width: 100%; text-align: center !important; font-size: 14px !important; font-family: 'Times New Roman', Times, serif;">
@@ -75,27 +66,25 @@
             </div>
           </div>
         </div>
-        <div class="ml-20">
+        <div class="ml-30" style="font-weight: 600;margin-top: 5px !important;margin-bottom:10px !important">
           <div class="row" style="text-align: center;">
-            <div class="col-4 ">
-              Result: {{result.isFail ? "Fail" :  gradeService.getDivision(result.totalMark, result.totalSecuredmark)}}
-            </div>
-            <div class="col-4 ">
-             <b>Grade</b> : {{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}
-            </div>
-            <div class="col-4 ">
-              Date of issue: {{dateOfIssue}}
+            <div class="col-12 ">
+              RESULT: {{result.isFail ? "Fail" :  gradeService.getDivision(result.totalMark, result.totalSecuredmark)}}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <b>GRADE</b> : {{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              DATE OF PUBLICATION: {{dateOfIssue}}
             </div>
           </div>
         </div>
-        <div class="m-20">
+        <div class="m-30" style="font-weight: 600;margin-top: 5px !important;margin-bottom:10px !important" >
           <div class="row">
             <div class="col-6 ">
               <div class="row">
                 <div class="col-12">
                   <img src="assets/images/psi.jpg" alt="UN LOGO" height="45px" />
                 </div>
-                <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
+                <div class="col-12">PRINCIPAL</div>
               </div>
             </div>
             <div class="col-6 ">
