@@ -31,9 +31,12 @@ export class ResultPdfPgComponent implements OnInit {
   }
 
   getSecuredMarkCalculation(paperResult : any) {
+    if(paperResult.grace) {
+      debugger
+    }
     let resultList = [];
     resultList.push(this.gradeService.getFormatedResult(paperResult.intMark));
-    resultList.push(this.gradeService.getFormatedResult(paperResult.semMark));
+    resultList.push(this.gradeService.getFormatedResult(paperResult.semMark) + (paperResult.grace &&  !this.resultPdfMarkSheet ? '*' : ''));
     resultList.push(this.gradeService.getFormatedResult(paperResult.pracMark));
     return resultList.filter(e => e !== '' && e !== undefined && e !== null).join(" + ");
   }

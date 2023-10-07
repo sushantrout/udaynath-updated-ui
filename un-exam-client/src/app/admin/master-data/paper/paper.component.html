@@ -48,6 +48,11 @@
             <bip-input-text placeholder="CP" class="p-mx-1" [(ngModel)]="paperModel.cp">
             </bip-input-text>
         </div>
+        <div class="col-1">
+          <bip-input-text placeholder="Order" class="p-mx-1" [(ngModel)]="paperModel.sortOder">
+          </bip-input-text>
+
+      </div>
         <div class="col-4">
             <button pButton pRipple type="button" label="Save" (click)="save()"
                 class="p-mx-05" *ngIf="!paperModel.id"></button>
@@ -74,7 +79,7 @@
                   <p-columnFilter type="text" field="honersText" display="menu"></p-columnFilter>
                 </th>
                 <th class="text-center">
-                  Semister
+                  Semester
                   <p-columnFilter type="text" field="semistar" display="menu"></p-columnFilter>
                 </th>
                 <th class="text-center">Paper
@@ -86,6 +91,7 @@
                 <th class="text-center">Sem</th>
                 <th class="text-center">Prac</th>
                 <th class="text-center">CP</th>
+                <th class="text-center">Sort Order</th>
                 <th class="text-center">Action</th>
             </tr>
         </ng-template>
@@ -103,6 +109,7 @@
                 <td class="text-center">{{cdepartment.semMark}}</td>
                 <td class="text-center">{{cdepartment.pracMark}}</td>
                 <td class="text-center">{{cdepartment.cp}}</td>
+                <td class="text-center">{{cdepartment.sortOder}}</td>
                 <td class="text-center">
                     <bip-icon iconClass="pi pi-pencil p-mx-05 edit-icon" (click)="edit(cdepartment)"></bip-icon>
                     <bip-icon iconClass="pi pi-trash delete-icon" (click)="delete(cdepartment)"></bip-icon>

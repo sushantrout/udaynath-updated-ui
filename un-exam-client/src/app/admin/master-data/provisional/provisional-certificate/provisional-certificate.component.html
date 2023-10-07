@@ -12,7 +12,7 @@
             regd.No. <b>{{provisionalDetail.reg}}</b> has passed the
             {{departmentPlaceHolder}}
             Examination held in <b>{{issueDate}}</b> &nbsp; <b>{{provisionalDetail.totalResult}}
-              ( CGPA {{provisionalDetail.cgpa}}, Grade:- {{provisionalDetail.grade}})</b>.
+              ( CGPA {{provisionalDetail.cgpa | number : '1.0-2'}}, Grade:- {{provisionalDetail.grade}})</b>.
           </div>
           <br>
           <div class="row" style="margin-left: 165px; margin-top: 35px;">

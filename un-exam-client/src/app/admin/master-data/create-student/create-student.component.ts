@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { CourseType } from 'src/app/shared/constants/course.constant';
 import { ApiResponse } from 'src/app/shared/model/api-response-model';
 import { Department } from 'src/app/shared/model/department.model';
@@ -59,23 +60,36 @@ export class CreateStudentComponent implements OnInit {
   }
 
   save() {
+    let newStudents = [];
+    let requestList = [];
+    for(let i=0; i < this.studentDatas.length; i++) {
+      newStudents.push(this.studentDatas[i]);
+      if(i % 20 == 0) {
+        requestList.push(this.saveInBatch([...newStudents]));
+        newStudents = [];
+      }
+    }
+    if(newStudents.length != 0) {
+      requestList.push(this.saveInBatch([...newStudents]));
+    }
+
+    forkJoin(requestList).subscribe((res) => {
+      this.toastService.sucess("Student", "Uploaded !!!");
+      this.getAllStudents();
+    });
+  }
+
+  saveInBatch(newStudents : any) {
     let saveStudentDetails: any = {};
-    saveStudentDetails.students = this.studentDatas;
+    saveStudentDetails.students = newStudents;
     //this.studentDatas.forEach(d => d.dob = this.getDate(new Date(d.dob)));
     saveStudentDetails.stream = this.studentModel.stream;
     saveStudentDetails.session = this.studentModel.session;
     saveStudentDetails.courseType = this.studentModel.courseType;
     saveStudentDetails.department = this.studentModel.department;
-    this.studentService.saveAll(saveStudentDetails).subscribe(
-      (res: any) => {
-        this.studentDatas = res;
-        this.toastService.sucess("Student", "Uploaded !!!");
-      },
-      (err: any): void => {
-        console.error(err);
-      }
-    );
+    return this.studentService.saveAll(saveStudentDetails);
   }
+
   getDate(dob: Date): any {
     return dob
   }
