@@ -69,11 +69,28 @@
         <div class="ml-30" style="font-weight: 600;margin-top: 5px !important;margin-bottom:10px !important">
           <div class="row" style="text-align: center;">
             <div class="col-12 ">
-              RESULT: {{result.isFail ? "Fail" :  gradeService.getDivision(result.totalMark, result.totalSecuredmark)}}
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             <b>GRADE</b> : {{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}
-             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              DATE OF PUBLICATION: {{dateOfIssue}}
+              TOTAL CORE: {{result.totalCorePaperresult}} &nbsp;&nbsp; TOTAL SECURED (CORE) : {{result.totalSecuredCorePaperResult}} &nbsp;&nbsp; TOTAL CORE PERCENATGE : {{result.totalSecuredCorePaperPercentage | number : '1.0-2'}} %
+              <br/>
+              TOTAL NONE CORE : {{result.totalNonoCorepaperResult}} &nbsp;&nbsp; TOTAL SECURED(NONE CORE) : {{result.totalSecuredNonCorePaperResult}}
+              <br/>
+
+              <div *ngIf="courseType == 'UG'; else otherTemplate">
+                RESULT: {{result.isFail ? "Fail" :  gradeService.getDivision(result.totalMark, result.totalSecuredmark)}}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>GRADE</b> : {{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                DATE OF PUBLICATION: {{dateOfIssue}}
+              </div>
+
+              <ng-template #otherTemplate>
+                RESULT: {{result.isFail ? "Fail" :  gradeService.getDivision(result.totalMark, result.totalSecuredmark)}}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>GRADE</b> : {{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                DATE OF PUBLICATION: {{dateOfIssue}}
+              </ng-template>
+
+
             </div>
           </div>
         </div>

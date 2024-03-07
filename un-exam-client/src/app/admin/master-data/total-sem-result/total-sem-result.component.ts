@@ -95,7 +95,12 @@ export class TotalSemResultComponent implements OnInit {
 
   getResultAnManage(res: any) {
     this.rollnumbers = Object.keys(res);
+
     for (let rollNumber of this.rollnumbers) {
+      let totalCorePaperresult = 0;
+      let totalSecuredCorePaperResult = 0
+      let totalNonoCorepaperResult = 0;
+      let totalSecuredNonCorePaperResult = 0;
       let currentStudent = res[rollNumber];
       let semisters = Object.keys(currentStudent);
 
@@ -113,19 +118,31 @@ export class TotalSemResultComponent implements OnInit {
         }
         let totalResult = 0;
         for (let r of sresult.uiResult) {
+          if(r.paperType == 'CORE') {
+            totalCorePaperresult = totalCorePaperresult + (+(r.fullMark || 0));
+            totalSecuredCorePaperResult = totalSecuredCorePaperResult + (+(r.acqureTotalResult || 0));
+          } else if(r.paperType != 'VALUES AND ETHICS'){
+            totalNonoCorepaperResult = totalNonoCorepaperResult + (+(r.fullMark || 0));
+            totalSecuredNonCorePaperResult = totalSecuredNonCorePaperResult + (+(r.acqureTotalResult));
+          }
           totalResult = totalResult + this.getFullMarkCalculation(r);
         }
+
+
         totalMark = totalMark + totalResult;
         let semisterResult = {
           semister,
           sresult,
           totalResult,
         };
+
+
         semisterResults.push(semisterResult);
         this.gradeService.sgpaDetail(
           semisterResult.sresult.uiResult,
           this.studentModel.courseType || 'UG'
         );
+
         totalSecuredmark = totalSecuredmark + this.gradeService.getTotal(semisterResult.sresult.uiResult);
         if(semisterResult.sresult.uiResult) {
           for(let ur of semisterResult.sresult.uiResult) {
@@ -141,6 +158,9 @@ export class TotalSemResultComponent implements OnInit {
         }
       }
 
+      let totalSecuredCorePaperPercentage = (totalSecuredCorePaperResult / totalCorePaperresult) * 100;
+      let resultOfStudent = this.getResultOfStudent(totalSecuredCorePaperPercentage, totalNonoCorepaperResult, totalSecuredNonCorePaperResult, currentStudent);
+
       let cgpa = totalGP / totalCP;
       let currentStudentResult = {
         rollNumber,
@@ -149,10 +169,56 @@ export class TotalSemResultComponent implements OnInit {
         totalSecuredmark,
         cgpa,
         isFail,
-        reg
+        reg,
+        totalCorePaperresult,
+        totalSecuredCorePaperResult,
+        totalNonoCorepaperResult,
+        totalSecuredNonCorePaperResult,
+        totalSecuredCorePaperPercentage,
+        resultOfStudent
       };
       this.printResults.push(currentStudentResult);
     }
+  }
+
+  getResultOfStudent(totalSecuredCorePaperPercentage: number, totalNonoCorepaperResult: number, totalSecuredNonCorePaperResult: number, currentStudent: any) {
+    let resultOfStudent = '';
+    let distinction = false;
+    if (totalSecuredCorePaperPercentage >= 60) {
+      resultOfStudent = "FIRST CLASS";
+      let totalNonCorePercentage = (totalSecuredNonCorePaperResult / totalNonoCorepaperResult) * 100;
+      if(totalNonCorePercentage >= 50 && !this.graceApplied(currentStudent)) {
+        distinction = true;
+      }
+    } else {
+      if(totalSecuredCorePaperPercentage >= 50) {
+        resultOfStudent = "SECOND CLASS";
+      } else {
+        resultOfStudent = "FAIL";
+      }
+    }
+
+    if(distinction) {
+      resultOfStudent = resultOfStudent + " " + "WITH DISTINCTION";
+    }
+
+    return resultOfStudent;
+  }
+
+  graceApplied(currentStudent : any) {
+    let semisters = Object.keys(currentStudent);
+    for (let semister of semisters) {
+      let sresult: any = currentStudent[semister][0] || {};
+      for (let r of sresult.uiResult) {
+        if(r.paperType != 'CORE' && r.paperType != 'VALUES AND ETHICS') {
+          if(r.grace) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+
   }
 
   getFullMarkCalculation(paperResult: any) {
@@ -177,11 +243,25 @@ export class TotalSemResultComponent implements OnInit {
         let rollNumber = result.rollNumber;
         let division = result.isFail ? "Fail" :  this.gradeService.getDivision(result.totalMark, result.totalSecuredmark);
         let grade = this.gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (this.studentModel.courseType || 'UG'));
+
+        let totalCorePaperresult = result.totalCorePaperresult || "";
+        let totalSecuredCorePaperResult = result.totalSecuredCorePaperResult || "";
+        let totalNonoCorepaperResult = result.totalNonoCorepaperResult || "";
+        let totalSecuredNonCorePaperResult = result.totalSecuredNonCorePaperResult || "";
+        let totalSecuredCorePaperPercentage = result.totalSecuredCorePaperPercentage || "";
+        let resultOfStudent = result.resultOfStudent || "";
+
         request.push({
           examRoolNumber : rollNumber,
           grade,
           totalResult : division,
-          cgpa: result.cgpa
+          cgpa: result.cgpa,
+          totalCorePaperresult,
+          totalSecuredCorePaperResult,
+          totalNonoCorepaperResult,
+          totalSecuredNonCorePaperResult,
+          totalSecuredCorePaperPercentage,
+          resultOfStudent
         });
       }
       this.resultService.publish(request).subscribe((res: any) => {

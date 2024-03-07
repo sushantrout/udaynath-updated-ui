@@ -65,7 +65,7 @@ export class ManageDepartmentResultGridComponent implements OnInit, OnChanges {
     let newReq = [];
     for(let i=0; i< this.results.length; i++) {
       newReq.push(this.results[i]);
-      if(i % 50 == 0) {
+      if(i % 25 == 0) {
         let req = {
           "results":[...newReq],
           "studentModel": requestBody

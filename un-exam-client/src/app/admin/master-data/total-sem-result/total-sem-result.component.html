@@ -33,7 +33,7 @@
 </p-card>
 
 <app-download-all-sem-total *ngIf="!isDetail" [dateOfIssue]="dateOfIssue" [examYearInput]="examYearInput"
-  [studentModel]="studentModel" [printResults]="printResults">
+  [studentModel]="studentModel" [printResults]="printResults" [courseType]="studentModel.courseType">
 </app-download-all-sem-total>
 <app-download-all-sem-detail *ngIf="isDetail" [dateOfIssue]="dateOfIssue" [examYearInput]="examYearInput"
   [studentModel]="studentModel" [printResults]="printResults"></app-download-all-sem-detail>

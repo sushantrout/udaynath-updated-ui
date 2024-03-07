@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   //api_url: "http://localhost:8080/api/",
-  api_url: "http://unservice.ap-northeast-1.elasticbeanstalk.com/api/"
+  //api_url:"http://un-server.ap-south-1.elasticbeanstalk.com/api/"
+  api_url:"http://13.126.203.65/api/"
+  /* api_url:"http://udaynath-college.us-east-2.elasticbeanstalk.com/api/" */
 };
 
 /*

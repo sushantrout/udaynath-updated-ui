@@ -13,6 +13,7 @@ export class DownloadAllSemTotalComponent implements OnInit {
   @Input("studentModel") studentModel : any;
   @Input("examYearInput") examYearInput : any;
   @Input("dateOfIssue") dateOfIssue : any;
+  @Input("courseType") courseType : any;
   constructor() {}
 
   ngOnInit(): void {}
