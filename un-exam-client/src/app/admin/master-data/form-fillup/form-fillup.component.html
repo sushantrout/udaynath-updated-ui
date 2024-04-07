@@ -303,7 +303,7 @@
             <div class="row" *ngIf="compulsorys && compulsorys.length != 0">
               <div class="cell-content col-3 header-text">Compulsory</div>
               <div class="cell-content col-9">
-                {{student.comp?.name}}
+                {{student.comp?.name}} - ({{student.comp?.code}})
               </div>
             </div>
 
@@ -315,7 +315,7 @@
             <div class="row" *ngIf="ges && ges.length != 0">
               <div class="cell-content col-3 header-text">GE</div>
               <div class="cell-content col-9">
-                {{student.ges?.name}}
+                {{student.ges?.name}} - ({{student.ges?.code}})
               </div>
             </div>
 
@@ -327,7 +327,7 @@
                 <!-- {{student.dse?.name}} -->
                 <ng-template [ngIf]="student.dse">
                   <div *ngFor="let p of student.dse" class="w-100">
-                    {{p.name}}
+                    {{p.name}} - ({{p.code}})
                   </div>
                 </ng-template>
               </div>

@@ -305,7 +305,7 @@
               <div class="cell-content col-3 header-text">Core</div>
               <div class="cell-content col-9">
                 <div *ngFor="let core of student.corepapers" class="w-100">
-                  {{core.name}}
+                  {{core.name}} - ({{core.code}})
                 </div>
               </div>
             </div>
@@ -313,19 +313,19 @@
             <div class="row" *ngIf="student.comp">
               <div class="cell-content col-3 header-text">Compulsory</div>
               <div class="cell-content col-9">
-                {{student.comp?.name}}
+                {{student.comp?.name}} - ({{student.comp?.code}})
               </div>
             </div>
 
             <div class="row" *ngIf="student.sec">
               <div class="cell-content col-3 header-text">SEC</div>
-              <div class="cell-content col-9"> {{ student.sec.name }}</div>
+              <div class="cell-content col-9"> {{ student.sec.name }} - ({{ student.sec.code }})</div>
             </div>
 
             <div class="row" *ngIf="student.ges">
               <div class="cell-content col-3 header-text">GE</div>
               <div class="cell-content col-9">
-                {{student.ges?.name}}
+                {{student.ges?.name}} - ({{student.ges?.code}})
               </div>
             </div>
 
@@ -337,7 +337,7 @@
                 <!-- {{student.dse?.name}} -->
                 <ng-template [ngIf]="student.dse">
                   <div *ngFor="let p of student.dse" class="w-100">
-                    {{p.name}}
+                    {{p.name}} - ({{p.code}})
                   </div>
                 </ng-template>
               </div>
@@ -349,7 +349,7 @@
               </div>
               <div class="cell-content col-9">
                 <div *ngFor="let paper of student.paper" class="w-100">
-                  {{paper.name}}
+                  {{paper.name}} - ({{paper.code}})
                 </div>
               </div>
             </div>
@@ -359,7 +359,7 @@
                 VALUES AND ETHICS
               </div>
               <div class="cell-content col-9">
-                {{student.valuesAndEthics.name}}
+                {{student.valuesAndEthics.name}} - ({{student.valuesAndEthics.code}})
               </div>
             </div>
           </div>

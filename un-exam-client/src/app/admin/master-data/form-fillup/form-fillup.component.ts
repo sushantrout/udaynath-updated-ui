@@ -280,16 +280,16 @@ export class FormFillupComponent implements OnInit {
         .subscribe((responses: any) => {
           this.papers = responses;
           this.corepapers = this.getPaperByType(responses, 'CORE').map(
-            (test: any) => test.name
+            (test: any) => test.name + " - ("+test.code+")"
           );
           this.sec = this.getPaperByType(responses, 'SEC').map(
-            (test: any) => test.name
+            (test: any) => test.name + " - ("+test.code+")"
           );
           this.compulsorys = this.getPaperByType(responses, 'COMPULSORY');
           this.ges = this.getPaperByType(responses, 'GE');
           this.dse = this.getPaperByType(responses, 'DSE');
           this.defaultPaper = this.getPaperByType(responses, 'PAPER').map(
-            (test: any) => test.name
+            (test: any) => test.name + " - ("+test.code+")"
           );
           this.valuesAndEthics = this.getPaperByType(responses, "VALUES AND ETHICS");
         });

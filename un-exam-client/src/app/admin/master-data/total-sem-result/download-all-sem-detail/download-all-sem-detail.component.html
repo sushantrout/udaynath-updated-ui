@@ -140,9 +140,30 @@
           <div class="col">
             Result: {{results.isFail ? "Fail" : gradeService.getDivision(results.totalMark, results.totalSecuredmark)}}
           </div>
-          <div class="col">
+          <div class="col-3">
             Grade: {{gradeService.getTotalGradePoint(results.totalMark, results.totalSecuredmark,
             (studentModel.courseType || 'UG'))}}
+          </div>
+        </div>
+        <div class="grid">
+          <div class="col">
+            Total Core: {{results.semisterResults[0]?.sresult?.totalCorePaperresult}}
+
+          </div>
+          <div class="col">
+            Total Secured (Core): {{results.semisterResults[0]?.sresult?.totalSecuredCorePaperResult}}
+
+          </div>
+          <div class="col">
+            Total Core (%): {{results.semisterResults[0]?.sresult?.totalSecuredCorePaperPercentage |
+              number : '1.0-2'}}
+
+          </div>
+          <div class="col">
+            Total None Core:{{results.semisterResults[0]?.sresult?.totalNonoCorepaperResult}}
+          </div>
+          <div class="col-3">
+            Total Secured(None Core): {{results.semisterResults[0]?.sresult?.totalSecuredNonCorePaperResult}}
           </div>
         </div>
         <div class="row" style="margin-top: 5px;">
