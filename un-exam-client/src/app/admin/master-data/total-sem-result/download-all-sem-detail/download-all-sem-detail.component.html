@@ -94,7 +94,7 @@
                   <div class="col" style="margin: 0px !important; padding: 0px !important;">
                     {{gradeService.getFormatedResult(paperResult.intMark)}}</div>
                   <div class="col" style="margin: 0px !important; padding: 0px !important;">
-                    {{gradeService.getFormatedResult(paperResult.semMark)}}</div>
+                    {{gradeService.getFormatedResult(paperResult.semMark)}} <sup *ngIf="isStar && paperResult.grace">*</sup> </div>
                   <div class="col" style="margin: 0px !important; padding: 0px !important;">
                     {{gradeService.getFormatedResult(paperResult.bk1Mark)}}</div>
                   <div class="col" style="margin: 0px !important; padding: 0px !important;">
@@ -136,7 +136,7 @@
             {{results.cgpa | number : '1.0-2'}}
           </div>
           <div class="col">
-            Result: {{results.isFail ? "Fail" : gradeService.getDivision(results.totalMark, results.totalSecuredmark)}}
+            Result: {{results.isFail ? "Fail" : studentModel.courseType == 'UG' ? getGraceResultWithPercentage(results) : gradeService.getDivision(results.totalMark, results.totalSecuredmark)}}
           </div>
           <div class="col-3">
             Grade: {{gradeService.getTotalGradePoint(results.totalMark, results.totalSecuredmark,

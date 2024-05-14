@@ -34,4 +34,31 @@ export class DownloadAllSemTotalComponent implements OnInit {
     }
     return '------------';
   }
+
+  getGraceResultWithPercentage(result : any) {
+    let grace = this.getGraceResult(result);
+    if(grace) {
+      return "Pass"
+    } else {
+      let per = (result.totalSecuredmark / result.totalMark) *100;
+      if(per >= 50) {
+        return "Pass With Distinction";
+      } else {
+        return "Pass";
+      }
+    }
+  }
+
+  getGraceResult(result : any) {
+    let isGrace = false;
+    console.log(result)
+    if(result && result.semisterResults) {
+      for(let semResult of  result.semisterResults) {
+        if(semResult && semResult.sresult && semResult.sresult.results) {
+          isGrace = isGrace || (semResult.sresult.results).some((e : any) => e.grace);
+        }
+      }
+    }
+    return isGrace;
+  }
 }

@@ -69,7 +69,9 @@ export class TotalSemResultComponent implements OnInit {
   }
 
   downloadDetails = [];
-  getResult(detail = false) {
+  isStar = false;
+  getResult(detail = false, isStar = false) {
+    this.isStar = isStar;
     this.isDetail = detail;
     let requestBody = new ResultInputModel();
     requestBody.subjectType = this.studentModel.courseType;
@@ -146,13 +148,15 @@ export class TotalSemResultComponent implements OnInit {
         totalSecuredmark = totalSecuredmark + this.gradeService.getTotal(semisterResult.sresult.uiResult);
         if(semisterResult.sresult.uiResult) {
           for(let ur of semisterResult.sresult.uiResult) {
-            totalCP = totalCP + ur.cp;
-            let gp = this.gradeService.creditPoint(ur,  this.studentModel.courseType || 'UG');
-            if(gp) {
-              totalGP = totalGP + (+gp);
-            }
-            if(gp == 0 || !gp) {
-              isFail = true;
+            if(ur.paperType != 'VALUES AND ETHICS') {
+              totalCP = totalCP + ur.cp;
+              let gp = this.gradeService.creditPoint(ur,  this.studentModel.courseType || 'UG');
+              if(gp) {
+                totalGP = totalGP + (+gp);
+              }
+              if(gp == 0 || !gp) {
+                isFail = true;
+              }
             }
           }
         }
@@ -241,7 +245,12 @@ export class TotalSemResultComponent implements OnInit {
       let request = [];
       for(let result of this.printResults) {
         let rollNumber = result.rollNumber;
-        let division = result.isFail ? "Fail" :  this.gradeService.getDivision(result.totalMark, result.totalSecuredmark);
+        let division = "";
+        if(this.studentModel.courseType == 'UG') {
+          division = result.isFail ? "Fail" :  "Pass";
+        } else {
+          division = result.isFail ? "Fail" :  this.gradeService.getDivision(result.totalMark, result.totalSecuredmark);
+        }
         let grade = this.gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (this.studentModel.courseType || 'UG'));
 
         let totalCorePaperresult = result.totalCorePaperresult || "";

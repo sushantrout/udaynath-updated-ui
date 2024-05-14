@@ -75,7 +75,7 @@
               <br/>
 
               <div *ngIf="courseType == 'UG'; else otherTemplate">
-                RESULT: {{result.isFail ? "Fail" :  gradeService.getDivision(result.totalMark, result.totalSecuredmark)}}
+                RESULT: {{result.isFail ? "Fail" :  getGraceResultWithPercentage(result)}}
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <b>GRADE</b> : {{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -85,7 +85,7 @@
               <ng-template #otherTemplate>
                 RESULT: {{result.isFail ? "Fail" :  gradeService.getDivision(result.totalMark, result.totalSecuredmark)}}
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <b>GRADE</b> : {{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}
+                <b>GRADE</b> : {{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'PG'))}}
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 DATE OF PUBLICATION: {{dateOfIssue}}
               </ng-template>

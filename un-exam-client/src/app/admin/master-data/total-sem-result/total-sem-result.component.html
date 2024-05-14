@@ -27,6 +27,7 @@
     <div class="col-5">
       <button pButton type="button" label="Get Total" class="mr-10" (click)="getResult()"></button>
       <button pButton type="button" label="Get Detail" class="mr-10" (click)="getResult(true)"></button>
+      <button pButton type="button" label="Get Detail With Grace" class="mr-10" (click)="getResult(true, true)"></button>
       <button pButton type="button" label="Publish" class="mr-10" (click)="publish()" *ngIf="printResults && printResults.length"></button>
     </div>
   </div>
@@ -35,5 +36,8 @@
 <app-download-all-sem-total *ngIf="!isDetail" [dateOfIssue]="dateOfIssue" [examYearInput]="examYearInput"
   [studentModel]="studentModel" [printResults]="printResults" [courseType]="studentModel.courseType">
 </app-download-all-sem-total>
-<app-download-all-sem-detail *ngIf="isDetail" [dateOfIssue]="dateOfIssue" [examYearInput]="examYearInput"
+<app-download-all-sem-detail *ngIf="isDetail && !isStar" [dateOfIssue]="dateOfIssue" [examYearInput]="examYearInput"
   [studentModel]="studentModel" [printResults]="printResults"></app-download-all-sem-detail>
+
+  <app-download-all-sem-detail *ngIf="isDetail && isStar" [dateOfIssue]="dateOfIssue" [examYearInput]="examYearInput"
+  [studentModel]="studentModel" [printResults]="printResults" [isStar]="isStar"></app-download-all-sem-detail>
