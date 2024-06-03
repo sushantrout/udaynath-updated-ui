@@ -7,11 +7,12 @@
             <div class="col-12" style="text-align: end; margin-bottom: 20px;">
                 <b>SL.NO {{getSerialNo(provisionalDetail)}}</b>
             </div>
-            <div class="col-12" style="text-align: justify;">
+            <div class="col-12" style="text-align: justify; line-height: 30px;">
                 This is to certify that <b>{{provisionalDetail.fullName}}</b>, bearing
-                Roll No. <b>{{provisionalDetail.examRoolNumber}}</b>, regd.No. <b>{{provisionalDetail.reg}}</b>
+                Roll No. <b>{{provisionalDetail.examRoolNumber}}</b>, Regd.No. <b>{{provisionalDetail.reg}}</b>
                 has passed the {{departmentPlaceHolder}}
                 Examination held in <b>{{issueDate}}</b> &nbsp; having Result <b>{{provisionalDetail.resultOfStudent}}
+                <br/>
                 (CGPA {{provisionalDetail.cgpa | number: '1.0-2'}}, Grade: {{provisionalDetail.grade}})</b>.
             </div>
         </div>

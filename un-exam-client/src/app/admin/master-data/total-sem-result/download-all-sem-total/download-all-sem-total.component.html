@@ -71,17 +71,16 @@
             <div class="col-12 ">
 
               <div *ngIf="courseType == 'UG'; else otherTemplate">
-                TOTAL CORE: {{result.totalCorePaperresult}} &nbsp;&nbsp; TOTAL SECURED (CORE) : {{result.totalSecuredCorePaperResult}}
-              <br/>
-                TOTAL CORE PERCENTAGE : {{result.totalSecuredCorePaperPercentage | number : '1.0-2'}} %
+                TOTAL CORE: {{result.totalCorePaperresult}} &nbsp;&nbsp; TOTAL SECURED (CORE) : {{result.totalSecuredCorePaperResult}} &nbsp;&nbsp;
+                CORE PERCENTAGE : {{result.totalSecuredCorePaperPercentage | number : '1.0-2'}} %
                 <br/>
-                TOTAL NON CORE : {{result.totalNonoCorepaperResult}} &nbsp;&nbsp; TOTAL SECURED(NON CORE) : {{result.totalSecuredNonCorePaperResult}}
+                TOTAL NON CORE : {{result.totalNonoCorepaperResult}} &nbsp;&nbsp; TOTAL SECURED (NON CORE) : {{result.totalSecuredNonCorePaperResult}}
                 <br/>
 
                 RESULT: {{(result.isFail ? "Fail" :  getGraceResultWithPercentage(result)) | uppercase}}
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <b>GRADE</b> : '{{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}'
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;
+                <b>GRADE</b> :'{{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}'
+                <br>
                 DATE OF PUBLICATION: {{dateOfIssue}}
               </div>
 
