@@ -163,7 +163,7 @@ export class TotalSemResultComponent implements OnInit {
       }
 
       let totalSecuredCorePaperPercentage = (totalSecuredCorePaperResult / totalCorePaperresult) * 100;
-      let resultOfStudent = this.getResultOfStudent(totalSecuredCorePaperPercentage, totalNonoCorepaperResult, totalSecuredNonCorePaperResult, currentStudent);
+      let resultOfStudent = this.getResultOfStudent(totalSecuredCorePaperPercentage, totalNonoCorepaperResult, totalSecuredNonCorePaperResult, currentStudent, this.studentModel.courseType || 'UG');
 
       let cgpa = totalGP / totalCP;
       let currentStudentResult = {
@@ -185,7 +185,7 @@ export class TotalSemResultComponent implements OnInit {
     }
   }
 
-  getResultOfStudent(totalSecuredCorePaperPercentage: number, totalNonoCorepaperResult: number, totalSecuredNonCorePaperResult: number, currentStudent: any) {
+  getResultOfStudent(totalSecuredCorePaperPercentage: number, totalNonoCorepaperResult: number, totalSecuredNonCorePaperResult: number, currentStudent: any, cType : any) {
     let resultOfStudent = '';
     let distinction = false;
     if (totalSecuredCorePaperPercentage >= 60) {
@@ -200,6 +200,10 @@ export class TotalSemResultComponent implements OnInit {
       } else {
         resultOfStudent = "FAIL";
       }
+    }
+
+    if(cType == 'UG') {
+      resultOfStudent = resultOfStudent == "FAIL" ? "FAIL" : "PASS";
     }
 
     if(distinction) {

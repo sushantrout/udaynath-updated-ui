@@ -3,17 +3,19 @@
     <ng-template [ngForOf]="downloadDetails" ngFor let-provisionalDetail>
       <div style="page-break-after: always; margin-top: 120px; font-size: 14; font-family: 'Times New Roman', Times, serif;">
         <div class="m-20">
-          <div class="grid rotate-for-print">
-            <div class="col-12" style="text-align: end;margin-bottom: 20px;">
-             <b> SL.NO {{getSerialNo(provisionalDetail)}}</b>
+          <div class="grid rotate-for-print text-justify" style="text-align: justify;">
+            <div class="col-12" style="text-align: end; margin-bottom: 20px;">
+                <b>SL.NO {{getSerialNo(provisionalDetail)}}</b>
             </div>
-            This is to certify that <b> {{provisionalDetail.fullName}}</b> bearing Roll No
-            <b>{{provisionalDetail.examRoolNumber}}</b>
-            regd.No. <b>{{provisionalDetail.reg}}</b> has passed the
-            {{departmentPlaceHolder}}
-            Examination held in <b>{{issueDate}}</b> &nbsp; <b>{{provisionalDetail.totalResult}}
-              ( CGPA {{provisionalDetail.cgpa | number : '1.0-2'}}, Grade:- {{provisionalDetail.grade}})</b>.
-          </div>
+            <div class="col-12" style="text-align: justify;">
+                This is to certify that <b>{{provisionalDetail.fullName}}</b>, bearing
+                Roll No. <b>{{provisionalDetail.examRoolNumber}}</b>, regd.No. <b>{{provisionalDetail.reg}}</b>
+                has passed the {{departmentPlaceHolder}}
+                Examination held in <b>{{issueDate}}</b> &nbsp; having Result <b>{{provisionalDetail.resultOfStudent}}
+                (CGPA {{provisionalDetail.cgpa | number: '1.0-2'}}, Grade: {{provisionalDetail.grade}})</b>.
+            </div>
+        </div>
+
           <br>
           <div class="row" style="margin-left: 165px; margin-top: 35px;">
             <div class="col-6" >

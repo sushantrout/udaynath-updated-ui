@@ -143,7 +143,7 @@
             (studentModel.courseType || 'UG'))}}
           </div>
         </div>
-        <div class="grid" style="font-size: 9px;">
+        <div class="grid" style="font-size: 9px;" *ngIf="studentModel.courseType == 'UG'">
           <div class="col">
             Total Core: {{results.semisterResults[0]?.sresult?.totalCorePaperresult}}
 
