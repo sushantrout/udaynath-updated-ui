@@ -1,7 +1,7 @@
 <p-card styleClass="w-100">
   <div class="grid" id="studentresultId" *ngIf="results && results.length != 0">
-    <div style="padding: 30px;">
-      <div *ngFor="let result of results" style="page-break-after: always; margin-top: 8px;" class="col-12">
+    <div style="padding: 30px;padding-top: 0px;">
+      <div *ngFor="let result of results" style="page-break-after: always; margin-top: 20px;" class="col-12">
         <br>
         <div class="grid" [class.rotate-for-print]="resultPdfMarkSheet">
           <div class="col-12" *ngIf="!resultPdfMarkSheet">

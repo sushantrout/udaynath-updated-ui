@@ -13,6 +13,7 @@ import { ProcessExcelService } from 'src/app/shared/services/process-excel.servi
 import { ResultService } from 'src/app/shared/services/result.service';
 import { ResultInputModel, ResultModel } from 'src/app/shared/model/result.input.model';
 import { ToastService } from 'src/app/shared/services/toast.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-insert-elective',
@@ -160,7 +161,23 @@ export class InsertElectiveComponent implements OnInit {
       return;
     }
 
-    this.resultService.save(requestBody).subscribe(
+    //I want to send the requiest part by part
+    let total = this.excelBodydatas.length;
+    let start = 0;
+    let part = 15;
+    let end = part;
+    let count = 0;
+    let temp = [];
+    let requests = [];
+    while(count < total) {
+      temp = this.excelBodydatas.slice(start, end);
+      requestBody.results = temp;
+      requests.push(this.saveResult(JSON.parse(JSON.stringify(requestBody))));
+      start = end;
+      end = end + part;
+      count = count + part;
+    }
+    forkJoin(requests).subscribe(
       (res: any) => {
         this.toastService.sucess("Result", "Saved sucessfully");
       },
@@ -168,5 +185,12 @@ export class InsertElectiveComponent implements OnInit {
         console.log('Plese save it again');
       }
     );
+    setTimeout(() => {
+      this.toastService.sucess("Result", "Saved sucessfully");
+    });
+  }
+
+  saveResult(requestBody: ResultInputModel) {
+    return this.resultService.save(requestBody);
   }
 }

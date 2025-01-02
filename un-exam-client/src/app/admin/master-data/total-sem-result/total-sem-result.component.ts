@@ -190,10 +190,6 @@ export class TotalSemResultComponent implements OnInit {
     let distinction = false;
     if (totalSecuredCorePaperPercentage >= 60) {
       resultOfStudent = "FIRST CLASS";
-      let totalNonCorePercentage = (totalSecuredNonCorePaperResult / totalNonoCorepaperResult) * 100;
-      if(totalNonCorePercentage >= 50 && !this.graceApplied(currentStudent)) {
-        distinction = true;
-      }
     } else {
       if(totalSecuredCorePaperPercentage >= 50) {
         resultOfStudent = "SECOND CLASS";
@@ -203,6 +199,10 @@ export class TotalSemResultComponent implements OnInit {
     }
 
     if(cType == 'UG') {
+      let totalNonCorePercentage = (totalSecuredNonCorePaperResult / totalNonoCorepaperResult) * 100;
+      if(totalNonCorePercentage >= 50 && !this.graceApplied(currentStudent)) {
+        distinction = true;
+      }
       resultOfStudent = resultOfStudent == "FAIL" ? "FAIL" : "PASS";
     }
 
@@ -262,7 +262,7 @@ export class TotalSemResultComponent implements OnInit {
         let totalNonoCorepaperResult = result.totalNonoCorepaperResult || "";
         let totalSecuredNonCorePaperResult = result.totalSecuredNonCorePaperResult || "";
         let totalSecuredCorePaperPercentage = result.totalSecuredCorePaperPercentage || "";
-        let resultOfStudent = result.resultOfStudent || "";
+        let resultOfStudent = (this.studentModel.courseType || 'UG') == 'UG' ? result.resultOfStudent : division;
 
         request.push({
           examRoolNumber : rollNumber,

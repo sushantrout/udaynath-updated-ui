@@ -77,7 +77,7 @@
                 TOTAL NON CORE : {{result.totalNonoCorepaperResult}} &nbsp;&nbsp; TOTAL SECURED (NON CORE) : {{result.totalSecuredNonCorePaperResult}}
                 <br/>
 
-                RESULT: {{(result.isFail ? "Fail" :  getGraceResultWithPercentage(result)) | uppercase}}
+                RESULT: {{(result.isFail ? "Fail" :  result.resultOfStudent) | uppercase}}
                 &nbsp;&nbsp;
                 <b>GRADE</b> :'{{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}'
                 <br>

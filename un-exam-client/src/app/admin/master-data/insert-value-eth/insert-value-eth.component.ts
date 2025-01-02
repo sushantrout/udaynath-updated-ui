@@ -15,6 +15,7 @@ import { ResultInputModel, ResultModel } from 'src/app/shared/model/result.input
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { PaperModel } from 'src/app/shared/model/paper.model';
 import { VEService } from 'src/app/shared/services/ve.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-insert-value-eth',
@@ -163,7 +164,25 @@ export class InsertValueEthComponent implements OnInit {
       return;
     }
 
-    this.resultService.save(requestBody).subscribe(
+    //I want to send the requiest part by part
+    let total = this.excelBodydatas.length;
+    let part = 15;
+    let start = 0;
+    let end = part;
+    let count = 0;
+    let temp = [];
+    let requests = [];
+
+    while(count < total) {
+      temp = this.excelBodydatas.slice(start, end);
+      requestBody.results = temp;
+      requests.push(this.saveResult(JSON.parse(JSON.stringify(requestBody))));
+      count = count + part;
+      start = end;
+      end = end + part;
+    }
+
+    forkJoin(requests).subscribe(
       (res: any) => {
         this.toastService.sucess("Result", "Saved sucessfully");
       },
@@ -171,6 +190,10 @@ export class InsertValueEthComponent implements OnInit {
         console.log('Plese save it again');
       }
     );
+  }
+
+  saveResult(requestBody: any) {
+    return this.resultService.save(requestBody);
   }
 
 }

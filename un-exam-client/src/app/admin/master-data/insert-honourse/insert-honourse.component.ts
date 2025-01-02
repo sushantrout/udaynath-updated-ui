@@ -18,6 +18,7 @@ import {
 import { ResultService } from 'src/app/shared/services/result.service';
 import { DownloadUTIL } from 'src/app/shared/download-util';
 import { ToastService } from 'src/app/shared/services/toast.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-insert-honourse',
@@ -168,7 +169,23 @@ export class InsertHonourseComponent implements OnInit {
       return;
     }
 
-    this.resultService.save(requestBody).subscribe(
+    //I want to send the requiest part by part
+    let total = this.excelBodydatas.length;
+    let part = 15;
+    let start = 0;
+    let end = part;
+    let count = 0;
+    let temp = [];
+    let requests = [];
+    while(count < total) {
+      temp = this.excelBodydatas.slice(start, end);
+      requestBody.results = temp;
+      requests.push(this.saveResult(JSON.parse(JSON.stringify(requestBody))));
+      count = count + part;
+      start = end;
+      end = end + part;
+    }
+    forkJoin(requests).subscribe(
       (res: any) => {
         this.toastService.sucess("Result", "Saved sucessfully");
       },
@@ -176,6 +193,12 @@ export class InsertHonourseComponent implements OnInit {
         console.log('Plese save it again');
       }
     );
+
+  }
+
+
+  saveResult(requestBody : ResultInputModel) {
+    return this.resultService.save(requestBody);
   }
 
   downLoadtemplate() {
