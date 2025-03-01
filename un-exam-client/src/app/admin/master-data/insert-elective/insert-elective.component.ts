@@ -14,6 +14,7 @@ import { ResultService } from 'src/app/shared/services/result.service';
 import { ResultInputModel, ResultModel } from 'src/app/shared/model/result.input.model';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { forkJoin } from 'rxjs';
+import { DownloadUTIL } from 'src/app/shared/download-util';
 
 @Component({
   selector: 'app-insert-elective',
@@ -198,6 +199,16 @@ export class InsertElectiveComponent implements OnInit {
   }
 
   downLoadtemplate() {
-
+  let requestBody = new ResultInputModel();
+      requestBody.subjectType = this.studentModel.courseType;
+      requestBody.educationType = this.studentModel.courseType;
+      requestBody.sessionId = this.studentModel.session.id;
+      requestBody.semistar = this.studentModel.semistar;
+      requestBody.streamId = this.studentModel.stream.id;
+      requestBody.electiveId = this.studentModel.elective?.id;
+      this.resultService.getResultElectiveTemplate(requestBody).subscribe((res : any) => {
+        let du = new DownloadUTIL();
+        du.download(res);
+      });
   }
 }

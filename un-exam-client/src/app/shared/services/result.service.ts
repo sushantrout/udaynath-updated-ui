@@ -22,6 +22,10 @@ export class ResultService {
     return this.apiService.downloadFile(this.url + '/template', requestBody);
   }
 
+  getResultElectiveTemplate(requestBody: ResultInputModel) {
+    return this.apiService.downloadFile(this.url + '/template/elective', requestBody);
+  }
+
   getResultByDepartment(requestBody: ResultInputModel) {
     return this.apiService.post(`${this.url}/by-department`, requestBody);
   }
