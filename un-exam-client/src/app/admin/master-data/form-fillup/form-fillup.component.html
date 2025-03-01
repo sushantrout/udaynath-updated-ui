@@ -108,7 +108,7 @@
               </div>
 
               <div class="row" *ngIf="corepapers && corepapers.length != 0">
-                <div class="cell-content col-3 header-text">Core</div>
+                <div class="cell-content col-3 header-text">Core/Major</div>
                 <div class="cell-content col-9">{{corepapers}}</div>
               </div>
 
@@ -121,12 +121,12 @@
               </div>
 
               <div class="row" *ngIf="sec && sec.length != 0">
-                <div class="cell-content col-3 header-text">SEC</div>
+                <div class="cell-content col-3 header-text">SEC/VAC</div>
                 <div class="cell-content col-9"> {{ sec }}</div>
               </div>
 
               <div class="row" *ngIf="ges && ges.length != 0">
-                <div class="cell-content col-3 header-text">GE</div>
+                <div class="cell-content col-3 header-text">GE/Minor</div>
                 <div class="cell-content col-9">
                   <bip-dropdown [option]="ges" [(ngModel)]="student.ges" styleClass="w-100" optionLabel="name">
                   </bip-dropdown>
@@ -292,7 +292,7 @@
             </div>
 
             <div class="row" *ngIf="corepapers && corepapers.length != 0">
-              <div class="cell-content col-3 header-text">Core</div>
+              <div class="cell-content col-3 header-text">Core/Major</div>
               <div class="cell-content col-9">
                 <div *ngFor="let core of corepapers" class="w-100">
                   {{core}}
@@ -308,12 +308,12 @@
             </div>
 
             <div class="row" *ngIf="sec && sec.length != 0">
-              <div class="cell-content col-3 header-text">SEC</div>
+              <div class="cell-content col-3 header-text">SEC/VAC</div>
               <div class="cell-content col-9"> {{ sec }}</div>
             </div>
 
             <div class="row" *ngIf="ges && ges.length != 0">
-              <div class="cell-content col-3 header-text">GE</div>
+              <div class="cell-content col-3 header-text">GE/Minor</div>
               <div class="cell-content col-9">
                 {{student.ges?.name}} - ({{student.ges?.code}})
               </div>
