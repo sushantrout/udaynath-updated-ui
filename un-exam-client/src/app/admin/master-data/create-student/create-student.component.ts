@@ -142,9 +142,14 @@ export class CreateStudentComponent implements OnInit {
 
   delete(i:number) {
     let selectedId = this.studentDatas[i].id;
-    this.studentService.delete(selectedId).subscribe((res : any) => {
-      this.getAllStudents();
-    });
+    if(selectedId) {
+      this.studentService.delete(selectedId).subscribe((res : any) => {
+        this.getAllStudents();
+      });
+    } else {
+      this.studentDatas.splice(i, 1);
+      return;
+    }
   }
 
   addNew() {
