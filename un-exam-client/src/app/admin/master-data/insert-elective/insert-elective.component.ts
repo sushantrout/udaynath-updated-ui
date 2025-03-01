@@ -73,6 +73,9 @@ export class InsertElectiveComponent implements OnInit {
         .findElectivesByStreamIdAnSessioId(this.studentModel.session?.id,this.studentModel.stream.id, this.studentModel.semistar)
         .subscribe((res: any) => {
           this.electives = res;
+          this.electives.forEach((p: any) => {
+            p.nameWithCode = p.name + ' (' + p.code + ')';
+          });
       });
     }
   }
@@ -192,5 +195,9 @@ export class InsertElectiveComponent implements OnInit {
 
   saveResult(requestBody: ResultInputModel) {
     return this.resultService.save(requestBody);
+  }
+
+  downLoadtemplate() {
+
   }
 }

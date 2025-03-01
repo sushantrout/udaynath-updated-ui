@@ -23,6 +23,7 @@ export class DownloadByDepartmentComponent implements OnInit {
   courseTypes = CourseType.types;
   semistarList = CourseType.semistars;
   studentModel: StudenModel = new StudenModel();
+  isCodeRequired = true;
 
   resultPdf = false;
   resultPdfMarkSheet = false;

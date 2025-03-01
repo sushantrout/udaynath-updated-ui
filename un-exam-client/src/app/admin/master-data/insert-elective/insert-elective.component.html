@@ -25,7 +25,7 @@
       </bip-dropdown>
     </div>
     <div class="col-3">
-      <bip-dropdown [option]="electives" [(ngModel)]="studentModel.elective" optionLabel="name">
+      <bip-dropdown [option]="electives" [(ngModel)]="studentModel.elective" optionLabel="nameWithCode">
       </bip-dropdown>
     </div>
     <div class="col-3">
@@ -36,6 +36,9 @@
       <button pButton type="button" label="Upload" (click)="upload()" class="p-mx-05"></button>
       <button pButton type="button" label="Save" (click)="save()"
         *ngIf="excelBodydatas && excelBodydatas.length != 0"></button>
+    </div>
+    <div>
+      <button pButton type="button" label="Download Template" (click)="downLoadtemplate()" class="p-mx-05"></button>
     </div>
   </div>
 

@@ -16,4 +16,5 @@ export class PaperModel {
     paperType!:string;
     courseType!:string;
     sortOder!:number;
+    nameWithCode!:string;
   }

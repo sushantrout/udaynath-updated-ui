@@ -82,6 +82,9 @@ export class InsertHonourseComponent implements OnInit {
           )
           .subscribe((res: any) => {
             this.papers = res.filter((p: any) => p.paperType != 'GE');
+            this.papers.forEach((p: any) => {
+              p.nameWithCode = p.name + ' (' + p.code + ')';
+            });
           });
       }, 1);
     }

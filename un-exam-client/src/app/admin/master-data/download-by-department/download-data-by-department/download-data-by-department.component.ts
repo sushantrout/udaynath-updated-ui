@@ -23,6 +23,8 @@ export class DownloadDataByDepartmentComponent implements OnInit, OnChanges {
   gradeService = new GradeUtil();
   constructor() {}
 
+  @Input('isCodeRequired') isCodeRequired = false;
+
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
