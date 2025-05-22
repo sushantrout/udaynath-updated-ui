@@ -1,5 +1,6 @@
 import { Component, OnInit, SimpleChanges, Input } from '@angular/core';
 import { GradeUtil } from 'src/app/shared/grade-util';
+import { CommonService } from 'src/app/shared/services/common.service';
 
 @Component({
   selector: 'app-result-pdf-pg',
@@ -14,7 +15,7 @@ export class ResultPdfPgComponent implements OnInit {
   @Input('examYearInput') examYearInput !:number;
 
   gradeService = new GradeUtil();
-  constructor() {}
+  constructor(public commonService : CommonService) {}
 
   ngOnInit(): void {}
 

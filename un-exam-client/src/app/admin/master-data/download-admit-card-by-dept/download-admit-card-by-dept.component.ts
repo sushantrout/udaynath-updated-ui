@@ -6,6 +6,7 @@ import { SessionModel } from 'src/app/shared/model/session-model';
 import { StreamModel } from 'src/app/shared/model/stream.model';
 import { StudenModel } from 'src/app/shared/model/student.model';
 import { AdmitService } from 'src/app/shared/services/admit.service';
+import { CommonService } from 'src/app/shared/services/common.service';
 import { DepartmentService } from 'src/app/shared/services/department.service';
 import { SessionService } from 'src/app/shared/services/session.service';
 import { StreamService } from 'src/app/shared/services/stream.service';
@@ -30,7 +31,8 @@ export class DownloadAdmitCardByDeptComponent implements OnInit {
     private departmentService: DepartmentService,
     private sessionService: SessionService,
     private streamService: StreamService,
-    private admitService : AdmitService
+    private admitService : AdmitService,
+    public commonService : CommonService,
   ) {}
 
   ngOnInit(): void {

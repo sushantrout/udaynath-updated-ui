@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CommonService } from 'src/app/shared/services/common.service';
 
 @Component({
   selector: 'app-provisional-certificate',
@@ -13,7 +14,7 @@ export class ProvisionalCertificateComponent implements OnInit {
   @Input() departmentPlaceHolder :any;
 
 
-  constructor() { }
+  constructor(public commonService : CommonService) { }
 
   ngOnInit(): void {
   }

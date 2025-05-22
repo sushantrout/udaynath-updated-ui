@@ -13,7 +13,7 @@ export class UserService {
   loginSucess = false;
 
   constructor(private apiService: ApiService,
-    private commonService : CommonService) { }
+    public commonService : CommonService) { }
 
   login(user: User) : any{
     this.commonService.currentUser = user;

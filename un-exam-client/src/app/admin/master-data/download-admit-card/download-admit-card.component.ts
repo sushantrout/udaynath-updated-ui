@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseType } from 'src/app/shared/constants/course.constant';
 import { AdmitService } from 'src/app/shared/services/admit.service';
+import { CommonService } from 'src/app/shared/services/common.service';
 import { StudentService } from 'src/app/shared/services/student.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 
@@ -15,7 +16,8 @@ export class DownloadAdmitCardComponent implements OnInit {
   semistarList = CourseType.semistars;
   admitCardDetails:any;
   constructor(private admitService : AdmitService,
-    private toastService : ToastService) {}
+    private toastService : ToastService,
+  public commonService : CommonService) {}
 
   ngOnInit(): void {
     this.admitCardDetails = null;

@@ -6,6 +6,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { GradeUtil } from 'src/app/shared/grade-util';
+import { CommonService } from 'src/app/shared/services/common.service';
 
 @Component({
   selector: 'app-result-pdf',
@@ -18,7 +19,7 @@ export class ResultPdfComponent implements OnInit {
   @Input('courseType') courseType !:string;
 
   gradeService = new GradeUtil();
-  constructor() {}
+  constructor(public commonService : CommonService) {}
 
   ngOnInit(): void {}
 

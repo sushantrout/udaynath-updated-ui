@@ -8,7 +8,7 @@ import { ApplicationBlobData } from '../model/user.model';
 export class CommonService {
 
   public profilePic = new BehaviorSubject<any>(null);
-  private principalSigneture: any = "assets/images/psi.jpg";
+  private principalSigneture: any = "assets/images/psi.bmp";
   private examControllerSigneture: any = "assets/images/exam-controller.jpg";
   currentUser: any;
 
@@ -22,18 +22,20 @@ export class CommonService {
   }
 
   setPrincipalSigneture(signeture: any) {
-    this.principalSigneture = signeture || "assets/images/psi.jpg";
+    this.principalSigneture = signeture;
   }
 
   getPrincipalSigneture() {
-    return this.principalSigneture;
+    debugger
+    return this.principalSigneture || "assets/images/psi.bmp";
   }
 
   setExamControllerSigneture(signeture: any) {
-    this.examControllerSigneture = signeture || "assets/images/exam-controller.jpg";
+    this.examControllerSigneture = signeture;
   }
 
   getExamControllerSigneture() {
-    return this.examControllerSigneture;
+    debugger
+    return this.examControllerSigneture || "assets/images/exam-controller.jpg";
   }
 }

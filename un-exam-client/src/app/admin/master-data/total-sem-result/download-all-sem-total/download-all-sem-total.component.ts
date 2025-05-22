@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GradeUtil } from 'src/app/shared/grade-util';
+import { CommonService } from 'src/app/shared/services/common.service';
 
 @Component({
   selector: 'app-download-all-sem-total',
@@ -14,7 +15,7 @@ export class DownloadAllSemTotalComponent implements OnInit {
   @Input("examYearInput") examYearInput : any;
   @Input("dateOfIssue") dateOfIssue : any;
   @Input("courseType") courseType : any;
-  constructor() {}
+  constructor(public commonService : CommonService) {}
 
   ngOnInit(): void {}
 

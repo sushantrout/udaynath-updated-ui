@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { GradeUtil } from 'src/app/shared/grade-util';
+import { CommonService } from 'src/app/shared/services/common.service';
 
 @Component({
   selector: 'app-download-all-sem-detail',
@@ -14,7 +15,7 @@ export class DownloadAllSemDetailComponent implements OnInit {
   @Input("dateOfIssue") dateOfIssue : any
   @Input('isStar') isStar : boolean = false;
   @Input('isCode') isCode: boolean = false;
-  constructor() {}
+  constructor(public commonService : CommonService) {}
 
   ngOnInit(): void {
   }

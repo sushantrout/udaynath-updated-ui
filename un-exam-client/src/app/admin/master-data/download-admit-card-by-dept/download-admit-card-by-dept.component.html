@@ -121,7 +121,7 @@
             <div class="col-6 admit-card-text">
               <div class="row">
                 <div class="col-12">
-                  <img src="assets/images/psi.jpg" alt="UN LOGO" style="height: 50px;"/>
+                  <img [src]="commonService.getPrincipalSigneture()" alt="UN LOGO" style="height: 50px;"/>
                 </div>
                 <div class="col-12">PRINCIPAL/CENTER SUPDT.</div>
               </div>
@@ -129,7 +129,7 @@
             <div class="col-6 admit-card-text">
               <div class="row text-right">
                 <div class="col-11">
-                  <img src="assets/images/exam-controller.jpg" alt="UN LOGO" style="height: 50px;"/>
+                  <img src={{commonService.getExamControllerSigneture()}} alt="UN LOGO" style="height: 50px;"/>
                 </div>
                 <div class="col-11">CONTROLLER OF EXAMINATION</div>
               </div>

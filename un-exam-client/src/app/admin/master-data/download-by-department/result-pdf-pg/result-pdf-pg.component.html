@@ -171,7 +171,7 @@
                   <div class="col-6 admit-card-text">
                     <div class="grid">
                       <div class="col-12">
-                        <img src="assets/images/psi.jpg" alt="UN LOGO" height="40px" />
+                        <img [src]="commonService.getPrincipalSigneture()" alt="UN LOGO" height="40px" />
                       </div>
                       <!-- <div class="col-12" *ngIf="resultPdfMarkSheet">
                         <div style="height: 10px"></div>
@@ -185,7 +185,7 @@
                   <div class="col-6 admit-card-text">
                     <div class="grid text-right">
                       <div class="col-12">
-                        <img src="assets/images/exam-controller.jpg" alt="UN LOGO" height="40px" />
+                        <img src={{commonService.getExamControllerSigneture()}} alt="UN LOGO" height="40px" />
                       </div>
                       <!-- <div class="col-12" *ngIf="resultPdfMarkSheet">
                         <div style="height: 10px"></div>
