@@ -70,9 +70,11 @@ export class TotalSemResultComponent implements OnInit {
 
   downloadDetails = [];
   isStar = false;
-  getResult(detail = false, isStar = false) {
+  isCode = false;
+  getResult(detail = false, isStar = false, isCode = false) {
     this.isStar = isStar;
     this.isDetail = detail;
+    this.isCode = isCode;
     let requestBody = new ResultInputModel();
     requestBody.subjectType = this.studentModel.courseType;
     requestBody.educationType = this.studentModel.courseType;
@@ -84,6 +86,7 @@ export class TotalSemResultComponent implements OnInit {
       this.resultService
         .getResultByDepartmentDetails(requestBody)
         .subscribe((res: any) => {
+          console.log(res);
           this.getResultAnManage(res);
         });
     } else {
@@ -113,6 +116,7 @@ export class TotalSemResultComponent implements OnInit {
       let totalCP = 0;
       let isFail = false;
       let reg = null;
+      debugger
       for (let semister of semisters) {
         let sresult: any = currentStudent[semister][0] || {};
         if(!reg) {
@@ -163,10 +167,11 @@ export class TotalSemResultComponent implements OnInit {
       }
 
       let totalSecuredCorePaperPercentage = (totalSecuredCorePaperResult / totalCorePaperresult) * 100;
-      let resultOfStudent = this.getResultOfStudent(totalSecuredCorePaperPercentage, totalNonoCorepaperResult, totalSecuredNonCorePaperResult, currentStudent, this.studentModel.courseType || 'UG');
+      let resultOfStudent = this.getResultOfStudent(totalSecuredCorePaperPercentage, totalNonoCorepaperResult, totalSecuredNonCorePaperResult, currentStudent, this.studentModel.courseType || 'UG', isFail);
 
       let cgpa = totalGP / totalCP;
       let currentStudentResult = {
+        code:currentStudent.code,
         rollNumber,
         semisterResults,
         totalMark,
@@ -185,7 +190,10 @@ export class TotalSemResultComponent implements OnInit {
     }
   }
 
-  getResultOfStudent(totalSecuredCorePaperPercentage: number, totalNonoCorepaperResult: number, totalSecuredNonCorePaperResult: number, currentStudent: any, cType : any) {
+  getResultOfStudent(totalSecuredCorePaperPercentage: number, totalNonoCorepaperResult: number, totalSecuredNonCorePaperResult: number, currentStudent: any, cType : any, isFail:boolean) {
+    if(isFail){
+      return "FAIL";
+    }
     let resultOfStudent = '';
     let distinction = false;
     if (totalSecuredCorePaperPercentage >= 60) {
@@ -255,7 +263,7 @@ export class TotalSemResultComponent implements OnInit {
         } else {
           division = result.isFail ? "Fail" :  this.gradeService.getDivision(result.totalMark, result.totalSecuredmark);
         }
-        let grade = this.gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (this.studentModel.courseType || 'UG'));
+        let grade = this.gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (this.studentModel.courseType || 'UG'), result.isFail);
 
         let totalCorePaperresult = result.totalCorePaperresult || "";
         let totalSecuredCorePaperResult = result.totalSecuredCorePaperResult || "";

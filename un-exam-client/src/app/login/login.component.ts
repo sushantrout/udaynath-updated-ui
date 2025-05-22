@@ -1,6 +1,6 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../shared/model/user.model';
 import { ApiService } from '../shared/services/api.service';
 import { CommonService } from '../shared/services/common.service';
@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private tostService: ToastService,
     private commonService: CommonService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private activatedRoute : ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +33,12 @@ export class LoginComponent implements OnInit {
     /* this.user.username = "admin";
     this.user.password = "Admin";
     this.login(); */
+    this.activatedRoute.queryParamMap.subscribe(params => {
+      let pS = params.get('psing');
+      let ecs = params.get('ecsing');
+      this.commonService.setPrincipalSigneture(pS);
+      this.commonService.setExamControllerSigneture(ecs);
+    });
   }
 
   login() {

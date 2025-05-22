@@ -202,7 +202,10 @@ export class GradeUtil {
   }
 
   //2000, 1300
-  getTotalGradePoint(totalMaxMark : any, totalAccurdeMark : any, courseType : any) {
+  getTotalGradePoint(totalMaxMark : any, totalAccurdeMark : any, courseType : any, isFail : boolean) {
+    if(isFail) {
+      return 'F';
+    }
     let percentage = this.getPercentage(totalMaxMark, totalAccurdeMark);
     if (percentage >= 90) {
       return 'O';

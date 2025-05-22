@@ -23,6 +23,5 @@ export class ResultPdfComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.results)
   }
 }

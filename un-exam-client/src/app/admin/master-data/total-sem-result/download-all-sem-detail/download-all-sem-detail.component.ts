@@ -13,6 +13,7 @@ export class DownloadAllSemDetailComponent implements OnInit {
   @Input('examYearInput') examYearInput: any;
   @Input("dateOfIssue") dateOfIssue : any
   @Input('isStar') isStar : boolean = false;
+  @Input('isCode') isCode: boolean = false;
   constructor() {}
 
   ngOnInit(): void {
@@ -54,7 +55,6 @@ export class DownloadAllSemDetailComponent implements OnInit {
 
   getGraceResult(result : any) {
     let isGrace = false;
-    console.log(result)
     if(result && result.semisterResults) {
       for(let semResult of  result.semisterResults) {
         if(semResult && semResult.sresult && semResult.sresult.results) {

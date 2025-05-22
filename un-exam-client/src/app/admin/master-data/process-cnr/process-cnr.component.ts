@@ -49,7 +49,6 @@ export class ProcessCnrComponent implements OnInit {
     this.headers = [];
     this.excelBodydatas = [];
     this.processExcelService.processCNR(this.fileList, this.sessionId, this.courseType, this.semister, this.examType).subscribe((res: any) => {
-      console.log(res);
       this.toastService.sucess("CNR","CNR Process complete!");
     }, err => {
       this.toastService.sucess("CNR","Please check the file!");

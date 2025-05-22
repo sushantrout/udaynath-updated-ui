@@ -79,7 +79,7 @@
 
                 RESULT: {{(result.isFail ? "Fail" :  result.resultOfStudent) | uppercase}}
                 &nbsp;&nbsp;
-                <b>GRADE</b> :'{{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'))}}'
+                <b>GRADE</b> :'{{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'UG'), result.isFail)}}'
                 <br>
                 DATE OF PUBLICATION: {{dateOfIssue}}
               </div>
@@ -87,7 +87,7 @@
               <ng-template #otherTemplate>
                 RESULT: {{(result.isFail ? "Fail" :  gradeService.getDivision(result.totalMark, result.totalSecuredmark))  | uppercase}}
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <b>GRADE</b> : {{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'PG'))}}
+                <b>GRADE</b> : {{gradeService.getTotalGradePoint(result.totalMark, result.totalSecuredmark, (studentModel.courseType || 'PG'), result.isFail)}}
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 DATE OF PUBLICATION: {{dateOfIssue}}
               </ng-template>
