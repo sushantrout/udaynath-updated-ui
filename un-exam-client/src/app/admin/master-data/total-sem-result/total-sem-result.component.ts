@@ -116,7 +116,6 @@ export class TotalSemResultComponent implements OnInit {
       let totalCP = 0;
       let isFail = false;
       let reg = null;
-      debugger
       for (let semister of semisters) {
         let sresult: any = currentStudent[semister][0] || {};
         if(!reg) {
@@ -167,7 +166,7 @@ export class TotalSemResultComponent implements OnInit {
       }
 
       let totalSecuredCorePaperPercentage = (totalSecuredCorePaperResult / totalCorePaperresult) * 100;
-      let resultOfStudent = this.getResultOfStudent(totalSecuredCorePaperPercentage, totalNonoCorepaperResult, totalSecuredNonCorePaperResult, currentStudent, this.studentModel.courseType || 'UG', isFail);
+      let resultOfStudent = this.getResultOfStudent(totalSecuredCorePaperPercentage, totalNonoCorepaperResult, totalSecuredNonCorePaperResult, currentStudent, this.studentModel.courseType || 'UG', isFail, rollNumber);
 
       let cgpa = totalGP / totalCP;
       let currentStudentResult = {
@@ -190,7 +189,10 @@ export class TotalSemResultComponent implements OnInit {
     }
   }
 
-  getResultOfStudent(totalSecuredCorePaperPercentage: number, totalNonoCorepaperResult: number, totalSecuredNonCorePaperResult: number, currentStudent: any, cType : any, isFail:boolean) {
+  getResultOfStudent(totalSecuredCorePaperPercentage: number, totalNonoCorepaperResult: number, totalSecuredNonCorePaperResult: number, currentStudent: any, cType : any, isFail:boolean, rollNumber: string) {
+    if(rollNumber == 'UNCHE22006') {
+      debugger
+    }
     if(isFail){
       return "FAIL";
     }
@@ -202,7 +204,13 @@ export class TotalSemResultComponent implements OnInit {
       if(totalSecuredCorePaperPercentage >= 50) {
         resultOfStudent = "SECOND CLASS";
       } else {
-        resultOfStudent = "FAIL";
+        if(cType == 'UG') {
+          if(totalSecuredCorePaperPercentage < 35) {
+            resultOfStudent = "FAIL";
+          }
+        } else {
+          resultOfStudent = "FAIL";
+        }
       }
     }
 
@@ -226,7 +234,7 @@ export class TotalSemResultComponent implements OnInit {
     for (let semister of semisters) {
       let sresult: any = currentStudent[semister][0] || {};
       for (let r of sresult.uiResult) {
-        if(r.paperType != 'CORE' && r.paperType != 'VALUES AND ETHICS') {
+        if(r.paperType != 'VALUES AND ETHICS') {
           if(r.grace) {
             return true;
           }
