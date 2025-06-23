@@ -32,6 +32,7 @@ import { ProvisionalComponent } from './provisional/provisional.component';
 import { ProvisionalCertificateComponent } from './provisional/provisional-certificate/provisional-certificate.component';
 import { BackFormFillupComponent } from './back-form-fillup/back-form-fillup.component';
 import { UniversityResultComponent } from './university-result/university-result.component';
+import { AbsResultComponent } from './abs-result/abs-result.component';
 
 const routes: Routes = [
   {
@@ -141,6 +142,10 @@ const routes: Routes = [
     component: UniversityResultComponent
   },
   {
+    path: 'abs-result',
+    component: AbsResultComponent
+  },
+  {
     path: 'total-result',
     loadChildren: () =>
       import('./total-sem-result/total-sem-result.module').then(
@@ -179,6 +184,7 @@ const routes: Routes = [
     ProvisionalCertificateComponent,
     BackFormFillupComponent,
     UniversityResultComponent,
+    AbsResultComponent,
   ],
   imports: [
     CommonModule,

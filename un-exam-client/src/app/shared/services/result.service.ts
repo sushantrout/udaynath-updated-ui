@@ -54,4 +54,10 @@ export class ResultService {
     }
     return this.apiService.post(`total-result/publish`, body);
   }
+
+  downlodResult(data : any, downloadFileName : string) {
+    return this.apiService.downloadFile(this.url + '/by-department/download?fileName='+downloadFileName, {
+      results: data
+    });
+  }
 }

@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  //api_url: "http://localhost:8080/api/",
+  api_url: "http://localhost:8080/api/",
   /* api_url:"http://13.126.203.65/api/" */
   /* api_url: 'http://bk-server-latest-env.eba-vxzhpx59.us-east-2.elasticbeanstalk.com/api/' */
   //api_url:'http://last-server-env.eba-xppbvs6b.ap-northeast-1.elasticbeanstalk.com/api/'
-  api_url:"http://un-latest.ap-northeast-1.elasticbeanstalk.com/api/"
+  //api_url:"http://un-latest.ap-northeast-1.elasticbeanstalk.com/api/"
 };
 
 /*
